@@ -1,0 +1,65 @@
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 조금 시간을 더 내서 만난 거기도 하고 제가 그렇게 하고 싶었던 이유가 좀 급하게 안 하고 싶어서였어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이제까지 세 번 해보니까 같이 한다는 거에 있어서 가장 큰 장애물이
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  여기 원래 계셨던 분이 계신가요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아닙니다. 됐습니다.
+Speaker SPEAKER_00:  저희 장애물이 저희가
+Speaker SPEAKER_00:  다 처음 본 사람이고 아직 서로 불편하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  뭐 어쩔까? 아니면 최소한 반응은 해줄까?  이런 뭔가 그 최소한의 상호신뢰?  근데 사실 이 정도의 상호신뢰는 오프라인 모임이라면 낯선 사람이어도 당연히 있는 건데
+Speaker SPEAKER_00:  온라인 모임이다 보니까 그게 좀 어려운 것 같았어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래서 좀 그거를 만드는데 시간을 조금 써보면 좋겠다는 생각이 들었어요.  저희가 이번에는 일주일도 아니고 한 달이고 저희는 이제 조금 일찍 시작하기도 하니까 한 달 이상인데  그 앞에 한두 번 정도는 그런 조금 이런 뭐라고 표현해야 될까요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  안정감이라고 해야 되나 유대감이라고 해야 되나 그런 거를 좀 만들어 보는 시간을 가지면 좋겠다 싶어가지고  오늘은 그냥 뭐 만남의 일정이나 빈도 같은 이런 이제 빨리 정해야 좋은 그런 것들을 제외하고는
+Speaker SPEAKER_00:  그냥 조금 그냥 제가 뭐라고 이렇게 적긴 했지만 자유롭게 얘기하면서  그냥 쉽게 얘기하면 좀 친해지는 시간을 가지면 어떨까요?  저는 뭐 어떻게 될지는 몰라도 저희가 여기 뭐 대학원 생각하신 분도 계시고 그런 걸로 알고 있긴 한데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  어쨌든지 간에 이쪽 업계 혹은 이제 취업을 한다면 이쪽 업계에 있게 될 거잖아요.
+Speaker SPEAKER_00:  그러면은 여기에서 그냥 한 번 만나고 그냥 끝내는 관계가 아니라 좀 그냥 이쪽 업계 인맥으로  어떻게 보면 좀 동기 같은 느낌이 들겠죠? 회사 동기는 아니지만
+Speaker SPEAKER_00:  공부를 한 번 같이 했었던 사람 느낌으로
+Speaker SPEAKER_00:  그렇게 좀 알고 지내도 좋지 않나 싶어요.
+Speaker SPEAKER_00:  그래서 일단은 자기소개를 간단하게 하면 좋을 것 같으니까  그 얘기한 김에 저 먼저 얘기하면은
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저는 뭐 열심히 여러분들을 모집한 선영훈이고요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아
+Speaker SPEAKER_00:  출신이어서 비전공자예요.  저 ML도 전에 해본 적 없고
+Speaker SPEAKER_00:  백엔드 프론트엔드 뭐 배포 그런 것도 해본 적 없어요.  여기 분들 중에는 컴공도 계신 걸로 알고 있는데  그 복수 전공이나 융합 전공으로 그런 것도 아니어가지고
+Speaker SPEAKER_00:  그런 것도 다 낯설고 제가 기술 버전 관리하자 했지만  그런 것도 다 해본 적 없어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  근데 해보니까 그 한 달이 아니라 10일에도 좀 되더라고요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  뭐 웹페이지 만들고 파이썬 모듈 만들고.  엄청 힘들긴 했지만 안 될 건 아니라 가지고  아 이거 뭐 그 아 내가 안 해봤으니까  요거는 안 해봐야겠다.  아 요거는 데이터 분석이니까  내가 프론트엔드 백엔드 하나도 모르는데  파이썬 이거 판다스만 써봤지
+Speaker SPEAKER_00:  뭐 다른 백엔드 기술 안 써봤는데  뭐 그렇게 크게 걱정할 필요가 없겠더라고요.  그래서 그것도 이제 나중에 얘기해 보면 좋을 것 같고
+Speaker SPEAKER_00:  그리고 어떻게 느끼시는지 모르겠지만
+Speaker SPEAKER_00:  저도 굉장히  지금 뭐라 그래야 되나
+Speaker SPEAKER_00:  수줍고  나서는 게 마냥 편치만은 않아요.
+Speaker SPEAKER_00:  이게 기술적인 요소나 이런 거는  솔직히 혼자 다 할 수 있잖아요.  하려면 근데 다 같이 하는
+Speaker SPEAKER_00:  협업 경험은 그렇지가 않아서  좀 해보기 위해서 좀 같이
+Speaker SPEAKER_00:  저도 불편한 마음을 극복하면서
+Speaker SPEAKER_00:  먼저 막 연락도 하고
+Speaker SPEAKER_00: 

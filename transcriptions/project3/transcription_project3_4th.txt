@@ -1,0 +1,1273 @@
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  해요 근데 이제 지금 제가 이걸 하는 큰 이유는 저는 지금 이게 3차부터는 이번 프로젝트부터는 약간 프로그래머스 그 프로젝트에
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  더 포커스를 하기보다는 얘를 실제 포트폴리오로 어떻게 써먹을 수 있을까 이제 그거를 좀 고민하다 보니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이제 저희가 사실 모였을 때 만 할 수 있는 게 협업이잖아요.  솔직히 머신러닝 만들고 뭐 어쩌고 하는 건 혼자서도 다 할 수 있는 건데  이 협업 경험은 혼자서는 절대로 할 수 없는 그래서 이제 거기에서 좀 더 중점을 둬서
+Speaker SPEAKER_00:  하면 좋을 것 같습니다. 그러면 이제 그 오늘 회의부터는 이제 각자 얘기하는 게 다 데이터로 카운팅되고 여러분도
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  나중에 어디에 쓰신다고 하면은 더 이제 저번보다는 발언수가 많은 게  그 다음에 이제 꼭 발언뿐만이 아니라 그 리액션도 뭐 알았다던가 뭐 하여튼 그게 다 상호작용으로 잡힐 테니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그 관계망구석은 이거 뭐야 저희 3차 프로젝트 기한 지나서  더 되고싶은 hacerlo 그렇다고 보면 좀 더 좀 더 설명粗 약정роп 내가 한작길만 조약을 먼저 한 에서 China pros성이 될 것 같기도 하거든요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이제 그렇게 돼도 여하튼 할 생각이고 이제 저희가 같이 얘기하고 녹화한 자료니까 그거 자료는 공유를 할께요
+Speaker SPEAKER_00:  근데 뭐 그것도 이제 나중에 얘길 해 본 좋겠지만 그것도 일단은 제가 할 수 있을 거라고 생각하는데ека 일단은 저도 안 해 보기는 했고 그것도 이제 같이 참여하고 싶으신 분이 있으시면은 왜냐면 그것도 조금 적을 거리가 될 테니까  그거 있으시면 나중에 얘기해주시면 좋겠다 그러면 일단은 그거 오픈하고 discussed but never salts sober that we have a lot of ideas of ones who how to do our panel into the future and kind of t준 사고 Therapy and creating good ideas and then that  될 테니까 그거 있으시면 나중에 얘기해 주시면 좋을 것 같아요.  그러면 일단은 그 동영상 녹화 동의를 받으려고 시작할 때 그게 있어야 될 것 같아가지고  나중에 큰 문제가 될 수도 있을 것 같아서. 그래서 이 얘기를 제일 먼저 했고요.  근데 이거는 사실 오늘 핵심이 아니니까.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  핵심은 아니지만 먼저 얘기 나온 김에 여기에 대해서 더 얘기하신 분 계신가요?  의견이나 질문이나?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  네 없습니다.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  그러면 일단은 이거는 넘어가고.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  논의도 있었는데.  그 다음에 논의를 하다 보니까 시간이 많이 걸렸다고 생각하거든요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  왜냐면 노트북은 어차피 공유가 되고 있으니까 나중에 자세히 볼 수 있잖아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  각자 노트북 들어가서.  그래서 그거를 지금 여기서 그리고 사실 한눈에 들어오지도 않고 화면 공유해 가지고 쭉 내려서 보여주는 거.
+Speaker SPEAKER_00:  아 이거 좀 재밌었다. 아니면 좀 이상했다. 아니면 어쨌든지 간에 좀 같이 얘기해 봤으면 좋겠다.
+Speaker SPEAKER_00:  하는 거 있으면은 그거 내용을 먼저 얘기하고 거기에 대한 설명 자료로써 본인 화면 공유하면서 얘기해 주시면 좋겠습니다.  네 감사합니다.  감사합니다.  감사합니다.  뭐 1번 더 얘기해 보면 좋을 것 같아요.  이거 어떻게 생각하시나요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  머신러닝 전에 EDA에서 혹시 조금 특이했던 거나 뭐 있으셨던 거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02:  그 속에서 결과를 살펴봤는데 EDA 평균 근무 시간은 좀
+Speaker SPEAKER_02:  좀
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  너무 많은 아드로 사상이 높고  너무 좋아해도 생각이 또 조금 이렇게 높아가고 그런 거  어어 그거 지금 말씀하시는 거 보면서 얘기할까요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  좋네요 아 제가 딱 생각한 방향대로 하는 거 같습니다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  이렇게 봤을 때 이게 저는 제 친구들이 전체이고  제 초록색이 이제 최고 한 3번 정도 될 텐데 이렇게 봤을 때
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  취향을 네 원래 사운드가 정말 취향을  무슨 한가해 금메일 수 있는 일별로 갖고  이렇게 나눠서 그 근무 시간을 일상적인 근무 시간으로 변환을 해서 봤을 때
+Speaker SPEAKER_02:  일상적인 근무 시간을 이 1년에 8, 4일 때 좀 높게 나타났고  또 7, 8, 4, 6, 7, 8, 한 6, 8일 동안 8월이 굉장히 높아지는 건 맞는 거 같아요
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  여기서 8일 시간 4일에서 6, 7, 8, 9일이 보인 거 같아요  그래서 그 정도도 보이는데  3개월에 10일 됐고
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  위에 거 먼저 얘기해 볼까요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아 근데 그것도 조금 이상하긴 한데 8시간에서 10시간이 확 주는 거는  하여튼 이건 뭔가 재밌긴 한데  근데 이게 만약에 그냥 단순히 이 시간대에 회사들이 많았다  좀 많을 법한 시간이잖아요 6시? 특히 6시에서 8시는  그다음에 뭔가 IT 직군이라고 하면은 좀 오래 일하는 시간도 많을 거 같기는 하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그리고 만약에 비율로 봤을 때도 똑같이 나타나면은  이거는 되게 재밌는 인사이트 줄 수 있을 거 같거든요  약간 퇴사가 적어지는 최적 시간대를 찾았다 라고 얘기하면은 이제
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  구간이 좀 좁기는 한데 어쨌든지 간에 저 근데 이제 약간 너프하게라도 저쪽 한 9시간 정도를 타겟팅해 가지고
+Speaker SPEAKER_00:  그러니까 저는 이 결과가 비율에서도 마찬가지로 나타나면 재밌을 거라고 생각하는 게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그냥 막연히 일을 적게 시킨다고 해 갖고 좋은 거는 퇴사 측면에서 좋은 거는 아니라는 거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이제 그냥 쉽게 데이터 없이 직관적으로 생각했을 때는  아 적게 일하면 적게 일할수록 뿌리니까 퇴사를 덜 하겠지? 해서
+Speaker SPEAKER_00:  근데 이제 데이터에서 저는 데이터가 약간 그 직관적으로 생각하는 거를 좀 보완해 주거나
+Speaker SPEAKER_00:  아니면 아예 반대로 갔을 때 설득력이 있으면은 굉장히 매력이 있다라는 생각을 하거든요  그럼 진짜로 왜 그냥 상식적으로 하지 말고 데이터를 써야 되는지를 보여주는 거니까  이게 비율로도 같이 나오는지 한번 보면 재밌을 것 같아요  이건 진짜 재밌거든요
+Speaker SPEAKER_00:  혹시 그 다른 분들도 이거 혹시 이거 다른 분들도 이거 보신 분 계신가요?
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  저는 이렇게까지 쪼개서는 못 봤는데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  일단은 그러면은 두 분 분석이 좀 더 잘 되어있을 것 같아요  두 분 분석이 공통되게 나왔다는 거는 지금 신뢰성은 높아지는 거니까 그 분석에 대해서는
+Speaker SPEAKER_00:  근데 혹시 태경님은 그 비율로 보셨나요? 아니면 같이 이렇게 카운트 세셨나요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이게 만약에 비율에서 없어져 버리더라도 그냥 이렇게 좀 뭐라고 해야 되나  이게 데이터 세트에서 사용된 회사들이 근데 사실 엄밀하게 IT 회사인지까지는 알 수 없지만
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 어쨌든 그 회사들이 좀 이렇게 시간이 극단에 있는 경우가 많았다면 적어도 기술 정도는 보여줄 수 있으니까  저는 여튼 이 데이터는 재밌는 거 같아요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  네  네  네  네  네
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  네  네  네  네  네  네  네
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  네
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: oud
+Speaker SPEAKER_00:  나오면 아까 얘기했던 거랑 비슷한 이제 이걸로 봤을 때는 3, 4개 정도가 좋겠네요. 근데 이게 뭔가 상식적으로 좀 맞기는 해요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  내가 회사 들어갔는데 나한테 프로젝트가 하나, 한두 개 밖에 없다 하면 조금 아 이게 내가 별로  효용감이 없을 것 같고 6, 7개씩 되면 죽으라는 걸까?  아
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  그냥 적으면 적을수록 좋은 게 아닌가 로도 생각이 될 수 있을 것 같아서 이 결과도 재밌을 것 같고 그 다음에 또 그
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이건 비슷한 경향으로 설득력 있는 방향으로 가잖아요? 아 당연히 프로젝트 많으면 시간이 더 걸리겠죠?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02:  오늘 상으로 듣고 싶었던 준비는 어디서 했었는지?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  네 그 책을 한 번 박건수가 그 책을 사 봤는데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  네
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네  네  제일 중요한 그 피처가 방법에 따라서도 달라지더라고요.  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  네  네 맞아요.
+Speaker SPEAKER_01:  네  네 맞아요.
+Speaker SPEAKER_02:  네
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02:  다시 모델 구축을 해봤더니
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  잠깐만 말씀 중에 죄송한데
+Speaker SPEAKER_00:  지금 진행하고 있는 거에서 레이브를 뭘로 접근하는 거죠?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  아 여러 개를
+Speaker SPEAKER_00:  아 여러 개를
+Speaker SPEAKER_02:  정리편수하고 하는 거에 이렇게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_02:  저는 대거나  그 R  구축편수는 R에서 나오는 것처럼 들었어요
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  정리편수라고 했을 때
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 지금 저 Satisfaction이
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  이게 종속으로 들어가서  이게 맞는데  다시 종속편수로 바뀌는 거거든요  네 네 네 맞아요  맞죠  저는 얘가 한 번 더 하면은
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  나머지 둘이 개수인데
+Speaker SPEAKER_02:  뭐라고 해야 되지  상속과는 조금
+Speaker SPEAKER_02:  안 맞는 그런 것도 있는 것 같아요
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  다르잖아요  아 얘가  얘가 경력이에요
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  아 하나는 경력이고  하나는 회사에서 일하는 시간
+Speaker SPEAKER_00:  그러니까  다르잖아요  아 얘가  얘가 경력이에요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  타임스페인트 컴퓨터는
+Speaker SPEAKER_00:  타임스페인트 컴퓨터는  타임스페인트 컴퓨터는  경력이에요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02:  경력이 높아질수록
+Speaker SPEAKER_02:  이런 거는  어떻게  인터넷에  해올되겠습니까  어떻게
+Speaker SPEAKER_02:  아 잠깐만
+Speaker SPEAKER_00:  그  잠깐만  다
+Speaker SPEAKER_00:  이거는
+Speaker SPEAKER_00:  할 수  그렇게 해석을 하면
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  의미가
+Speaker SPEAKER_00:  없을 만큼  낮아서
+Speaker SPEAKER_00:  근데 이게 선형 모델이 잘 안 맞더라고요  응 그래가지고 앙산불 모델로 해보니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래도 조금  r 스퀘어가 한  점 4 정도  나왔거든요
+Speaker SPEAKER_00:  예 그 정도는  그 됐을 때  이제 저 방향을 좀 해석해 보면 좋은데  이게 너무 낮으면은  아까는 0.1도 안 되니까
+Speaker SPEAKER_00:  그 경력 같은 거
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  얘네도 좀
+Speaker SPEAKER_00:  그 혹시  그 제가 올린  방법 중에  저  저희가 데이터가 지금 한 8 데이 정도 되잖아요
+Speaker SPEAKER_00:  태사다  근데 뭐  이건 너무 당연한  태사가 더 많은 데이터면  아주 이상한 회사거나 하여튼 이상한 데이터니까  그거 보완하는 그 방법 써보신 분 계신가요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그게
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 네 그거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아 그게 굉장히 유용하더라고요  저는 어차피  뭐 방법을 그대로
+Speaker SPEAKER_00:  그냥  그냥  그냥  그냥
+Speaker SPEAKER_00:  그냥  그냥
+Speaker SPEAKER_00:  뭐 방법을 그대로 따라할 건 아니니까  저
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  키워드 같은 거를 얻을 수 있으면  검색을 하든 gpt를 쓰든 다 해볼 수가 있어서  그 근데 이제 여기 키워드가 되게 잘 정리되어 있었어요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  음
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  음  음  아 여기있다  음  음
+Speaker SPEAKER_00:  아 여기있다  그�yah  음  저두 그 시연님이 지금 진행한 방향 머신러닝 그쪽으로 지금
+Speaker SPEAKER_00:  그
+Speaker SPEAKER_00:  그 어제 말했던 방향대로 그 시연님이 진행하신 건 맞거든요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이거 올려주셨던 건데  이쪽에서  이런 방법 중에 필요한 걸 선택해봤다고 하거든요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이게 저도 아주 자세히 아는 건 아니지만
+Speaker SPEAKER_00:  랜덤 샘플링 같은 경우에는  적은 데이터 같은 거를 랜덤으로 복제해가지고  그 수를 맞춰주는  그래서 그게 한쪽으로 편향되지 않게
+Speaker SPEAKER_00:  근데 랜덤으로 샘플링하는 거니까  아무래도 랜덤은 항상 뭔가 위험이 있잖아요.
+Speaker SPEAKER_00:  확률은 낮아도 주사위 100번 던졌을 때  다 1만 나올 수 있는 거고  그래서 그런 거를 보정하는 여러 가지 방법들이 있더라고요.  근데 기본적으로는 적은 데이터 수를  어떻게 샘플링해가지고  그냥 이 어떻게가 다른 것 뿐이지  개수를 맞춰주는 방법이더라고요.  그래서 이거 전처리랑
+Speaker SPEAKER_00:  그 다음에 하이퍼 패러메터를  어떻게 잡는지에 따라서
+Speaker SPEAKER_00:  나중에 회기할 때 R스케어 값도 그렇고
+Speaker SPEAKER_00:  근데 분류는 워낙에 원래부터 높게 나와가지고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  Accuracy든 F1Squad은 워낙 높게 나와서  근데 회기는 좀 많이 딸리더라고요.  근데 이제 저희가 하는 그 분류도
+Speaker SPEAKER_00:  앙팡블 방법이나 뭐 이런 거 쓰지 않고  그냥 단순히 로지스틱 쓰면은
+Speaker SPEAKER_00:  근데 그래도 한 점팔 정도? 나오더라고요.
+Speaker SPEAKER_00:  근데 그래도 한 점팔 정도? 나오더라고요.
+Speaker SPEAKER_00:  그래서 이제 그 얘기 나온 김에  제가 무슨 얘기를 하는 거냐면
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  일단 저는 이거 상관관계부터 먼저 봤는데  일단 저는 이거 상관관계부터 먼저 봤는데  뭐 이거는 너무 자연스러운데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래도 점 1 정도 되는 애들이
+Speaker SPEAKER_00:  그렇지 않아서
+Speaker SPEAKER_00:  넘버 프로젝트 같은 거는 상관은 되게 낮은데  나중에 뒤에 하면  Feature Input 값은 되게 높게 나오더라고요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그걸 이제 좀 확인해 보려고 하고  그다음에 제가 뭘 한 거냐면
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그 Department는 원하드 인코딩 하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  뭐 스탠다드 쓰셨나요?  미맥 쓰셨나요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  미맥 쓰셨나요?  뭐 스탠다드 쓰셨나요?
+Speaker SPEAKER_00:  미맥 쓰셨나요?
+Speaker SPEAKER_02:  뭐 스탠다드 쓰셨나요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이 각 방법들을 보고
+Speaker SPEAKER_00:  이게 이제 그 샘플링하는 방법인데
+Speaker SPEAKER_00:  저는 이제 한 7대 3 정도로 나눴거든요.  그래서 이제 그 개수를 맞춰주는 거예요.
+Speaker SPEAKER_00:  얘가 숫자가 적은데  이제 이거를 샘플링을 돌려서 맞춰주는 거고  복제를 해서
+Speaker SPEAKER_00:  그다음에 이제 하이퍼 파라메타를 지정한 다음에  포문을 돌려서
+Speaker SPEAKER_00:  2분 돌아가는데 꽤 돌아가더라고요.
+Speaker SPEAKER_00:  2분 돌아가는데 꽤 돌아가더라고요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  지금 이건 분류거든요.  지금 이건 분류거든요.  방법을 썼을 때
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이제 포문이 2번 돌아가는 거죠.  근데 이제 포문이 2번 돌아가는 거죠.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  지금 샘플링 방법이랑
+Speaker SPEAKER_00:  지금 샘플링 방법이랑
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저 모델이랑
+Speaker SPEAKER_00:  이렇게 했을 때
+Speaker SPEAKER_00:  그 제일 높은 값을 갖는 애는  그 제일 높은 값을 갖는 애는
+Speaker SPEAKER_00:  어 뭐 큰 차이는 아니긴 했는데  오히려 그냥
+Speaker SPEAKER_00:  그래디움 부스팅이
+Speaker SPEAKER_00:  그냥 데이터로 한  그래디움 부스팅이 제일 높게 나왔어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  패러메탈 값에 따라 달라요.
+Speaker SPEAKER_00:  그래가지고 저희가  그래가지고 저희가  여러 가지를 조합해서 봤다는  여러 가지를 조합해서 봤다는  그리고 그 중에 제일 높은 거  그리고 그 중에 제일 높은 거  무려 99%
+Speaker SPEAKER_00:  무려 99%
+Speaker SPEAKER_00:  무려 99%  무려 99%  나오는 거를 이제  나오는 거를 이제  나오는 거를 이제  찾았다는 거를 보여주면 좋을 것 같고요.
+Speaker SPEAKER_00:  그걸로 봐도  그걸로 봐도  그걸로 봐도
+Speaker SPEAKER_00:  에폰 스콜도  에폰 스콜도 95%  95%  95%  95%
+Speaker SPEAKER_00:  근데 사실 얘는  근데 사실 얘는
+Speaker SPEAKER_00:  굳이 에폰 스콜 볼 필요가 없죠.  지금은 샘플링 해갖고  지금은 샘플링 해갖고  지금은 샘플링 해갖고  그 수를 맞춰줬으니까
+Speaker SPEAKER_00:  뭐 근데 어쨌든
+Speaker SPEAKER_00:  둘 다 엄청 높으니까
+Speaker SPEAKER_00:  이  이
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이게  이게  이게
+Speaker SPEAKER_00:  이게  이게  이게 antine  contain  change margin  change
+Speaker SPEAKER_00:  Marie  bring  bring  구� spar
+Speaker SPEAKER_00: ��� bye bye bye bye bye best  주려면 어떻게 해야 되지 그게 조금 고민이고요. 이렇게 낮게 나온 게 아무리 데이터가 그래도 뭔가 이해가 안 되고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  제일 중요하지 않나? 퇴사에 제일 중요한 건 돈 아닌가 싶어가지고 다른 것들도 있지만
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  상식적이라고 생각해서 제가 더 해보려고 한 거고 근데 그 만족도에 가장 영향력이 큰 게 프로젝트 후더라  이걸 믿는다면 돈이 아니더라 당연히 돈일 것 같은데 돈이 아니더라
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이게 프로젝트 후랑 시간이랑 사실상 좀 같다고 볼 수 있으니까 그러니까 같이 간다고 볼 수 있으니까  그 얼마나 일종의 저는 이걸 좀 합쳐 가지고 저희가 만약에 피처를 새로 만들어 준다면 일의 부하 뭐 이런걸로 이제 의미 부여를
+Speaker SPEAKER_00:  해줄 수 있었거든요.
+Speaker SPEAKER_00:  얼마나 그 부하가 걸리는지가 오히려 보상보다도 더 크더라. 그 다음에 이게 특히 그런게 최근 5년간의 프로모션 했느냐 거의 영향없고  꼴등이고 그리고 사고 쳤느냐 또 생각보다 그렇게 중요하지 않다.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  왜냐하면 이걸 많이 쓸 것 같아서 그냥 데이터 없이 했을 때는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그다음에 이제 거기에 더해서
+Speaker SPEAKER_00:  아
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  아 그리고 이거를 좀 세대별로 나눠서 볼 수 있으면 참 좋을 것 같은데
+Speaker SPEAKER_00:  없으니까?  피처가 없으니까 나눠서 볼 수가 없는데 근데 이제 제 생각에는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저희가 그래도 좀 나눠서 볼 수 있는 게 부서별로니까 부서별로 좀 나누면 결과가 어떻게 나올까?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  왜냐하면 이게 제 생각에는 매니지먼트랑 세일즈랑 경향이 같을까?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  좀 다르지 않을까? 싶어가지고
+Speaker SPEAKER_00:  그거를 조금 나눠서 봐도 재밌겠다. 재밌겠다는 건 이제 저희가 좀 설득력 있는 스토리를 좀 풀만 하겠다 하는 거였고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그다음에 지금 하나 또 이제 약간 염려되는 것 중에 하나가 얘 하이퍼패라마타 찾은 걸 보면은  대수 엄청 깊은데?  하하하하하하하하
+Speaker SPEAKER_00:  어...
+Speaker SPEAKER_00:  이거...  R 스퀘어를 맞출라다 보니까?
+Speaker SPEAKER_00:  근데 이게 사실 과적합인지 아닌지를 지금 물론 이제 그 테스트 데이터로
+Speaker SPEAKER_00:  그 여기에서 검증을 하고 있긴 하지만 아 이게 과적합...
+Speaker SPEAKER_00:  뭐라 해야 되나? 과적합인지를 저는 사실 어떻게 보면 엄밀하게 얘기하면 알 수 없다고 생각해요.  이 실제 데이터가 있어야지.  근데 이제 추정은 할 수 있는데 근데 지금 저희가 나눠놓은 테스트에서는 괜찮게 나온 건데 지금.
+Speaker SPEAKER_00:  뭐 나쁘지 않게
+Speaker SPEAKER_00:  어디를 좀 따라야 될지 아니면 설득력을 좀 어떻게 갖춰야 될지도 이제 같이  고민해 보면 좋겠다고 생각을 했습니다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네 그래가지고 저 이거 데이터는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그 올려 올릴 거니까 그 여러분들 이게 너무...  그 다 이렇게 어때요. 그러니까 우리는 그 놀이를 잘하는 것 촬영을 삼아 COVID item Patrick элем SAS가тоящrze.  그러니까 여러분들도 하이퍼 테라멘탈 좀 바꿔본다던가
+Speaker SPEAKER_00:  아니면 여기 지금 코드가 다 정리가 돼 있으니까
+Speaker SPEAKER_00:  돌아가게끔 이 방법들
+Speaker SPEAKER_00:  불균형을 맞추는 샘플링 방법들에 따라서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  이것 좀 나눠서 보시는 것도 재미있을 것 같고요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  왜냐면 지금은 다 쓴 거잖아요
+Speaker SPEAKER_00:  지금 제가 보여드리는 거는 분류할 때 이걸 다 쓴 건데
+Speaker SPEAKER_00:  근데 이제 이렇게 되면은 저희가 API 같은 거 만들었을 때  파라마터를 다 입력해야 되잖아요  열 개를
+Speaker SPEAKER_00:  좀 줄여보자 해서 줄인 버전도 있는데  근데 그거 얘기하기 전에  지금까지 제가 꽤 여러 가지 얘기를 했는데  혹시 뭐 의견이나
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아니면 나는 그건 좀 이상한 거 같다  반대 의견 외우고  환영하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네 맞습니다
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  regression, decision tree, random forest, xgboost, gradient booting  이거 이렇게 써도
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  제가 알기로는 decision tree가  classification 뿐만이 아니라  연속형의 회기로도 쓸 수 있거든요
+Speaker SPEAKER_00:  그러니까 그걸 그냥 나눌 때  그러니까 만약에 이렇게 대수를 깊게 해서 나눈다고 하면은  밑에 그 리프 노드가 엄청 많아지잖아요  그럼 걔가 사실상 연속형이 되는 느낌이라서  회기에서도 쓸 수 있다고 알고 있고
+Speaker SPEAKER_00:  그다음에 맥스 분이 하신 거에서도
+Speaker SPEAKER_00: jaeio!!!!  decision tree였나
+Speaker SPEAKER_00:  random forest로 회기를 했던 걸로 기억하거든요  저는 그 수업을 이번 주까지 들어 가지고
+Speaker SPEAKER_00:  그제인가  그렇게 내용이 있었던거 같아요  그래서 yeah  decision tree가
+Speaker SPEAKER_00:  그분이 말씀하신게  decision tree가 회기나 derviceна  모두를 쓸 수 있어서 아주 좋은데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  염려 때문에 그래서 하이퍼 테라메터를 좀 조심 조심 이라기보다는 뭐라기나
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  api까지 원래 하려고 했는데 아예 페이지로 만들었으니까 저희 아예 그냥 조금 더 내세워가지고 우리는 아예 예측 서비스를 만들었다 하고 해도 될 것 같고  지금 프론트단 백단 다 돼있고 어 지금까지 한 게 적용된 건 아니지만 그 넣었을 때 예측 나오고 확률 나오고 하는 그거를 이제 저희 같이 봤었잖아요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  얘네가 그 시간이 더 많이 들어가지고 얘가 이제 조금 낮기는 해도 어 거의 유사한 퍼포먼스를 보여주면서 실행 시간이 훨씬 짧다고 알고 있어요
+Speaker SPEAKER_00:  그래서 얘가 각광받는다고 알고 있는데 그래서 요 방법으로 이제 하면 좋을 것 같아요
+Speaker SPEAKER_00:  그러니까 이제 지금은 어차피 데이터가 많지 않고 레코드가 어 해서 그냥 뭐 이렇게까지 반복 많이 넣어가지고 데스 해봤자
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네 여튼 저 좋습니다
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  지금 시연님이 얘기하신 건 디시전 트리를 이거 연속형 그에다가 쓸 수 있느냐 였는데 이제 제가 알기로는 쓸 수 있다고 알고 있어서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그 하이퍼 파라메터가 얘가 제일 그 R 스퀘어 값이 높게 나오니까 랜덤 포레스트에 하이퍼 파라메터를 이렇게 설정했을 때의 필터링이 붙었거든요
+Speaker SPEAKER_00:  그러니까 얘는 지니 임퓨리티로
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  분류도 했고 회기도 했잖아요.  이게 넘어가는 흐름은 다들 이해하신 거죠?
+Speaker SPEAKER_00:  어제도 얘기했던 거가 지금 이렇게 구현된 거.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  여기서 최고 모델이 골라지긴 했지만
+Speaker SPEAKER_00:  뭐 어차피 다들 엄청 높아요.  그냥 가장 단순한 로지스틱 써도 8이나 나와.  그래서 이게 저는 피쳐서 좀 줄여도 괜찮겠다 해가지고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  아 이 막 sediment
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아
+Speaker SPEAKER_00:  섞인거 같네요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  잠시만요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  화면은 아니죠 그 결과는 제가 똑같은 과정을 피처를 줄여서 이제 진행했었거든요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이제 그렇게 되면은 저 리그레이션 같은 경우는 제가 그 확인해 봤을 때
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그
+Speaker SPEAKER_00:  다른 거 혹시 보여주시거나 의견 있으신 분 있으신가요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  Q. 아, 알겠습니다.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  Q. 어, 맞아요. 그것도 같이 그 논의를 해 보면 좋겠죠.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02:  Q. b.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  Q. Person?
+Speaker SPEAKER_02:  Q. Other than that I prefer with flex.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  이렇게 구성되어 있습니다.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  부서별로 어떤 특징을 갖고 있는지를 파악하기가 어려울 것 같아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  B 부서에서는 만족도보다는 프로젝트 수가 더 중요하다든지  그런 차이를 볼 수 있지 않을까요?
+Speaker SPEAKER_02:  단순히 어떤 부서에 있다 정도만 나와있는 거죠?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  뭐 더 중요하게 나타나는 값이라든지
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네, 그러니까 지금 이거 화면 보이시나요? 잠깐만요.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그다음에 제가 단순히 무조건 상위 몇 개 값, 랭킹 몇 등이 아니라
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  일단 만족도는 들어가야겠고 그다음에 프로젝트 수 이것도 중요하죠.
+Speaker SPEAKER_00:  시간 중요하고 그다음에 이 셀러리는 뭐 등수가 아주 높았던 건 아닌데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 저는 이 뭐라고 해야 되나 저희가 조사하고 있는 이 회사라는 맥락에서 이게 빠질 수가 없다고 생각했어요.  얘는 적으면 적은 대로 약하면 약한 대로 의미가 있고 강하면 강한 대로 있고.  얘는 그 피처 자체로 굉장한 존재감이 있다고 생각을 해가지고 그냥 3개 분류로 밖에 안 돼 있지만 넣었고요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이제 제일 좋은 애는 XG 부스터예요. 아까는 그냥 그냥 부스팅이었는데.
+Speaker SPEAKER_00:  이제는 랜덤 오버 샘플러 방법으로 그 불균형 채워주는 게 더 좋았고.
+Speaker SPEAKER_00:  그렇게 했을 때도 ACU는 이만큼 나오고. AUC는.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그러면 이게 R 스퀘어 값이 좀 줄기는 하는데. 373 이 정도 되거든요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  하지만 이제 R 스퀘어 좀 줄었죠. 0.37 정도.
+Speaker SPEAKER_00:  아까는 48? 그 정도가 됐겠죠? 거의 5가 됐는데.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  거기 예측에 가장 강력한 영향을 주는 거는 프로젝트 수랑 시간.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  셀러리가 적은데. 그러니까 퇴사에도 적고 만족도에도 영향이 적다는 건데.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이거 그냥 그대로 써도 데이터를 믿고 간다고 하면 얘기를 해볼 수 있을 거고.  공급이 영향이 적다는 게 굉장한 인사이트니까.
+Speaker SPEAKER_00:  그렇죠? 퇴사나 만족도. 생각보다 그렇게 강력하지 않더라.  일의 부하가 훨씬 중요하더라 하는 거.  아니면 얘를 조금 어떻게 다르게 처리를 해 줘 가지고.  이거 조금 뭐.  이게 실제 데이터의 경향인지 아니면 그냥 모델상의 아니면 피처 엔지니어상의 어떤 한계점으로 인해서 적게 나타나는 것인지만 확실히 되면은 얘는 높아도 낮아도 다 얘기가 될 것 같기는 해요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  어제 얘기를 할 때는.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  줄였을 때도.  퍼포먼스가 이 정도 방어됐다 라는 느낌으로 가는 게 더 낫지 않나 싶어요.  그냥 이렇게만 가면은.  r 스퀘어나 이런 것 같이 좀 아쉽다고 저는 느껴져서.
+Speaker SPEAKER_00:  앞에 이제 더 많이 넣으면은.  강력한데.
+Speaker SPEAKER_00:  그래서 그렇게 되면은.  앞에는 예를 들어서 저게 한 회사 데이터라고 치면.
+Speaker SPEAKER_00:  그 한 회사 데이터에서 추가로 데이터를 수집할 때는.  피처 수가 상관이 없잖아요.  어차피 다 맞춰서 수집하는 거니까.
+Speaker SPEAKER_00:  근데 이제 이거를 일반 데이터라고 썼을 때.  그러니까 내가 저희가 저번에 보여줬던.  제가 보여드렸던 것처럼 파라미터 값을 넣어가지고.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  입력 값이 너무 많으면은 사용성이 확 떨어지고.  그니까.  그다음에 그.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그 고장이 안 되고.  그래서 이렇게 개수를 줄여서 이제 서비스화 했다.  라고 이렇게 약간.  토트랙으로 하는 것도 괜찮을 것 같아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  일반적으로 좀 있을 법한 데이터.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  서 고른 것도 있어요.  얘네가 무조건 그.
+Speaker SPEAKER_00:  아니 이게 뭐.
+Speaker SPEAKER_00:  아.  그러면은 만족도는 있겠지.  그다음에.  프로젝트 수나.  뭐 평균.  그.
+Speaker SPEAKER_00:  봉급 같은 거는.  거의 없을 수가 없는 데이터니까.  요 정도 데이터만 갖고서.  약간 퍼포먼스가 떨어져도 예측을 해 준다고 하면.
+Speaker SPEAKER_00:  A 회사 데이터 가지고 만든.  예측 모델도 B 회사에서 쓸 수 있겠다.  해서.  근데 이제 물론 그 일반화 퍼포먼스가 얼마나 되는지까지 체크를 해보고 싶었던 건데.  사실 데이터를 하나 더.  그.  피처가 겹치는 데이터라고 생각합니다.  그래서.  그.
+Speaker SPEAKER_00:  그.  그.  거기까지는 못 하더라도.
+Speaker SPEAKER_00:  그걸 고려했다는 것만 보여줘도.  괜찮지 않을까 싶어요.  그리고 지금 보면.  피처를 줄이면서.  하이퍼 파라미터들이 바뀌었거든요.  좋은 게.
+Speaker SPEAKER_00:  응.  이것도 이제.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  아.  아.  아.
+Speaker SPEAKER_00:  그래서 좀 이렇게.  그.  다채롭게.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  머신 모델을 만들어봤고.  퍼포먼스 중심으로 이제 모든 피처 고려해서 만들어봤고.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  eda.  그 정도만 해도 제 생각에는 아마.
+Speaker SPEAKER_00:  뭐.  그 보고서가 됐든.  발표 10분 맞추려고 하면은.
+Speaker SPEAKER_00:  아.  네.  뭐.  분량이 부족할 것 같지는 않고.  만약에 분량이 부족할 것 같으면은 그냥 고려해봤다는 거를 막 상세하게 얘기하기보다는.
+Speaker SPEAKER_00:  그냥.  나열해서 이 방법을 고려했을 때.  제일 좋은 게 이거여서 얘 썼다.  정도만 이제 얘기하면 되니까.
+Speaker SPEAKER_00:  모델 어떻게 선택했고.  불균형 이렇게 맞췄다.
+Speaker SPEAKER_00:  그다음에.  그.
+Speaker SPEAKER_00:  한 번 더 어필은.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  한 번 더 어필은.  저희가 사용성을 고려할 때.  그냥 전체 피처에 있었던 거에서 가장 퍼포먼스가 높았던 모델이나.  그.
+Speaker SPEAKER_00:  불균형 방법을 그대로 쓴 게 아니라.
+Speaker SPEAKER_00:  하이퍼 파라미터도 그대로 쓴 게 아니라.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  최적 파라미터나 뭐 샘플링 방법이나 바뀌는 거를.
+Speaker SPEAKER_00:  실제로 달라졌죠.
+Speaker SPEAKER_00:  뭐 질문이나 의견이나 뭐 있으실까.
+Speaker SPEAKER_00:  네.  오늘 회사라는 게.
+Speaker SPEAKER_02:  대상으로.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  너무너무 상식적인 프로니까 만족도라는 것부터 조달이 될 것 같아요.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그다음에 주관적이라는 것도 심리학에서 라이커트 척도로 정말 많이 사용하는데  1점 개수 이상 늘어나면 어떤 사람은 되게 만족했을 때 5점 주고
+Speaker SPEAKER_00:  어떤 사람은 5점은 거의 초이상적일 때만 주고 4점이면 잘 준 거다, 3점이면 잘 준 거다  그렇게 하는 것도 결국에는 다 충분한 데이터 수가 모여지면
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그러니까 충분하다는 게 그것도 주관적일 수 있지만 15,000개 정도는 보통 충분한 거 훨씬 이상이긴 하거든요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  다 상쇄돼서 그래서 그거 가지고 문제가 되는 경우는 많이 없긴 하거든요.
+Speaker SPEAKER_00:  사실 심리학에서 측정하는 수많은 행복도를 조사한다든지 만족도를 조사한다든지 할 때도
+Speaker SPEAKER_00:  달리 별다른 방법이 없기 때문에 아직까지 이런 라이트컷 척도 정말 많이 쓰거든요.
+Speaker SPEAKER_00:  1점에서 100점이든 1점에서 5점이든 하는 거.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  이미 너무나 널리 쓰이고 있어서.
+Speaker SPEAKER_00:  된다고 학계에서 잘 검증돼 있어서요.
+Speaker SPEAKER_02:  회사라는 거 원래 회사를 확인하실 때  회사에 만족도를 적용하셨는데  그 정도만 보면 그런데 지금 이 모델에서 알 수 있는 거는
+Speaker SPEAKER_00:  어느 정도 만족했을 때 얼만큼 나갈지 예측되는가의 예측 모델입니다.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  전 세계에서.
+Speaker SPEAKER_00:  그런데 그걸 좀 구체적으로 짚어줄 수 있으면 이제 정부의 가치가 엄청나게 높아진다고 생각하거든요.
+Speaker SPEAKER_00:  그럼 나는 마케팅 타겟을 할 때 어느 정도 나이를 하면 좋겠네 하는 거.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  이 사람 이런 이런 거 넣었을 때 그다음에 만족도 수준도 있는데
+Speaker SPEAKER_00:  그런데 지금 이거는 만족도를 레이블로 해서 원인을 찾은 거니까  회계식으로 이거 전에는 만족도만 넣는 건 아니고 이렇게 4개로 줄였어도.  아 이거죠.  4개로 줄였어도 회사랑 이런 거를 동급이랑 고려했을 때의 확률이 나오는 거니까  당연하게 알 수 있는 건 아니라고 생각하거든요.
+Speaker SPEAKER_00:  이런 모델 없이 아 얘는 프로젝트 몇 개 정도 하고 이거 이거 이 정도 하고 있고  돈은 이만큼 받고 만족은 이만큼 한데 그러니까 뭐 퇴사할 확률은 한 70%쯤 나오겠네.  이거를 그냥 알 수는 없는 거라고 생각하거든요.
+Speaker SPEAKER_00:  그 레이블을 만족도로 잡는 게 아니라.  그 레이블을 잡아서 만족도가 좀 당연한 거 아니냐 퇴사할 때 만족도가 중요하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그 만족도에 뭐가 영향을 주는지는 별로 크게 이제 얘기하는 게 의미 없지 않나 하는데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저희는 이 모델을 만들어서.
+Speaker SPEAKER_00:  프로젝트 수나 얘네들이 만족도에 얼만큼의 영향을 가지고 있고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이게 예측이 되잖아요.  이 모델에다가 값을 parameter를 넣어주면은 얘네 값을 넣어주면은 이제 만족도가 몇 쯤 되겠다는 걸 이제 얘는 회귀모형으로서 알 수가 있는 건데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그거 자체가 약간 어필이 되는 건데.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그게 어느 항목만 당연하지 얼마나까지 당연한 건 아니라서 좀 어필이 될 만하지 않나 싶습니다.
+Speaker SPEAKER_00:  그리고 이제 지금 이건 레이블을 만족도가.
+Speaker SPEAKER_00:  그거를 만족도로 잡아서 개의 영향을 주는 피쳐들을 보는 건데 이거를 그대로 믿고 간다고 하면 이것도 꽤 큰 인사이트가 있다고 생각해요.
+Speaker SPEAKER_00:  돈보다는 부하에 훨씬 신경 써라 만족도가 중요하면.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아 돈? 일? 어려운 거?
+Speaker SPEAKER_00:  아 돈? 일? 어려운 거?  돈이 중요하지 이것도 뭔가 어 그래 그렇지 싶고 돈보다는 일이 얼마나 어려운지 얼마나 힘든지가 더 중요하지 어 그래 그것도 그렇다 싶은데 얘는 데이터로 그걸 좀 보여주는 거죠.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그것도 꽤 극명하게.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그거.
+Speaker SPEAKER_00:  돈? 일? 어려운 거?  돈보다는 이거 아까 채연 님이 얘기하셨든데.
+Speaker SPEAKER_00:  돈? 일? 어려운 거?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이 모델에서 찾아보니까 프로젝트 수가 되게 중요한데 그 내에서도 또 패턴이 있어 가지고 일정 구간에서 가장 효과가 좋을 거로 보인다 하면은 되게 구체적인 저는 제안을 할 수 있다고 생각하거든요.
+Speaker SPEAKER_00:  저 아까 체어님 얘기하셨든데.  근데 저는 연계도 되나?  못거든요.  그 보니까 이제 다 단계로 타고 간 거죠.  뭐 하고 싶어.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그럼 만족도를 신경 써야겠네. 얼마나 신경 써야 되는데, 뭘 신경 써야 되는데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  알려줄 수 있는 모델이 되는 거라고. 그 다음에 parameter 값 넣어주면 얼마나 까지도 나오고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  만족도는 몇이라고 평했고 이런데 퇴사할 확률이 한 70% 라고 나오네 하면 이제 그 보조 자료를 쓸 수 있겠죠. 70% 라는 게
+Speaker SPEAKER_00:  안 할 수도 있는 거고 할 수도 있는 거니까. 근데 이제 조금 약간 고위험견으로 분류해 가지고 그 사람 같은 경우는
+Speaker SPEAKER_00:  돈보다는 프로젝트 수나 뭐 승진이나 그런 것보다는 이제 퇴사를 신경 쓰는 인사팀이라고 하면 프로젝트 수를 좀 조절해주는 아까 채연님 그 데이터를  비율에서도 그냥 나온다고 믿고 가면은
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이렇게까지 가면은 당연한 얘기가 아니지 않나요? 저는 꽤 설득력 있다고 생각하는데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 그냥 이제 그냥 그 이쪽 업계에서 그러니까 비즈니스 레벨에서의 엄밀함으로 보더라도
+Speaker SPEAKER_01:  근데 그냥 이제 그냥 그 이쪽 업계에서 그러니까 비즈니스 레벨에서의 엄밀함으로 보더라도
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  예를 들어서 뭐 프로젝트 수가 늘어나면 뭐 만약에 이게 중요해서 이걸 레이블로 잡아버리면 프로젝트 수가 늘어나니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그냥 어 걔네는 연관된 거니까 뭐 프로젝트 수가 많아지면은 시간이 늘겠네? 뭐 그냥 그런 느낌인 거라서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  시간이 많으면 적으면 만족한다. 프로젝트 수가 적으면 만족한다. 이게 다 되는데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  나 다른 피처들이 다 그게 되는 건 아니어서 그래서 단순히 탑으로 했을 때
+Speaker SPEAKER_00:  어는
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  어 이게 조금 그 이 뭐라하나 설득력을 갖추는데 어려움이 있을 수 있겠다 해서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  레이블로 잡아서 모델을 그렇게 돌려버리면 뭐 그거 자체로는 모델인데 이게 퇴사랑은 연결시키기가
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  만족도가 가장 설득력이 있다고 보여집니다. 그건 지금 이거는 모델이나 통계랑은 상관없는 거죠. 저희가 이제 그
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  가교 역할로 만족도가 제일 설득력이 있겠다 싶었던 것 같아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  걱정이어서 그게 지금 다들 아 그렇지 하고 있으신 건가 아니면 얘 말 언제 끝내나 하고 기다리고 계신 건가
+Speaker SPEAKER_00:  그래서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  인지, 왜 이렇게 관리해주면 좋겠다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그게 스토리가 잘 악의가 맞아떨어질 수 있을 것 같아요.
+Speaker SPEAKER_00:  아쉬웠고 . 약간 다 이제 발표를 보고history를 보고 났을 때 그래서 어쩌라는 거지 아니지. 약간 그런 느낌이 들 수 있어서 근데 이제 저희는 그냥
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  하나 구체 예시를 들면은  채원님 그 데이터까지  합친다고 봤을 때는
+Speaker SPEAKER_00:  이 회사에서는
+Speaker SPEAKER_00:  아니지 뭐
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  요만큼 위험하니까 만족도에서  프로젝트 수를 이 정도까지  아예 그 약간 구체적인 숫자까지  제시해주는 요 정도로 줄이면 좋겠다.
+Speaker SPEAKER_00:  아니면 뭐 시간을 이렇게 줄여주면 좋겠다.
+Speaker SPEAKER_00:  확률까지도 얘기해줄 수 있는 거니까  그래서 저희가
+Speaker SPEAKER_00:  저번에 봤던  그래프기는 아니죠.  페이지긴 하지만  다시 한 번 더 보면은
+Speaker SPEAKER_00:  지금 이게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  최신 반영이 안 돼있기는  하지만 경향만 보면은
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  확률까지 얘기해주는 거  이거는 이제 더 줄이려고 하는 거죠.
+Speaker SPEAKER_00:  이걸 빼버리려고  넣으나 마나
+Speaker SPEAKER_00:  크게 퍼포먼스 차이도 없는데  적으면 적을수록 좋다고 생각해요.
+Speaker SPEAKER_00:  어
+Speaker SPEAKER_00:  이거만 있으면은
+Speaker SPEAKER_00:  조금  뭐
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  약간 어쩌라고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그런 느낌은 없고 믿을만한  한가?  얼마나 믿을만한가?  그런 느낌이 들 것 같아서
+Speaker SPEAKER_00:  뭐  왜냐면 이게 없으면은 100% 같잖아요.  무조건  어 퇴사
+Speaker SPEAKER_00:  그 예측 결과가 퇴사로 나와가지고  어 이렇게 넣었던 지금
+Speaker SPEAKER_00:  이 값을 갖고 있는 저
+Speaker SPEAKER_00:  직원은 퇴사  한 대 했을 때
+Speaker SPEAKER_00:  어 이게 이제 높으면은 훨씬 더 고위험군으로 분류해가지고  저희가 제안하는 걸 더 적극적으로 적용해볼 수 있고  이게 한 60%다 그러면은
+Speaker SPEAKER_00:  일단 그 사람은 좀 보류할 수 있겠죠.  아니면은 이제 그 회사  한 회사에 리소스가 제한되니까  그 적용할 때  후순위가 된다고요.  음
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  네
+Speaker SPEAKER_00:  그러면은
+Speaker SPEAKER_00:  제가 얘기하고 싶었던 거는  다 얘기를 한 것 같습니다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래서 전체 프로젝트가
+Speaker SPEAKER_00:  지금 얘기한 모델을
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  모델 빌딩은
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그거 API로 만드는 거는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저 앞에 만든 게 있어가지고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그러면 이제 저희 프로젝트
+Speaker SPEAKER_00:  최종 결과물?  같은 느낌인데  혹시 뭐
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  어  그건 이제 제가 지금까지 말씀드린 건 제가 생각한 거고
+Speaker SPEAKER_00:  이
+Speaker SPEAKER_00:  뭐
+Speaker SPEAKER_00:  아니면은
+Speaker SPEAKER_00:  더 있으면 좋겠다던가  아니면 뭐 괜찮은 것 같다거나  의견 있으실까요?
+Speaker SPEAKER_02:  그러면 어떤 상품이ihu  5 want them to be  긍 труд 만들 upstairs  щоб  tam
+Speaker SPEAKER_02:  같이 abo aan  나� Haiti
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  over  temple  1200
+Speaker SPEAKER_01:  temple
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  모으면서도 계속 얘기를 해보면 되긴 하잖아요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  공유페이지 같은 거 만들어 가지고 모으면 될 거 같네요
+Speaker SPEAKER_00:  구글 슬라이드 같은 거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그러면 내일 3시에
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  거기에 내일 3시에는 모여 가지고
+Speaker SPEAKER_00:  그 슬라이드랑 웹페이지 보면서
+Speaker SPEAKER_00:  최종 정리 같은 거 하면 될 거 같아요
+Speaker SPEAKER_00:  그냥 그 주말이랑 해서 전에 끝낼 수도 있을 거거든요
+Speaker SPEAKER_01:  근데 한 가지 염려되는 게 제가 이 모델이
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이거 회귀로 보이는 걸로 예를 들면은
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저는 아까 말씀드린 기준으로  스토리 설득력 짜거나
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  저 피처 임포턴스로 봤을 때
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  일단 이거부터 뭐 다른 게 이거 말고  딴 거였으면 좋겠다든지  아니 왜 꼭 새겨야 되냐
+Speaker SPEAKER_00:  4개 5개여도 사용할 때 그렇게 안 불편하지 않을까
+Speaker SPEAKER_00:  아니면 이렇게 낮은데 얘 빼버리지
+Speaker SPEAKER_00:  뭐 두 개만 한다든가 뭐 라는 이제 그런 의견이 좀 있을 수 있고
+Speaker SPEAKER_00:  그러니까 이게 약간 확정을 한 다음에
+Speaker SPEAKER_00:  그다음에 이제 지금 이 모델 같은 경우는  하이퍼패러메타가  잡혀 있는데
+Speaker SPEAKER_00:  이거 뭐 이거 말고 딴 거였으면 좋겠다든가
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  꼭 R스케어 각으로만 하는 게 아니라
+Speaker SPEAKER_00:  다른 걸 봤을 때는 다른 모델이 더 좋겠다든가
+Speaker SPEAKER_00:  해서 여튼 모델이랑 피처를 확정하는 그 과정을 먼저 거치면 좋을 거 같긴 해요  지금 저희가 그게 정해진 게 아니잖아요  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  lifted
+Speaker SPEAKER_00:  이렇게 자세한 내용이 그렇게 아니더라도
+Speaker SPEAKER_00:  뭐 얘 같은 경우는 랜덤 포레스트 썼네  하면 난 랜덤 포레스트 이렇게 돌려 봐야지 했을 때  비슷하게 나온다든지  아니 내가 했더니 다르게 나오네  선다든지
+Speaker SPEAKER_00:  아니면 저 이거는 이제 모델방법인 거고  샘플링 같은 경우도 저도 지금 이거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  뭐야 머사에서 보고
+Speaker SPEAKER_00:  각각이 어떻게 돌아가는지만  의미만 얼른 파악한 다음에 돌리는 방법만 찾아서  이렇게 만든 거라  네
+Speaker SPEAKER_00:  아예 제가 내일까지 정했으면 좋겠다는 건 첫 번째 샘플링 방법
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  어차피 뭐 R스티어 값이든 F1 스코어든 높게 나오는데
+Speaker SPEAKER_00:  굳이 샘플링에서 맞출 필요가 없을 수도 있겠다는 것도  저도 하나의 의견이라고 생각하거든요  그래서 저도 이거 안 한 것도 비교를 한 거고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래서 샘플링 방법 하나 정했으면 좋겠는 거  두 번째는 피처 뭐 쓸 건지
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저는 이렇게 썼는데 뭐 다른 게 더 좋겠다든지
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  레이블까지 포함해서 저는 그리고 아까 말씀드린 이유로 인해서  레이블을 만족도로 잡고  그 예측 모델을  잡았는데 이것까지 포함해서 피처와 레이블 확정
+Speaker SPEAKER_00:  샘플링 방법 확정 피처랑 레이블 방법 확정  그다음에 모델링 하이퍼 파라멘터 포함해갖고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  뭐 이렇게 변형해서 돌려보거나
+Speaker SPEAKER_00:  쓰거나이면 각자 해보거나  이렇게 확인하는 과정을 걸쳐 가지고
+Speaker SPEAKER_00:  제가 자신이 없으니까
+Speaker SPEAKER_00:  그 네 명이 해 봤는데 비슷하게 나왔다
+Speaker SPEAKER_00:  샘플링이 어떻게 설정되든
+Speaker SPEAKER_00:  컬럼을 어떻게 설정하든 sheriff modes를 설정하든  그게 그 결과값이 그렇게 선택한 거에 결과 값은  4명이 최소한 비슷하게 나왔다.
+Speaker SPEAKER_00:  사실 비슷하면 완전 똑같긴 해야죠.  저희가 동일한 사이킨러너에서 돌리고 있는데.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  어쨌든지 간에 최소한 비슷하게라도 나왔다 하는 거를  이렇게 좀 확인해서 가면 좋겠어요.
+Speaker SPEAKER_00:  제가 나름 열심히 하긴 했지만
+Speaker SPEAKER_00:  2주 배운 것 같고 그냥 관련이 조금 자신이 없어서.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  저희 공유하고 그런 거는
+Speaker SPEAKER_00:  지금 저희가 뭐 한 월요일 화요일쯤 됐으면 모르겠는데
+Speaker SPEAKER_00:  금요일 내일까지는 이거 확정만 해도 괜찮지 않을까요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  오늘은 저것도 있고 하니까  오늘 저 뭐야.
+Speaker SPEAKER_00:  팀별 미팅도 있고 내일 일대일 미팅도 있는 거죠.
+Speaker SPEAKER_02:  좋습니다.  네.  1대1은 없는데.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  그럼 어쨌든 오늘 팀별 미팅 때문에  뺏기는 시간도 있고 하니까.
+Speaker SPEAKER_00:  이거 확정까지만 하고.  그다음에 저는 이게 조금 뭐라 해야 되나.
+Speaker SPEAKER_00:  지금 이 프로젝트에서는 한 번 확정하면 약간  수정하기 굉장히 번거로워지거든요.  다음 단계로 넘어갔는데 뭘 바꿔야겠다든가 이러면  이제 다 바꿔야 되잖아요.  보고서 적어도 바꿔야 되고.
+Speaker SPEAKER_00:  하니까 이제 비가역적이라고 생각하고 이거를 조금.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  그러면 시간이 넉넉하게 나왔거든요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  만약에 주말에 시간 안 되시는 분이 있다고 하면  저희 뭐 주말 빼더라도 나머지 3일 동안도 못 할 거 아니라고 봤고.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  제가 이전조나 그 전조 같은 경우는.  그거 수요일 다 돼서 하든가 화요일 돼서 이틀 하고 했었거든요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래가지고 저희 뭐.
+Speaker SPEAKER_00:  네 시간 부족할 일은 없을 것 같습니다.
+Speaker SPEAKER_00:  좋습니다. 그러면은 그렇겠고요.  내일까지는 아까 말한 3개 확정하는 걸로.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  그렇죠. 그렇죠.
+Speaker SPEAKER_00:  그리고 제가 이거 올려드릴 텐데 이거 그냥.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  콜렙에서 돌려본 적이 없어가지고.  이게.  아.
+Speaker SPEAKER_00:  이게.
+Speaker SPEAKER_00:  아 근데 이건 조금 그냥 사견이긴 한데.  왜.  vscode 안 쓰세요.  이게 편하잖아요.
+Speaker SPEAKER_00:  콜렙 좀 불편한데.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  콜렙이 더 편해요? vscode보다?
+Speaker SPEAKER_00:  그런가요?
+Speaker SPEAKER_00:  API 빌딩도 하고 그럴 때도 이제 고려해서 이게 더 편한 거긴 한데.
+Speaker SPEAKER_00:  뭐 여튼지 간에.  근데 어쨌든 세부적인 건 좀 다를 수 있어도 이거 코드가 다를 일은 없으니까.  이건 그냥 파이썬하고 사이큰런 코드니까.
+Speaker SPEAKER_00:  파이썬 코드로 하면.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그러면은.  저희 뭐.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  더 얘기할 내용이 있을까요?
+Speaker SPEAKER_00:  아 맞다 맞다 맞다.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  .  .  .
+Speaker SPEAKER_01:  .
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  .  .  .  .
+Speaker SPEAKER_00:  .  .  .
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  시간도 시간이 좀...
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  네.  아, 맞아요.
+Speaker SPEAKER_01:  아, 좋습니다. 저도 그거. 다른 애들은 염속형이고 얘는 카테고리인데, 오디너 인코딩 했지만 그래도 그것 때문인지.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  맞아요. 그거 저 지금 고민하고 있는 거고.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그러니까 영향이 낮은 게 약간 이해 안 되는 상황, 그거랑.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  그래서 순서를 정해서.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  만약에 이제 꼭 하나 물어본다고 하면 저는 1번을 물어보고 싶긴 해요. 그거는 기술적인 게 아니라서 뭐 어디 찾아서 알기는 참 어려운데.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 여하튼 시간 되면 세 개 다 물어보면 제일 좋겠어요.
+Speaker SPEAKER_01:  그 다음은 오늘 진행 내용 계략적으로 보여주는 거는 제가 이거 화면 공유하면서 할게요.
+Speaker SPEAKER_00:  그 다음은 오늘 진행 내용 계략적으로 보여주는 거는 제가 이거 화면 공유하면서 할게요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이게 웹페이지도 있고 해서 지금 만든 공유 자료도 없고 해서 이렇게 진행하면 좋을 것 같습니다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  핵심은 아니어도 노카드 끌고 슬랙도 해서 네트워크 분석하려는 것도 한번 물어볼까요?
+Speaker SPEAKER_00:  그게 쓸모가 있겠는지
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  뭔가 이게 자소서 쓸 때도 그렇고 제일 난감한 게 협업이거든요
+Speaker SPEAKER_00:  혼자서 만들어낼 수도 없고
+Speaker SPEAKER_00:  아 그리고 사실 어떻게 보면 회사에 들어가야 협업을 경험하지
+Speaker SPEAKER_00:  약간 모순이긴 한데 경험을 하려는 경험이 있어야 되는데  근데 뭐 요새 시장이 어쩔 수 없잖아요  뭔가 그걸 어떻게든 좀 만들어줘야겠는데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그것도...
+Speaker SPEAKER_00:  근데 이제  근데 이제 그  그거는 핵심이 아니니까 4순위로 시간 되면 여쭤보는 거예요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  혹시 뭐 더 있을까요 저희
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아 근데 이번에도 신기하게 딱 1시간 반이네
+Speaker SPEAKER_00:  아 근데 이렇게 해도 1시간 반이네요  만약에 저분처럼 한 명씩 다 돌아가면서 해온 거 보여주고 했으면
+Speaker SPEAKER_00:  그 저 팀 미팅 전까지 시간 안 됐었긴...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이제까지 진행한 거에 대해서 방법이라든지 방향이라든지
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  제가 신경을 많이 안 써서...  제가 신경을 많이 쓰고 있는 거는?
+Speaker SPEAKER_00:  저번에도 그랬지만 이번에도 너무 혼자 말을 많이 하는 게 아닌가
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  하는 게 계속 신경 쓰이고 있는데 첫 번째도 그게 신경 쓰여서 두 번째에도 고려를 했는데  하다 보니까 그렇게 됐고  세 번째도 시작부터 저희가 만나자마자 제가 그 얘기하면서 계속 신경을 쓰고 있는데  하다 보면 자꾸 말을 많이 하게 되네요 이게
+Speaker SPEAKER_00:  그래서 혹시 어...
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  쉬면 좋겠지만 있을 때 가다 같이 있을 때 얘기를 해보면 좋을 것 같은데  그게 계속 신경이 쓰이거든요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02:  ...  ...
+Speaker SPEAKER_01:  ...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  네, 혹시 그 어...
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  ...
+Speaker SPEAKER_00:  네 감사합니다 근데 이제 어...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래서 제가 막 자꾸 이제 그 좋은 분을 이름 부르면서 자꾸 말 걸고 하는 것도
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  좀 그랬거든요.  그런 느낌이었어요.  그런 느낌이었어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  그렇죠.
+Speaker SPEAKER_00:  그렇죠.  캠킴은 아마 저희뿐일 거예요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  그렇죠.
+Speaker SPEAKER_00:  보통  아
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  다 저번에 했던 조는 마이크 안 키고 그랬어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저희 그때 마이크는 폈잖아요.  네.
+Speaker SPEAKER_00:  채령님도 마이크 끄고 그랬어요?
+Speaker SPEAKER_02:  ru
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  ru
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  ru  ru
+Speaker SPEAKER_00:  ru  ru  의견은 없고 그냥 마지막에 합치기만 하는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이게 그냥 뭐랄까  불편하잖아요 서로
+Speaker SPEAKER_00:  누군지도 모르고  실제로 보고 있지도 않고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  유대를 쌓을 시간도 프로젝트 10일짜리 때  그래서 이제  가만히 있으면 그냥 편한 대로 자연스럽게 진행하면 그렇게 될 것 같아가지고  근데 이제 그러면 저는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  생각하거든요
+Speaker SPEAKER_00:  캠 켜는 거는 이번에 처음 해보는데
+Speaker SPEAKER_00:  확실히 좀 효과 있다고  느끼거든요 여러분들은 어때요? 이게
+Speaker SPEAKER_00:  아무래도 더 참여도가 높아지지 않나  표정 볼 수 있는 것도 좀  그거 자체가 좀 피드백이 되기도 하고
+Speaker SPEAKER_00:  지금 이렇게 끄덕이시는 거나 이런 것도
+Speaker SPEAKER_00:  캠이 다 꺼져 있다고 생각하면 방금 같은 순간이 그냥
+Speaker SPEAKER_00:  딱 얘기하고 혼자 굉장히 뻘쭘해지는  말은 했는데 정적만 흐르는 그런 상황입니다
+Speaker SPEAKER_00:  이게 다 불편하실 거라고 생각하는데  그래서 혹시 이제  거부하시는 분이 있을까 봐  걱정했거든요 근데 이제  다들
+Speaker SPEAKER_00:  바로 두 번째 부터 캠 켜주셔서  아 좀 여기는
+Speaker SPEAKER_00:  소통이 될 수 있겠다  이런 생각이 들어서 제가 희망을 가졌거든요  저는 솔직히 처음에 제가 막 이렇게 협업하자고 했었잖아요
+Speaker SPEAKER_00:  근데 그 두 번째 미팅 하기 전에 첫 번째 미팅 때  약간 투 트랙으로 생각하고 있었거든요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  도저히 안 되겠다 싶으면은
+Speaker SPEAKER_00:  그냥 협업 최소화하고
+Speaker SPEAKER_00:  거기에다가 시간 쓰지 말고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  나눠가 기계적으로 나눠가지고 빨리 끝내버려야겠다라는 생각이
+Speaker SPEAKER_00:  그래도 참여가 된다 하면은  아 성과도 성과인데
+Speaker SPEAKER_00:  그거랑 이 협업을 투 트랙으로 가갖고  이거에 대한 좀 성과를 만들어 보자  약간 앞에 했던 두 개조는  만약에 이제 그거를 포폴로 쓴다고 하면  아 우리 협업했다는 거를  말로 했다고 주장하는 거 말고는 보여줄 수 있는 게 없어가지고
+Speaker SPEAKER_00:  요거는
+Speaker SPEAKER_00:  지금은 저희 하고 있는 거는  지금까지만 해도 수요일까지 안 가도 좀  보여줄 게 있고  이거 특히 지금 한 시간 반이나 한 거 이거  트랜타
+Speaker SPEAKER_00:  스크립트 뽑으면 엄청나게 나올 텐데  근데 뭐 직접 분석할 거 아니고요  GPT 시킬 거니까  걔가 이제 그 관계도 만들어 주면은
+Speaker SPEAKER_00:  그거 가지고 이제 약간
+Speaker SPEAKER_00:  이게 전에 거보다 향상됐다는 것도 저는 좀 얘기하고  이거 여기서 한번 연습해보고  최종 때는
+Speaker SPEAKER_00:  진짜로 좀 써먹을 수 있을 만한 자료를 만들라고 하거든요  진짜  과제를 두 개 한다는 느낌으로
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  지금 해본 거 중에 저는 캠 키워 있는 거는  참 잘했다는 생각이 듭니다  이 거부감이 있긴 하지만
+Speaker SPEAKER_00:  그 한 분도 뭐 반대하시는 분 없이 다 켜주셔가지고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이 마지막 때는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그게 안 되면은 캠이라도 켜야겠다고 생각해서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  피드백을 하다 보니까 마치 오늘 끝나는 거 같은데
+Speaker SPEAKER_00:  아니니까 저희 중간 조금 넘은 거니까 기간으로 치면은  지금 오늘 목요일이고요
+Speaker SPEAKER_00:  10일 프로젝트거든요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저희 뭐 더 얘기할 수가 없으면은
+Speaker SPEAKER_00:  20분 쉬었다가 이따가  그  그 미팅 때 될까요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  고생하셨습니다  제가 이거 그 노트북은 바로 올릴게요  아 그 한 가지 더 그
+Speaker SPEAKER_00:  제가 슬래그 하나 올리겠지만 저희 데이터가
+Speaker SPEAKER_00:  그 디파트먼트가  뒤에 공백 스페이스가 하나 들어있더라고요 혹시 그 보셨나요?  아 그거 때문에 에러 겁나 떠가지고 짠  여튼 지금
+Speaker SPEAKER_00:  아 예 맞아요 맞아요  그래서 제가
+Speaker SPEAKER_00:  그 돌린 지금 제가 만든 노트북 데이터 돌아가는 거는  아예 그냥 지워버렸거든요  원몬 데이터에서 스페이스 지워버렸거든요  그냥 그 스트립 해가지고 코드 내에서 해보려고 했는데  뭐 자꾸 오류뜨고 그래갖고 그냥 아예
+Speaker SPEAKER_00:  여러분도 그
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  지금 펄럿 명의 그것만 지워서  진행하시면 좋을 것 같습니다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그리고 조금 이따가 부탁드리겠습니다
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  안녕히 계세요

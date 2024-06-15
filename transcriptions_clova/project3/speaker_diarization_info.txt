@@ -1,0 +1,4 @@
+Speaker SPEAKER_00: 이태경
+Speaker SPEAKER_01: 김시헌
+Speaker SPEAKER_02: 박채원
+Speaker SPEAKER_03: 선영훈

@@ -1,0 +1,2115 @@
+﻿7-2차 온라인
+2024.06.15 토 오후 5:43 ・ 45분 24초
+손준영 Speaker speaker 03 Speaker speaker 04 Speaker speaker 00 Speaker speaker 01 Speaker speaker 02
+
+
+Speaker speaker 03 00:01
+동영상이 녹화되고 분석
+
+Speaker speaker 03 00:03
+사용되는 데 동의하시죠?
+
+Speaker speaker 03 00:05
+일단 제일 먼저 저희가 도메인이랑 데이터셋을 확정해야겠죠.
+그래서 준영 님 혹시 뭐 더 찾아보
+
+Speaker speaker 03 00:18
+한 다른 도메인이나 아니면 뭐야
+
+Speaker speaker 03 00:23
+데이터셋 있으실까요?
+
+Speaker speaker 04 00:25
+그래서 HR 데이터가 나올 것 같아서 HR 데이터를 다시 찾아봤는데
+
+Speaker speaker 04 00:31
+일단 장호 님이랑 영화 님이 찾으실 계획 제가
+
+Speaker speaker 04 00:35
+에서 찾다가
+
+Speaker speaker 04 00:36
+이 데이터 좋은데 하고 들어가 보면 이제 현수 님이랑 용훈 이 데이터
+
+Speaker speaker 04 00:43
+맞아요
+
+Speaker speaker 04 00:45
+찾긴 하셨어
+
+Speaker speaker 04 00:46
+이는 정확히 모르겠어요. 근데 아마존 인플로이 데이터인데
+
+Speaker speaker 04 00:52
+근데 얘도 칼럼수하다 좀 적어요. 그래서
+
+Speaker speaker 03 00:59
+한번 같이 볼까요?
+
+Speaker speaker 04 01:24
+데이터 14개
+
+Speaker speaker 04 01:30
+컬럼스랑
+
+Speaker speaker 04 01:31
+990 놓을 수가 있는 건
+
+Speaker speaker 04 01:36
+거의 비슷한 것 같아요. 사장 올라갔던 것보다 퀄리티가 조금 적어서
+
+Speaker speaker 03 01:45
+이게 저도 봤던
+
+Speaker speaker 03 01:47
+데이터인 것 같은데 이게 컬럼 수도 그런데
+
+Speaker speaker 03 01:52
+여기에는
+
+Speaker speaker 03 01:54
+이탈 정보가
+
+Speaker speaker 03 01:55
+아예 없어서
+
+Speaker speaker 04 01:57
+네 맞아요. 그래서 조금 애매하기도 한 것 같아요.
+
+Speaker speaker 03 02:05
+이게
+
+Speaker speaker 03 02:06
+저도
+
+Speaker speaker 03 02:07
+얘기 나온 김에 잠깐 말씀을 드리면
+
+Speaker speaker 03 02:15
+데이터가 역시 근데 뭐 뭐든 그렇긴 하지만 데이터가 없는 게 아니었어요.
+공짜로 안 줘서 그러지
+
+Speaker speaker 03 02:27
+이 사이트만 있는 건 아니지만 이런 사이트에서
+
+Speaker speaker 03 02:44
+그런 거 막
+
+Speaker speaker 03 02:45
+실제로 쓰는 거 막 줘요. 여러 개가 있습니다.
+
+Speaker speaker 03 02:48
+하지만 돈을
+
+Speaker speaker 03 02:51
+천 달러
+
+Speaker speaker 03 02:53
+그다음에 한 달에
+
+Speaker speaker 03 02:56
+이게 달러예요. 달러
+
+Speaker speaker 03 02:58
+뭐 하는 게 아니고 그리고 이제 이게
+
+Speaker speaker 03 03:06
+뭐야 20만 레코드에 천이니까
+
+Speaker speaker 03 03:09
+이거 조금 분할되나 해서 이제
+
+Speaker speaker 03 03:11
+들어가서 몇 개 확인도 해봤는데 막상 또
+
+Speaker speaker 03 03:15
+그렇게 컬럼이 좋지 않아요 얘는
+
+Speaker speaker 03 03:21
+실제 데이터라는 장점이 있겠지만
+
+Speaker speaker 03 03:23
+약간
+
+Speaker speaker 03 03:24
+진짜 로그 데이터 같은 느낌
+
+Speaker speaker 03 03:26
+쓰잘데기 없는 거 다 박았는데
+
+Speaker speaker 03 03:30
+이것만 갖고
+
+Speaker speaker 03 03:31
+무슨 수석을 얼마나 받을지 이런 걸 예측해야 되나
+
+Speaker speaker 00 03:36
+이런 거 보면 진짜
+
+Speaker speaker 00 03:37
+영원님 마지막에 올려주신 데이터가 괜찮네요.
+
+Speaker speaker 04 03:41
+다 좋은 것 같습니다. 저도
+
+Speaker speaker 00 03:44
+다양하게 생겨봤고
+
+Speaker speaker 04 03:46
+물론 가상이라는 그게
+
+Speaker speaker 03 03:49
+맞아 그건
+
+Speaker speaker 03 03:50
+저도 참 아쉬워요. 실제로 하면 좋겠는데 그래서 저희 멘토님이 의견 주신 것도 HR 도메인 자체는 범용성이 높아서 괜찮은데 그
+
+Speaker speaker 03 04:00
+데이터가 만약에 미국
+
+Speaker speaker 03 04:02
+반면 한국 거를 어떻게든
+
+Speaker speaker 03 04:04
+구할 수 있으면
+
+Speaker speaker 03 04:05
+컬럼이 좀 달라도
+
+Speaker speaker 03 04:07
+조금 비교를
+
+Speaker speaker 03 04:08
+하면서 한국과 미국 사이에 이런 차이가 있는데 이게 문화적 차이로 인한 거라든가 그런 걸
+
+Speaker speaker 03 04:16
+넣을 수가 있으면 물론 이제 멘토님도 말씀하시면서 그게 굉장히 어려울 거라고
+
+Speaker speaker 03 04:20
+는 하셨지만
+
+Speaker speaker 03 04:21
+근데 이제 저희가 전에 사람인 API나 그게 아마 혜수 님이 그때 찾아오셨었나요?
+
+Speaker speaker 03 04:27
+어떤 거
+
+Speaker speaker 03 04:28
+미경 님이
+
+Speaker speaker 03 04:30
+잠깐만 지금 미경 님 계신 거죠
+
+Speaker speaker 04 04:32
+네 저는
+
+Speaker speaker 01 04:34
+안녕히 계세
+
+Speaker speaker 01 04:35
+상태가 이게 안 좋아가지고 약간 끊기고 좀
+
+Speaker speaker 03 04:39
+나
+
+Speaker speaker 03 04:40
+사람인 a
+
+Speaker speaker 03 04:41
+API나 이런 거 이제 그때 찾아오셨었잖아요.
+
+Speaker speaker 03 04:44
+근데 이제 그게
+
+Speaker speaker 03 04:46
+사람이든 아니든 만약에 어떤 조금 중소기업이든
+
+Speaker speaker 03 04:49
+한국 데이터가 있으면은 컬럼이
+
+Speaker speaker 03 04:52
+그러니까 지금 제가
+
+Speaker speaker 03 04:53
+찾은 미국 데이터 가상이기도 하고 그거랑 완전히 일치가 안 해도 조금 어떤 일치하는 거라도 뽑아가지고 비교를 해볼 수 있으면 진짜 그 큰 어필이
+
+Speaker speaker 03 05:03
+될 거라고 말씀하셨거든요. 그러니까 한국이랑 미국이
+
+Speaker speaker 03 05:07
+문화 차이가
+
+Speaker speaker 03 05:08
+특히 이제 준영 님 같은 경우에는 거
+
+Speaker speaker 03 05:10
+여기다 이제 조금 더
+
+Speaker speaker 03 05:11
+일종의 도메인 지식을 얹어주실 수 있겠죠. 한국하고 미국이
+
+Speaker speaker 03 05:15
+기업은 아니지만 내가 보니까 이런 차이가 있고 아마 여기 이 수지
+
+Speaker speaker 03 05:19
+이는 미국과 한국의 차이 때문이 아닐까
+
+Speaker speaker 03 05:23
+하여튼 그런
+
+Speaker speaker 03 05:25
+근데 이제 멘토님도 그걸 플러스 알파로 얘기하시긴 했어요.
+그러니까 되면 너무너무 좋겠지만
+
+Speaker speaker 03 05:30
+안 돼도
+
+Speaker speaker 03 05:33
+지금 정도만 해도 사실
+
+Speaker speaker 03 05:35
+충분히
+
+Speaker speaker 03 05:36
+다들 약간 비슷비슷한 포트폴리오를 들고 오는데
+
+Speaker speaker 03 05:40
+그 사이에서 눈
+
+Speaker speaker 03 05:42
+뛸 것 같다고는 하셨어요.
+
+Speaker speaker 03 05:46
+그래서 그러면은 일단 저희가 지금 계속 탐색
+
+Speaker speaker 03 05:51
+할 게 아니라 일단은 좀 정한다.
+
+Speaker speaker 03 05:52
+그다음 스텝을 밟아보려고 하니까 그러면
+
+Speaker speaker 03 05:59
+일단은 이걸로 진행을 하시죠.
+
+Speaker speaker 03 06:02
+이걸로 진행을 하고
+
+Speaker speaker 03 06:03
+다만 이제 이걸로 eda 하고 추가 분석하고 그러면서 이제 저희 회의 분석도 하고 하는데
+
+Speaker speaker 03 06:12
+중간에라도 그 앞에 항
+
+Speaker speaker 03 06:16
+가 너무 아깝다고만 생
+
+Speaker speaker 03 06:18
+하지 말고 그러니까 이제 이거는 이거대로 진행을 이제 저희가 일정 때문에 하는데
+
+Speaker speaker 03 06:23
+굉장히 좋은 뭘 찾을 수도 있잖아요. 구글이 미쳤는지 자기 무슨 데이터를
+
+Speaker speaker 03 06:28
+어디에 어떻게 공개를 했다던가
+
+Speaker speaker 03 06:30
+애플이
+
+Speaker speaker 03 06:32
+했다더라 아니면 테슬라가
+
+Speaker speaker 03 06:34
+아니면 이제 한국에서
+
+Speaker speaker 03 06:36
+삼성이 꼭 이렇게 큰 기업이 아니어도 진짜 실 데이터가
+
+Speaker speaker 03 06:40
+어디 나왔더라 무료로 아니면 돈이 좀 싸면 한 10만 원 정도만 해도 저희 2만 원씩 정도 내서 그 정도는 할 만하잖아요.
+
+Speaker speaker 03 06:49
+그런 게 있다더라 하면은
+
+Speaker speaker 03 06:51
+없는 걸로 하죠. 그러니까 그렇지 근데 없는 게 이제 저희가 텍스트 뽑고 그런 거는 어을 게 아니고 그건 어차피 같이 가면 되니까
+
+Speaker speaker 03 06:59
+여기 재료 얘는
+
+Speaker speaker 03 07:01
+엎으면 이제 조금 저희가 빠듯해지긴 하겠지만 아예 가능성은
+
+Speaker speaker 03 07:05
+차단하기는 조금 아쉽다고 생각해서 한국
+
+Speaker speaker 03 07:08
+데이터가 있을 수도 있고
+
+Speaker speaker 03 07:09
+그리고 저는 조금 그런 생각
+
+Speaker speaker 03 07:11
+이거 서비스화까지 하
+
+Speaker speaker 03 07:12
+하는 거 10일 동안 혼
+
+Speaker speaker 03 07:14
+혼자서도 다 했는데 이게 5명이서 그거 엎어진다고 해서 막 프로젝트가 어그러질 것 같진 않고 하지만 그거는 이제 그냥 가능성이고 일단은 이걸로 쭉 진행하시죠.
+얘는 약간 재료 프로젝트인 느낌도 있고 약간 포폴 쓸 때 저희의 약간 정말 차별점이나 특화
+
+Speaker speaker 03 07:34
+느낌은 이 텍스트
+
+Speaker speaker 03 07:36
+뽑아서 협
+
+Speaker speaker 03 07:37
+분석 쪽이 될 거라
+
+Speaker speaker 03 07:38
+이거는 정말 멘토님도 그렇게 얘기해 주셨고 저도 그렇게 생각하고 이건 아마 거의 저희가 유일한
+
+Speaker speaker 03 07:45
+진짜 이거 눈에 띄긴 할 거예요.
+
+Speaker speaker 03 07:48
+그래서 얘는 약간 확정적으로 가져가고 재료가 되는 이 데이터셋은
+
+Speaker speaker 03 07:55
+이제 저희가
+
+Speaker speaker 03 07:56
+남은 기간 동안 eda도 해보고
+
+Speaker speaker 03 07:59
+이걸로 이제
+
+Speaker speaker 03 08:00
+쭉쭉 분석은 하는데 가능성은 계속 좀 열어두는 걸로 하죠.
+한국 한국
+
+Speaker speaker 03 08:06
+공유가 되면 좋을 텐데
+
+Speaker speaker 03 08:09
+그냥 되면 좋은 거니까 안 되면 어쩔 수 없고 그럼 일단은 그렇게
+
+Speaker speaker 03 08:14
+확정을 할까요? 그래서 저희 방학 동안에는 이 데이터 가지고
+
+Speaker speaker 03 08:17
+이것저것 해보고 eda 해보고
+
+Speaker speaker 03 08:19
+하는 걸로 그러면 일단은 데이터셋은 일단 확정했고 그냥 가능성을 열어둔
+
+Speaker speaker 04 08:29
+이 확정했고 그리고 이제 빨리
+
+Speaker speaker 03 08:32
+1시 되기 전
+
+Speaker speaker 03 08:33
+일정을 다시 확정하면 좋겠어.
+
+Speaker speaker 03 08:35
+네 저희가 다음 주는 미팅이
+
+Speaker speaker 03 08:37
+오프라인 온라인 다 없고 다다음 주는 화요일이 근
+
+Speaker speaker 03 08:42
+저희가 화요일이 오프라인 미팅이잖아요.
+
+Speaker speaker 03 08:46
+그래서 근데 저는
+
+Speaker speaker 03 08:48
+어떻게 보면 약간
+
+Speaker speaker 03 08:49
+잘 됐다 싶기도 하거든요. 이거
+
+Speaker speaker 03 08:51
+쌓인 내용이 말할 게 많을 텐데
+
+Speaker speaker 03 08:53
+온라인으로 하기보다는 얼굴
+
+Speaker speaker 03 08:54
+보고 같이 노트북 보고 그 공간이 되면 빈 프로젝트 띄워서 보고
+
+Speaker speaker 03 08:59
+이러면 훨씬 빨리 이거
+
+Speaker speaker 03 09:02
+그동안 한 걸 공유할 수 있겠다 싶어가지고 근데 이제 문제는 이제 장소랑 시간
+
+Speaker speaker 03 09:07
+을 확정해야 되니까 저희가 디폴트 시간에
+
+Speaker speaker 03 09:09
+셋이긴 했잖아요. 셋이
+
+Speaker speaker 03 09:12
+화요일 그러니까 일주일 쭉 쉰다
+
+Speaker speaker 03 09:16
+안 만난 다음에 그다
+
+Speaker speaker 03 09:18
+다다음 주 화요일 3시도 되는 건가요? 저희 디폴트 시가
+
+Speaker speaker 01 09:22
+6월 1
+
+Speaker speaker 03 09:23
+일인가요? 맞나요? 잠시만요. 네 그렇죠
+
+Speaker speaker 03 09:28
+맞네요. 준영 님도 가능하세요. 셋이 저희가 원래 보기를
+
+Speaker speaker 04 09:39
+그래서 이제 이게
+
+Speaker speaker 00 09:41
+장소는
+
+Speaker speaker 04 09:46
+일단
+
+Speaker speaker 00 09:47
+한 번 더 여쭤볼게요. 사용 가능한지 배관이 가능한지 여쭤보고 안 된다고 하면은 방역 주변에
+
+Speaker speaker 00 09:56
+스터디 카페나 이런 좀 공간
+
+Speaker speaker 03 09:59
+네
+
+Speaker speaker 00 10:00
+할 수 있는 공간을 찾아보지
+
+Speaker speaker 03 10:01
+네 좋아요. 그러면은
+
+Speaker speaker 03 10:03
+그거는 저 혜수 님이 고생
+
+Speaker speaker 03 10:07
+해주시면 좋을 것 같고 해서 만약에 이제
+
+Speaker speaker 03 10:11
+장소가 저희가 또
+
+Speaker speaker 03 10:13
+따로 빌려야 된다고 하면은 저번에 저희 회식한 것처럼
+
+Speaker speaker 03 10:16
+그렇게 이제 마지막에 비용 다
+
+Speaker speaker 03 10:19
+n분해서 제공하면 될 것 같고
+
+Speaker speaker 03 10:22
+그러면 이제 빨리빨리 결정됐네요. 일정까지 다 됐고
+
+Speaker speaker 03 10:29
+데이터셋도 됐고
+
+Speaker speaker 03 10:30
+그럼 이제 저는 사실 준영 님이 시행착오 겪고 이제 이런 거를 조금
+
+Speaker speaker 03 10:37
+같이 보면 좋겠는데
+
+Speaker speaker 03 10:38
+미경 님이 이제 1시까지
+
+Speaker speaker 03 10:42
+가셔야 되니까
+
+Speaker speaker 01 10:44
+조금 넘어도
+
+Speaker speaker 01 10:45
+돼서 만약에 하고 제가 정 안 되면 중간에 전화
+
+Speaker speaker 03 10:51
+그러면 이제 녹화가 사실
+
+Speaker speaker 03 10:52
+되고 있으니까 이제 나중에 그다음에
+
+Speaker speaker 03 10:55
+근데 이제 문제는 회의적이 사실 미경 님이어서
+
+Speaker speaker 03 11:02
+그거를
+
+Speaker speaker 04 11:03
+내가 적을게요.
+
+Speaker speaker 03 11:04
+민경 님이 저 하신
+
+Speaker speaker 03 11:09
+되신 데까지만 적어주시면은
+
+Speaker speaker 03 11:11
+그다음부터는 미경 님 나
+
+Speaker speaker 03 11:12
+나가고 부터는 준형 님이 작성하셔가지고
+
+Speaker speaker 00 11:21
+순서가 회의 다음 저여서 일단 채워 적을게요.
+
+Speaker speaker 03 11:26
+근데 어떤 분이 하든지 간에 확정
+
+Speaker speaker 03 11:29
+됐으면 좋겠어요. 어떤 분이 하실 거예요?
+
+Speaker speaker 00 11:31
+제가 하겠습니다. 그럼 준영 님이 하시는 걸로
+
+Speaker speaker 03 11:37
+미경 님 나가신 팀부터는
+
+Speaker speaker 03 11:38
+그래가지고 저희 보니까 준영 님 나머지 세 분도 다 뭔가 문제가 있었어요.
+
+Speaker speaker 03 11:46
+이게
+
+Speaker speaker 03 11:48
+애초에
+
+Speaker speaker 03 11:49
+텍스트를 뽑은 분이 준영 님밖에 없었고
+
+Speaker speaker 03 11:51
+준영 님도 근데
+
+Speaker speaker 03 11:53
+다커로 그냥 뽑으신
+
+Speaker speaker 03 11:54
+이게 아니잖아요. 이런
+
+Speaker speaker 03 11:56
+시행착오가
+
+Speaker speaker 03 11:58
+뭐야
+
+Speaker speaker 00 12:06
+뭐지
+
+Speaker speaker 03 12:13
+뭐지 되게 당황스러운데 동시에
+
+Speaker speaker 00 12:19
+그래서 이게 뭔가 시스템 문제일 것 같은데 근데 뭐 저희 둘은 왜 살아남았죠?
+
+Speaker speaker 00 12:25
+그러니까 세 번
+
+Speaker speaker 01 12:26
+뿐만이 아니라 그냥 이 서버에 등록
+
+Speaker speaker 03 12:30
+어 맞네 저희는 왜 살아남았죠?
+
+Speaker speaker 03 12:44
+저는 다 튕기는 줄 알았어요. 그래서 저도 다 튕기나 하고 쳐다보고 있었는데
+
+Speaker speaker 01 12:49
+왜 보고 있었어요?
+
+Speaker speaker 03 12:52
+근데 이거
+
+Speaker speaker 03 12:53
+이거가
+
+Speaker speaker 03 12:56
+뽑을 게 문제다.
+
+Speaker speaker 04 12:58
+어디 가세요? 저쪽은 저희가 틀렸나 봐요. 아닌데
+
+Speaker speaker 01 13:04
+아니
+
+Speaker speaker 03 13:05
+뭐지
+
+Speaker speaker 01 13:08
+나 여기로
+
+Speaker speaker 03 13:10
+저쪽에선 진짜 저희가 튕겼나 봐요
+
+Speaker speaker 03 13:12
+해도 님 말대로 미경 님 저희가
+
+Speaker speaker 03 13:15
+안 보였던 거죠.
+
+Speaker speaker 03 13:18
+어 뭐지
+
+Speaker speaker 04 13:19
+저희는 저희는 시장에 둘만 남았어.
+
+Speaker speaker 03 13:23
+저 아까 마이크 안 됐던 것도 그러고 얘네 지금 업데이트하면서 문제
+
+Speaker speaker 03 13:28
+만든 것 같거든요. 게다가
+
+Speaker speaker 03 13:29
+저희 한 번 다 나갔다가 다시 들어오죠.
+
+Speaker speaker 03 13:35
+잠깐만 잠깐만 잠시요 잠시만요
+
+Speaker speaker 04 13:37
+아시는데
+
+Speaker speaker 01 13:38
+상승민이 갑자기 사람이
+
+Speaker speaker 04 13:40
+아담 아담
+
+Speaker speaker 03 13:41
+어 뭐지
+
+Speaker speaker 03 13:42
+다시 나가셨네
+
+Speaker speaker 03 13:44
+저 여기 있나요?
+
+Speaker speaker 03 13:46
+근데 아까
+
+Speaker speaker 03 13:48
+미경 님이
+
+Speaker speaker 03 13:49
+그
+
+Speaker speaker 03 13:50
+세 분 계신데 선
+
+Speaker speaker 03 13:51
+저희 같은 게 사라졌었다고 해갖고
+
+Speaker speaker 04 13:53
+네 갑자기 그러다가 미드 님도 사라지셨어요.
+
+Speaker speaker 03 13:56
+그래서 저희가 나갔다가 다시 들어오기로 했거든요.
+저희
+
+Speaker speaker 01 14:00
+사라지면서
+
+Speaker speaker 03 14:01
+이쪽 차원으로 넘어
+
+Speaker speaker 03 14:03
+맞아 지금 이게 뭐가 분리가 됐어요? 차원이 있어
+
+Speaker speaker 03 14:10
+지금 현서 님도 이거
+
+Speaker speaker 03 14:12
+안 보이신가 봐요.
+
+Speaker speaker 03 14:14
+잠깐만 다시 들어오셨는데
+
+Speaker speaker 03 14:18
+미경 님은
+
+Speaker speaker 03 14:21
+뭐야 이거
+
+Speaker speaker 01 14:23
+실험 카메라
+
+Speaker speaker 03 14:29
+미경 님은 또 다시 연락이 안 되신데
+
+Speaker speaker 01 14:35
+이번에 새로
+
+Speaker speaker 03 14:40
+되게 웃기네. 그러니까 3명 2명이 지금
+
+Speaker speaker 03 14:42
+분리됐었다고 본 거네.
+
+Speaker speaker 03 14:59
+그러니까 이게 진짜 아까
+
+Speaker speaker 03 15:01
+얘네가 업데이트하면서
+
+Speaker speaker 03 15:02
+문제가 생겼나 봐요. 버그 같은 게
+
+Speaker speaker 01 15:05
+저 혹시 한번
+
+Speaker speaker 04 15:07
+재건칭 한번 해볼까요?
+
+Speaker speaker 01 15:08
+왜냐면 사실 삼성도 지금 사실 잘 안 들리고 이래가지고
+
+Speaker speaker 03 15:12
+예. 그러면
+
+Speaker speaker 03 15:14
+일단은
+
+Speaker speaker 03 15:14
+나갔다가 들어올까요? 저도 그냥 한번 안전하게 나갔다가 다시 들어올 됐다.
+됐다. 됐다. 잠깐만 형사님이 보입니다.
+
+Speaker speaker 03 16:28
+혹시 지금
+
+Speaker speaker 03 16:30
+다 제 말 얘기 들리나요?
+
+Speaker speaker 03 16:33
+잠깐만 근데 현
+
+Speaker speaker 03 16:36
+어디 가셨지? 자꾸 한 명이
+
+Speaker speaker 03 16:42
+제부로 가야 되나 했는데 지금
+
+Speaker speaker 03 16:44
+뭐야 또 4명은 다 들어가 있네.
+
+Speaker speaker 01 16:46
+근데 또 그게 사실 쟤들 또
+
+Speaker speaker 04 16:50
+나눠져 있잖아요.
+
+Speaker speaker 03 16:52
+아 맞네.
+
+Speaker speaker 03 16:57
+저희가
+
+Speaker speaker 03 16:58
+백업 같은 걸 만들어야겠네요 이나 줌 같은 걸 하나
+
+Speaker speaker 04 17:03
+아니면
+
+Speaker speaker 01 17:04
+몰래 책으로 갈 그런 생각을 했어도
+
+Speaker speaker 03 17:06
+네 잠시만요. 근데 지금 만약에 현수 님만 들어오면
+
+Speaker speaker 01 17:09
+저는 이제 잘 들.
+
+Speaker speaker 04 17:11
+응
+
+Speaker speaker 03 17:12
+잠깐만
+
+Speaker speaker 03 17:13
+현서 님도 아까
+
+Speaker speaker 03 17:15
+다시 켠다고 하셨었나요? 다른 차원의 분리대 들어오셨다.
+
+Speaker speaker 04 17:23
+뭐야 이거 그거 잠깐만 근데
+
+Speaker speaker 03 17:26
+없어진 것 같은데 뭐야 한 명
+
+Speaker speaker 03 17:30
+한 명이 더 나가고 이게 튕긴 건지 앞에다 했다 했다
+
+Speaker speaker 03 17:45
+됐다. 잠깐만. 근데
+
+Speaker speaker 03 17:50
+이거 하고 저희
+
+Speaker speaker 03 17:52
+다른 플랜 b
+
+Speaker speaker 03 17:54
+생각을 해봐야겠네. 서비스를
+
+Speaker speaker 01 17:57
+뭔가 말이 안 들리는 뭔가 저만 안 들
+
+Speaker speaker 01 18:01
+쓰고 있는 거예요. 지금
+
+Speaker speaker 03 18:02
+아이
+
+Speaker speaker 01 18:07
+잘 안 되는 거구나
+
+Speaker speaker 04 18:09
+제 생각에
+
+Speaker speaker 01 18:17
+그냥 인사할까요? 제가
+
+Speaker speaker 04 18:20
+여기 아무도 없어요. 지금 뒤에 빈집이에요. 빈집 갈까요?
+
+Speaker speaker 01 18:23
+이사 가요. 저 집이랑
+
+Speaker speaker 03 18:48
+예.
+
+Speaker speaker 03 18:49
+지금 다
+
+Speaker speaker 03 18:51
+되는 건가요?
+
+Speaker speaker 03 18:55
+어디서
+
+Speaker speaker 03 18:56
+여기서 할까요?
+
+Speaker speaker 03 19:01
+회의실 있네.
+
+Speaker speaker 03 19:07
+맞아. 근데 다 올라와버리면 여기 있는지 모르는구나.
+
+Speaker speaker 03 19:21
+지금 다 들어온 것 같아요. 아마
+
+Speaker speaker 03 19:23
+병아리 해마가
+
+Speaker speaker 03 19:25
+나머지 두 분이 같은데
+
+Speaker speaker 03 19:41
+지금 다 잘 들
+
+Speaker speaker 03 19:43
+한번 확인해 볼까요? 한 분씩 얘기해 볼까요?
+
+Speaker speaker 03 19:53
+저희
+
+Speaker speaker 03 19:54
+이게 거리가 소리의
+
+Speaker speaker 03 19:56
+영향이 있는 것 같거든요. 저희 어디 좀 옹기종기 모여 볼까요?
+
+Speaker speaker 03 20:02
+이건 겹칠 수가 있네. 저희 그냥 이렇게 겹쳐서
+
+Speaker speaker 03 20:04
+가까이 있어보죠.
+
+Speaker speaker 03 20:15
+근데 혜수 님 얘기가 되게
+
+Speaker speaker 03 20:16
+멀리 들리네.
+
+Speaker speaker 03 20:21
+아니면 저희 그냥 이렇게 아바타 다 뭉치는 게 어때요?
+
+Speaker speaker 03 20:28
+여기 뭉쳐지니까 다 여기 뭉치면 좀 얘기가 가까이 들리지 않을까 왜 이렇게 다 소리가 작게 들리지 잠시만요.
+
+Speaker speaker 04 20:48
+오케이 오케이 오케이
+
+Speaker speaker 03 20:52
+다시 한 번 다 얘기해 볼까요?
+
+Speaker speaker 03 20:57
+그리고 저 같은 경우는 왜 그러냐면 이 제 컴퓨터에서 녹화가 되고 있기 때문
+
+Speaker speaker 03 21:03
+때문에 너무 소리가 작으면 다 안 잡히고 다시 다시 한 번 얘기해봐 안녕하세요.
+
+Speaker speaker 03 21:20
+다 들리는 것 같아요.
+
+Speaker speaker 03 21:25
+근데 이거
+
+Speaker speaker 02 21:30
+저 카메라가
+
+Speaker speaker 03 21:34
+일단은 그냥 하죠. 저희 그래
+
+Speaker speaker 03 21:41
+가지고 저 뭐지
+
+Speaker speaker 03 21:42
+준영 님 그거 저희 한번 같이 볼까요? 화면 공유해가지고
+
+Speaker speaker 03 21:51
+근데 이거 어떻게 트랜스쿨리
+
+Speaker speaker 03 21:55
+뽑아야 될지 감이 안 오네.
+
+Speaker speaker 03 22:01
+안 되면 이거 빼고 해도 되니까
+
+Speaker speaker 04 22:03
+똑바로 이
+
+Speaker speaker 04 22:08
+이미지 벨드랑
+
+Speaker speaker 04 22:09
+이미지 기능까지는 잘 돼서요.
+
+Speaker speaker 04 22:16
+이해가 안 가는데 테이터 모델을 수출하기 진짜
+
+Speaker speaker 04 22:22
+걸렸거든요. 근데 갑자기
+
+Speaker speaker 04 22:24
+100% 채우고 갑자기 이렇게 이 끝나요. 그래서 제 생각에는 보통 컨테이너
+
+Speaker speaker 04 22:37
+실행되는 거
+
+Speaker speaker 04 22:39
+GPU나 GPU 과부하가 없었나
+
+Speaker speaker 04 22:42
+싫어서 계속 해봤는데 계속
+
+Speaker speaker 04 22:44
+똑같이 되더라고요.
+
+Speaker speaker 03 22:45
+이게 사실 저 뭐야 현사님하고 같은 증상이네요.
+
+Speaker speaker 04 22:49
+그렇죠 그렇죠
+
+Speaker speaker 04 22:55
+그래서
+
+Speaker speaker 04 22:56
+버크 말고 그냥 해보자 해가지고 저는
+
+Speaker speaker 04 23:19
+일단 GPU 단 거
+
+Speaker speaker 04 23:22
+GPU랑 코다 핏이랑 TU 2개는 있어야 되거든요.
+이거는 이미 깔려 있어서 이거 이거대로 그때 상경 등도 설정을 했고 근데
+
+Speaker speaker 04 23:35
+어떤 수치랑 어떤 수단을 쓰느냐에 따라서 응 맞아요.
+일단 파이톤
+
+Speaker speaker 04 23:44
+320.1이고요. 그다음에 부자가 3.18이었나 부자가 34 일단 여기 1부터 3이 2.3버전까지 들어가 근데 또 뭐 최신 버전도 사람의 의도가 너무 아는 것 같아
+
+Speaker speaker 04 24:39
+지금은 잘 들리시나요?
+
+Speaker speaker 04 24:45
+이것도 버전이 되게 중요하
+
+Speaker speaker 03 24:47
+맞아요. 맞아요.
+
+Speaker speaker 04 24:48
+이건 영우 님이 보내주신 과거를 바가 없어도 되지 이거가
+
+Speaker speaker 04 24:55
+고민했는데 아무 문제없었어요. 문제는 있는데 이 버전이 솔 2.3
+
+Speaker speaker 04 25:05
+지원을 안 해주더라고요.
+
+Speaker speaker 04 25:07
+근데 이거를 설치를 하고 다시 제가 이 파이포트에 들어가서 이거를 다시 깔았는데
+
+Speaker speaker 04 25:16
+그러면 이제 과정은 잘 진행이 됐었습니다.
+
+Speaker speaker 04 25:20
+사진을 이어서
+
+Speaker speaker 04 25:22
+똑같이 하고
+
+Speaker speaker 04 25:24
+이게 제가 기억이 안 나는데 f 이거 이렇게 설치를 해서 설 을 했어요.
+그다음에
+
+Speaker speaker 04 25:36
+그다음에
+
+Speaker speaker 04 25:38
+하다가 이게
+
+Speaker speaker 04 25:40
+허인 케이스
+
+Speaker speaker 03 25:47
+근데 시간
+
+Speaker speaker 03 25:49
+많이 쓰셨겠는데 제가
+
+Speaker speaker 03 25:55
+겪었던 시
+
+Speaker speaker 03 25:56
+오 상당 부분을
+
+Speaker speaker 03 25:58
+준형님도 가쁘신 것
+
+Speaker speaker 04 26:01
+그래서 제가 이거 최신 버전
+
+Speaker speaker 04 26:04
+해봤었는데
+
+Speaker speaker 04 26:08
+이게 착수 그리고 여기서 이게
+
+Speaker speaker 04 26:18
+제가 해왔던
+
+Speaker speaker 04 26:19
+3.2여서 3.2에 맞는
+
+Speaker speaker 04 26:29
+세그멘테이션도 3.0에 맞는 3.0으로 수정을 해주고 그러면 라이어 바이제이션도 3.1까지 지원을 해줘가지고
+
+Speaker speaker 04 26:44
+이걸 설치를 하고 여기에 파라미터가 아마 바뀔 거예요.
+
+Speaker speaker 04 26:50
+원셋이랑 어플셋 프로젝터가
+
+Speaker speaker 04 26:53
+춰진다고 해가지고 이걸 조경을 해봤는데
+
+Speaker speaker 04 26:59
+근데 테스트 추출이 잘 되지 않았어요. 이게 영우 님이 말씀하시는
+
+Speaker speaker 04 27:07
+가 2명으로 파악을 해가지고 이거는 계속 한번 바꿔보라면서 그래도 최신 버전 수에
+
+Speaker speaker 04 27:15
+좋지 않을까라고 해서
+
+Speaker speaker 04 27:16
+바꿔가면서
+
+Speaker speaker 04 27:17
+계속 해봤는데 그렇게 좋지는 않았어요. 결과값이
+
+Speaker speaker 04 27:21
+그래서 오늘
+
+Speaker speaker 04 27:22
+영화 님 주신 거
+
+Speaker speaker 04 27:24
+하는 게 나을 것 같아요. 어지러운 거잖아 그다음에 그냥 하다가
+
+Speaker speaker 03 27:32
+8시에 스물 출반했네.
+
+Speaker speaker 04 27:37
+그거 코딩 베이스로 알아야겠어.
+
+Speaker speaker 04 27:51
+로그인을 하
+
+Speaker speaker 04 27:52
+보시면 피트에 들어가시면
+
+Speaker speaker 04 27:55
+로그인을 하시고 세팅 들어가시면 여기
+
+Speaker speaker 04 27:59
+트스 처클에서
+
+Speaker speaker 04 28:00
+포천을 만든 다음에 맞아 다음에 찾아내서 저를 폰을 상대 문서에다 넣었어요.
+
+Speaker speaker 03 28:21
+지금 현서 님도 환
+
+Speaker speaker 03 28:24
+변수 넣었다는 게 저렇게 넣으신 건가요?
+
+Speaker speaker 02 28:27
+저는
+
+Speaker speaker 02 28:28
+이거는 안 넣고
+
+Speaker speaker 03 28:30
+맞아 거기 있지 터미널에 직접 입력하셨지
+
+Speaker speaker 03 28:33
+근데 이렇게
+
+Speaker speaker 03 28:35
+한번 하면 이제 매번 입력
+
+Speaker speaker 03 28:36
+할 필요가 없어지긴 하니까요.
+
+Speaker speaker 04 28:41
+그랬더니 그다음에 실행을 해봤더니
+
+Speaker speaker 04 28:47
+작동은 잘 되는데
+
+Speaker speaker 04 28:50
+여기서 이제 클라이언스가
+
+Speaker speaker 04 28:54
+필요한 권한을 가지고 있지 않습니다라고 쓰는 거예요.
+그래서
+
+Speaker speaker 04 28:58
+관리자 CND
+
+Speaker speaker 04 29:01
+관리
+
+Speaker speaker 03 29:06
+그래서 이제 그 폴리케한 텍스트를 뽑으신 거죠.
+
+Speaker speaker 04 29:10
+정의를 드린다면
+
+Speaker speaker 04 29:12
+제가 썼던 버전이 파이썬에
+
+Speaker speaker 04 29:14
+310.1이었고
+
+Speaker speaker 04 29:17
+솔직히 하다는 12
+
+Speaker speaker 04 29:19
+2.8 그다음에 코치는 그거에 맞는 것 같아 아까 사이트에서
+
+Speaker speaker 04 29:26
+그런 걸로 다운받았고 그다음에 파이어 리스 어디어는 관련 를 사용해서 그런 게 잘 작동 그리고 이거 다
+
+Speaker speaker 04 29:45
+했을 때 아까 그 로지 비슷한
+
+Speaker speaker 04 29:49
+저기 파스가 진짜 오래 걸렸네
+
+Speaker speaker 04 29:50
+얘는 그래도 빠르게 좀 가서
+
+Speaker speaker 03 29:55
+이게
+
+Speaker speaker 03 29:56
+미스플로러를 계속 빌딩할 때마다 다운받는 거거든요.
+실행할 때마다
+
+Speaker speaker 03 30:01
+컨테이너 내에서 근데 이제
+
+Speaker speaker 03 30:04
+로컬에 준영
+
+Speaker speaker 03 30:06
+처럼 아예 다운 받으면 이제
+
+Speaker speaker 03 30:08
+다운받는 과정을 말하는 거죠. 근데 그
+
+Speaker speaker 03 30:10
+다운 받는 것도 오래 걸린
+
+Speaker speaker 03 30:11
+하면 글쎄요. 그거는 컴퓨터 성능이 아니라 아마 인터
+
+Speaker speaker 03 30:16
+속도일 것 같은데
+
+Speaker speaker 03 30:19
+이게 할 때마다 저
+
+Speaker speaker 03 30:22
+허깅 페이스 저쪽 사이트에서
+
+Speaker speaker 03 30:25
+계속 라이브러리를 새로 다운받는 거거든요. 그 다운 받을 때 접근 권한을 주는 거
+
+Speaker speaker 03 30:29
+저희가 토크이
+
+Speaker speaker 03 30:31
+그래서 이게
+
+Speaker speaker 03 30:34
+제가 한 10분 15분 정도에 빌딩이 돼서 그 정도 시간일 거라고 생각했는데
+
+Speaker speaker 04 30:41
+한번 제가 지금까지 한 거 정리해서 한번 올려.
+
+Speaker speaker 03 30:46
+예 맞아요. 그리고 저 준영 님도 한 번만 그러면 컨
+
+Speaker speaker 03 30:50
+컨트롤 시프트 esc 눌러
+
+Speaker speaker 03 30:51
+이거 성능 탭 한번만 볼 수 있을까요?
+
+Speaker speaker 03 30:53
+지금 여기가 켜져 있구나
+
+Speaker speaker 03 30:57
+저 밑에 시작 시 작업 표시
+
+Speaker speaker 03 31:03
+그 차이가 많이 나는
+
+Speaker speaker 03 31:04
+그러려고
+
+Speaker speaker 03 31:07
+ccpu 한 번만 눌러주세요.
+
+Speaker speaker 03 31:14
+저
+
+Speaker speaker 03 31:15
+AMD가 저게 확률이 얼마큼 되는지 모르겠네. 근데
+
+Speaker speaker 03 31:19
+그리고 혹시 저
+
+Speaker speaker 03 31:22
+저 뭐지 저
+
+Speaker speaker 03 31:24
+SSD 드라이브는 현재 용량 얼마나 남아 계세요?
+
+Speaker speaker 03 31:31
+씨 드라이브
+
+Speaker speaker 04 31:34
+제가 이거 답변이 엄청 많아
+
+Speaker speaker 04 31:35
+정리하고 있는데
+
+Speaker speaker 03 31:41
+100기가 정도 나
+
+Speaker speaker 03 31:42
+그래서 제가 생각할 때는
+
+Speaker speaker 03 31:46
+그냥
+
+Speaker speaker 03 31:48
+준영 님하고 현서 님도 그렇고 특히 이제
+
+Speaker speaker 03 31:51
+미경 님은 이게 용량 이신 거거든
+
+Speaker speaker 03 31:53
+그러니까 이렇게 지금 100기가가 남아 있어도
+
+Speaker speaker 03 31:55
+이거를 다커가 다 쓸 수 있는 게 아니에요. 할당해 준 만큼만 쓸 수가 있어서
+
+Speaker speaker 03 32:00
+남아있는 게 100기가라고 그러면 다카한테는
+
+Speaker speaker 03 32:02
+디폴트 값이 얼마인지 모르겠는데 한 3분의 1 정도 준다면 30kg 정도밖에 없겠죠.
+
+Speaker speaker 03 32:07
+남아 지금
+
+Speaker speaker 03 32:08
+준영 님도
+
+Speaker speaker 03 32:09
+이거 필요한 라이브러리 다운 받으면서 이게 많이 차지
+
+Speaker speaker 03 32:13
+원래는 더 많이
+
+Speaker speaker 03 32:15
+많이 남아 계셨을 것 같은
+
+Speaker speaker 03 32:15
+용량이 씨드라이즈 그래서
+
+Speaker speaker 03 32:22
+용량
+
+Speaker speaker 03 32:23
+한번 확인해 보시.
+
+Speaker speaker 03 32:24
+그래서 준
+
+Speaker speaker 03 32:25
+마지막으로 다커 데스크탑 한번 같이 볼 수 있을까요?
+애플리케이션
+
+Speaker speaker 04 32:32
+저도 여태까지 있었어
+
+Speaker speaker 04 32:33
+이미지랑 다 삭제하고 있었는데도 안 되는지
+
+Speaker speaker 04 32:39
+원래 돼야 되는 거 아니었어
+
+Speaker speaker 03 32:40
+그렇죠
+
+Speaker speaker 03 32:41
+그러려고 사실 존재하는 건데 다커는
+
+Speaker speaker 03 32:44
+아 저 그것
+
+Speaker speaker 03 32:48
+그러니까 9기가 정도밖에 안 되는데 이미지는 근데 이게 다 빌딩이
+
+Speaker speaker 03 32:52
+된 게 아니라서 모르겠고
+
+Speaker speaker 03 32:54
+아니지 빌딩은 다 됐다고 하시지 않았나요?
+
+Speaker speaker 03 32:57
+두 기가 정돈데
+
+Speaker speaker 03 32:59
+좀 이상하긴 톱니바퀴 한번 눌러보실래요? 저 우측 상단에 해서 리소스 탭 한번 볼까요?
+
+Speaker speaker 03 33:07
+여기도 ws
+
+Speaker speaker 03 33:08
+그래서 전부 다 저도 이제 저게 포함성이 더 좋다고 하기도 하고 기본 설정값이라 WSL로 돼 있는데 이거는
+
+Speaker speaker 03 33:16
+컴퓨
+
+Speaker speaker 03 33:17
+터 내에서 윈도우 그러니까 윈도우 오징
+
+Speaker speaker 03 33:21
+해수 님
+
+Speaker speaker 03 33:22
+다를 거예요. 윈도우 내에서
+
+Speaker speaker 03 33:24
+그
+
+Speaker speaker 03 33:25
+뭐야 유닉
+
+Speaker speaker 03 33:26
+기반
+
+Speaker speaker 03 33:28
+코드들 잘 돌아가게 해주는 거니까 얘
+
+Speaker speaker 03 33:31
+자원 할당은 이 애플리케이션이 아니라
+
+Speaker speaker 03 33:34
+그
+
+Speaker speaker 03 33:35
+저
+
+Speaker speaker 03 33:37
+윈도우 자체 세팅해서 바꿔줄 수가 있어요. 그래서 얘한테 지금
+
+Speaker speaker 03 33:41
+그러니까 이제 다커가 아니라 그러면 WSL한테 지금 얼마나 자원이 할당돼 있는지를
+
+Speaker speaker 03 33:46
+한번 확인해 보시고 그거를 좀 올려줬을 때도 같은 문제가
+
+Speaker speaker 03 33:51
+발생하는지 한번 보면 좋을 것 같아요. 왜냐하면 이게
+
+Speaker speaker 03 33:53
+저번에 아까도
+
+Speaker speaker 03 33:55
+말씀드렸지만 이게 그냥 돌아가기만
+
+Speaker speaker 03 33:58
+해도 돼
+
+Speaker speaker 03 33:59
+하지만 이 다커를 저희가
+
+Speaker speaker 03 34:02
+쓴다는 게 지금 여기에도 쓸 거고 나중에 웹 페이지 만들고 할 때 서비스할 때도 쓸 거거든요.
+왜냐면 이게 배포 단위니까
+
+Speaker speaker 03 34:09
+그래서 다커를 이렇게 좀 써본다
+
+Speaker speaker 03 34:14
+하는 거를 경험해볼
+
+Speaker speaker 03 34:16
+이런 문제
+
+Speaker speaker 03 34:17
+챙기고 해서 이렇게
+
+Speaker speaker 03 34:18
+다커를 좀 익히는 경험해 보는 시간이 있으면 좋을 것 같아서 이거를 안 되면 어쩔 수 없지만 안 될 경우에는 제가 이미지를 다 빌딩해서 공유를 한다거나
+
+Speaker speaker 03 34:30
+허브를 통해서 그럴 수
+
+Speaker speaker 03 34:31
+있긴 한데 그렇게 되면 이제
+
+Speaker speaker 03 34:32
+만약에 이게 포폴 제출했을 때 질문이 들어오거나 했을 때
+
+Speaker speaker 03 34:36
+답변하기가 조금 곤란할 수도 있고 그다음에 그런 걸 다 떠나서 다커 자체
+
+Speaker speaker 03 34:40
+에 대한 경험 할
+
+Speaker speaker 03 34:42
+기회가 없는 거니까 그냥
+
+Speaker speaker 03 34:44
+그냥 되는 거니까
+
+Speaker speaker 03 34:46
+그래서 이거 용량을 한번 확인해 보면 좋을 것 같고 그다음에 이게 꼭 문제 해결
+
+Speaker speaker 03 34:52
+이 안 될 수도
+
+Speaker speaker 03 34:53
+있으니까 다른 거나 아니면 GPT나 다른 거 이제 찾아보시면서
+
+Speaker speaker 03 34:58
+좀
+
+Speaker speaker 03 35:02
+탐색을 해보고 꼭 그 다음
+
+Speaker speaker 03 35:05
+화요일이 아니더라도 중간중간에도
+
+Speaker speaker 03 35:08
+미경 님이 해주셨던 것처럼
+
+Speaker speaker 03 35:11
+에러 메시지를 공유한다거나 해서 저희가 이거 문제를
+
+Speaker speaker 03 35:15
+같이 해결해 보죠. 이거 다커를 다커가 근데
+
+Speaker speaker 03 35:18
+이런 류 그러니까 가상 환경으로 디펜더시 해결해 주는 거
+
+Speaker speaker 03 35:21
+중에서는 제일 쉽
+
+Speaker speaker 03 35:23
+때문에 개 중에서 제일
+
+Speaker speaker 03 35:25
+쉽기 때문에 제일 널리 쓰인다고 알고 있거든요.
+
+Speaker speaker 03 35:27
+기업 단위에서도 많이 쓰고 있고
+
+Speaker speaker 03 35:30
+성능 같은 것만 보면 저도 정확히는 모르지만 구글에서 제공하는 쿠버네티스나 이런 애가
+
+Speaker speaker 03 35:34
+좋다고 알고 있어요. 근데 그거는 사용이 훨씬 더 까다롭고 어려워서
+
+Speaker speaker 03 35:38
+다커가 쉬워서 쓴다고 해
+
+Speaker speaker 03 35:40
+그래서 근데
+
+Speaker speaker 03 35:41
+이 쉬운
+
+Speaker speaker 03 35:42
+쉬운 애도 지금 이런저런 문제를 만들고 막 배워야 될 개념이 있고 하니까 이거를 좀
+
+Speaker speaker 03 35:47
+익혀보는 게 완전히 지금 데이터 분석 쪽 도메인이라고 볼 수 없지만 저희가 처음부터 끝까지 한다는 측면에서는
+
+Speaker speaker 03 35:53
+좋을 것 같습니다. 왜냐면 그리고
+
+Speaker speaker 03 35:55
+이 문제가 지금 발생하고 있지만
+
+Speaker speaker 03 35:58
+나중에 저희가 만들고 저번에 보여드렸던 웹페이지
+
+Speaker speaker 03 36:01
+만들고 AWS에 연결하고 이것까지
+
+Speaker speaker 03 36:03
+저희가 해보길 바라는 거잖아요. 그냥 모델만 딱 빌딩해서 그냥 일반적인 포폴처럼
+
+Speaker speaker 03 36:08
+모델 빌딩 해봤습니다가 아니
+
+Speaker speaker 03 36:09
+아니 이걸 이렇게 사
+
+Speaker speaker 03 36:10
+할 수 있습니다. 서비스
+
+Speaker speaker 03 36:12
+수단까지 진행하려는 거기 때문에 그땐 얘가 또 쓰여야 되거든요.
+
+Speaker speaker 03 36:16
+이거 아니면 이제 더 어려운 기술을 써야 되니까 쉬운 이거를 쓰죠.
+그래서
+
+Speaker speaker 03 36:21
+준영 님이 정리해서 올려
+
+Speaker speaker 03 36:22
+주신다고 하니까 그것도 확인해 보고 다른
+
+Speaker speaker 03 36:25
+이제 해결이 되든 안 되든 이제 중간중간 공유하면서 저
+
+Speaker speaker 03 36:28
+저희가 다커도 좀 같이 익혀보면 좋을 것 같아요.
+
+Speaker speaker 03 36:32
+어
+
+Speaker speaker 04 36:33
+좋습니다.
+
+Speaker speaker 01 36:34
+혹시
+
+Speaker speaker 01 36:36
+뭐지
+
+Speaker speaker 01 36:37
+회의록에에 그 밑에 제가 준영 님의 시행착오라고 하나 만들어놨는데
+
+Speaker speaker 03 36:43
+좋아요.
+
+Speaker speaker 03 36:48
+그리고
+
+Speaker speaker 01 36:50
+대충 버전이나
+
+Speaker speaker 01 36:52
+이런 건 기록을 했긴 했는데 명확히 맞는지도 모르겠고 해서 얘기를 해 주시면 좋을 것 같습니다.
+
+Speaker speaker 03 36:58
+네 이제 거의 저희 끝났다고 생
+
+Speaker speaker 03 37:01
+하는데 하나만 이제 준영 님이 있을 때 다시
+
+Speaker speaker 03 37:05
+얘기
+
+Speaker speaker 03 37:06
+해보고 싶은 게
+
+Speaker speaker 03 37:11
+저희가 이제 협동 측정을 할 거잖아요. 근데
+
+Speaker speaker 03 37:18
+행동 데이터 기반으로 측정되는 이런
+
+Speaker speaker 03 37:25
+분석이랑
+
+Speaker speaker 03 37:26
+저희 주관적인 평정을 같이 가져가려고 해요. 주관적인 평정이 일반
+
+Speaker speaker 03 37:30
+회사나 인사팀에서 좀 쓸 법한 방법이고 팀장이
+
+Speaker speaker 03 37:34
+팀원들의 수행을
+
+Speaker speaker 03 37:36
+측정한다든지 근데 이제 그게 행동 데이터랑 얼마나 일치하는지를 저희가 직접 검증을 해보는 거죠.
+
+Speaker speaker 03 37:42
+그래서 이번에 이미 7차 회의고 앞에 게 기억이 잘 안 나겠지만 저도
+
+Speaker speaker 03 37:46
+정확히 이때 얼마나
+
+Speaker speaker 03 37:48
+협동이 됐는지 그런 거 기억이
+
+Speaker speaker 03 37:49
+딱 안 나지만
+
+Speaker speaker 03 37:51
+다행히 저희가 회의록도 있고
+
+Speaker speaker 03 37:52
+녹화 영상도 다 있어서
+
+Speaker speaker 03 37:55
+이걸 이제 작성 지금은 한꺼번에 작성하고 다
+
+Speaker speaker 03 37:58
+하나씩 이제
+
+Speaker speaker 03 38:00
+작성해보면서 저희 행동 데이터랑 비교해 봐도 좋을 것 같아요.
+여러 가지로 비교할 수가 있겠죠.
+
+Speaker speaker 03 38:05
+내가 전체 협동 점수랑 그 매트릭을 비교해 볼 수도 있고 그중에서 내가 얼마큼 했는지를 내가 얼마나 정확하게
+
+Speaker speaker 03 38:14
+어느 정도 정확히 되는지 그다음에 이게 좀 차이가 나면
+
+Speaker speaker 03 38:17
+차이가 나는 대로 좋은 게 그러면 저희가 제공하는 이 행동 데이터
+
+Speaker speaker 03 38:21
+서비스가 그만큼 더 유용하다는 거죠. 너네가 그냥 주먹구구식으로
+
+Speaker speaker 03 38:26
+얘는 이만큼 팀원
+
+Speaker speaker 03 38:28
+1은 이만큼 기여했고 팀은 e는 만큼 기여했고 그게 아니
+
+Speaker speaker 03 38:31
+행동 데이터 기반으로 가는 게
+
+Speaker speaker 03 38:33
+좋습니다. 그리고 저는 보면서
+
+Speaker speaker 03 38:36
+준영 님이 얘기하셨던 더 최신 버전을 써보는 거도 좋을 수 있다고 생각해요.
+제가 이게 하이퍼 파라미터도 보는 거 보고 몇 가지 수정하면서 나온 결과라
+
+Speaker speaker 03 38:46
+저도 준영 님 말씀에 조금
+
+Speaker speaker 03 38:48
+공감이 되거든요. 최신 버전이 뭔가 좀 더 좋지 않을까
+
+Speaker speaker 03 38:51
+그러니까 이제 한 번
+
+Speaker speaker 03 38:53
+해서 뭐가 안 됐더라도
+
+Speaker speaker 03 38:55
+좀 더 좋지 않을까 하는 생각이 있어서 저는 이제 저거 조금 테스트해볼 생각이고 그렇게 되면
+
+Speaker speaker 03 39:01
+저희가
+
+Speaker speaker 03 39:03
+이제 여기 팀 여기 포폴에 아니 저 공간에
+
+Speaker speaker 03 39:06
+여기 지금 이거 있잖아요
+
+Speaker speaker 03 39:09
+여기에
+
+Speaker speaker 03 39:11
+트랜스크립션만 추가하는 게 아니라
+
+Speaker speaker 03 39:13
+sna 노트북이라든가 이 익스트랙터도 같이
+
+Speaker speaker 03 39:18
+개발해 가는
+
+Speaker speaker 03 39:19
+그
+
+Speaker speaker 03 39:20
+과정도 해보면 좋을 것 같아요.
+
+Speaker speaker 03 39:22
+그래서 아주 좋습니다.
+
+Speaker speaker 03 39:24
+정말 그 주석님 고백 맞으셨네요.
+
+Speaker speaker 03 39:26
+깜빡 잠드실 만합니다.
+
+Speaker speaker 03 39:32
+그래서 저는 이 정도면 될 것 같아요. 그러면 다음 주부터
+
+Speaker speaker 03 39:40
+아니지 다다음 주부터
+
+Speaker speaker 03 39:42
+어
+
+Speaker speaker 03 39:43
+네 제대로 해볼 수 있을 겁니다. 이 투트랙이
+
+Speaker speaker 03 39:46
+그렇게 물이 아닐 것 같고
+
+Speaker speaker 03 39:48
+해볼 수 있을 것 같아요.
+
+Speaker speaker 00 39:50
+다음 주 화요일까지는 해봐야 되는데 이 PPT p출 각자 할당된 거 약간
+
+Speaker speaker 00 40:03
+공급 주식
+
+Speaker speaker 00 40:04
+이 책에 대해
+
+Speaker speaker 00 40:05
+영훈 님은
+
+Speaker speaker 00 40:07
+마지막에 가져오신 거
+
+Speaker speaker 00 40:09
+그거 합쳐서 뭐 해서 2개까지 해오는 걸로 생각을 하면
+
+Speaker speaker 03 40:13
+그렇죠 저 준영 님은 5차 회의 그거 영상 추출
+
+Speaker speaker 03 40:20
+어 그냥 저희가 이 순서대로 그냥 잡아가지고 해서
+
+Speaker speaker 03 40:28
+이렇게 두 개가 되겠죠 더
+
+Speaker speaker 03 40:34
+의견 있으신 분 있을까요? 저는 이 정도면 됐다 싶네요.
+배도 고프고
+
+Speaker speaker 04 40:42
+하고 나서 중간중간
+
+Speaker speaker 03 40:47
+그렇죠 그렇죠
+
+Speaker speaker 03 40:48
+맞아요.
+
+Speaker speaker 03 40:49
+한 가지 제가
+
+Speaker speaker 03 40:52
+저는
+
+Speaker speaker 03 40:54
+영상뿐만이 아니라 슬랙이나 카톡에 있는 그것도 협동 분석에 좀 써먹어 볼까 하거든요.
+데이터로 왜냐하면 이제 그렇게 하면 제가 1차 프로젝트 2차 프로젝트 각각 하셨던 그거랑도 좀 비교해 볼 수
+
+Speaker speaker 03 41:07
+근데 이제 여러 가지 제한점이 있긴 하겠지
+
+Speaker speaker 03 41:10
+좀 향상됐다는 거 좀 더
+
+Speaker speaker 03 41:12
+왔다 갔다 하는 말이 많아졌고
+
+Speaker speaker 03 41:14
+반응이 많았고 하는 것.
+
+Speaker speaker 03 41:16
+근데 이제 그렇게 할
+
+Speaker speaker 03 41:17
+하려면 저희가 지금은 카톡이랑 슬랙에 약간 분할해 갖고 하고 있잖아요.
+그래서 그거를 아예 한 군데로 좀 통일해면 어떨까 합니다.
+텍스트가 한 군데 보이게
+
+Speaker speaker 03 41:30
+그래서 그게 카톡이 좋을까요? 슬랙이 좋을까요?
+
+Speaker speaker 04 41:35
+밴딩은 카톡이 편하긴 한데 선
+
+Speaker speaker 04 41:40
+그리고 약간 저희 이런 거 팀 안에서 활동하는 거 온라인으로 근데 저는 그 사람 슬랙으로 올려 확인이 더 잘 돼요.
+뭔가
+
+Speaker speaker 03 41:57
+응 아 저는
+
+Speaker speaker 03 41:59
+어느 쪽이어도 모여만 있으면 좀 상관없다는 생각이 드는 게
+
+Speaker speaker 03 42:02
+카톡도 텍스트 추출해갖고
+
+Speaker speaker 03 42:05
+하는 거 잘 지원해 주는 걸로 알고 있고 그 방 전체 스트 끊는 거
+
+Speaker speaker 04 42:09
+그러면
+
+Speaker speaker 04 42:10
+호흡으로 하고
+
+Speaker speaker 04 42:11
+좀 중요한 내용이나 이런 거는 서버 제품 팀으로 공지나 이런 걸 진행
+
+Speaker speaker 03 42:17
+그렇죠 그렇죠
+
+Speaker speaker 03 42:18
+그래서 제가 그 일정 같은 거 올리긴 했는데
+
+Speaker speaker 03 42:21
+맞아 해수 님이 얘기하니까
+
+Speaker speaker 03 42:23
+갑자기 생각났는데 저희가 원래는 다다음 주가 방학이잖아요.
+여기 여 프로그래스 내에서는
+
+Speaker speaker 03 42:28
+그래서 원래 멘토님은 다음 주에 1차 전체 미팅
+
+Speaker speaker 03 42:32
+1 2 3차에 했던
+
+Speaker speaker 03 42:34
+그걸 이제 하려고 하셨었대요. 근데 제가 말씀을 드렸거든요.
+저희는 방학을 당겨서
+
+Speaker speaker 03 42:40
+주차를 바꾸려고 하고 있고
+
+Speaker speaker 03 42:42
+다음 주에는 이날은 2분이 안 되고 저날은
+
+Speaker speaker 03 42:45
+저분이 안 되고 그런 게 있다.
+
+Speaker speaker 03 42:47
+아예 그 일정을 올렸던 거고 슬러에게
+
+Speaker speaker 03 42:51
+근데
+
+Speaker speaker 03 42:52
+그래서 이제 그러니까 멘토님이 그럼 다다음
+
+Speaker speaker 03 42:54
+주에 1차 미팅을
+
+Speaker speaker 03 42:56
+해야 되나라고 생각 말씀을 하셨었거든요. 근데 저희 다음 주에
+
+Speaker speaker 03 43:00
+멘토님이랑 1시간 정도 하시라고 했었는데
+
+Speaker speaker 03 43:03
+1차 미팅하고
+
+Speaker speaker 03 43:04
+어렵겠죠 5명이 6명이 다 모여서
+
+Speaker speaker 04 43:09
+조금 어렵지 않을까요?
+
+Speaker speaker 03 43:12
+그렇죠 그렇죠
+
+Speaker speaker 03 43:12
+멘토님도 제가 그렇게 일단은 말씀은 드려놨긴 했거든요.
+그래서 다다음 주를 1차라고
+
+Speaker speaker 03 43:17
+생각하신다고 왜냐하면 저희는 또
+
+Speaker speaker 03 43:19
+급하게 모인 팀이 아니라 미리 모여가지고 진행을 하고 있는 거여서
+
+Speaker speaker 03 43:25
+1차
+
+Speaker speaker 03 43:26
+대표님을 포함한 1차 미팅이 좀 늦어져도 괜찮겠다라고 말씀을 하셨거든요.
+
+Speaker speaker 03 43:29
+그러면 그냥 다다음 주에 하는 걸로 할까요? 좋습니다.
+그리고 이 해수 님이 말씀하신 대로
+
+Speaker speaker 03 43:40
+알람이나 이런 거 받기가 더 좋긴 하니까
+
+Speaker speaker 03 43:43
+카톡으로 이제 주로 소통 창구로 쓰고
+
+Speaker speaker 03 43:46
+이제 뭐야 슬랙에는 멘토님도 좀
+
+Speaker speaker 03 43:51
+오셨으면 한다거나 좀
+
+Speaker speaker 03 43:52
+중요하다고 하면 공지 느낌으로 올리는 걸로 하죠.
+
+Speaker speaker 04 43:58
+카톡 대화 내용
+
+Speaker speaker 03 43:59
+아 맞아요. 저
+
+Speaker speaker 03 44:02
+제가 알고 있기로도 개
+
+Speaker speaker 03 44:03
+아예 그 기능이 있는
+
+Speaker speaker 03 44:05
+걸로도 알고 있는데 익스포터 해가지고
+
+Speaker speaker 03 44:09
+해서 그렇게 하면
+
+Speaker speaker 03 44:11
+제 생각에는 이것도 다 뭔가 조금 더
+
+Speaker speaker 03 44:14
+쉬운 분석으로 여러분들이 다 쓸 수 있겠죠. 내가 1차 때 그러니까 이제 만약에 준영 님 기준으로 하면
+
+Speaker speaker 03 44:19
+1차 때는 조금 상대적으로 냈다가 2차 때 독박 쓰면서 엄청
+
+Speaker speaker 03 44:23
+높아졌다가 3차 때 이제
+
+Speaker speaker 03 44:25
+낮아졌다가 4차 때 굉장히 높아지겠죠.
+
+Speaker speaker 03 44:27
+그 요런 거
+
+Speaker speaker 03 44:28
+그래프 같은 걸
+
+Speaker speaker 03 44:29
+나는 협동 열심
+
+Speaker speaker 03 44:31
+하는 사람입니다. 어필하기 좋지 않을까요?
+
+Speaker speaker 03 44:36
+네 좋아요. 더 얘기하실 분 있을까요? 이 정도면
+
+Speaker speaker 03 44:40
+오늘 진짜 죄송한
+
+Speaker speaker 04 44:43
+아니에요. 너무 열심히 해주셔가지고
+
+Speaker speaker 04 44:47
+저는
+
+Speaker speaker 04 44:48
+저는 스마트폰 하고 열심히도 안 해서
+
+Speaker speaker 03 44:55
+좋아요. 그러면 저희 중간중간에 연락은 해도
+
+Speaker speaker 03 44:59
+다음 주 화요일
+
+Speaker speaker 03 45:00
+뵙는 걸로 확인하고
+
+Speaker speaker 03 45:05
+네 맞아요. 그럼 저희가 이제 장소도 좀 정해야 되고 하니까
+
+Speaker speaker 03 45:09
+네 좋습니다.
+
+Speaker speaker 03 45:13
+목요일쯤
+
+Speaker speaker 03 45:19
+네 다 고생하셨습니다.
+
+Speaker speaker 03 45:21
+고생하셨습니다.
+
+
+clovanote.naver.com

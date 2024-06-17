@@ -1,0 +1,1528 @@
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  나중에 하나만 써도 되고 다 쓸수도 있고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  저
+Speaker SPEAKER_01:  이거 음성 녹음되고 추후 분석되는 데 도움이 되죠  네
+Speaker SPEAKER_01:  평상시 이걸 앞에 하는데  그걸 잘 안받아도  받아도 될 수도 있고  정확한 기준은 모르겠는데
+Speaker SPEAKER_00:  그걸 잘 안받아도  받아도 될 수도 있고
+Speaker SPEAKER_01:  화면으로 같이 보기 전에  혹시 저  EDA 일단 그거 먼저 얘기해 보면 좋겠는데  그
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  어
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  다 해보신거죠  팔 그 한번씩 이렇게
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  뭔가 좀  볼만한 결과가 나오길래
+Speaker SPEAKER_01:  일단 기본적으로
+Speaker SPEAKER_01:  특색이 없는 느낌?
+Speaker SPEAKER_01:  아까 한순님이랑 얘기하면서
+Speaker SPEAKER_00:  느꼈지만
+Speaker SPEAKER_01:  뭔가 이런 퇴사율을 예를 들면은  퇴사율이 50%정도  전체 데이터에서 50%정도라고 하면
+Speaker SPEAKER_01:  어떤 요소랑  어떤 컬럼에 있는  범주랑 뭐 이렇게 다 비교를 해봐도  거의 다 그냥 동일한 느낌을  맞아요 맞아요  근데 너무 특색이 없어서  이거 활용을 잘 할 수 있을까  이런 걱정이 많이 들기도 했고  그리고 저는  그거랑 추가로  그 이것도 근데 비슷하게 하는데  근속 연수를 좀  분석 해보려고도 했었는데
+Speaker SPEAKER_01:  그거 하다보니까 또 느낀게  전체적으로 데이터가  엄청
+Speaker SPEAKER_01:  그 연수가 짧더라구요  그래가지고
+Speaker SPEAKER_01:  그런 종류의 분석도  시간적으로 뭔가 접근하는 것도  그거 좀 많이 느꼈어요
+Speaker SPEAKER_01:  저는  데이터가 조금  제가 잘못 이해했을 수도 있는데  이상한 부분이
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  일단 it's it's date라고  나가는 날짜가 써있는 부분이 있는데  근데
+Speaker SPEAKER_01:  여기서  it's it's date가 있는데  그 액티브
+Speaker SPEAKER_01:  안 맞는거 있어요  근데 그게  인플루이  status랑 exit date랑  비슷하잖아요  그리고 future
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  안 맞는거 있어요
+Speaker SPEAKER_01:  미래에 들어오는 거  아  그것도 근데 start date가 있는게 말이 안되지 않나  라고 생각을 해봤거든요  근데 그거는 아예 데이터  set이 다른거에 있는거  얘기하신거에요?  인플루이 데이터에 있었던거요  알거든요 잠시만요
+Speaker SPEAKER_00:  찾아볼게요
+Speaker SPEAKER_03:  classification type  그것도 설명이랑 다르더라구요  아 인플루이
+Speaker SPEAKER_01:  type이랑 classification  인플루이 classification type
+Speaker SPEAKER_03:  인플루이 classification type  이라는 컬럼이 있는데  그 컬럼 값이 웹페이지 설명이랑 달라요  아
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그리고 인플루이 타입이랑  인플루이 classification type 차이도  잘 모르겠어요
+Speaker SPEAKER_03:  잘 모르겠어요
+Speaker SPEAKER_03:  가운데 것만 다르고
+Speaker SPEAKER_01:  이거 뭔가  고증이 하나 있긴 좋겠네요 잠시만요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  지금 얘기할 때  화면을 다 공유하면서 보면 되는데  대화 핑퐁은 빠르긴 한데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  파일링이니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  뭐지
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  저는 인플루이랑 서베이랑 트레이닝 데이터가 있었습니다.  응 맞아요. 저도 그..  인플루의 아이디가 있었어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  리크리먼트는 아이디가 다르고 따로 이게..  맞습니다.  그렇죠. 그래서 지금
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  트레이닝이랑
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이렇게 하면은 이제 뭐 무슨 워라벨 정지도 있고
+Speaker SPEAKER_01:  진짜 폭력적이다 저 열려있는 사람
+Speaker SPEAKER_01:  이 두 쪽에다 약간 저장해 놓은 느낌으로 이렇게 다 옮겨 놓고  가운데서 작업을 하는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  여기 이거 빠진 거랑
+Speaker SPEAKER_01:  그 다음에
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  맞네요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  액티브인데
+Speaker SPEAKER_02:  어 퇴사가  퇴사가 있어요
+Speaker SPEAKER_01:  퇴사가 있어요  그런 거 같은 거  그래서 여기도  퇴사 날짜 나와있고
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04:  그래서 여기도
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  그 다음에  이제 이거를 무시하고 그냥 해도
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 일종의 아마 이런 이유가 여러 개가 있는데  이게  맞아요
+Speaker SPEAKER_01:  이럴 수가 없잖아요  이거는 이상하지  오류가 일부 있다고 감안을 하고 그냥 봐도  아니 어떻게 이렇게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  오 이렇게 다 똑같을 수가  그램프들이 보통 다 저렇게 생겼어  그다음에 이것도 이제 이거는 뭐 그 안 빠진 사람이 많다는 건 알겠는데  이게 이렇게 다 또 다 뽕트에 있는 건 그렇고  그 다음에 이 상관관계를 좀 보려고 해도
+Speaker SPEAKER_00:  그다음에 이것도 이제 이거는 뭐 그 안 빠진 사람이 많다는 건 알겠는데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  맞아요 없어요 진짜 없어요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  음
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그니까 더 만족하면 인게이지를 해볼 건데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 이것 좀 이상한데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  뭐 성비도 완벽해요 이 회사는
+Speaker SPEAKER_01:  어 맞아요
+Speaker SPEAKER_01:  그래서 제 생각에는 그게 맞춘 거 같거든요  네 그러하니까  그러니까 이제 그 모델 빌딩할 때  그러니까 이거는 그 모델만 빌딩하라고 하고  이게 왜냐면 모델을 빌딩해보면
+Speaker SPEAKER_00:  그래서 제 생각에는 그게 맞춘 거 같거든요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이런 여러 가지가 가능한
+Speaker SPEAKER_01:  근데 좀 자세히 뜯어보니까  아 이거 갖고 만약에 진행을 한다면
+Speaker SPEAKER_01:  ED 하는 거는 의미가 없고 그냥 모델 빌딩하는 재료 데이터로
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  음
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그니까 저희가 여기서 그
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  어
+Speaker SPEAKER_01:  관두는 거를 예측해 볼 수도 있겠고 그다음에 뭐
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 그러면은 뭔가 조금
+Speaker SPEAKER_01:  그 아쉽다는 생각이 들었어요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  라는 생각이 들기도 했어요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  라거나  아 진짜 재미없어요
+Speaker SPEAKER_02:  근데 그 생각 한 번 더 하긴 했어요  제가 데이터를 좀 바꿔야 되나 라는 생각이 드는데 좀 늦었  늦었나?
+Speaker SPEAKER_01:  근데 그 생각 한 번 더 하긴 했어요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  네 그 생각을 하긴 했습니다
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  생각해요?  강경파  저도 동의합니다  바꿔야 된다 강경파  이건 아닌 거 같아요  저는 이걸로 결과를 내도
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그니까 되게 과적합된 데이터가 다 그 모델이 어차피 탄생할 것 같다?
+Speaker SPEAKER_01:  아 그렇진 않아요 오히려 더 예측 퍼포먼스는 안 나와요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  아 그렇진 않아요 오히려 더 예측 퍼포먼스는 안 나와요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  점 8 정도 나오는데 근데 이제 멀티노미널이긴 해도 로지스틱 리그레션이랑 다른 데이터랑 차이 안 나는 것도 조금 이상하고 거의 다 그냥 같게 나오는 거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 다음에 리그레션을 이제 만족도랑 돌려보면 어 너무너무 낮게 나와
+Speaker SPEAKER_01:  성능에 일관성이 좀 없는 건가요 그러면?
+Speaker SPEAKER_01:  아 일관성이 없다기보다는 약간 랜덤 데이터에 조금 가깝지 않나 라는 느낌입니다.  네  그래서 이걸 과적합 될 수 있게끔 어떤 레이블들에서 좋은 퍼포먼스를 낼 수 있게끔  인위적으로 이렇게 다 맞춰서 만들 수 있잖아요  그렇게 했으면 엄청나게 높게 나올 텐데 그런 게 아니라 그냥 여러 컬러 넣고 뭐 적당히 맞추긴 하되
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  뭐 어떤 트렌드나 현실로 반영한 것도 아니고 그렇다고 인위적으로 퍼포먼스를 높게끔 맞춰준 것도 아니고 해서 오히려 모델 퍼포먼스 높이기는 어려울 것 같아요.  그래서 저는 그 여기에서
+Speaker SPEAKER_01:  음
+Speaker SPEAKER_01:  그
+Speaker SPEAKER_01:  아 그 데이터
+Speaker SPEAKER_01:  네 그걸 봐도 유튜브를 봐도 이 퍼포먼스를 어떻게 올릴지를 막 고민을 하는 사람들이 좀 있어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  음  그런 거  아 근데 지금 그게 더 이제 퍼포먼스 만들려는 입장에서 더 안 좋죠.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  음
+Speaker SPEAKER_01:  아 그냥 인터넷이 안 되는 거지.  이건 왜 이런 거  근데 혹시 오늘 회의록 안 해놓을 수 있나요?
+Speaker SPEAKER_02:  아  저 할까 해봐야죠.
+Speaker SPEAKER_01:  오늘 누구 차례다?
+Speaker SPEAKER_02:  그냥 제가 이 켰거든요.
+Speaker SPEAKER_01:  아 그럼요.
+Speaker SPEAKER_01:  그 맞아요.  아 아  저 안 할래요.  저 안 할래요.  대경님 신소 맞았던 거 같아요.  저 안 할래요.
+Speaker SPEAKER_03:  저 안 할래요.  저 안 할래요.  대경님 신소 맞았던 거 같아요.  저 안 할래요.  신소 맞아요.
+Speaker SPEAKER_01:  신소 맞아요.  아니 그 이제 막 뭐가 정해졌는지.  이제 막 뭐가 정해질 것 같아서.  새로 정해질 것 같아서.  뭐냐면요.
+Speaker SPEAKER_01:  5g ad13이에요.
+Speaker SPEAKER_01:  지금 1번이 2번이에요.  그거고 비밀번호가 6bd22 아 숫자 22 그리고 zk150.  아 네.  네.  네.  네.  네.  네.
+Speaker SPEAKER_01:  네.  네.
+Speaker SPEAKER_01:  네.  네.  네.  네.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  무슨  처리를 한 점 육밖에 안 되던  처리를 한 점 육밖에 안 되던  그런
+Speaker SPEAKER_01:  근데 이 사람이 했던 거는 직원 평가였고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  네 그게 그것도
+Speaker SPEAKER_01:  네 그게 그것도
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그러니까 그냥 무료로 사용을 해도  이 레드시프트 같은 경우는 두 달 정도 이제 무료로 사용할 수 있고
+Speaker SPEAKER_01:  사용할 수 있고 두 달 후에 취업할 거라고 생각하고  그동안 쓰기로 하고  아니면 S3 같은 거는 그런 거 아니더라도  1년 동안 한 달에 5GB 정도는 무료로 쓸 수 있고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그런 과정을 더 추가로 얘를 보완한 다음에
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  되게 옛날 버전 GPT를 치면 2나 이런 거는 API 같은 거 열려있으니까 허킹 페이스에서 적당한 것을 찾아서  걔가 이걸 바탕으로 그러니까 예를 들어서 이거 긁어다가 GPT한테 조금 더 뭔가
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  글을 풍성하게  근데 이제 그걸 좀 여기다가 인베이딩해서 자동화 시켜놓으면 좀 더 말이 나올 거잖아요.
+Speaker SPEAKER_01:  지금은 이게 숫자 값들 외에 여기 문자들은 그냥 고정된 값들이다.  그래서 이걸 조금 추천 아니죠.
+Speaker SPEAKER_01:  이걸 조금 더 고도화하고  그다음에 지금 그냥 단순하게  이런 폰템으로  이게 아니라 이거에다가 저는 여기에다가 조금 그
+Speaker SPEAKER_01:  대시보드를 인베이딩 했으면 좋겠거든요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  태블러를 위로 주고 사거나 아니면 오픈소스인 스포셔를 써야겠죠.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래가지고 데이터가 이래서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  감사합니다.  감사합니다.  감사합니다.  네.  저도 데이터가 조금 이상해서 찾아봤는데 현수님이 올리신 두 번째 데이터도 괜찮은 것 같더라고요.
+Speaker SPEAKER_01:  사실 제가 해봤어요.  해봤어요?  이것도 다 돌려봤는데.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  왜냐하면 그리고 얘는 사실 조금 검증된 데이터인 게 이게 HR 그 주제를 할 때 IBM에서 만든 건데 엄청 많이 사용이 되거든요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 얘로는 할 게 많을 거예요.  그래서 제가 그래서 사실 좀 피하고 있었어요.
+Speaker SPEAKER_01:  음.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그렇죠. 근데 이제 만약에 이걸 쓴다고 하면은  현수님이 가져오신 데이터는 조금 그 데이터가 어떻게 생성됐는지가 의문이 되네요.
+Speaker SPEAKER_01:  무슨 얘기냐면 이게 원래 IBM에서 제공해줬던 데이터는
+Speaker SPEAKER_01:  한 1400개 레퍼드 정도 되는 데이터인데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  4000개 정도로 늘려놨거든요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그리고 뭐 사실 데이터 품질이라고 해야 되나?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  네. 워낙 HR 데이터 좀 구하기가 힘들어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네. 구하기가 힘들어서 그래서 거의 이런 거 이걸로 해서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  일단 기존 데이터는 안 하는 걸로 결정하는 건가요?  어떻게 할까요? 그 전에 했던 거가
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 전 차라리 그 영훈 님 저번에 사용했던 데이터셋이나
+Speaker SPEAKER_01:  그리고 이번에 찾은 이 데이터셋을 사용하는 게  그런게 더 나은 것 같아요. 저도 보면.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  한 번 신청했지만 재활용이...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  편집만 괜찮으면 할 수 있는 게 참 많은 건데.  알겠는데 뭐 안되니까.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  파악을 좀 해보는 거면.  그런 것 같아요.  그럼 지금 한 두 가지를 다 일단 보고자 하는 말씀이신 거죠?
+Speaker SPEAKER_02:  영호님 이전에 했던 거랑, 편집님이 촬영한 거랑.  일단 파악을 해서 어떤지 알아보는 시간을 갖자는 말씀이신 거죠?
+Speaker SPEAKER_02:  목요일까지.  네. 그러면은... 어떻게 할까요?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  제가 이거를 올려서 확인해보면서 빠르게 체크하시는 게 좋으실까요?  아니면 각자 다 빌딩 하시는 건가요?  저는 올려주시면 좋을 것 같아요.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 요거까지...
+Speaker SPEAKER_01:  근데 그 아까 전에 데이터 탔고, 오, 장난 아닌데 할 수 있는 게 더 많겠다.
+Speaker SPEAKER_01:  네. 그다음에 이제 삭득한 다음에 더 파봐도 되니까.
+Speaker SPEAKER_01:  하...
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  일단 목요일까지.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04:  음... 뭐라 불러야 되나?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아, 아, 아...
+Speaker SPEAKER_01:  이쪽이 이렇게 나와 있고 이쪽이 이렇게 나와 있을 건데.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  아, 이게 이렇게 퍼져 있다고 생각하면 제가 뭐...  이쪽... 그... 보통은 여기에 GPT랑 제 분석을 도와줄 인터넷 창이랑 화면도 여기 있고.
+Speaker SPEAKER_01:  그다음에 여기는 그... 화면... 저... 익스플로러랑 뭐 그다음에 검색 자료 같은 거.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그... EDA를 해서 대시보드 형태로 보여주는 거 하나랑...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  지금은 저희가 막 추출하느라고 시간을 쓰고 있지만...  그 추출한 걸 결국 RDB로 바꿀 거고...
+Speaker SPEAKER_01:  그러니까... 지금 저희가... 그 예측한 것도 예를 들어서...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이 팀이... 뭐... 앞으로... 뭐... 어떤 성분지수가 어떻게 될지 예측해 볼 수도 있고...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  저희가 한 게... 아직도... 제 생각에는 아마 두 번째가 혜수 님인 거 같은데...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  비율이 안 맞거든요. 안 맞나 이렇게...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  3차 때... 그래서 이렇게...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  많이 괜찮아지기는 했네요  이런 걸 예측해볼 수가 있다면  진행된 거를
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  저렇게 제가 말을 많이 했다고요?  지금 이게 혜수 님인지 정확히 몰라요
+Speaker SPEAKER_01:  영훈 님이 저만큼은 했는데 반이나 따라갔다는 건 놀라운  그리고 이런 상호작용도 그렇고 근데 이것도 이제 아무래도
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  이 1번하고 관계된 이거 값이 있고 근데 어쨌든 이런 거를 이제 저희가 쪼개가지고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아니면 사람을 나눠가지고 이렇게 두 명은 어떤 처치를 하고 저렇게 두 명은 어떤 처치를 하고 아니면 이제 얘한테 어떤 처치를 해주면 좀 더 뭐 줄어든다는 거야  아 네 그런 것도 재밌을 것 같아요. 저희 이렇게 오프라인으로 녹음한 건 처음이잖아요  근데 제 생각에 오프라인으로 녹음하면 좀 더 왔다갔다 많겠죠?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  오프라인하고 오프라인하고  온라인을 비면  그러면 이제 뭐 얘기하신 대로 약간 이런 대안을 그런 걸 얘기할 때 좀 더 오프라인 중심에  온라인 뭐라 해야 되지? 미팅의 효과 뭐 이런 거를 얘기할 수 있겠죠?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  아 그래서 얘기하고 싶으신 포인트가  그니까 얘도 그 완전히 그 뭐라 해야 되나  큰 프로젝트가 되겠다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  근데 이게 뭔가 저희가 이제 이미 파일을 열 몇 개 이제 뽑았고 그 3차까지 해서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 저희 앞에 헤매다가 만든 그냥 그 영상들을 이제 처리하는 거로 그냥 진행해도 되려나
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  아 그러니까 진짜 요거를 메인으로 가시고 앞에 HR 부분은 그냥 뭔가 이걸 위한  수단으로 이용하는 느낌으로  원래는 그랬는데 지금 제가 말씀드리는 거는 아예 날려버려도 되겠다  그냥 이것만 해도 되겠다  아 되지 않을까 생각하는 거죠  근데 얘를 RDB화 하려고 했는데 그것도 만만치가 않아서
+Speaker SPEAKER_00:  아 그러니까 진짜 요거를 메인으로 가시고 앞에 HR 부분은 그냥 뭔가 이걸 위한
+Speaker SPEAKER_00:  그냥 이것만 해도 되겠다  아 되지 않을까 생각하는 거죠
+Speaker SPEAKER_01:  그러니까 지금 다 못했는데 얘를 이런 형태로 만들려는 거예요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그러니까 이건 저희가 3차 첫 번째 영상인데
+Speaker SPEAKER_01:  그니까 영상까지는 그냥 이렇게 만들고  하나에서만 이렇게 뽑힌 거고
+Speaker SPEAKER_04:  그니까 영상까지는 그냥 이렇게 만들고
+Speaker SPEAKER_01:  이제 스피커 1번이 얘기한 다음에 2번 얘기했고  1번은 뭐 이때는 몇 번 카운트 됐고  이제 요런 거를 가지면서  카운트가 혹시 어떤 걸 의미하는 거죠?  그냥 그 줄 단위에요  아 단어 양을 얘기하는 건가요?
+Speaker SPEAKER_00:  아 단어 양을 얘기하는 건가요?
+Speaker SPEAKER_01:  그렇죠 이건 이걸 하나라고 치면 돼요  혹시 근데 단어 하나당 1카운트인 건가요?  아니요 그러면 엄청나게 높겠죠  그럼 인자?  이거 한 줄 당이에요  그래서 그것도 사실 지금 문제긴 해요  왜냐하면 얘가  그...
+Speaker SPEAKER_00:  그래서 그것도 사실 지금 문제긴 해요
+Speaker SPEAKER_01:  아까 보니까 카운트가 막 800 뭐 이런 거 있었던 거 같은데  800줄 내리갈렸다
+Speaker SPEAKER_01:  얘가 그냥 이 발화점 가지고  이렇게 쪼개는 거라서  정확히 한 문장도 아니고  그렇다고 어떤 의미 단위로 쪼개지는 것도 아니고  그래서 어 이 정확하게 저기에 의미 부여하기가 어렵기는 한데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  뭐 1000번이다 해서 1000은 큰 의미가 없을 수 있지만  이 1000이 두 번째에서는 800으로 줄...  뭐 세 번째에서는 600으로 줄고  네 번째에서 400으로 줄고 하는 게  이 사람이 점점 말을 안 한다는 걸 얘기하는 문제가 있는 거죠  근데 앞에 1000번이 어 그럼 얘가 1000문장을 얘기했냐  막 이런 식으로 이제 딱 정확하게 그 절대값을 가지고 분석할 수는 없지만  그래서 아까 준영 님하고 잠깐 얘기했는데  보시면 얘가 그 추출하는 무료 버전이라서  추출하는 퀄리티가 완전하지가 않거든요  그 빼먹는 문장도 있고  근데 그게 어떤 큰 바이어스가 없으면  변화 추이를 보는 여전히 상당했어요  그래서 제가 지금 생각하고 있는 게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  막 이런 식으로 이제 딱 정확하게 그 절대값을 가지고 분석할 수는 없지만
+Speaker SPEAKER_01:  저희가 얘를 RDB화 시키고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  RDB화 시키고 걔를 가지고 이렇게 뭐 추가적인 분석이 돌아가는 거를 만들면
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 앞에 만약에 더 좋은 퀄리티가 있으면  그 퀄리티로 이거 뽑으면 얘만 바꿔주면 되잖아요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 이제 아 추출이 다 완성된 다음에 다음으로 넘어가려고 하다가는
+Speaker SPEAKER_01:  뭐 뭐가 안 될 수 있게  그다음에 저는 이 정도 수준으로도  예를 들어서 어떻게 하면 더 협력이 증진되는지  그러니까 저의 관심사 그 없을 점 하나가 됐어요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 초기 단계라는 게 두 가지가 있어요  두 가지입니다  첫 번째는 그냥 낯선 사람이 만난 초기  그다음에 두 번째는 프로젝트의 초기  뭐 만나서 뭘 정하고 뭐 이럴 때  그다음에 이제 막 뭐 어떤 기술적인 걸 논의할 때는 이런 형태고  그런 걸 모니터링하는 것만 해도 꽤 괜찮고  그다음에 저는 보여드린 이 두 개 그래프를
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 갑자기 생각났네요  아 갑자기 생각났네요  아 갑자기 생각났네
+Speaker SPEAKER_01:  탭을 가지  어 어 탭을 가지는
+Speaker SPEAKER_01:  1번이 1차 2차 3차 4차 회의 가면서 어떻게 변했는지  2번이 어떻게 변했는지 3번이 어떻게 변했는지  아니면 1차때 1차 회의 띵 누르면 이렇게 나오고  2차 때 누르면 띵 나오고
+Speaker SPEAKER_01:  보여지는 것 자체가 어떤 예측 모델이나 그런게 없더라도 저는 충분히 어필이 될 수 있을 거라고 보고
+Speaker SPEAKER_01:  왜냐하면 이걸 그리고 자동화 해 놓으면 어떤 팀에서도 계속 쓸 수 있는 거거든요. 우리가 몇 명이든지 간에 회의를 했는데 너무 이렇게 한 명 중심으로  가는지 아니면 어떤 형태로 가는지. 회의 형태에 따라 한 명 중심으로 가야 되는 경우도 있거든요.  만약에 이번 회의는 한 명이 프레젠테이션을 하고 나머지가 피드백을 하는 경우인데 말하면 이렇게 다를 수가 있어요.  그래가지고 제가 이게 초기인지 중기인지 그 다음에 어떤 회의였는지. 그래서 저희가 회의록을 계속 쓰는 것도
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 얘는 대시보드 자체, 모니터링 자체로도  굉장히 잘 사용이 되는 것 같아요.  굉장히 2.2. 그 다음에 이게 RDP 형태가 되면 저희가 이제까지 했듯이 모든 네이벌로 뽑아서 예측 못해볼 게 없죠.  그 다음에 그 하셨던 시계열 분석 있잖아요.
+Speaker SPEAKER_01:  이거는 하나의 선으로 뽑은 거고.  이게 이 지금은 이렇게 날짜로 했지만 이건 만약에 그냥 1차, 프로젝트 3 이렇게 이제 따로 컬럼을 만나면 1차, 2차, 3차, 4차, 5차까지밖에 없는데
+Speaker SPEAKER_01:  그 저번에 3차 프로젝트.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  EDIT에서 대시보드도 만들어서 보여줄 수 있고 머신러닝 빌딩도 해볼 수 있고
+Speaker SPEAKER_01:  그다음에 그 머신러닝도 단순히 뭐 리그레이션 클래시케이션 뿐만이 아니라 그 시리얼.  그거 시리얼로도 맞춰서 보여줄 수 있을 것 같고.  그런데 이제.  네.  네.  네.  네.  그렇게 되면 굳이 재료가 필요한가?
+Speaker SPEAKER_00:  그런데 이제.
+Speaker SPEAKER_01:  라는 이제 생각이 하다 보니까 들었는데.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  일단 제가 이거를 한 번 다.  이제까지 뽑은 거.
+Speaker SPEAKER_01:  저 4차.  일단은 6차까지만.  7차는 지금 명수가 달라져가지고.  어떻게 해야 될지 좀 고민이어서.
+Speaker SPEAKER_00:  아.  5명에서 두 번째.  아.  4명에서 5명으로 늘어나니까요.
+Speaker SPEAKER_01:  그렇죠.  그러면은 이거를 이제 하나로 합치려고 그러는데.
+Speaker SPEAKER_01:  어 잠시만요.
+Speaker SPEAKER_01:  그러면은.  근데 궁금한 게 영상을 합치면 다 별개의 인물로 얘가 인식을 하나요?  아니면은 5번은 그때까지 한 마디도 없다가 1시간이 지난 후에 말을 시작을.
+Speaker SPEAKER_01:  시작하는 걸로 인식이 될까요?
+Speaker SPEAKER_01:  어떻게 하면 돼요?  아 그 4명인데 5명으로.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네 변화가.
+Speaker SPEAKER_01:  그건 안 해봐서 모르겠네요.
+Speaker SPEAKER_01:  저가 상상하기엔 그냥 만약에 영상을 합쳐놓으면.
+Speaker SPEAKER_01:  얘가.
+Speaker SPEAKER_01:  그 어떤 걸 기준으로 사람을 인식하는 건지는 정확하게 저는 모르지만.  그냥 나중에 준영님 스피커 5라는 사람이 등장한 걸로 인식을 하지 않을까요?
+Speaker SPEAKER_01:  안 그럴 것 같아요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이렇게.  그다음에 지금 이거를 강제로 5명으로 나누기 위해서 5명인데 그냥 돌리면 저번에 보여드렸듯이 5명인데 4명으로 분류하고 그러거든요.
+Speaker SPEAKER_01:  그거를 우리가 5명으로 강제해놨기 때문에 그 안에서 기준이 딱 정해져 있으니까 이렇게 하는데.  네 그래서 제가 여기 그 파라멘터를 5명이라고 레퍼런스를.  저도 4명으로 썼거든요.
+Speaker SPEAKER_01:  그렇죠.  이쪽에서 파장이 이렇게 비슷한 것 같아요.  그리고 지금 얘가 이렇게 분류한 것도 정확하지 않을 거예요.  그러니까 근데 이제 전체 경향을 보면 얼추 맞아 보이긴 하거든요.  그러니까 이해 못 할 그런 건 아닌 것 같은데 완전 정확하지는 않을 거예요.  그렇죠.  그렇죠.  그래도 한번 합쳐서 한번 해볼까요?  네.  네.  네.  네.  어떻게 나오는지.  그렇죠. 그렇죠.  합쳐서 해볼 수 있어요.  제 거니까 열심히 해볼게요.  저도 한번 해볼게요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  근데 이제 지금 전체 합쳐보는 거에서는 일단은 더 고려해야 될 게 있으니까 뺐다는 얘기고.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그렇죠.  감사합니다.  네.  네.  경험� Punkt a는 공격 SER, a는 성 그거 같으신 집 손님의 볼 기해 수행 정해져게 윤 בפ러 torpedo.
+Speaker SPEAKER_00:  그렇죠.
+Speaker SPEAKER_00:  그런데, or 따라 하시겠습니다.
+Speaker SPEAKER_01:  그런데 확인에 맛이 있는 거랑 gilt나 싶어서agt Они 어떤 걸 ontoll 때 이렇게 말하는 게 제가 만약에 걸음을 되어 respects 말 가능도 있는 것 같은데 그냥 일어나면,  그래서 Art Hunали니까 funktioniert 그러기만 하면은 그럼 깊 bite 수종은 x2  you can go ahead intech
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  내가 한번 해볼까요
+Speaker SPEAKER_01:  영상 길이 때문에 절대카드로 잡아놓고
+Speaker SPEAKER_01:  그 다음에 제가 이게 지금 뭔가 생각처럼 안 되고 있는데  이건 그냥 단순히 발화 쓰고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그 말만 한 거 말고  이렇게 얘가 말한 다음에 얘가 반응하고  이런 걸 좀 인터랙션을 잡아보고 싶었는데  아 이게 값이 다 똑같이 나와  그리고 오히려 더 적게 나와요
+Speaker SPEAKER_00:  이런 걸 좀 인터랙션을 잡아보고 싶었는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  분류해서 봤을 때 이거랑 다르잖아요  이거랑 비교해서 봤을 때는 전혀 아닌데  이게 3차는 어떤 회의를 잡더라도
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 지금 저기에 뭔가 문제가 있는 거 같은데
+Speaker SPEAKER_01:  이것도 좀 더 적고  아니 그 다섯 개가 다  다섯 개가 다  동일하게 저런 형태로 나온다는 말씀이시죠?  아니 아 값이 다 동일하게 나와요  아예?  응  그래서 지금 뭔가 오류가 있을 텐데  그거를 아직 해결은 못 한 상태고  근데 이제 지금 이걸 보여드린 이유는
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  지금 추출하는 거 자체가 약간 문제가 있기는 하지만  저는 안 된다고 하면 추출은  그 돌아가는 그냥 준형님하고 제가 하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그것들이 파이프라인이 만들어져 있으면
+Speaker SPEAKER_01:  이렇게 하다 보니까  오 지금 위스퍼모델을 썼는데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그래서 이제 그 틀을 잡으면 좋겠다는 게 그런 말이 있어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  어쨌든 큰 얘기 주제는 결국에 이거 앞쪽에 계속 얘기를 했던 내용이.
+Speaker SPEAKER_01:  음.  음.  그러니까 이렇게 이 치안쪽을 좀 대체하고 이 부분을 좀 중심.  이것만 그냥 다뤄서 가볼까 라는 생각을 들었던 거죠.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  음.  아 생각을 이제 하나 얘기하는 건데.  이게 조금 위험 부담이 있어 보이기는 해요.
+Speaker SPEAKER_01:  근데 안 될 것 같지는 않긴 한데.
+Speaker SPEAKER_01:  왜냐하면 지금 하나하나의 스크립트 에서 뽑은 거는 돌아가고 있는  걸 보고.  스크립트가 이제 완벽하지는 않고 여러가지 오류가 있어서
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  전체 경향성이 이해되는 형태로 나와서  이제 분석은 가능할 것 같은데
+Speaker SPEAKER_01:  일단 지금 하나하나 따로가 아니라 합치는 거에서 문제가 있어서
+Speaker SPEAKER_01:  그거를 이제 다 뽑아 놓은 파일이 있으니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 지금 아 모르겠는데 그렇다고 앞에 HR을 날리는 것도
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  HR 그거를 이용해서 정말 완성도 높은 분석을 하는 것보다
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  완성도가 떨어질지라도 이 데이터를 활용해서 분석하는 게
+Speaker SPEAKER_00:  저희한테는 훨씬 더 좋은
+Speaker SPEAKER_00:  뭔가 , 그런 과정에 결과물이 되지 않을까 싶긴 하거든요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  지금 멘토님도 이거 보고 놀라셨던 거
+Speaker SPEAKER_01:  진짜 찍으러 1차 데이터부터 다 수집하는 거잖아요
+Speaker SPEAKER_00:  만약에 물론 두 가지를 다 적절히 시간을 투자해서 할 수 있다면
+Speaker SPEAKER_01:  둘 다 하는 게 좋겠죠  뭐 앞에 거 비중을 조금 줄이더라도  그 두 가지 하는 게 가장 좋긴 할 수 있겠지만  만약에 둘 중 하나를 선택해서  선택해야 되고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그리고 만약 둘 다 선택했을 때
+Speaker SPEAKER_01:  둘 다에 대한 확신이 없다면  저는 하나를 선택하는 게 좋고  만약 하나를 고르자면  네 지금 얘기한 저희 협업 관련된 데이터를 다루는 프로젝트를 하는 게
+Speaker SPEAKER_00:  좀 좋을 거라고 생각합니다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  다른 문의 없으셨고?
+Speaker SPEAKER_03:  저도 되게 생각했어요  그래서 아까 그 3차 연휴  소식을 좀 전해드렸는데  시선 부담续 designer  adalah  좋고요  실험과 마주칠 머리� resurfacing  rob sui  그러면ảo  그리고 선생님 하 pigment
+Speaker SPEAKER_01:  좋고요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  rob sui  그러면ảo
+Speaker SPEAKER_01:  참확하게  그래도 저희가 생 palace imf rasen  coating 점점 photo 30 h m  3차 때 다른 사람들이 했던 건데 내가 갖다 쓸 수 있는 건가 하는 건데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  적당히 자기가 많이 기여한 것처럼 써도 문제없다고는 생각해요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그리고 이거를 좀 먼저 우선적으로 어느 정도 시간을 투자하고 수행하더라도
+Speaker SPEAKER_01:  만약에 진짜 안 되겠다 싶어서 나중에 없게 된다 하더라도 그때 돌아갈 수 있다고 좀 생각이 들어요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  아 근데 이 프로젝트는 지금 생각하고 있는 원대한 그것까지 도달 못 해도
+Speaker SPEAKER_01:  그냥 스크리닝 모델로 대시보드는 만들 수 있어요 왜냐면 지금 코드만으로도 만들 수 있거든요  이거 그냥 태블러로 옮기면 돼요 필터만 넣어주면
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  아니 지금 이 프로젝트는 그냥 태블러로 옮기면 돼요 필터만 넣어주면  아니 지금 이 프로젝트는 그냥 태블러로 옮기면 돼요 필터만 넣어주면
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  회의에 참여하는 태도가 불성실해  그리고 제가 저도 이제 안 돼서 스트레스 받느라고 못 했지만 여러분들 이거 작성해주세요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  회의에 참여하는 태도가 불성실해  그리고 제가 저도 이제 안 돼서 스트레스 받느라고 못 했지만 여러분들 이거 작성해주세요
+Speaker SPEAKER_01:  아 맞아요  근데 저는 얘기하다 떠올랐어요  이걸 좀 비교해봐서 그냥 스크리닝하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  이걸 좀 비교해봐서 그냥 스크리닝하고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 대신에 이제 뭔가  막 알리비를 아예 뽑아서 진짜  종합적인 어떤 서비스까지는 못 갈 수도 있을 거라고 생각하는 거죠
+Speaker SPEAKER_01:  근데 그냥 이렇게 1차 때는 어땠고 2차 때는 어땠고 3차 때는 어땠고
+Speaker SPEAKER_01:  이거 그냥 패드로 옮기긴 하면  그래서 아예 어그러질 일은 없을 거예요
+Speaker SPEAKER_01:  꽤나 멋지다  지금 멘토님께서는 굉장히 충분히 어필 될 거다
+Speaker SPEAKER_00:  꽤나 멋지다  지금 멘토님께서는 굉장히 충분히 어필 될 거다
+Speaker SPEAKER_01:  어떤 회사를 가는지 간에 2인 이상이라면 협업에 관심 있을 거고
+Speaker SPEAKER_01:  이렇게 그냥 하나하나 뭐 이때는 어땠고 저렇게 현황 보여주는 거 말고  좀 이렇게 종합적으로 이거를 다 합쳐가지고  이게 합치면은 이제 저희가 영상 한 20개 30개 정도 될 텐데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  VDA든 모델 디딕이든 그런 걸 해볼 수 있지 않을까  근데 못해도 그래도 보여줄 수 있는 거는 없진 않을까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그리고 사실 이게 좀 오늘 영향이 있었던 거 같기도 하지만  그 데이터가 막 이렇게 좀 그런 걸 보니까
+Speaker SPEAKER_00:  그리고 사실 이게 좀 오늘 영향이 있었던 거 같기도 하지만
+Speaker SPEAKER_00:  뭔가 1차로 그 HR
+Speaker SPEAKER_01:  HR  데이터 하는 거에 대해서 기대감이 많이 줄기도 했고  이 VDA 하면서 실기 데이가 나오는 거 보니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  좀 만들어져 있는 그때 3차 때 했던 거를  걔도 일단 안전망 같은 걸로 진행을 하자였는데 그것도 괜찮으신가요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  지금 다이체가 당장 되는 생각은
+Speaker SPEAKER_01:  뭐 그런 걸 추가해볼 수도 있겠죠  근데 이제 그거는 시간이 많이 들 게 아닌 데다가 저 뭐지?
+Speaker SPEAKER_01:  AWS에 엉기만 하면 되는 느낌으로 다 완성이 일단 돼있다 보니까  시간이 많이 들어가잖아요  오류날 것도 좀 많진 않고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이게 있다 보니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그러니까 그 RDB까지 가서 종합분석까지 안 가면  그러면 얘만 있는 게 조금 그래서 그래요  그러면 원래 했던 대로 그 합쳐가지고  저희가 EDA나 머신러닝 능력은 앞에 데이터로 보여주고  얘는 이제 1차 데이터 수집 및 가공
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 만약에 얘가 잘 돼가지고 얘 자체로 종합분석을 할 수 있다 하면은
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  완성된 프로젝트가 될 수 있죠
+Speaker SPEAKER_01:  이 두 분 얘기하신 거랑 계속 헷갈리지만
+Speaker SPEAKER_01:  패스님하고 현상님 얘기하시면 되죠  전 두 마리 두 개를 잡는 게 당연히 좋겠죠
+Speaker SPEAKER_01:  근데 만약에 하다가 문제가 생길 수도 있으니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그게 너무 어려운 거 같아요  만약에 두 개를 하다가 하나로 이제 몰입할 수도 없고
+Speaker SPEAKER_01:  근데 만약에 하나만 했다가 하나가 조금 아까 말씀하셨듯이  문제가 생긴다 하면 이제 그때 이제 다시 두 개를 해야 하는 거고  그래서 너무 결정장애 느낌이랄까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 다음에 제가 예상한 대로 걱정하는 대로 뭔가 막 문제가 생겨서 안 되면
+Speaker SPEAKER_01:  그냥 얘는 대시보드로만 만들고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 얘를 그냥 안점론 같은 느낌으로 가는 거죠 이거죠
+Speaker SPEAKER_01:  혹시 마지막 수업 다 들으신 분 계신가요?  퍼딩 페이스하고 LLM 사용해서 뭐 만드는 거  저는 세 번째 거까지 들었어요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  저도 듣기는 들었었는데
+Speaker SPEAKER_01:  네 네
+Speaker SPEAKER_03:  아 아
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아니 뭐 안 들면 GPT2 따로 불러서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이 제가 느끼기에
+Speaker SPEAKER_01:  또 저희가 지금 녹음하고 열심히 이제 뽑아보고 하는  얘를 중점으로 가면은 좋겠다는 거에는 다들 동의하시는 거 같고  근데 다만 걱정사항이 있는 거죠 얘가 기술적 난이도도 꽤 있고
+Speaker SPEAKER_01:  만약에 이건 그냥 배시 보드만 만드는 수준이면 아이디어는 괜찮은데  근데 그거 하나만으로 프로젝트 하기에는 그러면은 뭐 머신러닝이나 이런 능력을 못 보여주니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 이제 그
+Speaker SPEAKER_01:  근데 어떻게 생각하세요?  그 뭔가 후자 협업 저거를 메인으로 가다가
+Speaker SPEAKER_00:  그 뭔가 후자 협업 저거를 메인으로 가다가
+Speaker SPEAKER_01:  나중에 요거를 같이 진행해야겠다라는 생각이 들어서  그 후자 협업 저거를 메인으로 가다가 나중에 요거를 같이 진행해야겠다라는 생각이 들어서  그 후자 협업 저거를 메인으로 가다가 나중에 요거를 같이 진행해야겠다라는 생각이 들어서  그 후자 협업 저거를 메인으로 가다가 나중에 요거를 같이 진행해야겠다라는 생각이 들어서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  협업을 이때까지는 메인으로 해서 진행을 해보고  만약 이때까지 우리가 원하는 결과치가 안 나온다 싶으면  그때는 어서 빨리 이건 이 정도에 멈추고 저기로 돌아가서 저거를 개선하는 쪽 해서 어떻게 마무리를 아그로 맞춰야겠다  그렇게 하나씩 할 수도 있겠지만 저는 같이 진행하면 어떤가 생각하긴 합니다
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아예 같이요?  네
+Speaker SPEAKER_01:  혹시 왜 같이 진행하는 걸 선호하시는지
+Speaker SPEAKER_01:  어떻게 될지 모르니까  어떻게 될지 모르니까  시간 때문에 모르니까  그리고 이제 제가 예를 들어서 목요일까지
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  어떻게 될지 모르니까  어떻게 될지 모르니까
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  지금 저희가 텍스트를 추출하고 여러 가지 문제가 있고 하는 거를 다섯 명이 다 같이 할 게 아닌 거 같다는 느낌도 들어요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  지금 아예 컴퓨터에서 안 들어가시는 분들도 계시는데
+Speaker SPEAKER_01:  그 이쪽 프로젝트에 가고 있는 분들도 계시는데  그 다음에 추출된 프로젝트 예를 들어서 목요일까지  준형님이랑 제가 이거를 텍스트를 뽑아오면은  그러면 그걸 토요일까지는 뭐 이거 가지고서 뭐가 분석될 수 있을지 진행을 해본다든가
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  어  아
+Speaker SPEAKER_01:  아  아  아
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  인제  ну
+Speaker SPEAKER_01:  그  한
+Speaker SPEAKER_01:  깜짝 놀랐어요  그럼  아이
+Speaker SPEAKER_01: iedz
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  텍스트 추출을 하나도 못하고 있다면 당연히 거기에 매달리고 있어야 되는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  저는 이제 뭐랄까 하나를 이렇게  왜냐면 왔다 갔다 하면서 진행하면  사실 집중도가 떨어지는 건 어쩔 수 없으니까  그렇긴 해요. 제가 그랬어요.  그렇지 않을까라고 생각을 했는데  또 들어보니까 제 매일의 오늘 저녁의 모습만 생각해봐도  그냥  이거 돌려놓고 계속 이러고 앉아서  왜 안 될까 이러고 있는 이 시간에  아 그리고 제가 지금 더 느낀 게  여기 와서 각자의 컴퓨터를 보니까  그냥 다 떠나서 그냥 이렇게 뚱뚱한 컴퓨터에서는 돌아가고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  그렇지 않을까라고 생각을 했는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그냥 그것 때문일 수도 있을 것 같은데  이제 그런 경우에는 다커 뭐
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이걸 다커 허브에 올려서 뭐 거기서 수정해서
+Speaker SPEAKER_01:  근데 저희는 지금 백엔드 그 프로젝트가 아니라서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  또 그렇게까지 할 건 아닌 것 같고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이제 분석 이거 뒤에도 이제 분석할 게 많으니까  그거를 같이 해보면 어떨까 하는 생각입니다.  음.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  그러면 이제 그 좀 왔다 갔다 하긴 해야겠지만
+Speaker SPEAKER_01:  전부 다 왔다 갔다 한다기보다는 약간 팀원들이 왔다 갔다 하는 느낌이에요.  이번 회차까지는 누구는 뭐하고 누구는 뭐하고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그거 그게 좋지 않을까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네.  로딩은 다 되는데  음.  로딩은 끝나는데 갑자기 꺼지고 그래서 버전도 바꿔서 해봤는데 또 안 되더라고요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  아 근데 뭐 닷커로는 안 되지만 돌리실 순 있으니까 그냥 닷커 없이 로컬에서 파이썬 돌려서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  WSL에서 돌렸더니 3,40시간이 넘어가도 추출을 못 해가지고 하셨던 것처럼
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 저 혹시 질문 하나 있는데 좀 벗어난 질문이 있는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  그 저기 레퍼로, 아니 레퍼 복사해서 제 로컬을 가져와서 이제 수정하고 그리고 이제 커밋하잖아요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  리퀘스트 넣고  근데 제가
+Speaker SPEAKER_01:  레퍼 가져와서 복사하고 거기에 가상 환경 만들어서 그 라이브러리들을 깔잖아요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  전 그랬거든요. 그랬더니 이제 커밋에 막 만개 넘게 막 이렇게 떠버리는 거예요.  혹시 다들 그런 건 어떻게 하셨나요?
+Speaker SPEAKER_01:  그 END 폴더 얘기하신 건가요? 그럼 걔는 빼고 올려도 되는데
+Speaker SPEAKER_01:  아 그거를
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  네 그거 그니까 걔 말고 다른 것만 선택해서 이제 올리면  지금은 제가 그래서 그냥 아예 로컬을 따로 복사를 해서 했어요.  레퍼를 빛으로 연결을 안 하고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  그리고 가상 환경이 만약에 컴퓨터 자원이 충분하지 않으면 안 하는 게 나을 수도 있다고 생각이 들어요.
+Speaker SPEAKER_01:  일단 그렇고 그다음에 그 레퍼 올리는 거는
+Speaker SPEAKER_01:  저도 이게 이제 연결돼 있는 거죠.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  예예  그러면은  맞아
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 만 몇 개가 떠 있으니까 찾을 수가 없어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  라이브러리가 하나씩 다 이렇게 나와요.  라이브러리가 깔린 게 저기 쫙 떠버리더라고요.  아 진짜요?  깔린 요소 그 그런 파일들이 쭉 떠서  여기에서 보셨어요?
+Speaker SPEAKER_00:  라이브러리가 하나씩 다 이렇게 나와요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  네?
+Speaker SPEAKER_03:  VS 코드에서 보셨어요?  네
+Speaker SPEAKER_00:  네
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 그래서 그냥 이렇게 얘 하나 이렇게 올려서 이렇게 될 수가 없었다고요?  네 그렇게 커밋을 할 수가  만 몇 개가 떠 있으면 뭐가  그중에서 뭘 이렇게 찾아보기가 불가능해서
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  네 그렇게 커밋을 할 수가
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  그래서 혹시 이거 그렇게 막 떠 있는 건가요?  그렇게 막 떠 있는 상황이 그냥 다 삭제해 버리면 되지 않나라고 생각했는데 그걸 삭제하면 아예 삭제가 되더라고요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그래서 혹시 다른 분들은 아예 그냥 가상 환경을 사용을 안 하시나
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  네
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  음  없이 돌렸거든요  아 굳이  그 다음에 특히 이제 다커 쓸 때는
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  걔가 디펜더시 걔가 일종의 가상 환경이라 그걸 또 가상 환경에서 이중 가상 환경에서 돌릴 이유가 없어서  그러니까 이제 준형님처럼 직접 로컬에서 돌릴 때는  내가 이 컴퓨터에 깔려있는 파이썬은 뭐 13번이 지점이지만
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  음  근데 다커는 그걸 자기가 하고 있는 거거든요  그래서 그걸 또 가상 환경에서 할
+Speaker SPEAKER_01:  필요가  네 중복인 거 같은 느낌
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  뭔가 그런 옵션이 없으셨나  잠시만요  회의하시는 동안 제가 잠깐 해볼게요  연동하지 말라고  네 한 번만 봐주시면 감사할 것 같아요  아 여기 아
+Speaker SPEAKER_00:  회의하시는 동안 제가 잠깐 해볼게요
+Speaker SPEAKER_01:  아니 여기 같이 볼까 하고  아 저도 궁금해가지고  아 그러면 세팅이 되면 말씀드리기
+Speaker SPEAKER_00:  아 그러면 세팅이 되면 말씀드리기
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  하고 있을게요
+Speaker SPEAKER_01:  하고 있을게요  저 그거 궁금한 게 있는데 그 아 일단 이거 바꿔주시면 안 될까요 그 뭐지 멤버 권한
+Speaker SPEAKER_01:  아 바꿀까요  네 그거 제 실수로 뭐지  했어요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 저는 그거 궁금해요  네 뭐라고요
+Speaker SPEAKER_03:  네
+Speaker SPEAKER_00:  네  네
+Speaker SPEAKER_03:  네  네  그래서 제가 이렇게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  five 야
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  오� Python  shares  schon  생성된 fuck  그거를 다시 제 클론에다가 풀어 해와야 되는데 그걸 어떻게 하는지 모르겠어요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 풀어야죠? 그 업데이트가 되면?  거기서 제 클론에다가 어떻게 풀어 하는지를 잘 모르겠어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  포크하신 거?
+Speaker SPEAKER_01:  포크한 거...
+Speaker SPEAKER_03:  풀 못 해오잖아요.  포크를 해서 그걸 당겨오는데  포크한 레퍼에도 업데이트 된 게 업데이트 돼야  충돌이 안 되잖아요.
+Speaker SPEAKER_00:  충돌이 안 되잖아요.
+Speaker SPEAKER_03:  근데 이걸 어떻게 포크까지 업데이트를 하는지...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  자동으로 안 되죠?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  전건 자동으로...
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  저는 그냥 텍스트 파일만 추가하고 있는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그러니까 예를 들어서 누가 익스트레서 이걸 업데이트를 했는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  뭐가 문제가 있냐고요?
+Speaker SPEAKER_01:  이게 자기 그...
+Speaker SPEAKER_01:  ...  ...  ...  ...
+Speaker SPEAKER_02:  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...
+Speaker SPEAKER_03:  ...  ...  ...  ...  ...  ...  ...
+Speaker SPEAKER_02:  ...  ...  ...  ...  ...
+Speaker SPEAKER_04:  ...
+Speaker SPEAKER_03:  ...
+Speaker SPEAKER_03:  ...  ...  저는 사실 기본 레포에서 땡겨와서 각자 브랜치 파는 걸 생각했는데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03:  하고 뭐지 하고 브랜치 또 다 없애고 풀 받고 다시 브랜치 파고 이렇게 가야 될 것 같은데
+Speaker SPEAKER_02:  하고 뭐지 하고 브랜치 또 다 없애고 풀 받고 다시 브랜치 파고 이렇게 가야 될 것 같은데  포크 해오는 거는 살 수 있는 의미가 별로 없는 거 같아요.  네. 합칠 때?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  제가 궁금한 게 제가 포크한 사이트 들어가면 싱크포크라고 나와 있거든요.  이걸 누르면 자동으로 동기화가 되는 건지 그걸 모르겠어요.
+Speaker SPEAKER_02:  거기가 어디?
+Speaker SPEAKER_01:  각자 포크한 사이트 기타 있잖아요.  거기 보시면
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  눌러보셨어요 혹시?
+Speaker SPEAKER_01:  근데 아무 변화가 없어서 지금 모르겠어요. 커밋된 게 없어서  해결됐어요? 해결한 게?
+Speaker SPEAKER_02:  그냥 지금까지 나온 얘기는 포크 말고 보통 그냥 여기
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  그래서 그랬는데 준영님이 싱크포크라는  네. 저도 그랬는데 준영님이 싱크포크라는  네. 저도 그랬는데 준영님이 싱크포크라는  그 버튼이 있다고 하시는데 그게 그러면 거기 업데이트 된 거랑 동기화가 되는 건가? 라는 의문이 있어서 눌러보셨는데 별...
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03:  아. 네. 맞아요.
+Speaker SPEAKER_04:  아. 네. 맞아요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  풀 리퀘스트를 아직 허용을 안 해서
+Speaker SPEAKER_01:  풀 리퀘스트를 아직 허용을 안 해서  네. 그 머지를 안 해서
+Speaker SPEAKER_02:  네. 그 머지를 안 해서
+Speaker SPEAKER_01:  머지 하면  이게 뜰까요?  이거 할 것 같은데 그냥 개인 레퍼랑 이거 싱크하는 게 있을 것 같아. 아니 왜냐면  그러면 그 테스트해서 하면 되잖아요. 그 테스트 된 거 있잖아요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02:  그러면 그 테스트해서 하면 되잖아요. 그 테스트 된 거 있잖아요.  아. 그럼요.  근데 거기도 머지가 아직 안 된 상태였거든요.  네. 맞아요.  하나만  그래서 그 머지를 허용을 해 주시고 거기서 다시 싱크를 돌려보면은  응. 좋은 것 같아요.
+Speaker SPEAKER_00:  근데 거기도 머지가 아직 안 된 상태였거든요.
+Speaker SPEAKER_01:  네. 맞아요.  하나만
+Speaker SPEAKER_01:  음. 좋아요. 아. 그리고 그러면은  이거를 일단 머지를 해 주세요.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  과연?
+Speaker SPEAKER_00:  과연?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  제발.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  똑같은 거 뜯어.  건플릭.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  아.  어. 그쵸?  제 생각에.  네.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  어. 네. 머지 돼 있는 거 같아요.
+Speaker SPEAKER_02:  어. 네. 머지 돼 있는 거 같아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  아. 근데 제가 수정한 거랑 여기서 머지 된 게 달라서 그런 거 아니에요?
+Speaker SPEAKER_03:  아. 잠깐만요. 그러면은 이거 다 본인이 한 거를?
+Speaker SPEAKER_01:  아. 근데 저 궁금해요. 이렇게 한꺼번에 풀리게 돼 있으면 이게 다 한꺼번에 머지가 돼요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  하나씩.  하나씩.  그래서 제가 원래 했던 거는 이렇게 풀리게티를 뭐 하루는 이틀든 저희가 막 보내놓으면 모여가지고 이 화면을 같이 보면서 아. 그. 누가 이런 변화를 했네요? 이거 머지 하죠? 하면 이제 같이 하고. 근데 왜 또 안 되냐고.
+Speaker SPEAKER_02:  그래서 제가 원래 했던 거는 이렇게 풀리게티를 뭐 하루는 이틀든 저희가 막 보내놓으면 모여가지고 이 화면을 같이 보면서 아. 그. 누가 이런 변화를 했네요? 이거 머지 하죠? 하면 이제 같이 하고. 근데 왜 또 안 되냐고.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네.  근데 만약에 혜수님이 두 번째 칸에 추가했고 제가 세 번째 칸에 추가를 했어요.
+Speaker SPEAKER_01:  근데 만약에 저희 팀 래퍼에서 이제 영훈님이 혜수님 거를 머지 허용을 하면 1, 2에 차 있어야 되는데 제 포크에는 1만 차 있을 거 아니에요. 아직 포크를 동기화를 안 했으니까.
+Speaker SPEAKER_01:  동기화를 안 했으니까.  근데 그.  네.  그래서 그거에 대해서 1, 3을 다시 풀리게티를 해서 충돌이 일어난 거 아닐까요? 이거를 풀리게티를 받기 전에 다시 저희가 풀하고 풀리게티를 하고 하고 하고 업데이트하듯이 계속해야 될 거 같은데.  그래서 그 순서가 있었는데. 뭘 하면 풀. 그 기에도 막 하는 순서가 있는데 뭘 하면 땡기고 브랜드 삭제하고 뭐 계속 그런 과정을 해야 되는데 그 풀 안 땡기면 이렇게 뭔가.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02:  충돌.  네.  지금 그 순서의 그거랑 달라가지고.  아 그래요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네 지금도.
+Speaker SPEAKER_02:  그러면 지금 그거를 해결한다고 묻으면 뭐가 나오죠? 이게 그 충돌을 겁나 자주 나오고. 이거 해결하는 거 자체가.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  근데 서로가 뭘 건든지도 헷갈리고.  맞아 맞아.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02:  근데 그러면 한 명 거를 뭐지를 먼저 하고.  네.  그다음에 땡겨와서 내 거를 붙여야.  그래.  저도 그렇게 해야 되는.  네.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 그러면은 다섯 명이서 그거를.  그렇죠.
+Speaker SPEAKER_02:  그렇죠.  그래도 그거만.  그러면은 수십 명이서 어떻게 하는 거죠. 오픈소스 같은.
+Speaker SPEAKER_00:  그러면은 수십 명이서 어떻게 하는 거죠. 오픈소스 같은.  그러니까 그게 방법이 아마.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  아.  아.
+Speaker SPEAKER_02:  아.  아.  아.  아.  아.
+Speaker SPEAKER_01:  아.
+Speaker SPEAKER_02:  아.  아.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  아.  아.  아.  아.  아.
+Speaker SPEAKER_02:  아.  그것 때문에 좀 계속 헷갈려 가지고.
+Speaker SPEAKER_02:  그때 그..
+Speaker SPEAKER_02:  근데 당시에는 그냥 사수가 해결해주는  그냥 그때는 그 해프 나고 이해했는데  지금 사실 좀 까먹었어요.  오래돼가지고
+Speaker SPEAKER_00:  근데 당시에는 그냥 사수가 해결해주는
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 그리고 제가 지금 저번 게임에 나왔는데  이게 뭐 옵션이 그냥 바꿔서 버릴 수도 있고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  지금 가상 환경 만들기만 했는데  이렇게 아직 라이브로 다운 안 했고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  가상 환경 만들고 그냥 활성화 했는데 바로
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  여기에 이제 라이브러리 설치하면 더 짜라라라라라라
+Speaker SPEAKER_03:  네  아 그래요?
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_01:  아 밖에서 만들어도 돼요?  저는 그냥
+Speaker SPEAKER_03:  저는 그냥  네  아예 가상 환경을 따로 만들고 여기서 접속을 했거든요  아 그래도 그래도 되겠구나
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그러면 아예 따로 만들어 놓고 그냥 인터프리터 선택할 때 같을 때 선택하면 되나요?
+Speaker SPEAKER_03:  네  아  그래서 그냥 그 콘더를
+Speaker SPEAKER_03:  그래서 만들고 여기서 그냥 선택만 했어요  근데 그냥 어떻게 하는 게 맞는 거 같아요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그래서 만들고 여기서 그냥 선택만 했어요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  한 명이 뭐 플리켓 때려서 뭐  그때 다시  그때 다시는 뭐 카톡에다가 뭐 플리켓에서 뭐지 했습니다  이렇게 누가 말하면은 이제 다시 받아 풀 땡겨서
+Speaker SPEAKER_00:  그때 다시는 뭐 카톡에다가 뭐 플리켓에서 뭐지 했습니다
+Speaker SPEAKER_02:  근데 지금  무조건 그렇게 해야 되는 거 같은데  지금 한 명 거만 멀지를 했는데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  지금 한 명 거만 멀지를 했는데  그렇죠  그럼 이제 저희가 여기서 풀 땡겨서 고친 다음에 다시 플리켓을 내려야
+Speaker SPEAKER_02:  근데 벌써 지금 한 명 거만 멀지 했는데
+Speaker SPEAKER_01:  근데 벌써 지금 한 명 거만 멀지 했는데  투브를 안 하는 거네요
+Speaker SPEAKER_03:  네 더 이상은 안 돼요
+Speaker SPEAKER_01:  네 더 이상은 안 돼요  안 돼요  아  아
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이제 이게 원래 원본이었고  요거만 추가되어 있는 이 상태인데  이거를 이제 끌어다가 싱크하면 되는 거잖아요  네 저희가  근데 왜 왜 출발을 안 해
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 왜 왜 출발을 안 해
+Speaker SPEAKER_01:  지금 되나요?  싱크 이거  안 돼요 안 돼요
+Speaker SPEAKER_02:  안 돼요 안 돼요  여기다가 뭐지를 할  저희가 지금 다 따로 영혼이 맨 위에 있고  저희가 뭐 각자 적었잖아요  거기서 지금 5번이 생겼는데  이미 저희가 플리켓을 때린 거는 5번이 없고  그렇죠
+Speaker SPEAKER_02:  그러면은 이미 5번이 생기지 않은 상태에서 제가 플리켓을 때린 거니까  이 최신 버전이 반영이 안 된 상태에서 제가 플리켓을 때린 거니까  달라서 안 된다  그렇죠
+Speaker SPEAKER_04:  그래서 이렇게 되면은 저희가 또 다운을 풀 땡긴 다음에 그 플리켓을 때려야 되는 거죠 무조건
+Speaker SPEAKER_02:  그래서 이렇게 되면은 저희가 또 다운을 풀 땡긴 다음에 그 플리켓을 때려야 되는 거죠 무조건  이렇게 변화가 하나라도 있으면
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  아 그렇기도 하고  아 그러면은 저희가  동시 합력은 사실 안
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  저 뭐야 브랜치를 각자 가지고 있으면 되지
+Speaker SPEAKER_02:  근데 그것도 동시에 하면 안 돼요  네 근데 그것도 동시에 하면 안 돼요  어차피 브랜치를 파도 머지하는 건 마스터에 머지를 하잖아요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 브랜치를 디벨롭에다가 머지는 같이 하고  그때는 순서를 맞춰서 동기화해서 하면 되는 거고  그 다음에 다른 사람들은 다른 사람의 브랜치에는 갈 필요가 없으니까  보통은 그렇게  여기에다가 각자 브랜치를 다 추가해서 만들고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  보통은 그렇게  여기에다가 각자 브랜치를 다 추가해서 만들고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  한 명이 풀 리케해서 합치면 예를 들어 준영이 거를 합쳐 놓으면
+Speaker SPEAKER_01:  그다음에 최종적으로 저희가 런치하자 하면 메인에다가  붙이면 되니까
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02:  네 그런 식으로  지금은 디벨롭 브랜치 하나에다가 대고
+Speaker SPEAKER_01:  지금은 디벨롭 브랜치 하나에다가 대고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  여기에다가 브랜치 여러 개 잘 거 각자 만들면 되겠네요.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아직은...  아직은...  아직은...  권한이 다 있어서
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03:  아 그 기본 메인에서 풀이 안 됐었는데  그 이후에 다시 해보진 않았어요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  제가 바꾼 거 다 없어지고 방금 커밋한 거 됐어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  그러니까 이게 지금 제 레퍼인데 이렇게 됐어요.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  아까 여기 이거 눌렀을 때 뭔가
+Speaker SPEAKER_03:  퀄리티 테스트를 오픈하거나 디스 카드 커밋을 지우라고 하는 게 상당히...
+Speaker SPEAKER_03:  그 디스 카드를 누르면  제가 했던 커밋이 없어지고  이게 가져가죠.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이게 가져가죠.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  따라오세요. 따라오세요.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  아 근데 맞아요. 이거 은근 별거 아닌 거 같은데 이거 때문에 뭘 못할 수 있어요.
+Speaker SPEAKER_02:  이거 해결된 거예요?  마무리가 언제 돼?  안 해봤어요. 안 해봤는데 이해하기로 맞을 것 같아요.
+Speaker SPEAKER_00:  안 해봤어요. 안 해봤는데 이해하기로 맞을 것 같아요.
+Speaker SPEAKER_01:  가상 환경은 제가 있는 폴더가 아니라 다른 데 만들어 놓고 그냥 땡겨서 쓰면 되는 거 같아요.  근데 저는 가상 환경 이렇게 안에 만들어 놔서  여기서 계속 보긴 해서  풀로 가져와야 될 거 같아요.  풀로 가져오면 돼요. 한번 해. 풀로 가져오면 되는 거지.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02:  여기서 계속 보긴 해서
+Speaker SPEAKER_01:  지금은 이거 따라가는 거 같아요.
+Speaker SPEAKER_02:  그 뭐지 저희 원래 이거 테스트 올렸던 거 있잖아요. 기타 보고  그래서 일단 영호님이 혜수님 거를 뭐지 하니까 이렇게 떴단 말이에요.  아
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 그러고 나서 다른 사람들도 다 플리케를 했잖아요.
+Speaker SPEAKER_02:  그거를 이제 합쳐야 되는데 그러면은 충돌이 생겼단 말이에요.  왜냐면은 이거  아 없었으니까 노현수가
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  아 없었으니까 노현수가  혜수 그 상태에서 저희는 플리케를 친 거니까 저희가 친 거에는 혜수님이 없잖아요.
+Speaker SPEAKER_02:  그래서 그게 최신인 거 같아요.  그래서 그게 최신 버전을 받아서 친 게 아니라  그럼 풀을 한 다음에
+Speaker SPEAKER_00:  그래서 그게 최신인 거 같아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  그럼 풀을 한 다음에
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  네.  뭐지를  뭐지를 안 넣었어요.  아 그럼 이렇게 하고 다시 이제 컴퓨터  그 다음에  다시 컴퓨터로  다시 넣고
+Speaker SPEAKER_02:  네.
+Speaker SPEAKER_02:  뭐지를 안 넣었어요.  아 그럼 이렇게 하고 다시 이제 컴퓨터
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04:  다시 컴퓨터로
+Speaker SPEAKER_00:  다시 넣고  그럼 오케이 하면 또 다른 사람
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  그래서 일단 브랜치를 각자 파서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04:  이게
+Speaker SPEAKER_02:  이게  이게  여기  이거  이거
+Speaker SPEAKER_03:  네.  그리고  그리고  이  이
+Speaker SPEAKER_02:  그리고
+Speaker SPEAKER_03:  이  이  이  이  이  이  이  제 명령사항이랑 여기서 가져온 명령사항이 둘 다 적혀있거든요
+Speaker SPEAKER_02:  그럼 그 상태에서 커뮤치고 풀리케를 때리면 되는 거예요?
+Speaker SPEAKER_03:  지금 커뮤치고 있는데
+Speaker SPEAKER_03:  하니까 돼요  그럼 제게 추가돼서  그럼 다시 풀리케를 때려야 되는
+Speaker SPEAKER_01:  그럼 다시 풀리케를 때려야 되는  네 이 상태에서 다시 풀리케를 보내야 돼요
+Speaker SPEAKER_03:  네 이 상태에서 다시 풀리케를 보내야 돼요  근데 만약에 제가 궁금한 게
+Speaker SPEAKER_01:  근데 만약에 제가 궁금한 게  2번에다가 두 명이 적성하면 어떻게 되는 건가요?
+Speaker SPEAKER_02:  아 그 칸에
+Speaker SPEAKER_01:  네 칸에  그럼 그것도 충돌하지 않을까요?  네 그럼 충돌로 하고 선택하라고 할 거예요  거기서 막 고칠 수도 있고 해서 그러면
+Speaker SPEAKER_02:  거기서 막 고칠 수도 있고 해서 그러면  근데 지금 브랜치를 각자 쓰면 그럴 일은 없으니까
+Speaker SPEAKER_01:  근데 지금 브랜치를 각자 쓰면 그럴 일은 없으니까
+Speaker SPEAKER_01:  신기하네
+Speaker SPEAKER_01:  아 좋아요 그래 이런 문제가 생길 수 있지  그러면 지금 그 각자 브랜치를 따로 만들어서
+Speaker SPEAKER_01:  생성해주시는 거예요?  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  근데 만약에  저희가 다 모여서 합치면
+Speaker SPEAKER_02:  지금 반영 안 되어 있는 거죠?
+Speaker SPEAKER_00:  네 아니요 네 해도 돼요
+Speaker SPEAKER_01:  어 저 이니셜 틀렸어요
+Speaker SPEAKER_03:  중요치 않아요
+Speaker SPEAKER_01:  아 이거 확인해
+Speaker SPEAKER_02:  이거 확인해  네
+Speaker SPEAKER_02:  네  네  이제  왜 이렇게합니다?  절 하ars
+Speaker SPEAKER_01:  절 하ars
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  저는 R
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  N O가 좀 부정적인 느낌이다 보니까  노 C들은 보통 R O H가 있어요
+Speaker SPEAKER_01:  아 근데 한글도  노죠 노
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  U처럼  예 약간 그런 느낌
+Speaker SPEAKER_01:  그 해결해놓을게요  여기다 다 추가해놓을게요
+Speaker SPEAKER_01:  아 그러면 저희
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  목요일날은
+Speaker SPEAKER_01:  딱 화목 그거 빌려주긴 하죠 장소를
+Speaker SPEAKER_02:  화목만 연다고 그랬거든요  어? 볼게요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02:  네 그래가지고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 날짜 딱 맞네  화요일 목요일 1시부터 7시 오픈 예정입니다
+Speaker SPEAKER_01:  미리 신청하지 않은 경우 사용 불가
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  당일 신청은 불가능하면  최소 사용 전날 4시까지 작성해주세요  어 어떤 것 같아요 저희 온라인으로 볼까요 오프라인으로 볼까요
+Speaker SPEAKER_01:  뭔가 이렇게 기술적인 문제를 해결하기에는  오프라인 만남이 더 좋은 것 같긴 하네요  저희
+Speaker SPEAKER_01:  온라인으로 뭔가 이런거를
+Speaker SPEAKER_01:  물어보기가 좀
+Speaker SPEAKER_01:  그러면은 목요일날 오프라인 말고는  온라인 말고
+Speaker SPEAKER_01:  온라인 말고 오프라인으로  아 오프라인으로요?
+Speaker SPEAKER_02:  오늘 한 40분?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  더 멀어지시는 분들이  위치가 어디죠?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  양재민은 오히려 가깝지 않아요?
+Speaker SPEAKER_02:  양재민은 오히려 가깝지 않아요?  어? 판사 안 하셔도 되잖아요  양재민은 오히려 가깝지 않아요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  강남보다  아
+Speaker SPEAKER_01:  조심해야겠다
+Speaker SPEAKER_01:  조심해요 갑자기 끌 거야  아 예 예
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  감을 한 거다
+Speaker SPEAKER_01:  저는 생각을 일단 해볼게요
+Speaker SPEAKER_01:  아 같이 해볼게요  오늘은 얼마나 걸렸어요?  오늘은 조금 더 걸렸어요 근데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  오늘은 버스를 한번 해봤어요  한 번에 버스 오긴 해서  근데 거의 잠실부터 강남까지 오는데
+Speaker SPEAKER_01:  아하하하하
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  차가 안 가던데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  오늘 그냥 차를 여기 차 한 대까지 가능하다고 돼 있더라고요 주차가  그래서 차를 타고 한번 와볼까  그럼 좀 가까울라나 했는데  차도 애초에 한 시간씩 켜길래
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이럴까요 대중교통 차가 있나  차가 주시면 되요
+Speaker SPEAKER_01:  차가 주시면 되요  아 한 바퀴  그러면 저는  프로젝트 다음까지 해야 될 거 이런 거 안 해도 되나요?  컨디션 관리고 운전 이런 거 해도 될까요?  네  올 때도 모자 붙게 형이야 아주  기사님 혜택이 있잖아  좋다  저는 상관없어요 30분밖에 안 걸려요  30분 밖에?
+Speaker SPEAKER_00:  기사님 혜택이 있잖아
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02:  하하하하하
+Speaker SPEAKER_01:  지하철만 쭉 타서  노선이
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  녹음만 잘 된다고 하면  좋은 거 같아요 녹음이 잘 되나
+Speaker SPEAKER_01:  아 그럼 일단은 뭐 이  저도 됩니다 오히려 좋아요  오히려 좋아요?  아 그쪽 위치가?  아 그게?
+Speaker SPEAKER_01:  일단 오프라인으로 보는 걸로
+Speaker SPEAKER_01:  6시
+Speaker SPEAKER_01:  공짜나요 거기는?  에이 돈 내라고 하면  답도 주나요 답?  아 그리고  진작에 쓰기 해준 건 너무 늦게  거의 끝날 때쯤에
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02:  거의 끝날 때쯤에  그러니까요 저희 뭐 몇 번인가 쓰기 했어요 저거
+Speaker SPEAKER_01:  그러니까요 저희 뭐 몇 번인가 쓰기 했어요 저거
+Speaker SPEAKER_03:  시작할 때도 안 주고
+Speaker SPEAKER_01:  근데 이거 타임  몇 시간 이내에 사용해라 그런 건 없죠?  그런 건 없지 않나요?
+Speaker SPEAKER_01:  그냥 선착순 아니야
+Speaker SPEAKER_00:  사용 시작 시간 사용 종료 시간  써있는 거 보니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  없는 거 같아요
+Speaker SPEAKER_01:  너무 자주 오면 연락 올라가서  저기 적당하게
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  회의를 거기서 할까 하고 같이  하면서 아 나 이거 분석하는데  중간중간 물어보면서 약간
+Speaker SPEAKER_04:  하면서 아 나 이거 분석하는데
+Speaker SPEAKER_01:  무조건 회의만 하는 게 아니라
+Speaker SPEAKER_01:  이거 하면 잘 안 된다 저거 된다
+Speaker SPEAKER_02:  그것도 괜찮은 거 같아요
+Speaker SPEAKER_01:  시간을 좀 더 길게 잡아서  작업도 그냥 거기서 하는 걸로
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  필참으로 하고 나머지 시간은 그냥  있을 사람이 있고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  설마 방이라고 해도 큰 된
+Speaker SPEAKER_02:  설마 방이라고 해도 큰 된  뭔가 그런 거가 있는 건가요?  아 큰 홀 같은 게 있고
+Speaker SPEAKER_01:  아 큰 홀 같은 게 있고  이 테이블에 이런 느낌이 있구나
+Speaker SPEAKER_01:  그건 좋죠
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  하고 다 안 써도 되는 거잖아요  왜 안 써요? 차가 막히네요
+Speaker SPEAKER_04:  왜 안 써요? 차가 막히네요
+Speaker SPEAKER_01:  이게 보니까  지금도 더 얘기해야 될 게 있고  말씀하신 것처럼  기술적인 거거든요  각자 화면을 보면서
+Speaker SPEAKER_01:  옆에 와서 보면서 하면  좋을 것들이 있으니까
+Speaker SPEAKER_03:  그리고 이게 녹화만 제대로 되면은
+Speaker SPEAKER_01:  아 근데 지금
+Speaker SPEAKER_01:  이게 멀리 있는 것도 잘 되고 있는지 모르겠는데  어쨌든 녹화만 잘 되면  훨씬 왔다 갔다 하는 말이 많기는 해요 지금  느낌 체감상으로는  이런 것도 이제 비교해볼 수 있는 거죠
+Speaker SPEAKER_04:  훨씬 왔다 갔다 하는 말이 많기는 해요 지금
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  느낌 체감상으로는
+Speaker SPEAKER_01:  근데 그러면 좀 여러 가지 난관이 예상되긴 하는데
+Speaker SPEAKER_00:  옛날에는 저거 했구나
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  얘가  얘를 뭐라고 해야 되나
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그냥 끄고
+Speaker SPEAKER_01:  아니죠  그래서 이거를 이제
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  당장 컴퓨터 때문에 안 하더라도  저희가 지금 문제가 뭐냐면  이걸 알고 있어야 되니까  왜냐면 나중에 뭐 포콜이나 할 때
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  얘가 클러스터링을 잡는다
+Speaker SPEAKER_01:  다른 분들은 이게 번호가 계속 바뀌는 게 문제예요  그러니까 이게 지금 제가 3번이죠  다음번에 또 0번이나 1번이 될 수 있고
+Speaker SPEAKER_00:  다음번에 또 0번이나 1번이 될 수 있고
+Speaker SPEAKER_01:  그렇죠 그래서 이게
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  번호가 바뀌어버리면
+Speaker SPEAKER_01:  생성할 때  계속 번호를 바꾸지 않고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 이런 문제가 일단 있는데  이게 자동으로 안 된다 하면 저희가 해볼 수 있는 방법이 있긴 해요  뭐냐면
+Speaker SPEAKER_01:  그러면 이제 이거 영상이랑 보고  이게 뭐 많이 궁금하실 건 아니니까 이거를 이제 찾아가지고 바꿔주면 되죠
+Speaker SPEAKER_01:  아니에요  그렇죠 뭐  10개라고 해도 이게 일일이 다 바꾸는 게 아니라 그냥
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이런 건 편하고 이제 4번이  피해신이 있나 하고
+Speaker SPEAKER_01:  이게 첫 번째예요 첫 번째  이게 다 처음 보고 불편한 그런 얘기가 나오면
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  어 이렇게 설명하네요  이렇게 어 이런 건 아주 편하죠 다 이름이 나와있는 게  그럼 이제 근데 이제 이게 만약에 이걸 00번을 선용으로 잡았으면  이제 그 뭐 2번 스크립트에서 선용어 찾아서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  뭐 이제 이런 식으로 그 보유번호를 저희가 붙여서  누가 해서 수동으로 해도 되긴 하는데  근데 이게 스크립트 상으로 얘가 자동으로 파악해서 해줄 수 있다고 하거든요  라고 하고 지금 엄청나게 예로를 내고 있어서  그럼 혹시 모르니까 그럼 혹시 모르니까
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  앞으로 녹음 시작할 때 서로  안녕하세요 노예수입니다 오늘도 잘 부탁드립니다
+Speaker SPEAKER_01:  그러면 이제 맨 처음에 혹시 수동으로 해야 돼요 딱 들어가면  어 4번 노예수  아 찾으면 이렇게  찾으면 되는데  그럼 바로 찾을 수 있으니까  아 좋은 아이디어인데  이렇게 찾아가지고  왜 얼굴이 안 와요 이렇게  이렇게 되겠구나 이렇게 해서 찾아도
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  아 찾으면 이렇게  찾으면 되는데
+Speaker SPEAKER_04:  그럼 바로 찾을 수 있으니까
+Speaker SPEAKER_00:  아 좋은 아이디어인데
+Speaker SPEAKER_00:  왜 얼굴이 안 와요 이렇게  이렇게 되겠구나 이렇게 해서 찾아도
+Speaker SPEAKER_01:  아 그러면 이제 4번이고  그러면 이제 만약에 이번 프로젝트에는
+Speaker SPEAKER_01:  그렇죠 수치심만 좀 견딘다면
+Speaker SPEAKER_01:  아
+Speaker SPEAKER_00:  아 그래서 제가 이 그 자동화 코드를 짜볼 테지만
+Speaker SPEAKER_01:  아 그래서 제가 이 그 자동화 코드를 짜볼 테지만
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 이번에 한 6개 있잖아요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이걸 좀 분배해서 저는 3차 프로젝트 5개인데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  이거를 이제 제가 번호 맞추면 되니까  이거 그 1번 스크립트는 바꿀 게 없을 테고 그러면은
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  4번 5 6  한 분 한 분 만 한 개 하고 나머지 두 개 신고 되겠네요  다이벌로 하죠  아니 한 한 개 할 분만 정하고 나머지 두  순서는 크기는 상관없죠  제가 두 개 하겠습니다 저 때문에 두 개가 된 거기 때문에  아  아 왜 그러세요 아 진짜  아니 이거 서로 재밌잖아요 우리가 뭐 두 개 다들 하고 싶지  아 하고 싶어요  다들 하고 싶은데 다들 이게 또 이렇게 공정하게 정해야 되니까  아 하셔도 되는데  아 그냥 여기도 그러면 그냥 아예 정하죠  빨리 빨리 빨리 사다리 빨리 빨리
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  제가 두 개 하겠습니다 저 때문에 두 개가 된 거기 때문에
+Speaker SPEAKER_00:  아니 이거 서로 재밌잖아요 우리가 뭐 두 개 다들 하고 싶지
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  빨리 빨리 빨리 사다리 빨리 빨리
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  사다리 게임 게임  게임까지 쳐야 될걸요
+Speaker SPEAKER_02:  아 아까는 이제
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아까도 나 이름 칠 때 확인하더라고  아 맞어 맞어  선생님 선생님  아까도 이래가지고 그랬구나
+Speaker SPEAKER_00:  아 맞어 맞어  선생님 선생님
+Speaker SPEAKER_01:  아
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  20 맞나요?  김치  이렇게 바뀌었네 하나 둘이
+Speaker SPEAKER_04:  20 맞나요?  김치  이렇게 바뀌었네 하나 둘이
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  7 다시 7 다시  7 다시 1 7 다시 2
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  7 다시 1 7 다시 2
+Speaker SPEAKER_01:  뭐야 뭐야  이게 없어지는 거예요?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  네 네 네
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네 그냥 전체 결과 확인  이야 이렇게 나오네요
+Speaker SPEAKER_01:  진짜 그림같이
+Speaker SPEAKER_01:  뭐 원하시는 대로 되셨네요 네 분
+Speaker SPEAKER_01:  그러니까요  음
+Speaker SPEAKER_00:  아 너무 좋다  1번 스크립트를 기준으로  네 저는 원래 제가 안 걸렸어도 할 생각이 없어요
+Speaker SPEAKER_01:  아 그리고 그거 하면서  가볍게 모시  그것도 확인해 그 뭐라 그래가지고  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네  아 네
+Speaker SPEAKER_00:  아 네  아 네  아 네
+Speaker SPEAKER_04:  아 네  아 네  아 네  아 네
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아  1번이 저일까라고 생각하고 2번이야만 했음 4번이 준영님 이렇게 생각하고 있는데 아니였어
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그러면 그 시피커는 고정으로 이제 누가 1번을 1번 스크립트를 기준으로
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  1번 스크립트 들어가서 그 각 번호가 누군지를 파괴할 수 있는  다 해야겠네  다 해야겠죠
+Speaker SPEAKER_01:  일단 저거 영훈님이 0번이시고 고정이잖아요 이거
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그쵸 그쵸  왜 소용이 없지 이거 맞나 프로젝트 4에 퍼스트 티에츠티
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 저희가
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아니 그러니까 오류는 있을 텐데 얼마나 심할까? 너무 심하지 않을까? 하는 게 있어서 그것도 한번 체크하면 좋을 것 같아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  저는 안 보고 있어요.
+Speaker SPEAKER_00:  저는 안 보고 있어요.
+Speaker SPEAKER_01:  네. 그 풀리캐스트 제가 한 거에 전부 다 있거든요.  아니 그걸 아예 뭐지? 시켜볼게요.
+Speaker SPEAKER_01:  네. 저희 공유  네. 저희 공유  네. 저희 공유
+Speaker SPEAKER_01:  그다음에 만약에 지금 당장 확인하는 거에서 잘 안 된다 그러면 그냥 그 제 레퍼에 한번 봐.
+Speaker SPEAKER_04:  그다음에 만약에 지금 당장 확인하는 거에서 잘 안 된다 그러면 그냥 그 제 레퍼에 한번 봐.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그래요?  준영님이 한 말이 다 제 말이 되니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 줄개보고 있어요.  누구..люber Ji?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  누구..люber Ji?  형서님인가?  제 이름이 다 빠졌네.  이번인가?
+Speaker SPEAKER_02:  이편 이�eman 이거
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  인도화장 맥 ...
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  의도된 글자같은걸  이거 저 아니에요?
+Speaker SPEAKER_03:  저랑 미경님이랑 좀 합쳐지면 어때요
+Speaker SPEAKER_02:  이거 저거 같은데
+Speaker SPEAKER_03:  그리고 여기 대학원가서 좀 신경을  한 것이 아니라
+Speaker SPEAKER_03:  이거 3개인데 스피커가 다 달랐는데  근데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  아니 근데 심지어 0번
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그래서 만약에 이제  막 겹치는게 있잖아요  그럼 좀 더 도미넌트한 사람을
+Speaker SPEAKER_01:  그 다음에 지금
+Speaker SPEAKER_01:  병렬로 계속 향상해가면 되니까
+Speaker SPEAKER_01:  아니 근데 생각해보니까
+Speaker SPEAKER_01:  가짜 파일에서 확인하는건 가짜인데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  이거 번호 정하는거는  같이 정해놔야겠네요  그니깐요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  3번 모아봐요
+Speaker SPEAKER_01:  4번이 혜수님
+Speaker SPEAKER_01:  4번이 혜수님
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  문제 되는게
+Speaker SPEAKER_01:  몇번인거죠?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  1번도 딱히 말 안하네
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  너무 통합이 되가지고
+Speaker SPEAKER_03:  4번도 혜수님 같은데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03:  3번도 저게
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  금요일 저녁이 안돼
+Speaker SPEAKER_02:  이거  준형님인데
+Speaker SPEAKER_01:  금요일 저녁이 안돼서
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  다 섞여있어
+Speaker SPEAKER_01:  많이 섞여있다
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  너무 어려워  3번이
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  3번이 진짜 합리적이에요. 사실 수 없어요.
+Speaker SPEAKER_01:  3번이 특정 지을 만한 얘기가 없어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  근데 제 생각엔... 아닌가?
+Speaker SPEAKER_01:  저희가...
+Speaker SPEAKER_01:  이때는...  1번은 발표 같은 걸 거의 안 했잖아요.  맞아요.  저희가 조사하거나 이런 거.  그러다 보니까 좀 떨어질 수 있을 것 같고.
+Speaker SPEAKER_04:  1번은 발표 같은 걸 거의 안 했잖아요.  맞아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  혹시 1번이 아니라...  아, 그 뭐 하나를 정확히 말하면 되죠?
+Speaker SPEAKER_01:  네.  2번 때나 3번 때 저희가...  그때는 이제 개인적으로 발표를 했으니까  그거는 또 얘가 인식을 더 잘했을 가능성이 높을 것 같아요.  좋아요. 그러면 2번 다시 찾아볼까요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  2번이 근데 지금 올려주셨나요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  1번이 영훈 씨예요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  네. 그러니까 저희가 어떤 파일 하나로 정하기만 하면 되니까.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  1번이 미경 님 같아요.  1번이요?  네. 그 연구실에 컴퓨터 열어보는 거.  아...
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04:  1번이요?
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  지금 2번?
+Speaker SPEAKER_02:  2번 파일로 하면 이렇고...
+Speaker SPEAKER_01:  이거 일단 정해지면 하면 불안증 난 거는 맞춰가면 됩니다.
+Speaker SPEAKER_01:  근데 그걸 정확히 모르겠어요.  그러니까 이게 온 디멘드로 뭐 몇 번 콜할 때마다 얼마인데  그게 얼마나 될지 모르겠어서...  아, 너무 무섭다.  그러니까 이제 그런 게...  뭐 써져 있기로는 0.0 몇 달러인데...  뭐 써져 있기로는 0.0 몇 달러인데...  막 끌다 보면은 그 뭐야... 저희...  이거 행정 거기 올라온 것처럼...  그 부분 몇 달러였지?  그 부분 몇 달러였지?  그 부분 몇 달러였지?  그 부분 몇 달러였지?  몇 백만 원...
+Speaker SPEAKER_01:  아, 그렇죠.  근데 이게 막 저희가 생각하는 것보다 뭔가 쫙쫙쫙 빨려 버릴 수 있으니까...  이게 당연히 돈 주면 더 잘할 거거든요.  이게 당연히 돈 주면 더 잘할 거거든요.  이게 당연히 돈 주면 더 잘할 거거든요.  이게 당연히 돈 주면 더 잘할 거거든요.  그 구글 서비스는 따로 써야 되는 것도 아니고 아예 합쳐진 그...  걔가 이거 바라자 구분까지 다 해주던데...  얼마나 주면...
+Speaker SPEAKER_01:  아...  학생이랑...  4번...  뭐지?
+Speaker SPEAKER_01:  뭐지?
+Speaker SPEAKER_01:  4번...  뭐지?  4번...  뭐지?
+Speaker SPEAKER_01:  뭐지?  4번...
+Speaker SPEAKER_01:  뭐지?  뭐지?  뭐지?
+Speaker SPEAKER_02:  네.  조금 더에는 뭐야.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  3번 영우님?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02:  처음에 조금 보면 알 수 있지 않아요?
+Speaker SPEAKER_01:  0, 0번 포탈하시던 분?  포탈을 했었 Vousness님 그때 먼저 오셨던 흑형 appear 그래서
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  잠깐만 근데 0번은 � Jazazz 에서...  일단 맞춰지긴 하면요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  지금은 이게 다 쏟아져 있어서 합칠 수가 없어서 그런 거니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  네 3번요 이제 2번하고 4번만  4번을 제 생각에 2번님을 알아내면 4번님이 밝혀지니까
+Speaker SPEAKER_01:  그쵸 한 명만 짜주면 돼 이제  대체 그냥 또 원인 같은 건 저도 생각 안 하고요  그래서 이게 또 조금 더 내용이 제가 더 이상은 안 같고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  2번 4번 말이  이게 제 생각에 4번님이 말을 좀 많이 하셔서
+Speaker SPEAKER_01:  이게 제 생각에 4번님이 말을 좀 많이 하셔서
+Speaker SPEAKER_00:  구체적으로 알아내면 이제 예전이랑 다른 거가 더 좋긴 한데
+Speaker SPEAKER_03:  아 2번이 저 같은데요 그 리뷰 읽기가 있습니다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  무신사 리뷰  네네 무신사 리뷰
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  아 좋다 그럼 일단 이렇게 할까요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02:  네 그럼 저걸로 맞춰서 하면 된다는 거죠 일단
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  저 5번이랑 아 2번이랑  2번이셨던 분이 이제 1,3번으로 하셔야 되거든요  아 저네요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  어허 음해하지 말고 저는 3개를 해야 되나요
+Speaker SPEAKER_01:  바로 이렇게 짬내려 버리는 와 진짜 당했다 당했어
+Speaker SPEAKER_00:  바로 이렇게 짬내려 버리는 와 진짜 당했다 당했어
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그리고 하시면서 아까 1번 파일처럼  얼마나 부정확한지도
+Speaker SPEAKER_01:  지금 근데 이거 제가 막막하긴 하거든요 이거
+Speaker SPEAKER_01:  아 이게 진행이 참 더뎌요 이게
+Speaker SPEAKER_01:  그러니까요 이게 뭐 여러 가지 좀 써보기도 너무 오래오래 걸리고  그렇죠 이게 그냥 그러니까 저희 뭐 노트북 파일이나 이런 거는  바로바로 돌아가니까 아 이건 이래서 오류 나고 조금 오류 썼나고 하는데 얘는  한번 돌리면 못해도 10분이니까 그 짧게 꼽아도
+Speaker SPEAKER_00:  그렇죠 이게 그냥 그러니까 저희 뭐 노트북 파일이나 이런 거는
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  20부터 돼 있는데 그 회의시간을 말씀하시는 거에요  어 네 그러면은 뭔가 많이 못할 것 같아가지고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 다음에 하니까 이거는 일단 해보는 걸로 하고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그리고 저거 올려두시면  이거를 시간이 되면은 좀 해보는 걸로
+Speaker SPEAKER_01:  해보면 좋겠다 그 다음에 저희가 그냥 회의만 하는 게 아니라 모여서니까 같이
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  필수  필수로 하고
+Speaker SPEAKER_01:  필수로 하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 이런 거 외생변수 생성하면은?
+Speaker SPEAKER_01:  지금은 스크립트 하나 제가 올린 그 코드는 스크립트 하나씩만 돌리는 코드니까  이거 한꺼번에 만들려면 이제 통합된 어떤 파일이 데이터베이스가 있어야 되잖아요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  오케이  보면서 하면 재밌죠
+Speaker SPEAKER_01:  그러니까 이런 게 이제 만나고 하면 더 좋은 것 같고
+Speaker SPEAKER_01:  이
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  요거가 이제 하나 기준으로 돌아가잖아요  근데 이제 지금 합치지 못하는 이걸 이제 이만큼 있는데 합치지 못하는 이유는 다 달라서 번호가  근데 이제 번호를 일단 맞추고  그럼 이제 이 파일을 합쳐서 뭐 여러 가지 분석을 할 수도 있죠
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 분석을 하려면
+Speaker SPEAKER_01:  그 분석을 하려면 이 종에 이런 데이터가 만들어져야 될 거다  그 다음에 그 중에서 이거를
+Speaker SPEAKER_01:  그러니까 이것도 이제 고민해보면 좋겠죠  이거를 지금 저는 날짜로 잡았는데 날짜로 할지 아니면 회차로
+Speaker SPEAKER_01:  그다음에 이거 스크립트 하나당 이만큼인데 6개만 돼도 이거 꽤 될 거예요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  여기까지만 만들어지면 사실상 저희가 케이블 데이터만 받은 느낌으로 되는 거죠
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  너무 좋지만 시간이 없으니 일단은 필수까지만 하고 이거는 어떻게 하면
+Speaker SPEAKER_01:  좋을지 구상을 해보고 만약에 어 에러 없이 쭉쭉쭉 잘 진행됐다 하면은 아예 만들어 보면서 좋겠죠
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래서 추가로 뭘 해보면 좋겠다 하는 것도 생각을 하는 거죠 이 외생 변호사 포함해서  그다음에 그런 의견이 있을 수도 있겠죠 굳이 안 해도 될 것 같다
+Speaker SPEAKER_01:  그 포함해서 이제 다 다정하게 해볼 수 있는 거죠  각자 기초 작업만 해보자는 거죠 이 두 가지 프로젝트 중에서 일단은 파악만 하고 이제 기초 작업을 해보고 그다음에 지금 제가 생각하고 있는 이 순서니까 여기에 대해서 좀 하다 보니까 이런 거 좋겠다든가
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  그럼 오늘도 아까 회사님 공연 굉장히 좋았고요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  일단 1시부터 7시 예약은 했는데 좀 다들 막 급하게 막
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  시간이 돼서 어차피 그때 와서 할 거다라는 사람만 일찍 와도 상관없을 것 같아서  근데 고정적으로 모일 시간은 똑같이 오늘처럼 3시부터 6시를 생각하는 게 어떨까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그리고 저희가 어쨌든 예약은 해놨으니까 울 사람이 있는지도 조금 정해놔야 될 것 같은데 아무도 안 오면 어떡해요 그럼 진짜
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그렇게 여쭤볼게요  네  혹시 두 분이  2시 정도 생각하고 있는 거 같아요  생각해 2시 정도 생각하고 있는 거 같아요  저는 1시까지 와도 될 것 같기도 하고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02:  2시 정도 생각하고 있는 거 같아요
+Speaker SPEAKER_01:  일찍 오실 분이 계세요? 2시보다 먼저? 만약에 다 2시 정도에 오신다면 저는 2시 정도에 오요
+Speaker SPEAKER_01:  더 일찍 오실 분이 있으면 저는 이게 사실 여기 모이면 각자 소통할 수 있어서 좋은 거지 작업 확률도 안 좋아지니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  2시?  근데 2시면 예약도 2시로 해야 되지  그러니까 오든 안 오든
+Speaker SPEAKER_02:  그러니까 오든 안 오든  상관없는 거야?  그러니까 그분들이 계시는 거예요?
+Speaker SPEAKER_01:  안심? 안심도 없으실 것 같은데 뭔가?
+Speaker SPEAKER_02:  아 저는 근데 저도 그럴 수 있을 것 같아요 아무도 안 오고 아무도 안 오고
+Speaker SPEAKER_01:  근데 혹시라도 이 공간에 대한 관리자가 특별하게 필요할 수 있으니까  우리가 아무래도 외부 사람들이니까 그러니까 한번 여쭤볼게요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  누가 와서 문을 열었는데 아무도 안 와 1시간 동안
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네 그러면 그 저는 그 정지 데이터 추출을 못 했잖아요
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  네  그러면 그거를 해주시는 거예요? 아니면
+Speaker SPEAKER_02:  아 지금 전부 다 돼 있잖아요
+Speaker SPEAKER_03:  다 돼 있어요  지금까지  지금 그 여기 저희 랩퍼 보시면은
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02:  그래서 저희 여기다 올려주신 거예요
+Speaker SPEAKER_01:  아 네  아 네  아 네  아 네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  2시부터 6시로 예약해요  2시부터 6시
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  아 그렇죠 와서 만약에 열어주면 열어주는 시간이 문제겠죠  늦게 오는 건 좀 기분 나빠하실 수 있을 것 같아요  일찍 나가면 땡큐하고 하실 수 있을 것 같은데
+Speaker SPEAKER_01:  아 저는 기분 나빠한다기보다는 그 사람 그분들 이제 행정처리하거나 뭐 하는데 문제 생기거든요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  아니 너무  전 나빠도 된다  어떻게든 이거
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  3시에 있죠 3시에  3시에  3시였나요
+Speaker SPEAKER_02:  네  1시간이었네요  1시간 내외라고 적어주셨던 것 같아요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  아 네  오늘 결정한 게 좀 방향 튼 것들이 있으니까  네
+Speaker SPEAKER_01:  랑 그다음에 저희 이제 하기로 했던 거  그리고 대기하는 거  그리고 이거 이거 조금 여쭤보고  이거 SLA랑 이거 하셨다고 하는데  그리고 여기 좀 분석에 힌트나 부분을 다
+Speaker SPEAKER_04:  랑 그다음에 저희 이제 하기로 했던 거
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네  네  네  네  네  네
+Speaker SPEAKER_01:  네  네  네  네  내가 생각에 가 패스 하 답사고라고스
+Speaker SPEAKER_01:  k
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  내가 받아준 거, 내용을 좀 분석을 살려볼까?
+Speaker SPEAKER_01:  그거는 꽤 어려울 것 같아서
+Speaker SPEAKER_01:  그다음에 받아쓰기가 불완전하기도 하고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  밥을 어디서 먹을지 좀 찾아볼까요?

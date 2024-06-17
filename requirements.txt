@@ -1,6 +1,0 @@
-openai-whisper @ git+https://github.com/openai/whisper.git
-ffmpeg-python
-pyannote.audio==2.1.1
-speechbrain
-torch==1.10.2
-torchaudio==0.10.2

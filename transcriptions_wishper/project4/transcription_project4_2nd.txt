@@ -1,0 +1,1664 @@
+Speaker SPEAKER_03:  제가 이게  뭐라 해야 되나
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  법령이라고 해야 되나  처리할 때 이걸 정확히  못 찾아봐가지고  일단은 확실해질 때까지는
+Speaker SPEAKER_03:  계속 동의를 구해볼게요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  현재 이거  동영상 녹화하고 추후 분석하는데  다들 동의하시죠?  감사합니다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04:  그리고 여러분
+Speaker SPEAKER_03:  동영상 계속 녹화하는데
+Speaker SPEAKER_03:  이거 뭐  SNA 한다더니 어떻게 하는 거야  되는 거야? 많은 거야?  궁금하실 수 있을 거라고 생각해요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  제가 이제  간략하게 진행을 해봤는데
+Speaker SPEAKER_03:  대략적인 분석은 좀 나왔고요.  근데 생각보다 이거  동영상에서 텍스트 추출하는 게
+Speaker SPEAKER_03:  무지막지하게 오래 걸리네요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  뭐 GPU 여러 개 쓰고 그런지  좀 알겠네요.  아
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  파이투치 같은 거
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  네 저 연구실에 있었어요.  연구실은 그  투시로 서브판을
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  그
+Speaker SPEAKER_03:  GPU 몇 대 달려 있었어요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그 사인 사진 장악기  모르고  그중에 저희 연구실에  그 컴퓨터가 여러 대가 있었는데  다 달라가지고
+Speaker SPEAKER_01:  장악기 모르겠습니다.
+Speaker SPEAKER_01:  좀 오래돼가지고
+Speaker SPEAKER_03:  연구실에서 서브 컴으로 돌리는 컴퓨터들이
+Speaker SPEAKER_03:  거의 서브급이어서  서버급이어서 컴퓨터 한 대 몇 천만 원이고  GPU 막 여러 개 달릴 거고 그런 경우가 있어요.  아 근데 제가 그걸 왜 물어보냐면
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  3, 4시간 걸려서  아 미쳤다 해가지고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  비교해보려고  아 지금 17시간인데 아직 안 되네요.  아직도 안 되네요.  그 더 빨리 될 줄 알고 돌렸는데
+Speaker SPEAKER_03:  이거 왜 이러는지 모르겠네.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아니 근데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그 미경님 그거는 GPU로만 썼겠죠?
+Speaker SPEAKER_03:  네 그 저희가 근데 상황이 아니다 한정되어 있긴 한데
+Speaker SPEAKER_01:  개수가 한정되어 있으니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  암호 Jay awake
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 일부러  아
+Speaker SPEAKER_03:  숨기기 위해  21.7
+Speaker SPEAKER_03:  21.8  21.8
+Speaker SPEAKER_03:  22.8  24.8
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 네 여튼 그렇습니다 그래서 그거는 조금 저희 오늘 확인한게 있으니까
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  근데 이제 그것도 막상 찐으로 하려면 뭐 먹을건지 어디서 볼건지
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  요거 어 저 피드백을 한번 해보는 시간을 가질 건데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  간략하게만 뭐였다 얘기하고 자기가 본인 프로젝트에서 좋았던 점
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  본인 프로젝트에서 좀 아쉬웠던 점 하고 나머지 분들이 이제 그 다 보셨을 테니까
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  자기가 본 프로젝트 전부 다가 아니라 몇 개 보기로 했으니까  어..
+Speaker SPEAKER_03:  어..
+Speaker SPEAKER_03:  피드백 주시면 좋을 것 같아요 뭐 이런 게 좀 좋았다 이런 게 좀 아쉬웠다 이게 좀 궁금했다라고 하면
+Speaker SPEAKER_03:  혹시 그 먼저 하실 분
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  감사합니다  자리가 좀 부담스럽네요  ㅎㅎㅎㅎㅎㅎㅎㅎㅎ
+Speaker SPEAKER_03:  이렇게 하시면 되거든요
+Speaker SPEAKER_03:  네 네 네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  예 네 네  네 네 네 네  네 네  네 네 네 예
+Speaker SPEAKER_03:  네 네 네  네 네 sendo  네 네 네 네  네 네 네  네 네 네네  아 ..  이게imm Idee
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  아..
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  식� rég
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  candid iba  chcon  border  bad  bad  yeah yeah yeah yeah yeah yeah cioè 그래예門 바랑 이래 야 adoptinglich가 그거는 기대돼요 palavras만 좋고요  이는 사실 바로 노동인이랑 상세 프로젝트 같은 데에서 활동을 해서
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  그 주제는 호텔 예약 시일 데이터를 활용한 예약 시설에 대한 예약 이식을 위한 프로젝트를 했습니다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  이러한 부분에서 앞으로 많이 개선해야 될 부분이 대부분은 예약 시설 주비 이런 가능성에 큰 영향을 줄 거고
+Speaker SPEAKER_00:  예약 시설에 대한 영향을 주는 요인들이 분석되는 걸 도로 프로젝트를 시작을 했었습니다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  하나는 도심지에 위치한 호텔이고요.  그리고 또 하나는  수도에 위치한 호텔이고요.  하나는 알가리브라는
+Speaker SPEAKER_00:  이게 시티에 위치한 호텔인 건지 아니면 휴양지에 위치한 호텔이거든요.  그리고 이런 데이터들이 약 33개 정도는 컬러함을 가지고 있고요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  사실 저희가 따로 이거는 모델을 사용했다기보다는  이 NTA에 나와 있는 특징들을 대상으로 분석하고 있고요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그 결과 대기 기간이 길어질수록 예약 취소율이 높아지는 것을 확인할 수 있었고요.  그리고 이런 이유가 원정 예약금 지불하는 방안을 마련하면  이제 예약 취소율을 낮출 수 있을 거라고 기대했습니다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그러면 먼저 대출 유형과 예약 취소율에 관해서 분석을 해봤었는데  이걸 통해서 계정비를 확인을 해봤을 때  특히 이제 특정 객실에 대해서 영향을 보기는 힘들었는데  그 객실이 예약한 거랑 실제로 배정된 거랑 차이가 있었을 경우에는  예약 취소율이 굉장히 낮은 것을 확인할 수 있었습니다.  이거는 이제 저희가 분석하기로  첫 번째 이유는 객실을 변경할 정도로 고객의 방역 의사가 강하다라고 판단할 수 있었고요.  두 번째로는 아마 일반적으로 저희가 해결해서 뭔가 객실에 문제가 있을 경우에
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그런데 1인 숙박비가 고객들에게 취소율을 영향을 줄 것이다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이럴 때는 이런 프로모션을 적게 활용하는 것이 좋다고 생각했습니다.
+Speaker SPEAKER_00:  그런데 아까랑 사실 좀 비슷한 맥락입니다.  예약 변경 횟수가 예약을 변경하지 않은 고객은 예약 취소입니다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  예약을 변경하지 않은 고객은 예약 취소입니다.  예약을 변경하지 않은 고객은 예약 취소입니다.  예약을 변경하지 않은 고객은 예약 취소입니다.  예약을 변경하지 않은 고객은 예약 취소입니다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  고객이 예약을 받을 때 예약을 변경한 고객은 예약 취소 형급이 같다.  그 위에서 얘기했던 것처럼 좀 진립된 내용이었군요.  그래서 이런 부로 형급, 이런 고객들이 예약 변경할 만한 요소가 있다면  적극적으로 대처를 잘 하는데 이게 어떻게 예약 취소를 받을 수 있을 것 같다는 얘기를 받았었습니다.
+Speaker SPEAKER_00:  제가 아까 식사 유형별로 확인을 해봤고  좀 소수하게 적어놨는데 특정 식사 유형에 따라서
+Speaker SPEAKER_00:  그리고 그거를 예약한 인원수에 따라서 예약 취소를 받았던 날을 확인해 볼 수 있었고  그래서 이걸 통해서 그런 부분을 특정 인원과 특정 식사 종류에 대한 프로모션을 받았고  그런 얘기를 했었습니다.
+Speaker SPEAKER_00:  마지막으로 여섯 번째는 수관차 구간이 수관차보다 예약 취소율이 높을 거다라고 얘기를 했고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  수관차는 7월부터 8월이었고요.  이때보다는 오히려 인원수에 대한 예약 취소율이 높은 걸 확인할 수 있었고요.  이것 때문에 오히려 생수기가 되기 전에 미리 예약을 했다가
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  좀 아쉬웠던 점은 이 코르트가 흑결돼 있었기 때문에  이런 저희가 고객 지식 자체에 대한 이런 지식을 갖춰서  이런 부분에 대한 분석해서  이렇게 분석할 때 좀 어려운 것 같기 때문에  이런 부분에 대한 추가적인 사전 공부가 좀 많이 필요하다는 걸 한번 느낄 수 있었고요.  그리고 저희가 중간 분단 데이터를 다루는 일이 있어서  데이터의 컬럼들이나 데이터의 출처에 대한 거에 대해서 오해를 했던 부분이 있어서  처음부터 다시 이루지 못했던 그런 부분들이 있었고요.  그래서 이렇게 좀 더 구성되어 있는 것 같고  그런 부분은 처음부터 다시 사업을 해야겠다.  그러면 좀 필요한 부분이 있었습니다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  모두가 정리한 아쉬운 점 말고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  저 프로젝트를 진행하면서 아쉬웠던 점이나  좋은 점 같은 걸 먼저 듣고 바라는 분들 피해포에 대해서 좀 좀...
+Speaker SPEAKER_03:  나중에 이제 뒤에 얘기하겠지만  미경님 프로젝트에 보면
+Speaker SPEAKER_03:  각자 팀원들이 진행하면서 느낀 점 같은 걸 좀 정리를 했더라고요.  저는 그거 좀 되게 참신했는데  저는 그게 좀 프로젝트 하면서 각각 다 궁금했고
+Speaker SPEAKER_03:  다들 엄청 고생해서 이제 다 보니까 다들 고생해서 이제 프로젝트를 진행했는데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그러니까 같이 여기에 완전 참여되지 않는  어떻게 보면 조금 더 객관적이라고 할 만한 사람들의 피드백을 듣거나
+Speaker SPEAKER_03:  근데 그 피드백이라는 게 꼭
+Speaker SPEAKER_03:  내용 뭐 아 뭐 기술은 뭘 썼어야겠다  뭐 여기에 오류가 있다 뿐만이 아니라
+Speaker SPEAKER_04:  뭐 저는 일단
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  여쭤볼 생각인데 뭐 미경님 보면은  같이 함께 일하는데 프로젝트 하는데 배운 점이 있다  뭐가 좀 이렇게 하니까 조금 뭐 협업이 되더라 안 되더라고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그런 것도 느낄 수 있잖아요.
+Speaker SPEAKER_03:  그런 것도 이제 좀 같이 얘기해 보면 좋을 것 같고  그래서 그냥 저희가 그래서 그냥 약간 프로그래머스의 시스템을  보완하는 것도 있지만
+Speaker SPEAKER_03:  이 프로젝트의 마지막 프로젝트에 이거는  좀 반영해 보려는 것도 좋겠다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  그 저 혜수님이 개인적으로 저 2차 프로젝트를 진행하면서
+Speaker SPEAKER_03:  아 요거는 좀 좋았는데 요건 좀 그랬고 뭐 그래갖고 뭐  요런 거는 뭐 우리가 같이 좀 적용해 볼 수 있지 않을까 하는 게 혹시 있으시면
+Speaker SPEAKER_00:  저희 데이터 선행 지식에 대한 부분에 대해서 안심을 드리고 있어요.  그래서 일단 저희도 약간 어기도 하구요.  추가적으로 생각이 들어갖고  이 사업을 진행할 때 사실 서로 피드백이 좀 논의하지 못한 건 아쉬웠습니다.  전에도 이제 여기 나와 계신 그 영웅님이 좀 좋아하시는 거 있잖아요.
+Speaker SPEAKER_04:  전에도 이제 여기 나와 계신 그 영웅님이 좀 좋아하시는 거 있잖아요.
+Speaker SPEAKER_00:  그래서 논의하는 게  아 저도 근데 한 번도 못 해봤어요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그래서 논의하는 게  아 저도 근데 한 번도 못 해봤어요.  여기네 예전에도.
+Speaker SPEAKER_00:  그래서 주로 얘기를 하는 사람들이 항상 유튜브를 하고  또 그거에 대한 약간 좀 피드백 없이  약간 일반적으로 그냥 비키니 회사들이랑 진행되는  그러다가 이제 하다 보면 또 아닌 부분이 발견되어서  뒤늦게 약간 수습하게 되는 과정을 2차 프로젝트는 많이 겪었던 거 같아서
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  그래서 그때 부터 그런 피드백도 원활하게 이루어졌으면 한 번 했으면 좋겠다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  너는 1번, 너는 2번, 너는 3번 이렇게 해서 좀 합친 느낌은 혹시 나으셨을까요?
+Speaker SPEAKER_00:  아까 처음에 아마 이 컬럼이 다양하게 있었는데
+Speaker SPEAKER_00:  그게 이제 예약 취소일이랑 다른 한 가지가  하여튼 이렇게 두 가지가 있었는데  뭐랄까 이 변속 변수  그 대상으로 이제 다른 변수들 간에 상관관계를 따졌을 때  다른 변수의 가능성이 본인이 높게 나온 거랑  플러스업도 본인이 본인에게 가능성이 있을 것 같다라고 생각하는 걸 개인적으로 나눠서 분석을 진행했었습니다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저는 이제 발표 영상을 봤는데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  근데 역시 보고서는 너무 길어가지고
+Speaker SPEAKER_03:  전반적인 흐름을 파악하기가 좀 불편했어요.  근데 이제 발표 영상이 이제 2차 때 되는 변수니까요.  발표 영상을 봤어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  지금 사실 대학원 때 연구를 진행한 거가 좀 있는데
+Speaker SPEAKER_03:  굉장히 단일성이 있다고 느끼죠.  이 작업이. 이 프로젝트가.
+Speaker SPEAKER_04:  근데 그거를 다른 사람한테 보여줄 때는
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  속된 말로 네 생각이고 나는 그렇게 생각 안 할 수 있잖아요.
+Speaker SPEAKER_03:  뒤에 무슨 기법을 쓰고 뭘 어떻게 화려하게 해도 다 의미가 없어지는 거긴 한데  사실 그거를 많이 좀 놓치고 가는 거 같아요.  근데 이제 여기에서는
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  취소율 감소에 이제 신경을 써야 되는지가  이제 서론에서 좀 얘기를 해주셨는데  코로나 때 뭐 크게 약화됐다가 회복이 다 안 돼가지고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  지금 좀 궁극적인 것보다는 안전한 게  지금 산업이 가는 게 좋을 것 같다.  이렇게 가볍게 얘기해 주셨는데  저는 이 부분이 상당히 좋았습니다.  이게.. 그치 이게 왜 하필 지금 우리가 신경 쓰는  이 KPI나 뭐 이 전체 분석이 진행됐는지를 잘 설명했다고 느껴요.  그다음에 EDA가 좀 자세하게 돼서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  예약한 거랑 실제 사용한 객실 유형이 다를 때
+Speaker SPEAKER_03:  취소율이 낮아지는지 직접 데이터가 없는데  다른 거 다른 뭐 평균 가격이랑 뭐  경향성 같은 거를 이제 조금 더 이제 어떻게 보면 정보를 다른 데서 붙여서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  근데 질문이 여기서 이 평균 가격은 알겠는데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  경향성이 뭘 얘기했는지 잘 모르겠다는 생각을 좀 들었고요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  예를 들어서 ABCDF 이런 식으로 있으면  A 객실에서 B 객실로 전환하는 경우  B 객실에서 C 객실로 전환하는 경우 이런 것들이 있잖아요.  네.
+Speaker SPEAKER_00:  그랬을 때 이제 저희가 각 객실의 그 1일 숙박기원을 파악을 했을 때
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  평균 이제 객실의 비용을 유출받을 수 있어야 돼요.
+Speaker SPEAKER_00:  그런 걸 기반으로 이 객실은 또  한국 객실일 거다 라는 객실이 그런 걸 파악을 했던 것 같습니다.  그래서 이제 그런 좀 저가보다  국가의 객실로 변경했을 때 수수료가 낮았다 그런 거를 파악을 했다는 것도 기억이 안 나요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  아 네. 그럼 이게 사실 저희도 이런 문제가 생길 수 있는데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  내부자들이 당연한 뭐 경향성이 이랬다.
+Speaker SPEAKER_04:  내부자들이 당연한 뭐 경향성이 이랬다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  근데 이제 이 처음 보는 사람이 저희가 실제 일할 때는 보고 당사자나 사장이나
+Speaker SPEAKER_03:  아니면 뭐 그 내부에 저희가 뭐 데이터 사이언티스트나 데이터 분석가로서 보여줘야 될 뭐 그 대상들이겠죠.
+Speaker SPEAKER_03:  뭐 팀장이나 뭐 어쨌든 그런 사람들이.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  구체적으로 그냥 경향성이 아니라 이런 이러한 경향이 있어 가지고  그 지금 말씀하신 그거를 좀 이렇게
+Speaker SPEAKER_03:  스팟 비율은?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  상승한 경향성도 이렇게만 좀 더 적어져도  네. 아니면 이제 전반적인 경향을 알아봤으면은
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 그리고 이제 이거는
+Speaker SPEAKER_03:  별건 아닌데 제가 좀 중요하게 생각하는 거가
+Speaker SPEAKER_03:  그 발표하거나 뭐 할 때
+Speaker SPEAKER_03:  흔히 뒤에 끝에
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  근데 이제 뭔가
+Speaker SPEAKER_03:  그 어떤 스탠다드처럼 자꾸 그게 들어가는데  요 그
+Speaker SPEAKER_03:  회장님께서 발표하신 내용들? 그런 게 없더라고요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  결과가 너무 많고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  뭘 하려고 하는지 하나의 스토리가 안 잡혀서  그냥
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  뭔가 많이 많이 했는데 뭐 했는지 모르겠다 이런 느낌이 들어요.  근데 그게  대사나 대본으로 일하면서도 저희가 많이 겪을 수 있는 거라고 생각해요.
+Speaker SPEAKER_03:  그 현업자들한테 그러니까 이제 저
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래서 뭐래?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  뭐 그래서 뭐 이런 약간 근데 이렇게 강한 워딩은 안 쓰겠죠.  근데 이런 느낌으로 얘기를 한다는 거죠.
+Speaker SPEAKER_03:  저희는 이제 보고를 많이 하게 되겠죠.
+Speaker SPEAKER_03:  그래서 뭐라는 질문에 좀 집행수가 가네요.
+Speaker SPEAKER_03:  그래서 뭐라는 질문이 나오면
+Speaker SPEAKER_03:  이제 그러면 되게 간략하게
+Speaker SPEAKER_03:  삭제되는 정보가 많겠죠.  내가 한 거는 되게 많은데 ABCDEF를 다 했는데  A도 했고 B도 했고 C도 했고 E도 했고 F도 했고 이렇게 발표했는데  또 그래서 뭐라는 질문이 나왔을 때  아 그래서 우리도 A도 했고 B도 했고 C도 했고 E도 했고 이러면  그 질문이 다시 나오겠죠.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그 이거를 좀 하나의 스토리로 큰 상위범주로 묶거나  아니면 가장 임팩트가 강한 하나를 좀 선별해서
+Speaker SPEAKER_03:  이렇게 이렇게 하면 좋겠다 하는 것도  또 A니까 이렇게 하고 B니까 저렇게 하고 C니까 이렇게 해도  여전히 마찬가지로 뭘 했다든지 잘 안 들으니까요.
+Speaker SPEAKER_03:  근데 이제 제가 이전에 세 번 프로젝트 하면서  저도 그렇게 되는 경우가 있었는데  그 이유가
+Speaker SPEAKER_03:  얘가 한 걸 뺄 수가 없어요.
+Speaker SPEAKER_03:  한 명은 두 개 있고 한 명은 세 개 있고 이런 식으로 할 때  뺄 수가 없어요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  얘가 한 거를 빼자고 의견을 낼 수가 없어요.  이게 그게 조금 명확해 보여도
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  E는 임팩트가 좀 약해.  그러면은 뭐 간략하게만 얘기하던가
+Speaker SPEAKER_03:  예를 들어 발표 같은  제가 그 발표 같은 거에서 조금 더
+Speaker SPEAKER_03:  자료에서 아셨던 게
+Speaker SPEAKER_03:  보고서에는 내용이 다 있더라도  발표에는 지면이 제한되고 시간이 제한되다 보니까
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  근데 그래프도 되게 작은 그래프가 막 6, 7개씩 있어요.  근데 이건 사실 지금 혜수님 뿐만이 아니라  다른 분들도 이제 저도 예전에 했던 거였고
+Speaker SPEAKER_03:  공통되게 있는 것 같아서 얘기해 드릴게요.  하고 가면 좋겠다고 생각을 했죠.
+Speaker SPEAKER_03:  그래서 혜수님 이거 맞나요?
+Speaker SPEAKER_03:  이게 이렇게 좀 축약이나 선별을 할 수 없었던 이유가
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  누가 한 걸 뺄 수 없습니까?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  비슷한 짓의 이유였던 것 같아요.  결국에는 결론이 나온 6가지 중에도  저희가 본격적으로 생각하는 것들이 있고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이런 부분에 생긴 누군가가 아쉬운 화면이 있었고  그러다 보니까 너무 좋게 생각하고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  저도 당황하게 많이 말할 수 있겠습니다.
+Speaker SPEAKER_03:  저희 나머지 분석도 그렇고 지금 진행할 분석도 그렇고
+Speaker SPEAKER_03:  혜수님이 진행한 분석도 그렇고
+Speaker SPEAKER_03:  아웃라이어를 어떻게 제거할 건지  무슨 방법으로 제거할 건지  어디에서 제거할 건지가 있는데  항상 문제인데
+Speaker SPEAKER_03:  여기에서 대기 시간 분석에서 아웃라이어를 제거했다고만 하셔서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  지금 보고서 보고서에 있는  신경을 좀 써야 될 것 같은데요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네.
+Speaker SPEAKER_02:  네.
+Speaker SPEAKER_03:  넵!
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  이게 보고서라고 해서는
+Speaker SPEAKER_00:  아 죄송합니다. 제가 전부 다 정해놓은 게 아니라 화면을 고정해놓지 않았어요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  요점인 산맘를 풀어주시겠어요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  그 부분을 정확하게 알 수 있을까 안 알았는데 최근 분포를 봤을 때  이제 좀 색감 중에서 많이 벗어왔다고 의미로 판단을 했던 것 같습니다.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그리고 하여튼 계속 아스플롯으로 보이면서 제거하고 있고  그것보다 좀 과하게 막 그렇게 이상치가 아니라  분포가 되는 거면 몇만 원 구겨서 하려고 했던 것 같아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저와 함께 논의하고 싶었던 게 이상치가 얼핏 잘못 제거하면
+Speaker SPEAKER_03:  그냥 편의적으로 제거했다 라고 할 수 있어요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그 미경담아 연구가 하실 때 그런 경우가 있을 텐데  그래서 이상치 제거했다 그러면 되게 날카롭게 물어보거든요.  니 그냥 너 결과 저 편할 정보 뺀 거 아니야? 해서 이제 기준을 좀 명확하게 안 해주면
+Speaker SPEAKER_03:  근데 이제 사실 준영님하고 향선님 하신 거에서도
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이게 어떻게 보면은
+Speaker SPEAKER_03:  어쨌든 이상치를 어떻게 할지는 참 항상 고민인 것 같습니다.
+Speaker SPEAKER_03:  저희도 이거를
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그냥 이렇게 넓게 떨어져만 있다고 해서 무조건 제거해야 되는 값이 아니라  얘가 어떤 의미를 가질 수 있는 거니까
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그냥 저 제한된 표본소에서 모집단을 추측해서 힘들게 하는 그냥 그 역할 외에.
+Speaker SPEAKER_03:  네.  다른 의미가 없다라는 거를 어떻게 보여줄 수 있을지 생각이 들 것 같아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  영혼과 비슷하게 변론 파트가 당연히 그렇게 늘 안 되는지 되게 알 수 있어요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  각 가사들의 변론이랑?  네.  여러분이 저번에 통해서 어떻게 마케팅 전략을 제시하셨으면 좋겠다는 생각이 드셨을 것 같은데  이번 변론 파트, 아시아편이 좀 위에.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 이거는 맞춰야 하는 거긴 한데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  기대가 많이 되었던 것 같아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래서.
+Speaker SPEAKER_03:  그래서.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  근데 이건 마지막에 해보면 좋을 것 같아요.  그래서 이런 문제를 해결하고자 저희 버전 관리도 하기로 했죠.  그래서 기술을 해보면 하는데
+Speaker SPEAKER_03:  사실 기.
+Speaker SPEAKER_03:  기터브죠. 공유는 기터브에서 할 수 있어요.
+Speaker SPEAKER_03:  네. 근데. 네.  저희도 저런 문제가 충분히 발생할 수 있어요.  네. 혹시 다른 분들도 뭐 느낀 점 있으실까요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  평균 1일 3바퀴로 분석하신 쪽에서  물론 이제 저가 국가로 비교하면 국가적이 높아 보이는 게 맞긴 한데  그 10에서 24일 부분은 좀 이렇게 막 쌓이는 부분 있었는데
+Speaker SPEAKER_02:  약간 이쪽에 대한 대책이나 또 원인 같은 건 전혀 설명을 안 했거든요.  그래서 이거 여기에도 살짝 조금이라도 내용이 있어야 되지 않을까라고 생각을 한번 해봤고요.  그리고 내역 변경 부분은
+Speaker SPEAKER_00:  그 부분 어디신지 알려주시면
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  전용唐ahlen  이따가 직장 오실 수 있으면 몇 시까지 맞춰야 되나요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 그래서 저도 지금 이거 진행하다라는 생각인데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  근데 그래서 이거 좀 나눠야 될 수도 있겠어요.  이건 저는 해보면 좋긴 하겠는데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  저희가 그래서 원래 정했던 시간대로 만나면
+Speaker SPEAKER_03:  월요일날 그냥 만나서 밥 한 번 먹고
+Speaker SPEAKER_03:  바로 다음날 온라인 미팅이 원래 예정되어 있잖아요.
+Speaker SPEAKER_03:  이거를 시간을 어떻게 조정해야 되나 했는데
+Speaker SPEAKER_03:  이걸 나누면 이제 화요일날 부담은 없는 거잖아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  저희 지금  이거만 하려고 하는 게 아니거든요.  뭐 한 3시간 하겠어요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  사실 우리도 좀 적어주시면  그거에 대한 그거를 하는 거  학교생들이랑 같이 같이 할 수 있을 것 같은데요.
+Speaker SPEAKER_03:  그러면은 오늘은 일단 이렇게 됐으니까 여기에는 하고
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  아 일단 그래서 쪼개는 거 괜찮으실까요?  이거 너무 길어져도  저희 자주 봐야 되는데 한 미팅이 너무 길어지는 것도 좀 그래요.  예.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  한 번에 두세 시간씩 하는 거는 좀..  예.
+Speaker SPEAKER_03:  어..
+Speaker SPEAKER_03:  어 이렇게 오래 걸릴 거..지 몰랐는데  근데 생각해보니까
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  제가 하는 것까지 포함하면은
+Speaker SPEAKER_03:  네 갠데..  아 당연히 오래 걸리긴 하겠죠.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  저희가 이런 거..  이런 것도 같이 하면서 찾아가는 거죠.
+Speaker SPEAKER_04:  저희가 이런 거..
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  진행을 많이 해버렸네.
+Speaker SPEAKER_03:  오늘 회의로 작성해주시고
+Speaker SPEAKER_03:  아 근데 영상이 다 녹화되기도 하고 다 참여를 하셨으니까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  지금 40분 동안 했거든요.  40분나 했었나?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 그걸 보내드릴 테니까  그분이 그거랑 이제부터 진행하는 거를 취합해서 올려주면 좋을 것 같아요.  그래가지고 오늘 하시는 분 하고 나머지도 순서를 정해서 돌아가면서 하면 좋을 것 같아요.
+Speaker SPEAKER_01:  아 그러면 제가 여기까지 나온 거는 조금..
+Speaker SPEAKER_03:  근데 뭐 다 적어야 되는 게 아니니까  제가 저번에 올린 것처럼 간략하게만
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그 다음에 하실 분?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  형선님  그 다음에 저희가 정하는 모든 거와 마찬가지로 이것도
+Speaker SPEAKER_03:  그냥 디폴트 값이고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그..
+Speaker SPEAKER_03:  제가 이때까지 지금 중간까지는  해석을 해서 DM으로 보내주세요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그..
+Speaker SPEAKER_03:  그냥 그..
+Speaker SPEAKER_03:  클릭을 올려주시면은 혜수님이
+Speaker SPEAKER_03:  아 예 이것도 좋은 방법이네요.  이게..
+Speaker SPEAKER_03:  팀 프로젝트인데 질문이 들어왔을 때 바로 어딘지 모를 수가 있겠죠?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  저는 그냥 질문이 있긴 한데 그냥 딱 간단한 게 있어요.
+Speaker SPEAKER_04:  음
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  지금 그냥 간략하게 한번 해볼까요?  그 다음에 시간이 걸릴 것 같으면은
+Speaker SPEAKER_01:  그 다음에 시간이 걸릴 것 같으면은
+Speaker SPEAKER_01:  네  저는 그 홈페이지에 입장 작전 타일러 검토리 결과가 있었는데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  페이지로 구성한 페이지로 그 제거하고 있다고 했는데  이게 그 막대 조그마한..  네..
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  예약 경로가 안 되나요?
+Speaker SPEAKER_00:  음 그 번호를 삭제한 이유가..  그 번호를 삭제한 이유가..  예약이라고 하는 거예요.  이게 고객들이 어떠한 경로로 예약을 했는지  그리고 이런 예약하는 게 어떤 경로로 유통이 됐는지  그런 거에 대한 표현이었거든요.  네  그래서 제가 이 부분에 대해서 이해가 안 된 것도 노력을 했는데
+Speaker SPEAKER_00:  그니까 그 내용들을 보다 보면 서로 내용이 이렇게 통증되는 경우가 많이 왔다 하더라고요  예를 들어서 마켓 세종원치가 단체 이런 걸 통해서 들어왔다고 하는데
+Speaker SPEAKER_00:  또 옆에 보니까 다른 회사가 들어와 있고 이런 식으로 해서 뭔가 어 이게 말이 안되는데 이런 경우가 많아서  이거는 세월호가 있다니까 라고 다 같이 판단을 해보는 게 굉장히 중요했어요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아니요  그니까 뭐다는 컬럼이 컬럼이 좀 이해가 안되는 것도 있고
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  컬럼 자체가 좀 컬럼이 이해가 조금 필요할 것 같죠
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  그래서 저희 스티커 컬럼은 단속이 떨어진다
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아니요 저는 단속 의견만 봤을 때는 그냥 컬럼 이름만 봤을 때는
+Speaker SPEAKER_01:  이런 예약 경로 같은 게  맞아요  뭔가 영향을 좀 치솟는? 영향을 주지 않을까
+Speaker SPEAKER_01: 
+Speaker SPEAKER_00:  맞아요 맨 처음에 저희가 그 컬럼 동의를 주제로  네  그걸 거의 핵심으로 자꾸 분석을 진행해 보고 싶은 마음이 있어요  그 안에서 계속 서로 컬럼과는 좀 이렇게 얽히면서
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  좀 한정적이고 안정적으로 자꾸 나와서 네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이상체 뿐만이 아니라 특히 아예 필드를 톱으로 뺐다 그러면은
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  나오는 게 조금 가능하고 그다음에 약간 특히나 듣는 사람이
+Speaker SPEAKER_03:  그 보고를 받는 사람이라든지 저희가 이제 선언에서 볼 법한 사람들  그다음에 더더욱 그럴 것 같아요  약간 뭘 뺐다 그러면 항상 그거 네 결과에 맞추려고 그런 거 아니야?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이런 의심을 항상 받는 거 같고
+Speaker SPEAKER_03:  뺀 거는 내 마음에 들어서 내 마음에 안 들어서가 아니다 라는 거를
+Speaker SPEAKER_03:  그게 사실 진짜 이유더라도 그렇게 기준을 마련하는 연습이라면 연습이고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  실제에도 그렇게 진행해 봐야 좋을 것 같아요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이게
+Speaker SPEAKER_03:  이 여기  이 분석 쪽에서  이 분석에서도 비슷한 것 같아요  이게 뭔가를 특히 뭘 빼면은 약간
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  민경님도 그러셨는지 모르겠는데 하여튼 연구에서는 뭐 뺐다 그러면은  엄청 쌍침질을 켜거든요 뭐 왜 뺐냐고  그래서 그 뺄 때마다 약간 이제 기준을 명확하게 보여줘야 되는
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그 경험이 있었는데 네 좋습니다
+Speaker SPEAKER_03:  어어어� YA
+Speaker SPEAKER_03:  어어어어
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  맞아요 맞아요 그래서
+Speaker SPEAKER_00:  맞아요 맞아요 그래서
+Speaker SPEAKER_00:  여기 보기가 드립터 취직부터 루서치까지 주제 컨셉 발표한 것도 있었고요.
+Speaker SPEAKER_00:  맞아요 맞아요
+Speaker SPEAKER_03:  맞아요 맞아요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그러면 시간이 확 줄긴 하겠죠?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  피드백을 훨씬 많이 받을 수 있었습니다.
+Speaker SPEAKER_03:  여러분 항상 먼저 먼저 나서는 게 장점이 맞습니다.
+Speaker SPEAKER_04:  아 좋아요 그러면
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  저희 그 강남에서 보는 거 아닌가요?
+Speaker SPEAKER_03:  아 근데 제가 강남에서 보는 거 아니에요.  강남이라고 얘기한 거는 저희 빌려주는 공간이 강남이니까
+Speaker SPEAKER_03:  그랬는데 뭐 그냥 밥 한번 먹는데 굳이 그럴 필요는 없고  근데 또 굳이 안 할 필요도 없을 것 같아요.  뭐 장소가 왔다 갔다 하는 것도 헷갈리니까
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그래서 뭐 제가 뭐 어디 식당을 알아보고 그런 게 아니어서
+Speaker SPEAKER_00:  제가 생물을 맡기고 있으니까  네  제가 그래도 좀 못 드시는 분이신가 보면서 확인하고
+Speaker SPEAKER_04:  네
+Speaker SPEAKER_00:  제가 뭐 식당을 찾아볼까요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  투표를 해보든  그냥 열려서 먹기로 한다든지  아 그것도 좋죠
+Speaker SPEAKER_03:  투표를 해보든  그냥 열려서 먹기로 한다든지
+Speaker SPEAKER_03:  아 그것도 좋죠
+Speaker SPEAKER_03:  일단은 저는 뭐 따로 못 먹는 건 없습니다.  여러분이 드시는 것 중에 제가 못 먹는 건 없거든요.
+Speaker SPEAKER_03:  원숭이 골 이런 거 드시지 않으셔서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  아 잘 봤어요. 그럼 다음 질문은?  아 저는 저런 것도 없습니다. 오이도 잘 못 먹어요.
+Speaker SPEAKER_03:  네 다 잘 먹습니다.
+Speaker SPEAKER_01:  아 예 좋습니다.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  고정만 빌려주시면 좋겠습니다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  정하는 사람 중에서는  약간 그 여친 남친의 아무거나
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03:  오우 이게 중연
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  뭐 그냥 그 저희 뭐지 방 빌려주기 시작하면 강남에서 볼게 될 테니까
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  네  그럼 강남에 가까운
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  음
+Speaker SPEAKER_00: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_00:  저는 혹시
+Speaker SPEAKER_02:  저도 안 가셨어요.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03:  아 그래요?
+Speaker SPEAKER_03:  그냥 거기서 볼까요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  아 네 그렇죠.  그리고 오기는 좋은데
+Speaker SPEAKER_03:  이건 사실 쉽다는 거 많고  아 제가 거기서 잠깐  잠깐 지냈던 적이 있어서
+Speaker SPEAKER_03:  느낌에 가성비는 하하하하하  선택지는 엄청 많은데 썩
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  저희 노트북 안 들고 그냥
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  네
+Speaker SPEAKER_03:  그거 했으면 좋겠다 하시는 분 있나요?  절대 하지 말자는 건 아닙니까?  그냥 처음부터 무겁게 가지 말자는 느낌이지 절대 하지 말자는 건 아닙니까?  아 그렇죠.
+Speaker SPEAKER_03:  발표 준비해가지고 하하하하하  좋아요.  그러면은
+Speaker SPEAKER_00:  그리고 강남 부근이면 되는 거잖아요.
+Speaker SPEAKER_03:  네 네 네  네 네
+Speaker SPEAKER_03:  네 네 네  네 네 네  네 네 네
+Speaker SPEAKER_03:  네 네 네  네 네 네
+Speaker SPEAKER_03:  네 네 네  네 네 네  네 네 네  네 네 네  네 네 네  네 네 네  네 네 네
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: ís  coming  franc  franco
+Speaker SPEAKER_03:  rance
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  한번 인  Q. 오늘까지 올려주신 메인 투표는?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  맞아요. 월요일인데.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  첫 번째는 저희는 가볍게
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  여기서는 뭐라고 하는지 모르겠네.  그냥 그 라포 라고 해야 하나요?  조금 친밀감을 다져서  서로서로 피드백하기 편하게  오늘도 너무너무 잘 됐는데
+Speaker SPEAKER_00:  오늘도 너무너무 잘 됐는데
+Speaker SPEAKER_03:  단점이나 그런 거를
+Speaker SPEAKER_03:  피드백이 저는 되게 중요하다고 생각하는데
+Speaker SPEAKER_03:  왜냐면 현업에서 누가 그런 거 봐주겠어요?
+Speaker SPEAKER_03:  아 너 기분 나쁠 테니 누가 그런 걸 봐주겠어요?  근데 이제 여기 다 같이
+Speaker SPEAKER_03:  수평적인 공간에서 만날 때는  너무너무 다들 착하시고 하니까
+Speaker SPEAKER_03:  상대 기분을 맞춰주느라고  할 얘기를 못하는 것 같아요.  근데 그게 서로서로 마이너스 같아요.  해보는 연습도 해야 되고  받아보는 연습도 해보고  그 다음에 여긴 좀 안전한 장소  여기서 못했다고 고가가 깎이거나  아니면 면이 안 선다거나 하는 게 없으니까
+Speaker SPEAKER_03:  그런 거를 만드는 입장에서  제가 편하게 한번 만나서 밥이라도 먹으면
+Speaker SPEAKER_03:  얼굴 한번 본 사람하고 얘기하는 거랑  이렇게 그냥 화면으로 보고 얘기하는 거랑 좀 다르다.
+Speaker SPEAKER_03:  좋아요. 그러면은 너무 좋습니다.
+Speaker SPEAKER_03:  월요일에 저희는 단톡방이 있으니까  거기에다가 저희 뭐지?  송금도?
+Speaker SPEAKER_03:  할 수 있죠.
+Speaker SPEAKER_00:  그러면은 식사하고 그냥 평소에 하면 될 것 같아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  월요일날 그런 거는 일단 됐고.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  그리고 이제 그러면?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  화요일날은 지금 한 피드백을 서면으로 한 다음에 하는 거니까  그것도 일단 오늘까지로 하죠.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  나 이거 했음 하고  이제 댓글에다가 질문 같은 거 달면 왔다 갔다 하는 거니까요.  아, 각자 보고서 올린 게 있구나.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  아, 맞네. 보고서 올린 게 있구나.  거기다가 하면 되겠네요.  그래서 준영 님이랑 현서 님도 그다음에 혜수 님도
+Speaker SPEAKER_03:  그냥 같이 다 진행하면 좋고.  미병님도 좋고.  본인이 한 거에다가 그다음에 준영 님이랑 현서 님도 같은 프로젝트도
+Speaker SPEAKER_03:  본인이 느낀, 본인이 팀원으로 느낀 좋은 점, 아쉬운 점 같은 거는  다를 거잖아요.
+Speaker SPEAKER_03:  그거를 이제 먼저 적어주시면 다른 분들이  나는 이런 느낌을 받았다.
+Speaker SPEAKER_03:  질문은 뭐가 있다.  뭐 이런 거 하면은  이제 그 질문 같은 거는 이제 시간이 좀 있으니까 확인해갖고  화요일날 하면 한 분당 이제 아까처럼 막 3, 40분씩이 아니라 금방 또.  진행되지 않을까 해요.  저는 이거는 좀 하고 넘어가면 좋겠어요.  혜수 님 어떠셨나요?  이게 프로젝트 하고 갔는데 아무 관심 받지 못하고.
+Speaker SPEAKER_03:  넘어가는 건 좀 너무 아쉽지 않나요?  아깝기도 하고.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  그렇죠. 이게 좀 피드백 좀 받아보는 게 좋지 않나요?  이게 아니 10일이어도 다들 고생 많이 하셨잖아요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  10일이어도 다들 고생 많이 하셨잖아요.  많이 했는데 보고서 분량들만 봐도 그렇고
+Speaker SPEAKER_03:  이게 네 분 다 그렇고 저도 그렇고 다른 분들도 그렇고.  근데 저는 여기 좀 프로그래머 측에서 그런 좀 장소를 마련해서
+Speaker SPEAKER_03:  특강처럼 뭐 이렇게 다 같이 모아서  서로 발표하는 시간도 좀 갖고
+Speaker SPEAKER_03:  피드백 받는 시간도 좀 갖고  이게 오프라인이면 그럴 법하잖아요.  시간이 그냥 제출만 하고 끝나지 않을 것 같은데.  그게 없어서 너무 아쉬워서 저희끼리라도 좀 보완해서.
+Speaker SPEAKER_03:  해봤습니다.  감사합니다.
+Speaker SPEAKER_03:  너무 좋은데 시간이 많이 걸리니까.  시간을 단축시키는 그 좋은 입장, 그 의견을 이제 선생님이 내주셔서
+Speaker SPEAKER_03:  저도 아주 좋다고 생각하고.  그런 걸 찾아가는 것도 저희가 진행하면서 좋은 연습이라고 생각합니다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  좋아요.  그러면 이제 혹시 제가 한 SMA나 다음에 해외에서.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  제가 한 SMA나 다음에 해외에서.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  네.  네.  바로 이거 하는 게roadmap historically .
+Speaker SPEAKER_03:  하나 좀 Noah.  네.  네.  네.
+Speaker SPEAKER_03:  всп 김� reductions Another 그 사이즈 버 giant mask 1월 9uchenobyl에서  예상된 kau background 의 현장에서는  진짜 다 meal carbon an olha hora i
+Speaker SPEAKER_03:  네.  그리고 does youruthin 재점에  hasashigas Would u 자 그�له가  위증한다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  네.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네.  네.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  네.  네.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  네.  제가 지금 아직 한 생이라도 샀어요  아 예예 그렇죠 그렇죠
+Speaker SPEAKER_03:  아 예예 그렇죠 그렇죠
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  또 너무 급하게 들어가서 하려면
+Speaker SPEAKER_03:  얼마당 얼마 해가지고 돈을 내라고 하더라고요  APR을 팔더라고요  에코드 몇 개 당 얼마 이런 느낌으로
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  근데 그 액수가 개인이 감당할 액수 느낌이 아니라서  API가 좀 써보려고 하더라고요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  이러기는 좋은데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  비용 지원을 하나도 안 주잖아요  그래서  아 직접 해야 되나 라는 느낌이었습니다  그래서 아 이거를
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  저희끼리 다 해야 되긴 하죠
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  비용이 안되는 것도 확인을 해보고 한번 말씀을 드릴게요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  어떤 채널 같은 걸 제가 원하는 채널을 검색하면  그 채널에 대해서 엄청 분석되지는 게 될 것 같거든요  한번 더 알아보게 되겠습니다
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  찾아보신 거 있지 한번 생각해 보신 거라든가
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  마가지트 진주기지 않습니까
+Speaker SPEAKER_03:  같이 찾아봤으면 좋겠어요
+Speaker SPEAKER_02:  구체적으로 알아본 건 아니지만 예전에 이런 이런
+Speaker SPEAKER_02:  멋잇몰인 긴몰인 프로젝트를 학교에서  여러 팀이랑 같이 해본 적이 있는데  그때 생각을 좀 하면서 그냥 써본 거는
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02:  그 분들이 정확히 모르면 무심사가 리뷰를 올리면
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  그 리뷰 조건에 맞는지 그걸 판단해주는 그런
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  그것처럼 리뷰를 가져오면
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  방금 얘기를 들어보니까 그게
+Speaker SPEAKER_02:  가능할지 모르겠네요  거기서 허가를 해줄지 뭐 저작권이나 그런 것도 있을 것 같고
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02:  사용자를 좀 사용자 기준으로 좀 서비스를 하는 형태였는데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  그런 경우에는 그냥 팀원들이 정보를 입력해서 하는
+Speaker SPEAKER_02:  그런 거였는데 그거는 좀 개수가 적어가지고  좀 오버샘플링을 하거나 그런 게 필요하긴 했었어서
+Speaker SPEAKER_02:  이게 좋은 방법인 것 같지는 않았습니다
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  이게 뭔가 좀 걸릴 수도 있겠다라는 생각이 드네요
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래서 제가 그 동영상에서 팩스 추천하는 것만 해도
+Speaker SPEAKER_03:  돈 안 내고 하려면 빼 힘들더라고요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래서 그리고 이게 싸 보여도  걔네들이 명시돼 있는 가격이 싸 보여도  뭐에 뭐 한 1달러 이렇게 써져 있어도  진짜로 쓴다고 가져가면 미친 듯이 가격이 올라가는 경우가 있어서
+Speaker SPEAKER_03:  AWS처럼
+Speaker SPEAKER_03:  근데 그게 뭐 얼마당 얼마 뭐 용량 얼마당 얼마 이렇게 되다 보니까  실제로 쓰려고 하면 못 써져서 되게 쓰기가 힘들어져요  그래서 이것도 일단은 크롤링
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  혹시 뭐 다른 분들도 확인해 보시고 계실까요?
+Speaker SPEAKER_01:  제가 하나 생각해봤는데
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01:  저는 한 스텝으로 생각을 해봤는데
+Speaker SPEAKER_01:  그래서 수십 개만 방법이
+Speaker SPEAKER_01:  아까 말씀해 주신 것처럼
+Speaker SPEAKER_01:  크롤링이나 API 이용하는 방법이 있는데  웨어러블 기기 같은 게 요즘 되게 많잖아요  코로나 시기 지나면서 이제 그런 웨어러블 기기 같은 게
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  웨어러블 기기의 시간들이 많이 열렸고  그거에 대해서 되게 갖고 있는 사람도 많고 하니까
+Speaker SPEAKER_01:  그렇게 생각을 하다 보니까  웨어러블 기기의 신의성을 또 어떻게  뭐라고 해야 되지?  웨어러블 기기에서 얻은 정보를  이게 남는 정보라고?  내가 막 이렇게 할 수 있나?
+Speaker SPEAKER_01:  이런 생각이 들더라고요
+Speaker SPEAKER_01:  그런 기준들을 통과해서 나오는 기기들이니까  거기서 얻은 걸 또 사용해도 괜찮지 않을까?
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_01:  그런 생각을 일단 해봤고
+Speaker SPEAKER_01:  월 렙 스페인다던가  어떤 그런 데이터를 다룰 수 있을까?  그런 시스템이 정도?
+Speaker SPEAKER_01:  그런 어려움이 있을 것 같다
+Speaker SPEAKER_01:  그리고 하나는 진짜 간단하게 생각해본 거는  요즘에
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  아 잠시 넘어가기 전에
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  저는 사실 혼자도 한번 해볼까 하는 게 있는데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  잠깐만요 세 명이요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  네 명
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04:  너네도 있어요
+Speaker SPEAKER_03:  아니 이거 저희 네 명 또 데이터 모으면
+Speaker SPEAKER_03:  꽤 되지 않을까요?  그럼 완전 로드히터인데  저희 완전 1차 데이터인데
+Speaker SPEAKER_01:  저도 모르는 것이  지금 그 선수생을 많이 다루는 음식이 있어요  저는 그 회장을 제대로  그 주제를 한번 선정을 해주시거든요  일단 이거를 한번 방청해봐라  선정을 해주시는데  제가 그런 사진을 받으면  주제를 받지 못했고  제가 2년 동안 선수제를 하면서  주제를 받은 게 있었거든요
+Speaker SPEAKER_04:  저도 모르는 것이
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04:  선정을 해주시는데
+Speaker SPEAKER_01:  혹시 세 분 얼마나 쓰셨나요?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  저는 이게 얼마 안 되긴 했어요  한 3달쯤 넘었어요
+Speaker SPEAKER_01:  저는  이게 또 어려운 거 같아요  한 6년이 된 거 같은데
+Speaker SPEAKER_01:  이게 뭔가 저는 이거를 뭘 찍고  사실 워치를 잘 이용하지 않아서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  이걸 뭘 찍고 한다거나  그런 질문은 거의 하나 안 하고  연락도는 거의 거의 없었거든요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  다른 부분은 어떠세요?  이게 되면 저희 한번 데이터 뽑아볼까 하고요  그래서 뽑아서 보고  아 이거 못 건들겠다 해도
+Speaker SPEAKER_03:  일단 4명꼬 합쳐 놓은 데이터 자체로  그 자체로 좀 가치가 있을 거거든요  그래서 이번 프로젝트 공격적으로 못 하더라도  그 데이터라도 공유하면
+Speaker SPEAKER_03:  각자 하나씩 들고 있는 거보단 낫지 않을까요?  저는 짧긴 한데 달리기를 할 때 걸을 때
+Speaker SPEAKER_04:  저는 짧긴 한데 달리기를 할 때 걸을 때
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  턱걸이를 할 때
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그다음에 제가 조금 더  이거 좀 쌓이면 분석 같은 거 하나 제대로 할 수 있겠다 싶은 게  이게 달리고 나면은
+Speaker SPEAKER_03:  네가 느낀 주관적인 힘듦
+Speaker SPEAKER_03:  그러니까 운동 강도와  얼마나 만족했냐를 물어보더라고요  아 이거 좀 쌓이면은
+Speaker SPEAKER_03:  운동 페이스라던가  달리기 뭐 그런 거 비교해서
+Speaker SPEAKER_03:  아직 데이터 뽑아보지도 않아가지고  혹시 다른 두 분은 어떠신가요?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  아 저 이거 해볼 수도 있겠다 싶네요
+Speaker SPEAKER_02: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_02:  집에 밖에 있는 시간이 아마 더 길을 것 같잖아요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  저는 아마 저도 2년에서 3년 정도 된 것 같은데
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아마 한 달 이상은  턱걸이를 할 수 있는데  아 그런가요?
+Speaker SPEAKER_03:  운동은 어떤 운동 하셨나요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그다음에 웰스 운동이랑 달리기와 같이 했었어요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  한 달 갖고 택도 없을 수도 있다고 생각하는데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저도 안 뽑아봤어요  그냥 미루느라고
+Speaker SPEAKER_03:  뽑을 수 있다고는 알고 있는데
+Speaker SPEAKER_03:  다 뭐 애플워치, 갤럭시워치 그런 거에요?
+Speaker SPEAKER_01:  저는 그런 작가는...
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00:  저도 애플워치  애플워치 데이터 뽑을 수 있게 뽑아주면 되나요? 저장된 거?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  저도 그거
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  그리고 저도 될 거라고 생각하는 게
+Speaker SPEAKER_03:  제가 쓰는 건 감이 있는데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그게 계속 저장돼서 저희가  과거 기록을 볼 수 있긴 하잖아요 앱에서
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  뭐 내가 지난 한 달, 지난 1년간 추이 이런 거 볼 수 있죠
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  저희 한 번 뽑아보죠 안 되면 말고 약간 그런 느낌 가볍게
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  아 그러면 가능할 거라는 청신호네
+Speaker SPEAKER_03:  아 그래서 저희 그냥 너무 무겁지 않게 가볍게 안 되면 말고 느낌으로 한번 해보죠  이게 3명이나, 4명이나 있어서  데이터를 모으면은 각자에게 못해도 모은 것만 공유해도
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  저도 좀 저는 힘들 거라고 생각해요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  저도 힘들 거라고요?  네  한 달 갖고 더군다나 해본 적도 없는데  이거는 약간 작은 스타트업이  어...
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  그 시스템일 수 있다고 생각해요 데이터를 더 많이 모아서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  헤드마운트 디스플레이라고 하는데 왜 예전에 그
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  물론 그때 막 일주일 동안 잠 못 자고 죽을 뻔하긴 했는데  아무튼 되긴 됐었거든요
+Speaker SPEAKER_03:  근데 아직 그런 게 없을 때  그거 띄워주는 게 득이 될지 뭐가 얼마나 득이 될지 그런 거 알아보는 연구였어요
+Speaker SPEAKER_03:  진짜 안 되면 말고 느낌으로 한번 해보죠
+Speaker SPEAKER_04:  진짜 안 되면 말고 느낌으로 한번 해보죠
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  아 역시 안 되더라 이건 안 되겠더라 라든지  이렇게 데이터 뽑히는데 뽑힌 데이터를 보니
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  어 되겠다 싶은 분들이 있을 수도 있고  하여튼 안 되면 말고 느낌으로 해보세요
+Speaker SPEAKER_03:  아 이거 정말 더 그냥 간단한 건데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  안타깝게도  네 그래서 저는 그거에 관련돼서  뭔가 어쩌면 뭐 그런 식당에 대한 매출이나 뭐 그런 거를 한번 생각해봤는데
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  이것도 그러면은 그런 구직 사이트들 같은 거 있잖아요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  앱을 써가지고 뭐 가격이 가나  아니면 직접 상관식으로 구직자의 뭐 스펠이 그런 거  그런 것들을 다 받아오거나 또 경험들을 받아오거나
+Speaker SPEAKER_01:  앱이 무료인 거를 이제 확인을 하거든요 제가
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  네 그리고 이것도 앱이 앱이 워낙 많이 좀 힘드시고
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이런 식으로 가야 되나 이런 생각을 하는 시간도 없고
+Speaker SPEAKER_01:  영훈님이 말씀해 주셨던 그 사건들이
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그렇죠 저희가 미네랄입니다 저희를 채굴하는 거기 때문에
+Speaker SPEAKER_03:  그렇죠 저희가 미네랄입니다 저희를 채굴하는 거기 때문에  그 사이버십은 이슈도 없고 아 네 그 이슈가 진짜 없는지 모르겠어요  그래서 자꾸 동의를 받는 건데
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그렇죠 저희가 당파자니까 정보 제공 당파자니까
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  네 그래서 그런 생각도 되게 많이 하시셨는데  그리고 저는 제가 좀 되게 궁금했던 건  영훈님이 이렇게 일단 생산의 육지 파손을 앞두고 하셨잖아요  네  그리고 그 업종이 이 기술이 어떤 것인지  그리고 저희가 따로 뭔가 정보를 모르고  지금 영훈님이 교육하신 만화 작품들은 이 부분에 대해서 영훈님이 분석해 주신 내용만
+Speaker SPEAKER_04:  그리고 저는 제가 좀 되게 궁금했던 건
+Speaker SPEAKER_04:  네
+Speaker SPEAKER_01:  저는 상당히 깜짝 놀랐어요  이 부분에 사각 관련된 내용만 진행을 하는 건지 아니면  제 업소를 한테 지금 저희가 이 부분에 대해서 하는 건지
+Speaker SPEAKER_03:  음 그거 오늘 보여드릴게요
+Speaker SPEAKER_01:  그 사이버가 있도록 뭔가 아니면 저는 사각상 깜짝 그걸 조금 더
+Speaker SPEAKER_01:  지금은 간단하게 FED랑 그 파손 모듈을 만드는 거를 모르겠거든요
+Speaker SPEAKER_01:  네  그런 걸 조금 더 다듬어서 관리자를 위한 FED 이런 식으로 뭔가
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 그렇죠  동의하는 질문이 그 앞쪽 내용만 저희가 그러면은 만약에 정보를 안 하고  저희가 약간 처녀를 약간 접어주게 되는 저희가 이거에 대해서는 뭐 끝이 없을까?
+Speaker SPEAKER_00:  동의하는 질문이 그 앞쪽 내용만 저희가 그러면은 만약에 정보를 안 하고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  아니면은 우리가 한 곡처럼 쓸 수가 없었던 주제가 그냥  서적, 여적, 우측, 모델링으로 가는 건가? 라는 생각이 들리시나요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 네  그 이상적으로 된다면  태그데이터 기반으로 지금 모델이 구축되어 있는데
+Speaker SPEAKER_04:  아 네
+Speaker SPEAKER_03:  파이프라인이 상품되어 있긴 하지만 걔네는 약간 레퍼런스 느낌이 되는 거고  그러면 모델을 다시 구축하는 느낌이라
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  전에 그 3차 프로젝트인데도  제가 이렇게 혼자 들고 있는 이유는 거의 제가 기여도가 99.99%라서 그런 건데
+Speaker SPEAKER_03:  그 제가 만든 노트북에서 하나도 수정된 게 없어요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이게 그냥 모든 결정도 그냥 하나도 변경된 게 없고 전부 다 그냥 혼자 제가 한 거를 다른 분들이 약간 이해하면서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  따라오신 그런 느낌이라서 그게 너무너무 아쉬웠고
+Speaker SPEAKER_03:  그다음에 이제 그 팀원분들이
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  요번에도 그렇게 안 될 거 같은 느낌이고
+Speaker SPEAKER_03:  뒷단이 만약에 이제 뭐 여러 제한점 내에서 달라지지 않더라도
+Speaker SPEAKER_03:  이미 조금 그 모델을 바꿔놨고 저도  다른 분들도 모델을 계속 개선하면서  같이 만든 모델이라고 해서 문제될 건 없다고 생각해요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그리고 마지막으로
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저희가 모여서 뭔가 회의를 하고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그러니까 협업이라는 게 어떤 공동 목표를 가지고 일을 하는 거에서
+Speaker SPEAKER_03:  어떻게 구성이 되는지 뭐 상호작용이 되는지를 분석하는 건데  어 그러면은 협업 목표가 있어야지
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래서 제가 지금 이 분석을 하고 있는 게
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  제가 지금 이 분석을 하고 있는 게
+Speaker SPEAKER_03:  그 협업을 녹화하면서 그걸 갖고 추가 분석을 하는 느낌이었다는 거죠  그래서 그 앞단에 얘가 약간 재료 느낌이 되는 거고  걔를 이제 뭐라 해야 되나 최악의 경우에는 그냥 모델 개선만 하는 거죠
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  근데 이제 뭐 전처리를 바로 개선한다거나 오버 샘플링 방법을 개선한다거나  파이프라인을 바꾼다던가  파이프라인을 바꾼다던가
+Speaker SPEAKER_03:  모델을 추가해서 더 비교해 본다던가  모델을 추가해서 더 비교해 본다던가  저는 사실 오늘 시간이 되면 준영이 형님한테 그 얘기를 좀 해보려고 했거든요  라이트 gbm이나 캡호스트 같은 거나 뭐 네이프  라이트 gbm이나 캡호스트 같은 거나 뭐 네이프
+Speaker SPEAKER_03:  뭐 최적화 모델도 옵튜우나라고 불러야 되나 뭐 하여튼 이런 다른 것들 써보셔 가지고  얘네들을 추가하는 과정
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  봐도 될 것 같아요 여튼
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래서 그 전체 모델 발전 과정을 어떻게 포콜 같은데 보여주면 좋겠냐 하는 것도
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그건 기터브 얘기는 조금 뒤에 이거 준영님 얘기까지 들어보고 하세요  그래서 네 그래서 미경님 그 질문에는 그런 느낌입니다
+Speaker SPEAKER_03:  회사는 본팀이 아니라  회사는 본팀이 아니라
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  프로젝트이기도 하고  근데 약간 재료 느낌도 있고  협업을 분석하려면 협업할 재료가 있어야지
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 텍스트 꽤 잘 뽑아주고 무료로도
+Speaker SPEAKER_03:  그다음에 그거는 지금 내용 분석을 안 해봤는데
+Speaker SPEAKER_03:  그것을 좀 찾아보면 좋겠다 하는 것도 있었습니다  이렇게 되면은 이 에세이의  여기에 대해서도 저희가 예측 모델을 만들어 보거나 할 수 있겠죠  미경님이 하신 건 물론  그 수기로 쓴 이미지의 글자를 인식한다는 거 맞으시죠?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  대학원의 사진에  그렇긴 해도 지금 이거는 어쨌든 텍스트 분석에 가깝게 되니까  그 다음에 그 텍스트도 동영상에서 추출한 텍스트가 되고
+Speaker SPEAKER_03:  그래서 이제 전 과정을 진행해 볼 수 있겠다는 생각이 들어서
+Speaker SPEAKER_03:  일단은 가능하다는 거를 보여드리면 좋을 것 같아요  오늘 그거 보여드릴게요
+Speaker SPEAKER_01:  기술을 다시 배우고 한번 해볼 수 있다고 이해를 하면 될 것 같다
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  네
+Speaker SPEAKER_03:  그리고 그거 저는 좀 같이 해봤으면 좋겠어요
+Speaker SPEAKER_03:  이거 마무리한 다음에
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  네 저도 미경님과 같은 의미성이 있어서 찾아보려고 하셨는데
+Speaker SPEAKER_00:  만약에 저희가 도입할 수 있겠지만 어려우면
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  그래서 좀 찾았어요 지금
+Speaker SPEAKER_03:  최대한 그렇게 안 되기를 바라주네요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  네
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  근데 점검만 최적화가 그렇게 수집이 수지 아닐까 싶어서 찾아봤다가  제가 미용회사 ATI가 무료인지는 모르겠어요  근데 미용회사랑 미상의 그냥 ATI가
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  아니면 프로그램에서 경제 인사에서 제품이나
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이런 걸
+Speaker SPEAKER_00:  예측을 한 다음에
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  저도 해본 경험이 없어서
+Speaker SPEAKER_00:  조금 힘들 것 같긴 한데
+Speaker SPEAKER_03:  네
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래도 한번 알아보죠. API가 만약에 무료다.  어떤 기업이 굉장히 공공의 이익을 가지고 API를 공짜로 제공해 준다.  뭐 하면 안 될 게 없죠.  그다음에 API가 유료여도 매우 매우 낮은 가격으로 전체에 다 끌어와도
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  한 10만 원까지도 해볼 수 있잖아요.  근데 몇 백만 원, 몇 천만 원 이런 게 있으면 그건 나 처리할 수 없거든요.
+Speaker SPEAKER_03:  확정하기는 조금 그러네요. 저희가
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그것도 한번 봐야겠네요.  이것도 화요일에, 뭔가 점점 화요일에 뭐가 많아지네.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  힙도 해야 되는데.
+Speaker SPEAKER_03:  뭐 여튼 저희가 지금 다른 조들 안 할 때, 공식이 아닐 때 모이고 있는 거잖아요.  그래서 제가 계속.  그다음에  좀 가볍게 순수하게 이제  온보딩 하면 좋을 것 같아 가지고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  일단은 화요일인데 너무 그 기한에 저희가 스트레스 받을 필요는 없을 것 같고  오늘처럼 오늘 원래 다 해보기로 했는데 지금 하나만 하고 넘어가는 거잖아요.  이런 느낌으로 좀 뒤로 넘겨도 될 것 같아요.  저희 자주 보기도 하고 지금 원래 본 프로젝트 기간이 아니기도 하고.  그다음에 저희 만약에 길어질 것 같으면.  그다음에 저희 만약에 길어질 것 같으면.  만약에 길어질 것 같으면 협의해 갖고 끝나더라도 이제 프로젝트 좀 완성해 갖고  꼭 써먹게 할 생각도 없는 건 아니니까.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이거 한번 알아보죠.  지금 말씀하신 거 아니면 다른 분들이 하신 것도.  크롤링이나 API를 쓰거나 유튜브를 가본다든지 물리해석을 한다거나.  이게 가능한지.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그리고 제가 이 해봤죠.  그러니까 HR 쪽으로 주제에 대해서는.  HR 쪽으로 주제를 잡은 게.
+Speaker SPEAKER_03:  1차 데이터 최고라던데 지금 이거 동영상 녹화만큼 수월한 게 없는데.
+Speaker SPEAKER_03:  여기 HR이잖아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  만약에 저희가 예를 들어서 굉장히 좋은 주제지만 공급망 최적화를 한다고 해요.
+Speaker SPEAKER_03:  공급망 최적화를 하고 거기에다 협업 뭐 이거를 붙이려면.
+Speaker SPEAKER_03:  하하하하하.  공급망 최적화 모델 서비스인데.  협업은 왜 또 들어가 있는 거지? 할 수가 있는데.  만약에 이제 퇴사면.  저희가 협업 분석 이렇게 이렇게 해보니까.  협업 이거 하면 퇴사도 나설 수 있지 않을까.  뭔가 이렇게 둘이 좀 엮을 수 있을 것 같아요.  그래서 약간 좀 뭐라 해야 되나.
+Speaker SPEAKER_04:  저희가 협업 분석 이렇게 이렇게 해보니까.
+Speaker SPEAKER_03:  이런 비공식 이유도 있기는 했습니다.
+Speaker SPEAKER_03:  HR. 저도 뭐 HR에 완전 관심이 있는 건 아닌데.
+Speaker SPEAKER_03:  헬스케어 쪽도 좋고.
+Speaker SPEAKER_03:  이코머스 쪽도 좋고.  금융도 좋고.  지금 현재로서는 도메인 어떤 거여야 된다라는 게 사실 없고.  오히려 데이터팀이 좀 잘 돼 있으면 가서 데이터 분석이나 모델 빌딩하는 영향 자체를 좀 기르고 싶다는 느낌이 있는데.
+Speaker SPEAKER_03:  중구난방이 안 되게.  그래서 퇴사를 애초에 정한 게 있습니다.
+Speaker SPEAKER_03:  일단은 간략하게.  공석 HR 뽑아본 거 보여드릴게요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  미쳤는데.  너무 오래 걸렸는데.  그냥 PC로 돌리고.
+Speaker SPEAKER_03:  완료가 안 됐는데.  미쳤네 진짜.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  너무하다는 생각이 자꾸 들더라고요.  괜히 컴퓨터한테 너무하지 않니 하면서.
+Speaker SPEAKER_03:  화면 보이시나요?
+Speaker SPEAKER_03:  그러면은 이 부분은.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  went해 끼고.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  하나요.
+Speaker SPEAKER_00:  약간 그 목소리 엄청 유명한 거 같더라고요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  맞아요. 그런 이슈도 있고.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  하지만 얘를 내용 분석보다는 누가 얘기하고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  누구로 넘어가고 보면 00번이 엄청 많죠.  00번이 누구일까요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  이건 진짜 간략한 버전인데.  그리고 사실 얘가 문제가 있기 때문에 다시 돌린 거예요.
+Speaker SPEAKER_03:  발화자가 다섯 명이 아니라 네 명인데
+Speaker SPEAKER_03:  다섯 명으로 잡더라고요.  그래서 이제 다시.  조정해가지고 또 돌렸는데
+Speaker SPEAKER_03:  19시간을 걸렸죠.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이게 만약에 데이터가 CPU랑 왔다 갔다 많이 해야 되는 데이터면
+Speaker SPEAKER_03:  오히려 그것 때문에 오버헤드가 커져서  GPU 연산 이득이 완전 쓸모없이 될 수도 있다고 하더라고요.
+Speaker SPEAKER_03:  더군다나 이 그래프카드는 하나밖에 안 되고 하니까.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_00:  이게 왜 내용이 다 나가냐고.
+Speaker SPEAKER_03:  왜 내용이 다 나가냐고.  왜 내용이 다 나가냐고.
+Speaker SPEAKER_03:  그러면 이거 돌아가는 동안에.
+Speaker SPEAKER_03:  금방 되네.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  한 사람이 말을 이어갔다는 뜻이에요.
+Speaker SPEAKER_03:  아주 부적절해요.
+Speaker SPEAKER_03:  한 명만 혼자 말을 엄청 많이 했어요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저희는 안 이럴 거예요.  그걸 보여드리고 싶었는데.  언제 끝날지 중간에 멈춰야 되는지.  이미 19시간이나 썼는데.  기계비용인지 메모리 비용인지 지금.
+Speaker SPEAKER_03:  이거는 이제.
+Speaker SPEAKER_03:  방금은 한 사람이 말하고 이어가는 거고.  얘는 바라 빈도.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이게 반복으로 돌았다는 건 혼자 말을 많이 했다는 거고.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이러면 안 되죠.  저희는 안 이럴 거예요.  그리고 저희가 경우에 따라서는 아예 이렇게 그냥 일종의 암호화된 코딩으로 보여줄 수도 있고.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  자기를 어필하고 싶으면.
+Speaker SPEAKER_03:  여기.
+Speaker SPEAKER_03:  누구라고 이름 넣고 누구라고 이름 넣고.  이런 형태면 이 사람들 쓰기 안 좋아요.  이건 뭐 협업 안 했다는 느낌이죠.
+Speaker SPEAKER_03:  제가 큰 장점이라고 생각하는 게 있습니다.  이거는 베이스라인이에요.  베이스라인 느낌으로 쓸 수 있어요.
+Speaker SPEAKER_03:  하지만 우리가 어떤 어떤 노력을 했더니.  이게 어떻게 바뀔까요.  저희 당장 저번에만 해도 이런 느낌 아닐 겁니다.
+Speaker SPEAKER_03:  이런 느낌 아닐 거예요.  제가 이게 높긴 하겠지만 이렇게까지 미친듯이 혼자 이러지는 않을 거예요.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  이거보단 나을 거예요.  이제 이거를 비교해봐도 좋을 거고.  그다음에 중간중간에 저희가 이걸 계속 업데이트하면은.
+Speaker SPEAKER_03:  저희가 느끼겠죠.  이거 저희 팀 진행 내에서도.  아, 말을 좀 해야겠다.  내가.
+Speaker SPEAKER_00:  와, 근데 무슨 문제인지.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  제가 정말 힘들었습니다. 여러분.  제가 왜 녹화하고 SDA 방송도 추가로 해본다고 하고.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그 이와 멘토님이.
+Speaker SPEAKER_03:  그 SMA 분석에도 여러 가지 종류가 있고.  더 파볼 거 많다고 했거든요.
+Speaker SPEAKER_03:  그래서 그것도 좀 여쭤볼 생각이고.  그래서 제가 여기서 보여드리고 싶은 건.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  일단은 어떤 분석 형태가 되고.  제가 지금 이걸로 해서 하는 게.
+Speaker SPEAKER_03:  꽤나.  못 알아볼 느낌이 아니라.  한국어 분석이 된다는 거.  이게 영어였으면 저희.
+Speaker SPEAKER_03:  영어였으면은.  난이도가 수직하라 하거든요.  저 영어로 얘기하실래요?  영어로 하면.  아, 정말 모델도 많고.
+Speaker SPEAKER_03:  무료도 있고.
+Speaker SPEAKER_03:  작업도 수월합니다.
+Speaker SPEAKER_03:  확 어려워져요.
+Speaker SPEAKER_03:  제가 영어로.  이거 뽑아본 적이 있어가지고.  그게 꽤 한참 전인데도.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  무료 서비스였거든요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  한국어는 처음에 제가 돌린 모델은.  아예 뭐 거의 외계어로 뽑는 거예요.  한글이긴 한데.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  꽤나 그럴싸해가지고.  아, 되겠다.  이거.
+Speaker SPEAKER_03:  그.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  어디 기업에 지원할 때.
+Speaker SPEAKER_03:  에 노력을 많이 했고.  이렇게 개선됐다 얘기할 때.
+Speaker SPEAKER_03:  저희가 이런 데이터가 있으면.  그 단위로도 얘기할 수 있게.  고 몇 퍼센트 개선됐다.
+Speaker SPEAKER_03:  이런 경향으로 개선됐다라고까지 얘기할 수 있겠죠.
+Speaker SPEAKER_03:  그다음에 여기에 약간 추가로 넣어서.  이런 상호작용의 예시 같은 거를.  텍스트로 뽑아서 보여줄 수도 있겠죠.
+Speaker SPEAKER_03:  이런 상호작용의 예시는.  이런 거였고.  이렇게 했는 이런 느낌이었다.
+Speaker SPEAKER_03:  그래서 예를 들어서.  이 사람이 이렇게.  그 발화가 많긴 하지만.  그건 사회적 역할을 하면서.  그.  이렇게 좀.
+Speaker SPEAKER_03:  이렇게.  의견을 다 얘기한다기보다는.  뭐 이렇게 얘기하시겠어요.  한다거나.  정리한다거나.  아니면 진행 상황에 대한 발화가 많아서.  이렇게 많았던 거다.  이렇게 추가 내용을 넣어줄 수 있겠죠.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  이 분석이 일단 가능한.  거 같으니까.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  안정감을 갖고.
+Speaker SPEAKER_03:  진행해보면 좋을 것 같아요.
+Speaker SPEAKER_03:  이.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  snn은 저런 느낌으로.
+Speaker SPEAKER_03:  여기 이런.  서비스들인데.  다 유료입니다.  그래서 혹시 이거 텍스트 뽑는 거.
+Speaker SPEAKER_03:  공유해보시면 될 것 같고.  기타 없는 얘기는.
+Speaker SPEAKER_03:  그냥.
+Speaker SPEAKER_03:  그냥.  그냥.
+Speaker SPEAKER_03:  그냥.  그냥.  그냥.  그냥.  그냥.
+Speaker SPEAKER_03:  양 musicians؟
+Speaker SPEAKER_03:  A.  안녕하세요.
+Speaker SPEAKER_03:  제가 Impossible One을 이거.  말씀 드리는 거니까 조금.  그렇죠.
+Speaker SPEAKER_03:  transaction equal to 1€에 트렌드 게임에 걸쳐서 Multinational Issue.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그런 것들은 말이가 아니라機전땜에 이러기를는 challenge 해� fique.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  얘는 텍스트만 뽑는 코드예요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아까 보여드렸던 얘는 이제 주피터 노트북이잖아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저 주피터 노트북 관리 어떻게 하셨어요?
+Speaker SPEAKER_03:  계속 수정을 하셨을 텐데  버전 관리를 어떻게 하셨나요?
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  이거 아니고
+Speaker SPEAKER_01:  그냥 할 일에는  이런 것도 없고  음식은 거의 뭐 안 하다시피  다른 분들은 혹시 어떻게 하셨나요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02:  새 파일을 만들었잖아요.
+Speaker SPEAKER_02:  버전 관리가 잘 되는 건 아니고  그냥  BDA 50만원  이런 거에 파일을 사용하는  그런 거에서 했습니다.  좋아요.
+Speaker SPEAKER_04:  버전 관리가 잘 되는 건 아니고
+Speaker SPEAKER_03:  혹시 다른 분들은 어떻게 하셨나요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이런 느낌으로 하셨다는 거죠?
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00:  한 번에 다치는 느낌으로 하셨죠.
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  이제 계속 느낌은 그렇지만 그런 느낌이잖아요.  근데 저도 이걸 개선 작업을 하면서  왜 계속 늘어나는 거예요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이거를 모여서 한다?
+Speaker SPEAKER_03:  같이 한 코드를 작업하는데  이런 느낌으로 한다?  절망의 재앙입니다.  이건 찾다가 없던 버그들 만들겠어요.
+Speaker SPEAKER_03:  자 그래서 제가 여기 지금 몇 개야  몇 개인지도 모르겠네.
+Speaker SPEAKER_03:  이만큼의 코드를
+Speaker SPEAKER_03:  코드가 아니죠.  스피터 노트북을 버전 관리로 사서 만들고 있어요.  자 그래서 제가 여기 지금 몇 개야. 몇 개인지도 모르겠네요.  버전 관리로 합쳐볼게요.
+Speaker SPEAKER_03:  합쳐봤어요.  그럼 어떤 느낌이 되냐면
+Speaker SPEAKER_03:  하지만 모든 버전이 다 있는 거예요.
+Speaker SPEAKER_03:  여기에 아까 거기에서 누락된 정보가 없습니다.
+Speaker SPEAKER_03:  여기.
+Speaker SPEAKER_03:  그다음에 새로 추가해도 파일은 새로 만들어지지 않아요.
+Speaker SPEAKER_03:  어 그러면은 이전에.  버전 관리 그.
+Speaker SPEAKER_03:  최종 친 최종.
+Speaker SPEAKER_03:  찐 최종 최종.
+Speaker SPEAKER_03:  어 난 그 전번으로 돌아가고 싶어졌는데 그럼 어떡하냐.  찐 최종 최종 최종이 마지막인 줄 알았는데.  그 최종 최종 두 개만 붙었던 거가.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  해보다 보니까 그게 더 좋았고.  거기 돌아가고 싶다.  뭐 이제 그런 경우가 생겼잖아요.
+Speaker SPEAKER_03:  그러면은 그럴 때 기즈를 쓰면 됩니다.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  혹시 기스 써보신 분.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  좀.  조금.
+Speaker SPEAKER_02:  그냥.
+Speaker SPEAKER_01:  뭐 푸시치고 이런 거 말씀하시는 거죠.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  응 맞아요.  이렇게 커밋 해봤다.  조금.
+Speaker SPEAKER_01:  시간이 좀 지나가지고 까먹었을 수도 있는데.
+Speaker SPEAKER_01:  다시 할 수도 있을 것 같아요.  근데 이게 제일 중요한 게.  어 좋아요 좋아요.  이게.  이게.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  이게.  이게 다른 거.  네 이게.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그래 이게 오늘 그냥Ç qu have.
+Speaker SPEAKER_01:  이건 White되weed에다가난다고.
+Speaker SPEAKER_01:  perspect로.  위á가 될 걸 아 ק correspondence 나보다 더 작아.
+Speaker SPEAKER_03:  위á가 될 걸 아 ק correspondence 나보다 더 작아.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  알아 먹어.  내 외모�кольку dare 보여줘 입에 폴�が 한 situação에에 빠르게 아니
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  That's why 네 novel being む0.
+Speaker SPEAKER_03:  That's why 네 novel being む0.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그니까 아 juu that you out there for 10 pcs Крас warehouse real prime in ı
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  여러분 이것도 기술 스택이에요
+Speaker SPEAKER_01:  이번에 잠깐 회사에 갈 수 있었던  기술 옹탕 대회는 이제 본회사에서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  개입을 어떻게 할 수 있어야 할지 궁금해요
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  파일로 관리하는 건 한계가 있다고 느꼈어요  근데 아무래도 이 분석과 조금은
+Speaker SPEAKER_03:  개발자 분들하고 달리 기술 사용할 수 있는 분들이 조금 더 적은 것 같아요
+Speaker SPEAKER_03:  저는 그게 오히려 오히려 조화가 될 수 있다고 느꼈어요  차별점  이렇게 여러번 얘기하는 이 어려운 취업 시장에서  그 다음에 뭐 아무 데나 취업되면 괜찮은 건 아니잖아요
+Speaker SPEAKER_03:  물론 이제 많이 가리면 안 되겠지만  기왕이면 가능한 데 중에서 좋은 데로 가려고 할 때
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  1차 데이터 전처리 할 줄 안다  해봤다가 더 보여주는 게 좋고  나 협업 잘하는 인데다  뭐 다 협업 못한다고 얘기할 지원자가 없죠
+Speaker SPEAKER_03:  그걸 구체적인 수치로 분석까지 해봤다
+Speaker SPEAKER_03:  그런 게 이제 전부 다 차별점이 될 거라고 느껴서
+Speaker SPEAKER_03:  저희가 이제 하려고 하는 프로젝트로 치면
+Speaker SPEAKER_03:  거기 뒷단에 붙여있는 서비스 분석이라던가  이런 뭐 협업을 하는데 협업 세부 내용에 기술 써서 협업을 해봤다  그리고 뭐 아예 수치로 분석 SNA 분석 같은 것도 해봤다
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  라던가 이런 건 전부 다 차별점이 되겠죠
+Speaker SPEAKER_03:  저 그 현원 멘토님들도 그 어 좋아하시더라고요 놀라시더라고요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저는 약간 그 미경님 말씀하신 것처럼 대안이 없다고도 생각해요  저희 이제 각자 너는 뭐 XG-BOOST 해보고 너는 SBM 해보고 너는 뭐 리니어 해보고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  뭐 해보고 이렇게 할 게 아닌데 그러면 이제 하나의 파일을 같이 건드리게 될 텐데  그걸 파일명으로 뭐 구글 드라이브 같은 데서 공유한다?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그리고 대학원 다닐 때 아예 있는지도 몰랐으면 기깠습니다
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  근데 제가 처음 이걸 써볼 때 보니까 한 2-3일 정도 걸렸던 것 같아요
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  Git이라는 것 자체가 편하면서 은근 까다로워요
+Speaker SPEAKER_03:  그래서 저도 고짤래고 애초에 약간 프로그래밍 느낌으로
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  코드도 좀 쳐넣어야 되고 터미널 같은 데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  일단은 여러분들 비주얼 스튜디오 쓰시는지 모르겠는데  이 비주얼 스튜디오에 보면 원래 이거
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  Git으로 시작하는 명령  Git 어쩌고 저쩌고 뭐 commit Git 어쩌고 뭐 인식 뭐 그런 걸 쳐야 되는데  그런 걸 좀 편하게 해주는 툴인데
+Speaker SPEAKER_03:  이 저 vs 코드 내에 박혀있는 거 말고  별도의 그 툴들도 많아요  이걸 저희가 통일할 필요는 없어요  그 공유되는 것만 통일하면 되니까  그래서 다음까지
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그러니까 여러분들도 이런 파일 있다고 하셨잖아요
+Speaker SPEAKER_03:  ㅎㅎㅎㅎㅎㅎㅎ
+Speaker SPEAKER_03:  를 본인 레포에 이렇게 정리하는 거죠.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그러면 git 레포로 보면 아 그리고 이게 여러분들 나중에 그 코드 제출  할 때도 이렇게 제출해야 훨씬 메리트가 있을 거예요.
+Speaker SPEAKER_03:  그냥 마지막 하나만 저희 보면은 이런 커밋 내용 없이 이런 커밋
+Speaker SPEAKER_03:  내용이 있어야 나중에 내가 봐도 뭐 어떤 모델 썼고 뭘 업데이트
+Speaker SPEAKER_03:  했고 뭘 고쳤고 이런 걸 알 수가 있는데 이제 파일명으로 하면 그럴
+Speaker SPEAKER_03:  수가 없잖아요.  이렇게 하면 이거 무슨 모션 페이지 나 그 텍스트 모션 하나를 따로 할
+Speaker SPEAKER_03:  땅 해가지고 적어줘야 되는 건데 그게 이제 한두 개일 때가 그렇지  많아지면 업데이트 내용이 많아 지면 많아질수록 어려워지니까
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이거를 이제 각자 만들어보면 어떠한가 해요.
+Speaker SPEAKER_03:  그러면 이제 그거 자체가 저희가 진행하는 프로젝트에 쓰일 건 아닌데  여러분들이 이제까지 한 프로젝트에 대해서는 이제 이 프로젝트를  어디 코드 단어로 제출할 때 제출할 만한 자료가 생기기도 하겠고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  저희가 공유할 수 있을 거예요.  그래서 각자 git에 조금 익숙해지면 이제 여기 뭐 full request를 날린다
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  거나 브랜치를 따로 지금 이게 다 메인 브랜치인데 브랜치를 따로 생성해가지
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  고.  이제 이 브랜치를 저희가 지금 직접 생성해가지고 이제 여기서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그래서 그거를 기존 모델에 합치려고 해요  그러면 이제 그거를 한 군데에 요청을 보내서
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  근데 현업에서도 그런 식으로 일이 이루어진다고 알고 있는데  그거 자체가 좋은 연습이기도 하고  그러면 현업에서 그렇게 굳이 하는 이유는  그 협업을 활성화하고 오류를 막기 위해서잖아요
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그게 가능해지는 거니까
+Speaker SPEAKER_03:  그 결과물로써 본인의 찐 최종 최종 최종을
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  기술을 한번 정리해보시는 게 어떤가요?
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  누차 말씀드렸듯이 다른 우선순위로 뒤로 밀릴 수도 있고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  얘가 확정돼야 다음으로 넘어갈 수가 있어요
+Speaker SPEAKER_03:  뭐 개선 작업을 하든 SNA에서 추가로 한 거를 공유를 하든
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이게 코드 공유하는 공간이니까
+Speaker SPEAKER_03:  이거에 대한 익숙한 어떤 화면이 없으면은
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 도저히 Git 못 쓰겠다
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이거 Git 공부하다가 다른 거 못하겠다 싶으면은
+Speaker SPEAKER_03:  그거를 근데 뭐 어떤 방향이든지 간에 정리를 좀 해야
+Speaker SPEAKER_03:  저희가 아직 여유가 있고 이게 온보딩이고  그냥 본 작업에 아직 들어가지 않은 이 시점이
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  질문점이나 모르는 거나  아니면 내가 아 이거 해결했다  이거 때문에 시간 날렸는데 알고 보니 간단한 문제였다  그런 것도 공유하면서 진행하는 게 좋습니다
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  그리고 또 그 아까 찾아왔던 주제들을 통해서
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  뭐 이 케이크가 유료인지 무료인지 뭐 유료는 얼마인지  어떻게 해야 될지
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01:  이렇게 생각하고 최종으로 생각하고 또 어떤 게 있죠?  네 맞아요
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  하나하나가 다 꽤 큰 것 때문에
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  네
+Speaker SPEAKER_03:  네  네
+Speaker SPEAKER_03:  네
+Speaker SPEAKER_03:  네
+Speaker SPEAKER_03:  네  네  네  네  네  네  네
+Speaker SPEAKER_03:  네 네  네 네  제가 이제 일단?  네 감사합니다
+Speaker SPEAKER_03:  아もの singer이 하나님 질문만 habl burada  제가 있어요
+Speaker SPEAKER_03:  어떤 bize warnings  제가 이 레슨 undertale  좀 grief
+Speaker SPEAKER_03:  4  살 루나�ję  that  blown 0  Haben
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  있어요 있어요. 그래서 그거 사실 담당하는 책임자가 되겠죠.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  네. 병..  병원에 오실 수 있는 다른 분이 계시는구나.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_01:  아 네. 감사합니다. 그러면 이제 나머지 두 분도 뭔가 이런 담당자나 뭔가 생기면 계속 이렇게 할당되는 걸로
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  얘 지금 한 90시간을 쓴 것 같은데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  모션 페이지가 그냥  저희가 확인하고 끝내는 게 아니라 이것도 뭐 경우에 따라서는 저희가 좀 보여줄만하게 만들 수 있지 않을까 싶어가지고
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그것도 근데 이것도 약간 안 되면 말고 느낌으로 저희 지금 할 게 많으니까
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  네. 그러면 한 번 더
+Speaker SPEAKER_01:  아 틈 같은 거 너무 좋은데
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 네. 맞아요. 맞아요. 그리고 이게 그럼 저희 이거 지칠 수도 있고.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  네. 맞아요. 맞아요.  본 작업이 아닌데 네. 좋아요. 그것도 한 번 생각해봅시다.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 혹시나 있는지 한 번 그 시간 되면 찾아봐 주시면 좋을 것 같아요.  제가 지금 진행 학원에 있는데 그 시간 되면 제가 지금 진행 학원에 있는데
+Speaker SPEAKER_03:  제가 지금 진행 학원에 있는데  제가 지금 진행 학원에 있는데  아 너무 오래 걸려가지고
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  좋아요. 저희 뭐 정리하고
+Speaker SPEAKER_03:  좋아요. 저희 뭐 정리하고
+Speaker SPEAKER_03:  마지막으로 하나만 정리하면 안 돼요. 그 화요일이 아니라 오늘 해야 되는 게
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  아 맞다.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_01:  아 맞다.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_03:  아 맞다.  저도 그러면 이제 다른 분들은 그 보고서라는 게 왜 저 패드가 있으니깐요.  저도 그거 하나 더 올릴게요. 거기 밑에다가 같은 느낌으로 진행하시면 돼요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그거 2개는 오늘까지고 나머지는 화요일까지고 저희는 월요일 날 5시 반에거나 저녁으로
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  질문이 하나 있어요.
+Speaker SPEAKER_02:  질문이 하나 있는데요. 기타고의 버전 관리라는 게 지금까지 한 파일을 다 합치는 걸 말씀하시는 건가요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  하고 그거를 A에다가 덮어 쓰는데 그 이전 기록을 Git이라는 프로그램이 저장해 두고 있는 거예요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  GitHub는 Git을 공유하는 플랫폼입니다.
+Speaker SPEAKER_02: 
+Speaker SPEAKER_02:  전 프로젝트에 남아있는 파일이 다 최종, 최종밖에 없거든요. 그러면 하나만 올리면 돼요?
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  네, 수정해가면서 해가지고...
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  그게 아니더라도 현서님이 이전 파일을 임의로 변경을 좀 해봐서 버전을 업데이트 한다거나 아니면 꼭 이전 프로젝트가 아니더라도 그냥 Git을 좀 저희가 모여서 협업하기 전에 한번 익혔으면 좋겠다 하는 느낌인 거라 어떤 형태든 괜찮을 것 같아요.
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  다른 분들도 굳이 나는 이전 프로젝트 별로 관심 없는데 그거 안 해보고 싶다 하면은...
+Speaker SPEAKER_03:  근데 제 생각에는 이전 프로젝트도 어디 포콜이나 자부서 같은 데 활용하실 수도 있는데,
+Speaker SPEAKER_03:  그때 코드 제출할 때 Git으로 버전 관리되어 있는 게 확실히 더 분명하게 말할 수 없을 때 더 좋을 거라고 생각해서,
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  이제 그래서 그냥 연습으로만 끝나지 않게 그냥 성과물도 하나 만드는 느낌에서 이제 해보면 좋겠다는 의견이었습니다.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  하려고 생각 중이거든요.  그래서 나중에 제출할 때 깔끔하게 Git 그 레퍼 하나만 첨부하면 되고요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_03:  그러면 이제 버전 진행 관리도 볼 수 있고,  거기에서 그 담당자는 두 가지로 볼 수 있겠죠.  아 얘 Git 좀 쓸 줄 아는구나랑 두 번째는 당연한 아 이 파일로 이거 했구나 하는 거.  근데 두 번째는 사실 파일만 보내줘도 할 수 있긴 한데,  첫 번째는 사실 파일만 보내줘도 할 수 있긴 한데,  첫 번째는 불가능하죠. 마지막 최종 최종 최종만 이렇게 예쁘게 바꿔서 보내면 되거든요.
+Speaker SPEAKER_04: 
+Speaker SPEAKER_00: 
+Speaker SPEAKER_04:  네.
+Speaker SPEAKER_00:  괜찮으시죠?
+Speaker SPEAKER_00:  제가 더 앉아있으면 아직 안 돼요.
+Speaker SPEAKER_03:  아 맞네 맞네. 시간이.
+Speaker SPEAKER_04:  아 맞네 맞네. 시간이.
+Speaker SPEAKER_03:  아 맞아요. 그래서 이렇게 길어지면 안 돼요.  아 맞아요. 그래서 그것도..
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_03:  아 네. 다들 고생 많으셨습니다.
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03:  아 어떻게 할까요?
+Speaker SPEAKER_01:  아 어떻게 할까요?
+Speaker SPEAKER_01:  예. 전에는 실내기 했었어가지고 일단.
+Speaker SPEAKER_03:  아니 일단 실내기 그대로..
+Speaker SPEAKER_01: 
+Speaker SPEAKER_03: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_01: 
+Speaker SPEAKER_04: 
+Speaker SPEAKER_04:  고생하셨습니다.  수고하셨습니다.
+Speaker SPEAKER_03:  고생하셨습니다.
+Speaker SPEAKER_02:  고생하셨습니다.  수고하셨습니다.  수고하셨습니다.
+Speaker SPEAKER_02: 

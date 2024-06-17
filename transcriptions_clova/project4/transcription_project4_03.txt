@@ -1,9 +1,4 @@
-﻿meeting_record_3rd_transcription
-2024.06.15 토 오후 7:59 ・ 114분 14초
-이미경 Speaker SPEAKER_01 Speaker SPEAKER_02 Speaker SPEAKER_03 Speaker SPEAKER_04 Speaker SPEAKER_00
-
-
-Speaker SPEAKER_03 00:00
+﻿Speaker SPEAKER_03 00:00
 시험지 동영상 녹화되고 추후 분석에 자유롭게 이용되는 데 동의하시나요?
 
 Speaker SPEAKER_04 00:08

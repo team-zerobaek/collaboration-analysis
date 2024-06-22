@@ -1,0 +1,7 @@
+fastapi
+dash==2.7.0
+pandas
+networkx
+asgiref
+seaborn
+matplotlib

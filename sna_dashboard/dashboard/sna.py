@@ -3,7 +3,6 @@ import plotly.graph_objects as go
 import networkx as nx
 import matplotlib.colors as mcolors
 
-# Initialize Dash app and dataset within the SNA context
 dash_app = None
 dataset = None
 
@@ -43,7 +42,6 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         min_edge_width = 1
         max_edge_width = 10
 
-        # Find the range of edge weights for scaling excluding self-interactions
         weights = [G[u][v]['weight'] for u, v in G.edges() if u != v]
         if weights:
             min_weight = min(weights)
@@ -51,7 +49,6 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         else:
             min_weight = max_weight = 1
 
-        # Create a colormap
         norm = mcolors.Normalize(vmin=min_weight, vmax=max_weight)
         cmap = mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
 
@@ -60,17 +57,15 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             node_x.append(x)
             node_y.append(y)
             self_weight = G[node][node]['weight'] if G.has_edge(node, node) else 0
-            node_size = min_size + 2 * self_weight  # Adjust the size based on self-interaction weight
-            node_size = max(min_size, min(max_size, node_size))  # Ensure the size is within limits
+            node_size = min_size + 2 * self_weight
+            node_size = max(min_size, min(max_size, node_size))
             node_sizes.append(node_size)
             node_trace_text.append(str(node))
             if self_weight > 0:
                 self_interaction_labels.append((x, y, f"({self_weight})"))
 
-            # Calculate the sum of direct interactions excluding self-interactions
             total_interactions = sum([G[node][nbr]['weight'] for nbr in G.neighbors(node) if nbr != node])
 
-            # Find the node with the biggest interaction and its number
             if len(G[node]) > 0:
                 max_interaction_node, max_interaction_weight = max(G[node].items(), key=lambda item: item[1]['weight'] if item[0] != node else -1)
                 if max_interaction_node == node:
@@ -88,9 +83,8 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                 x1, y1 = pos[edge[1]]
                 edge_x.extend([x0, x1, None])
                 edge_y.extend([y0, y1, None])
-                # Scale edge width based on weight
                 edge_width = ((edge[2]['weight'] - min_weight) / (max_weight - min_weight)) * (max_edge_width - min_edge_width) + min_edge_width
-                edge_color = mcolors.rgb2hex(cmap(norm(edge[2]['weight'])))  # Get the color from the colormap
+                edge_color = mcolors.rgb2hex(cmap(norm(edge[2]['weight'])))
                 edge_traces.append(
                     go.Scatter(
                         x=[x0, x1, None],
@@ -123,7 +117,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                         y=(y0 + y1) / 2,
                         text=str(edge[2]['weight']),
                         showarrow=False,
-                        font=dict(color='red', size=14, weight='bold'),  # Increased size and boldness
+                        font=dict(color='red', size=14, weight='bold'),
                         bgcolor='#f7f7f7'
                     )
                 )
@@ -132,10 +126,10 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             annotations.append(
                 dict(
                     x=x,
-                    y=y + 0.1,  # Adjust the position slightly above the node
+                    y=y + 0.1,
                     text=weight,
                     showarrow=False,
-                    font=dict(color='red', size=14, weight='bold'),  # Increased size and boldness
+                    font=dict(color='red', size=14, weight='bold'),
                     bgcolor='#f7f7f7'
                 )
             )
@@ -147,13 +141,12 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                     y=node_y[i],
                     text=text,
                     showarrow=False,
-                    font=dict(size=14, color='black', weight='bold'),  # Increased size and boldness
+                    font=dict(size=14, color='black', weight='bold'),
                     align='center',
                     bgcolor='#f7f7f7'
                 )
             )
 
-        # Add color bar for the edge weights excluding self-interactions
         color_bar = go.Scatter(
             x=[None],
             y=[None],
@@ -170,10 +163,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             hoverinfo='none'
         )
 
-        # Adjust the x coordinate to move the example nodes to the right
         example_x = 1.5
-
-        # Add example nodes for min and max self-interaction sizes
         example_min_node = go.Scatter(
             x=[example_x],
             y=[1.0],
@@ -244,8 +234,8 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                             margin=dict(b=20, l=5, r=5, t=40),
                             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                            paper_bgcolor='#f7f7f7',  # Background color
-                            plot_bgcolor='#f7f7f7'  # Plot area background color
+                            paper_bgcolor='#f7f7f7',
+                            plot_bgcolor='#f7f7f7'
                         ))
 
         return fig

@@ -2,8 +2,8 @@ from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
+from dash import dcc, html
 
-# Initialize Dash app and dataset within the Interaction context
 dash_app = None
 dataset = None
 interaction_summary = None
@@ -13,13 +13,46 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
-    # Compute Interaction Frequencies Including Self-Interactions
     interaction_summary = dataset.groupby(['project', 'meeting_number', 'speaker_number', 'next_speaker_id'])['count'].sum().reset_index()
-
-    # Normalize interaction frequencies by duration
     interaction_summary = pd.merge(interaction_summary, dataset[['project', 'meeting_number', 'duration']].drop_duplicates(),
                                    on=['project', 'meeting_number'])
     interaction_summary['normalized_interaction_count'] = interaction_summary['count'] / interaction_summary['duration']
+
+    dash_app.layout.children.append(html.Div([
+        html.H1("Normalized Interaction Frequency"),
+        html.Div([
+            dcc.Dropdown(
+                id='interaction-project-dropdown',
+                options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                placeholder="Select projects",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='interaction-meeting-dropdown',
+                placeholder="Select meetings",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='interaction-speaker-dropdown',
+                placeholder="Select speakers",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.RadioItems(
+                id='interaction-type-radio',
+                options=[
+                    {'label': 'Total', 'value': 'total'},
+                    {'label': 'By Speakers', 'value': 'by_speakers'}
+                ],
+                value='total',
+                labelStyle={'display': 'inline-block'}
+            ),
+            html.Button('Reset', id='reset-interaction-button', n_clicks=0)
+        ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+        dcc.Graph(id='interaction-frequency-graph')
+    ]))
 
     @dash_app.callback(
         Output('interaction-meeting-dropdown', 'options'),
@@ -110,7 +143,7 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
             )
 
         if selected_meeting:
-            bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+            bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)].groupby(['speaker_number'])['normalized_interaction_count'].sum().reset_index()
             colorscale = mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
             bar_colors = bar_data['normalized_interaction_count'].apply(lambda x: mcolors.rgb2hex(colorscale(x / bar_data['normalized_interaction_count'].max())))
             fig = go.Figure(data=[go.Bar(
@@ -119,7 +152,7 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                 marker_color=bar_colors
             )])
             fig.update_layout(
-                title=f'Normalized Interaction Frequency for Selected Meetings',
+                title=f'Normalized Interaction Frequency by Speaker for Selected Meetings',
                 xaxis_title='Speaker Number',
                 yaxis_title='Normalized Interaction Frequency',
                 showlegend=False

@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from dash import Dash, dcc, html
-from dash.dependencies import Input, Output, State
 import pandas as pd
 from asgiref.wsgi import WsgiToAsgi
 from dashboard.sna import initialize_sna_app
@@ -50,72 +49,6 @@ dash_app.layout = html.Div([
         html.Button('Reset', id='reset-button', n_clicks=0)
     ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
     dcc.Graph(id='network-graph'),
-    html.H1("Normalized Speech Frequency"),
-    html.Div([
-        dcc.Dropdown(
-            id='speech-project-dropdown',
-            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
-            placeholder="Select projects",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.Dropdown(
-            id='speech-meeting-dropdown',
-            placeholder="Select meetings",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.Dropdown(
-            id='speech-speaker-dropdown',
-            placeholder="Select speakers",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.RadioItems(
-            id='speech-type-radio',
-            options=[
-                {'label': 'Total', 'value': 'total'},
-                {'label': 'By Speakers', 'value': 'by_speakers'}
-            ],
-            value='total',
-            labelStyle={'display': 'inline-block'}
-        ),
-        html.Button('Reset', id='reset-speech-button', n_clicks=0)
-    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-    dcc.Graph(id='speech-frequency-graph'),
-    html.H1("Normalized Interaction Frequency"),
-    html.Div([
-        dcc.Dropdown(
-            id='interaction-project-dropdown',
-            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
-            placeholder="Select projects",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.Dropdown(
-            id='interaction-meeting-dropdown',
-            placeholder="Select meetings",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.Dropdown(
-            id='interaction-speaker-dropdown',
-            placeholder="Select speakers",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.RadioItems(
-            id='interaction-type-radio',
-            options=[
-                {'label': 'Total', 'value': 'total'},
-                {'label': 'By Speakers', 'value': 'by_speakers'}
-            ],
-            value='total',
-            labelStyle={'display': 'inline-block'}
-        ),
-        html.Button('Reset', id='reset-interaction-button', n_clicks=0)
-    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-    dcc.Graph(id='interaction-frequency-graph'),
 ])
 
 # Initialize the individual apps

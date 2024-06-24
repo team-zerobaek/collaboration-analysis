@@ -2,8 +2,8 @@ from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
+from dash import dcc, html
 
-# Initialize Dash app and dataset within the Frequency context
 dash_app = None
 dataset = None
 speech_summary = None
@@ -13,23 +13,52 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
-    # Summarize speech frequencies by speaker within each meeting
     speech_summary = dataset.groupby(['project', 'meeting_number', 'speaker_number'])['speech_frequency'].sum().reset_index()
-
-    # Calculate adjusted speech frequencies by dividing by the number of speakers in each meeting
     num_speakers_per_meeting = dataset.groupby(['project', 'meeting_number'])['speaker_number'].nunique().reset_index()
     num_speakers_per_meeting.columns = ['project', 'meeting_number', 'num_speakers']
     speech_summary = pd.merge(speech_summary, num_speakers_per_meeting, on=['project', 'meeting_number'])
     speech_summary['adjusted_speech_frequency'] = speech_summary['speech_frequency'] / speech_summary['num_speakers']
-
-    # Ensure the sum of each speaker's adjusted speech frequency is equal to total_words within one meeting
     total_words_summary = dataset.groupby(['project', 'meeting_number'])['total_words'].first().reset_index()
     speech_summary = pd.merge(speech_summary, total_words_summary, on=['project', 'meeting_number'])
-
-    # Normalize speech frequency by duration
     meeting_durations = dataset.groupby(['project', 'meeting_number'])['duration'].first().reset_index()
     speech_summary = pd.merge(speech_summary, meeting_durations, on=['project', 'meeting_number'])
     speech_summary['normalized_speech_frequency'] = speech_summary['adjusted_speech_frequency'] / speech_summary['duration']
+
+    dash_app.layout.children.append(html.Div([
+        html.H1("Normalized Speech Frequency"),
+        html.Div([
+            dcc.Dropdown(
+                id='speech-project-dropdown',
+                options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                placeholder="Select projects",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='speech-meeting-dropdown',
+                placeholder="Select meetings",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='speech-speaker-dropdown',
+                placeholder="Select speakers",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.RadioItems(
+                id='speech-type-radio',
+                options=[
+                    {'label': 'Total', 'value': 'total'},
+                    {'label': 'By Speakers', 'value': 'by_speakers'}
+                ],
+                value='total',
+                labelStyle={'display': 'inline-block'}
+            ),
+            html.Button('Reset', id='reset-speech-button', n_clicks=0)
+        ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+        dcc.Graph(id='speech-frequency-graph')
+    ]))
 
     @dash_app.callback(
         Output('speech-meeting-dropdown', 'options'),

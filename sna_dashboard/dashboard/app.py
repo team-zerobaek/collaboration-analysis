@@ -6,6 +6,8 @@ import plotly.graph_objects as go
 import networkx as nx
 import pandas as pd
 from asgiref.wsgi import WsgiToAsgi
+import matplotlib.cm as cm
+import matplotlib.colors as mcolors
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
@@ -59,6 +61,11 @@ def get_pos_and_labels(G):
     edge_labels = nx.get_edge_attributes(G, 'weight')
     return pos, edge_labels
 
+
+def create_blue_red_colormap():
+    return mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
+
+
 def plot_interaction_network(G):
     pos, edge_labels = get_pos_and_labels(G)
     edge_x = []
@@ -69,9 +76,25 @@ def plot_interaction_network(G):
     node_trace_text = []
     self_interaction_labels = []
     hover_texts = []
+    edge_traces = []
+    annotations = []
 
     min_size = 30
     max_size = 70
+    min_edge_width = 1
+    max_edge_width = 10
+
+    # Find the range of edge weights for scaling
+    weights = [G[u][v]['weight'] for u, v in G.edges() if u != v]
+    if weights:
+        min_weight = min(weights)
+        max_weight = max(weights)
+    else:
+        min_weight = max_weight = 1
+
+    # Create a colormap
+    norm = mcolors.Normalize(vmin=min_weight, vmax=max_weight)
+    cmap = create_blue_red_colormap()
 
     for node in G.nodes():
         x, y = pos[node]
@@ -106,68 +129,164 @@ def plot_interaction_network(G):
             x1, y1 = pos[edge[1]]
             edge_x.extend([x0, x1, None])
             edge_y.extend([y0, y1, None])
-
-    edge_trace = go.Scatter(
-        x=edge_x, y=edge_y,
-        line=dict(width=2, color='gray'),
-        hoverinfo='none',
-        mode='lines'
-    )
+            # Scale edge width based on weight
+            edge_width = ((edge[2]['weight'] - min_weight) / (max_weight - min_weight)) * (max_edge_width - min_edge_width) + min_edge_width
+            edge_color = mcolors.rgb2hex(cmap(norm(edge[2]['weight'])))  # Get the color from the colormap
+            edge_traces.append(
+                go.Scatter(
+                    x=[x0, x1, None],
+                    y=[y0, y1, None],
+                    line=dict(width=edge_width, color=edge_color),
+                    hoverinfo='none',
+                    mode='lines'
+                )
+            )
 
     node_trace = go.Scatter(
         x=node_x, y=node_y,
-        mode='markers+text',
-        text=node_trace_text,
+        mode='markers',
         marker=dict(
             color='skyblue',
             size=node_sizes,
             line=dict(width=2, color='black')
         ),
-        textposition='middle center',
-        textfont=dict(
-            size=12,
-            color='black'
-        ),
         hoverinfo='text',
         hovertext=hover_texts
     )
 
-    edge_label_trace = []
     for edge in G.edges(data=True):
         if edge[0] != edge[1]:
             x0, y0 = pos[edge[0]]
             x1, y1 = pos[edge[1]]
-            edge_label_trace.append(
-                go.Scatter(
-                    x=[(x0 + x1) / 2],
-                    y=[(y0 + y1) / 2],
-                    text=[str(edge[2]['weight'])],
-                    mode='text',
-                    textfont=dict(color='red', size=10),
-                    hoverinfo='none'
+            annotations.append(
+                dict(
+                    x=(x0 + x1) / 2,
+                    y=(y0 + y1) / 2,
+                    text=str(edge[2]['weight']),
+                    showarrow=False,
+                    font=dict(color='red', size=14, weight='bold'),  # Increased size and boldness
+                    bgcolor='#f7f7f7'
                 )
             )
 
-    self_interaction_trace = []
     for (x, y, weight) in self_interaction_labels:
-        self_interaction_trace.append(
-            go.Scatter(
-                x=[x],
-                y=[y + 0.1],  # Adjust the position slightly above the node
-                text=[weight],
-                mode='text',
-                textfont=dict(color='red', size=10),
-                hoverinfo='none'
+        annotations.append(
+            dict(
+                x=x,
+                y=y + 0.1,  # Adjust the position slightly above the node
+                text=weight,
+                showarrow=False,
+                font=dict(color='red', size=14, weight='bold'),  # Increased size and boldness
+                bgcolor='#f7f7f7'
             )
         )
 
-    fig = go.Figure(data=[edge_trace, node_trace] + edge_label_trace + self_interaction_trace,
+    for i, text in enumerate(node_trace_text):
+        annotations.append(
+            dict(
+                x=node_x[i],
+                y=node_y[i],
+                text=text,
+                showarrow=False,
+                font=dict(size=14, color='black', weight='bold'),  # Increased size and boldness
+                align='center',
+                bgcolor='#f7f7f7'
+            )
+        )
+
+    # Add color bar for the edge weights
+    color_bar = go.Scatter(
+        x=[None],
+        y=[None],
+        mode='markers',
+        marker=dict(
+            colorscale=[[0, 'blue'], [1, 'red']],
+            cmin=min_weight,
+            cmax=max_weight,
+            colorbar=dict(
+                title="Edge Weight",
+                titleside="right"
+            )
+        ),
+        hoverinfo='none'
+    )
+
+    # Adjust the x coordinate to move the example nodes to the right
+    example_x = 1.1  # Adjusted to move the example nodes to the right
+
+    # Add example nodes for min and max self-interaction sizes
+    example_min_node = go.Scatter(
+        x=[example_x],
+        y=[1.0],
+        mode='markers',
+        marker=dict(
+            color='skyblue',
+            size=min_size,
+            line=dict(width=2, color='black')
+        ),
+        showlegend=False,
+        hoverinfo='none'
+    )
+
+    example_max_node = go.Scatter(
+        x=[example_x],
+        y=[0.7],
+        mode='markers',
+        marker=dict(
+            color='skyblue',
+            size=max_size,
+            line=dict(width=2, color='black')
+        ),
+        showlegend=False,
+        hoverinfo='none'
+    )
+
+    example_annotations = [
+        dict(
+            x=example_x,
+            y=1.3,
+            xref="x",
+            yref="y",
+            text="Node Scales by Self-Interactions",
+            showarrow=False,
+            font=dict(size=15, color="black", weight="bold"),
+            align="center",
+            bgcolor='#f7f7f7'
+        ),
+        dict(
+            x=example_x,
+            y=1.0,
+            xref="x",
+            yref="y",
+            text="(0)",
+            showarrow=False,
+            font=dict(size=12, color="red", weight="bold"),
+            align="center",
+            bgcolor='#f7f7f7'
+        ),
+        dict(
+            x=example_x,
+            y=0.7,
+            xref="x",
+            yref="y",
+            text="(>=20)",
+            showarrow=False,
+            font=dict(size=12, color="red", weight="bold"),
+            align="center",
+            bgcolor='#f7f7f7'
+        )
+    ]
+
+    fig = go.Figure(data=edge_traces + [node_trace] + [color_bar, example_min_node, example_max_node],
                     layout=go.Layout(
+                        annotations=annotations + example_annotations,
                         showlegend=False,
                         hovermode='closest',
                         margin=dict(b=20, l=5, r=5, t=40),
-                        xaxis=dict(showgrid=False, zeroline=False),
-                        yaxis=dict(showgrid=False, zeroline=False)
+                        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False, domain=[0, 1]),
+                        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                        paper_bgcolor='#f7f7f7',  # Background color
+                        plot_bgcolor='#f7f7f7'  # Plot area background color
                     ))
 
     return fig
@@ -191,7 +310,8 @@ dash_app.layout = html.Div([
         placeholder="Select speakers",
     ),
     html.Button('Reset', id='reset-button', n_clicks=0),
-    dcc.Graph(id='network-graph')
+    dcc.Graph(id='network-graph'),
+    html.Div(id='node-size-info', style={'margin-top': '20px', 'font-size': '16px', 'font-weight': 'bold'})
 ])
 
 
@@ -239,7 +359,14 @@ def reset_filters(n_clicks):
 def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks):
     # Clear the graph if no project or meeting is selected
     if selected_project is None or selected_meeting is None:
-        return go.Figure()
+        fig = go.Figure()
+        fig.update_layout(
+            paper_bgcolor='#f7f7f7',
+            plot_bgcolor='#f7f7f7',
+            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
+        )
+        return fig
 
     # Filter the dataset based on the selected filters
     df_filtered = dataset[(dataset['project'] == selected_project) &

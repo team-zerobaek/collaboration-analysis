@@ -41,13 +41,8 @@ meeting_durations = dataset.groupby(['project', 'meeting_number'])['duration'].f
 speech_summary = pd.merge(speech_summary, meeting_durations, on=['project', 'meeting_number'])
 speech_summary['normalized_speech_frequency'] = speech_summary['adjusted_speech_frequency'] / speech_summary['duration']
 
-# Compute Interaction Frequencies Excluding Self-Interactions
-interaction_summary = dataset[dataset['speaker_number'] != dataset['next_speaker_id']].groupby(
-    ['project', 'meeting_number', 'speaker_number', 'next_speaker_id'])['count'].sum().reset_index()
-
-# Ensure not to count the same speaker multiple times within a meeting
-interaction_summary = interaction_summary.groupby(
-    ['project', 'meeting_number', 'speaker_number'])['count'].sum().reset_index()
+# Compute Interaction Frequencies Including Self-Interactions
+interaction_summary = dataset.groupby(['project', 'meeting_number', 'speaker_number', 'next_speaker_id'])['count'].sum().reset_index()
 
 # Normalize interaction frequencies by duration
 interaction_summary = pd.merge(interaction_summary, dataset[['project', 'meeting_number', 'duration']].drop_duplicates(),
@@ -66,11 +61,6 @@ def create_interaction_graph(df):
                 G[prev_speaker][next_speaker]['weight'] += count
             else:
                 G.add_edge(prev_speaker, next_speaker, weight=count)
-
-            if G.has_edge(next_speaker, prev_speaker) and prev_speaker != next_speaker:
-                G[next_speaker][prev_speaker]['weight'] += count
-            else:
-                G.add_edge(next_speaker, prev_speaker, weight=count)
     return G
 
 
@@ -102,7 +92,7 @@ def plot_interaction_network(G):
     min_edge_width = 1
     max_edge_width = 10
 
-    # Find the range of edge weights for scaling
+    # Find the range of edge weights for scaling excluding self-interactions
     weights = [G[u][v]['weight'] for u, v in G.edges() if u != v]
     if weights:
         min_weight = min(weights)
@@ -212,7 +202,7 @@ def plot_interaction_network(G):
             )
         )
 
-    # Add color bar for the edge weights
+    # Add color bar for the edge weights excluding self-interactions
     color_bar = go.Scatter(
         x=[None],
         y=[None],
@@ -222,7 +212,7 @@ def plot_interaction_network(G):
             cmin=min_weight,
             cmax=max_weight,
             colorbar=dict(
-                title="Edge Weight",
+                title="Edge Weight (excluding self-interactions)",
                 titleside="right"
             )
         ),
@@ -449,7 +439,7 @@ def reset_filters(n_clicks):
      Input('reset-button', 'n_clicks')]
 )
 def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks):
-    if not selected_project or not selected_meeting:
+    if not selected_project:
         fig = go.Figure()
         fig.update_layout(
             paper_bgcolor='#f7f7f7',
@@ -459,9 +449,10 @@ def update_graph(selected_project, selected_meeting, selected_speakers, reset_cl
         )
         return fig
 
-    df_filtered = dataset[(dataset['project'].isin(selected_project)) &
-                          (dataset['meeting_number'].isin(selected_meeting))]
+    df_filtered = dataset[dataset['project'].isin(selected_project)]
 
+    if selected_meeting:
+        df_filtered = df_filtered[df_filtered['meeting_number'].isin(selected_meeting)]
     if selected_speakers:
         df_filtered = df_filtered[df_filtered['speaker_number'].isin(selected_speakers) |
                                   df_filtered['next_speaker_id'].isin(selected_speakers)]

@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 import networkx as nx
 import pandas as pd
 from asgiref.wsgi import WsgiToAsgi
-import matplotlib.cm as cm
 import matplotlib.colors as mcolors
+import plotly.express as px
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
@@ -36,7 +36,25 @@ interaction_summary = pd.merge(interaction_summary, dataset[['project', 'meeting
                                on=['project', 'meeting_number'])
 interaction_summary['normalized_interaction_count'] = interaction_summary['count'] / interaction_summary['duration']
 
+# Summarize speech frequencies by speaker within each meeting
+speech_summary = dataset.groupby(['project', 'meeting_number', 'speaker_number'])['speech_frequency'].sum().reset_index()
 
+# Calculate adjusted speech frequencies by dividing by the number of speakers in each meeting
+num_speakers_per_meeting = dataset.groupby(['project', 'meeting_number'])['speaker_number'].nunique().reset_index()
+num_speakers_per_meeting.columns = ['project', 'meeting_number', 'num_speakers']
+speech_summary = pd.merge(speech_summary, num_speakers_per_meeting, on=['project', 'meeting_number'])
+speech_summary['adjusted_speech_frequency'] = speech_summary['speech_frequency'] / speech_summary['num_speakers']
+
+# Ensure the sum of each speaker's adjusted speech frequency is equal to total_words within one meeting
+total_words_summary = dataset.groupby(['project', 'meeting_number'])['total_words'].first().reset_index()
+speech_summary = pd.merge(speech_summary, total_words_summary, on=['project', 'meeting_number'])
+
+# Normalize speech frequency by duration
+meeting_durations = dataset.groupby(['project', 'meeting_number'])['duration'].first().reset_index()
+speech_summary = pd.merge(speech_summary, meeting_durations, on=['project', 'meeting_number'])
+speech_summary['normalized_speech_frequency'] = speech_summary['adjusted_speech_frequency'] / speech_summary['duration']
+
+# Define the SNA graph creation functions (unchanged)
 def create_interaction_graph(df):
     G = nx.DiGraph()
     for i in range(len(df)):
@@ -55,16 +73,13 @@ def create_interaction_graph(df):
                 G.add_edge(next_speaker, prev_speaker, weight=count)
     return G
 
-
 def get_pos_and_labels(G):
     pos = nx.spring_layout(G)
     edge_labels = nx.get_edge_attributes(G, 'weight')
     return pos, edge_labels
 
-
 def create_blue_red_colormap():
     return mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
-
 
 def plot_interaction_network(G):
     pos, edge_labels = get_pos_and_labels(G)
@@ -212,7 +227,7 @@ def plot_interaction_network(G):
     )
 
     # Adjust the x coordinate to move the example nodes to the right
-    example_x = 1.1  # Adjusted to move the example nodes to the right
+    example_x = 1.0  # Adjusted value to move the example nodes to the right
 
     # Add example nodes for min and max self-interaction sizes
     example_min_node = go.Scatter(
@@ -230,7 +245,7 @@ def plot_interaction_network(G):
 
     example_max_node = go.Scatter(
         x=[example_x],
-        y=[0.7],
+        y=[0.6],
         mode='markers',
         marker=dict(
             color='skyblue',
@@ -244,7 +259,7 @@ def plot_interaction_network(G):
     example_annotations = [
         dict(
             x=example_x,
-            y=1.3,
+            y=1.2,
             xref="x",
             yref="y",
             text="Node Scales by Self-Interactions",
@@ -266,7 +281,7 @@ def plot_interaction_network(G):
         ),
         dict(
             x=example_x,
-            y=0.7,
+            y=0.6,
             xref="x",
             yref="y",
             text="(>=20)",
@@ -283,14 +298,13 @@ def plot_interaction_network(G):
                         showlegend=False,
                         hovermode='closest',
                         margin=dict(b=20, l=5, r=5, t=40),
-                        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False, domain=[0, 1]),
+                        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                         paper_bgcolor='#f7f7f7',  # Background color
                         plot_bgcolor='#f7f7f7'  # Plot area background color
                     ))
 
     return fig
-
 
 # Define the layout
 dash_app.layout = html.Div([
@@ -311,9 +325,35 @@ dash_app.layout = html.Div([
     ),
     html.Button('Reset', id='reset-button', n_clicks=0),
     dcc.Graph(id='network-graph'),
-    html.Div(id='node-size-info', style={'margin-top': '20px', 'font-size': '16px', 'font-weight': 'bold'})
+    html.Hr(),
+    html.H2("Normalized Speech Frequencies Over Meetings"),
+    dcc.Dropdown(
+        id='speech-type-dropdown',
+        options=[
+            {'label': 'Total', 'value': 'total'},
+            {'label': 'By Speakers', 'value': 'by_speakers'}
+        ],
+        value='total',
+        clearable=False
+    ),
+    dcc.Dropdown(
+        id='speech-project-dropdown',
+        options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+        placeholder="Select a project",
+        multi=True
+    ),
+    dcc.Dropdown(
+        id='speech-meeting-dropdown',
+        placeholder="Select a meeting",
+        multi=True
+    ),
+    dcc.Dropdown(
+        id='speech-speaker-dropdown',
+        multi=True,
+        placeholder="Select speakers",
+    ),
+    dcc.Graph(id='speech-frequency-graph')
 ])
-
 
 @dash_app.callback(
     Output('meeting-dropdown', 'options'),
@@ -324,7 +364,6 @@ def set_meeting_options(selected_project):
         return []
     meetings = dataset[dataset['project'] == selected_project]['meeting_number'].unique()
     return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
-
 
 @dash_app.callback(
     Output('speaker-dropdown', 'options'),
@@ -338,7 +377,6 @@ def set_speaker_options(selected_project, selected_meeting):
                        (dataset['meeting_number'] == selected_meeting)]['speaker_number'].unique()
     return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
-
 @dash_app.callback(
     [Output('project-dropdown', 'value'),
      Output('meeting-dropdown', 'value'),
@@ -347,7 +385,6 @@ def set_speaker_options(selected_project, selected_meeting):
 )
 def reset_filters(n_clicks):
     return None, None, None
-
 
 @dash_app.callback(
     Output('network-graph', 'figure'),
@@ -381,6 +418,120 @@ def update_graph(selected_project, selected_meeting, selected_speakers, reset_cl
 
     # Plot the interaction network
     return plot_interaction_network(G)
+
+@dash_app.callback(
+    Output('speech-meeting-dropdown', 'options'),
+    [Input('speech-project-dropdown', 'value')]
+)
+def set_speech_meeting_options(selected_projects):
+    if selected_projects is None or not selected_projects:
+        return []
+    meetings = dataset[dataset['project'].isin(selected_projects)]['meeting_number'].unique()
+    return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
+
+@dash_app.callback(
+    Output('speech-speaker-dropdown', 'options'),
+    [Input('speech-project-dropdown', 'value'),
+     Input('speech-meeting-dropdown', 'value')]
+)
+def set_speech_speaker_options(selected_projects, selected_meetings):
+    if (selected_projects is None or not selected_projects) and (selected_meetings is None or not selected_meetings):
+        return []
+    if selected_projects and selected_meetings:
+        speakers = dataset[(dataset['project'].isin(selected_projects)) &
+                           (dataset['meeting_number'].isin(selected_meetings))]['speaker_number'].unique()
+    elif selected_projects:
+        speakers = dataset[dataset['project'].isin(selected_projects)]['speaker_number'].unique()
+    else:
+        speakers = dataset[dataset['meeting_number'].isin(selected_meetings)]['speaker_number'].unique()
+    return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
+
+@dash_app.callback(
+    Output('speech-frequency-graph', 'figure'),
+    [Input('speech-type-dropdown', 'value'),
+     Input('speech-project-dropdown', 'value'),
+     Input('speech-meeting-dropdown', 'value'),
+     Input('speech-speaker-dropdown', 'value')]
+)
+def update_speech_graph(selected_type, selected_projects, selected_meetings, selected_speakers):
+    df_filtered = speech_summary.copy()
+    if selected_projects:
+        df_filtered = df_filtered[df_filtered['project'].isin(selected_projects)]
+    if selected_meetings:
+        df_filtered = df_filtered[df_filtered['meeting_number'].isin(selected_meetings)]
+    if selected_speakers:
+        df_filtered = df_filtered[df_filtered['speaker_number'].isin(selected_speakers)]
+
+    if selected_meetings and len(selected_meetings) == 1:
+        # Display bar graph for the selected meeting
+        meeting_data = df_filtered[df_filtered['meeting_number'] == selected_meetings[0]]
+        colorscale = create_blue_red_colormap()
+        min_freq = meeting_data['normalized_speech_frequency'].min()
+        max_freq = meeting_data['normalized_speech_frequency'].max()
+        norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+
+        bar_colors = [mcolors.rgb2hex(colorscale(norm(freq))) for freq in meeting_data['normalized_speech_frequency']]
+
+        fig = go.Figure(data=[
+            go.Bar(
+                x=meeting_data['speaker_number'],
+                y=meeting_data['normalized_speech_frequency'],
+                marker=dict(color=bar_colors),
+                showlegend=False  # Disable legend for bar trace
+            )
+        ])
+
+        # Add color bar
+        color_bar = go.Scatter(
+            x=[None],
+            y=[None],
+            mode='markers',
+            marker=dict(
+                colorscale=[[0, 'blue'], [1, 'red']],
+                cmin=min_freq,
+                cmax=max_freq,
+                colorbar=dict(
+                    title="Speech Frequency",
+                    titleside="right"
+                )
+            ),
+            hoverinfo='none',
+            showlegend=False  # Disable legend for color bar trace
+        )
+
+        fig.add_trace(color_bar)
+        fig.update_layout(
+            title=f'Normalized Speech Frequencies for Meeting {selected_meetings[0]}',
+            xaxis_title='Speaker Number',
+            yaxis_title='Normalized Speech Frequency',
+            paper_bgcolor='#f7f7f7',
+            plot_bgcolor='#f7f7f7'
+        )
+    else:
+        if selected_type == 'total':
+            normalized_speech_comparison_df = df_filtered.groupby(['project', 'meeting_number'])['normalized_speech_frequency'].sum().reset_index()
+            fig = px.line(normalized_speech_comparison_df, x='meeting_number', y='normalized_speech_frequency', color='project',
+                          labels={'normalized_speech_frequency': 'Normalized Speech Frequency', 'meeting_number': 'Meeting Number'},
+                          title='Comparison of Normalized Speech Frequencies by Meeting')
+        else:
+            fig = px.line(df_filtered, x='meeting_number', y='normalized_speech_frequency', color='speaker_number',
+                          labels={'normalized_speech_frequency': 'Normalized Speech Frequency', 'meeting_number': 'Meeting Number'},
+                          title='Normalized Speech Frequencies by Speaker')
+
+    fig.update_layout(
+        paper_bgcolor='#f7f7f7',
+        plot_bgcolor='#f7f7f7'
+    )
+
+    # Set x-ticks to only those meetings with data points for the selected projects or meetings
+    if selected_meetings and len(selected_meetings) > 1:
+        x_ticks = sorted(df_filtered['meeting_number'].unique())
+    else:
+        x_ticks = sorted(df_filtered['meeting_number'].unique())
+
+    fig.update_xaxes(tickvals=x_ticks)
+
+    return fig
 
 
 # Convert the Dash app to an ASGI app

@@ -252,7 +252,8 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                             paper_bgcolor='#f7f7f7',  # Background color
-                            plot_bgcolor='#f7f7f7'  # Plot area background color
+                            plot_bgcolor='#f7f7f7',  # Plot area background color
+                            height=800
                         ))
 
         return fig

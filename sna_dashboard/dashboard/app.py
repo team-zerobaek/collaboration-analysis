@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from dash import Dash, dcc, html
+from dash.dependencies import Input, Output, State
 import pandas as pd
 from asgiref.wsgi import WsgiToAsgi
-import uvicorn
-from dashboard import sna, frequency, interaction  # Updated import paths
+from dashboard.sna import initialize_sna_app
+from dashboard.frequency import initialize_frequency_app
+from dashboard.interaction import initialize_interaction_app
+from dashboard.gini import initialize_gini_app
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
@@ -19,11 +22,6 @@ dash_app = Dash(__name__, requests_pathname_prefix='/dash/')
 
 # Load dataset
 dataset = pd.read_csv('/app/data/dataset_collaboration.csv')
-
-# Initialize the modules
-sna.initialize_sna_app(dash_app, dataset)
-frequency.initialize_frequency_app(dash_app, dataset)
-interaction.initialize_interaction_app(dash_app, dataset)
 
 # Define the layout
 dash_app.layout = html.Div([
@@ -116,8 +114,26 @@ dash_app.layout = html.Div([
         ),
         html.Button('Reset', id='reset-interaction-button', n_clicks=0)
     ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-    dcc.Graph(id='interaction-frequency-graph')
+    dcc.Graph(id='interaction-frequency-graph'),
+    html.H1("Gini Coefficient"),
+    html.Div([
+        dcc.Dropdown(
+            id='gini-project-dropdown-unique',
+            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+            placeholder="Select projects",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        html.Button('Reset', id='reset-gini-button', n_clicks=0)
+    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+    dcc.Graph(id='gini-graph')
 ])
+
+# Initialize the individual apps
+initialize_sna_app(dash_app, dataset)
+initialize_frequency_app(dash_app, dataset)
+initialize_interaction_app(dash_app, dataset)
+initialize_gini_app(dash_app, dataset)
 
 # Convert the Dash app to an ASGI app
 asgi_dash_app = WsgiToAsgi(dash_app.server)
@@ -126,4 +142,5 @@ asgi_dash_app = WsgiToAsgi(dash_app.server)
 fastapi_app.mount("/dash", asgi_dash_app)
 
 if __name__ == '__main__':
+    import uvicorn
     uvicorn.run(fastapi_app, host="0.0.0.0", port=8080)

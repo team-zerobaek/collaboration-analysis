@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import networkx as nx
 import matplotlib.colors as mcolors
 
+# Initialize Dash app and dataset within the SNA context
 dash_app = None
 dataset = None
 
@@ -11,17 +12,24 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
-    def create_interaction_graph(df):
+    def create_interaction_graph(df, selected_speakers=None):
         G = nx.DiGraph()
         for i in range(len(df)):
             prev_speaker = f"SPEAKER_{df.iloc[i]['speaker_number']:02d}"
             next_speaker = f"SPEAKER_{df.iloc[i]['next_speaker_id']:02d}"
             count = df.iloc[i]['count']
             if count > 0:
+                if selected_speakers and (prev_speaker not in selected_speakers or next_speaker not in selected_speakers):
+                    continue  # Skip edges not between selected speakers
                 if G.has_edge(prev_speaker, next_speaker):
                     G[prev_speaker][next_speaker]['weight'] += count
                 else:
                     G.add_edge(prev_speaker, next_speaker, weight=count)
+        # Add nodes that are selected but have no edges
+        if selected_speakers:
+            for speaker in selected_speakers:
+                if speaker not in G:
+                    G.add_node(speaker)
         return G
 
     def plot_interaction_network(G):
@@ -42,6 +50,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         min_edge_width = 1
         max_edge_width = 10
 
+        # Find the range of edge weights for scaling excluding self-interactions
         weights = [G[u][v]['weight'] for u, v in G.edges() if u != v]
         if weights:
             min_weight = min(weights)
@@ -49,6 +58,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         else:
             min_weight = max_weight = 1
 
+        # Create a colormap
         norm = mcolors.Normalize(vmin=min_weight, vmax=max_weight)
         cmap = mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
 
@@ -57,15 +67,17 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             node_x.append(x)
             node_y.append(y)
             self_weight = G[node][node]['weight'] if G.has_edge(node, node) else 0
-            node_size = min_size + 2 * self_weight
-            node_size = max(min_size, min(max_size, node_size))
+            node_size = min_size + 2 * self_weight  # Adjust the size based on self-interaction weight
+            node_size = max(min_size, min(max_size, node_size))  # Ensure the size is within limits
             node_sizes.append(node_size)
             node_trace_text.append(str(node))
             if self_weight > 0:
                 self_interaction_labels.append((x, y, f"({self_weight})"))
 
+            # Calculate the sum of direct interactions excluding self-interactions
             total_interactions = sum([G[node][nbr]['weight'] for nbr in G.neighbors(node) if nbr != node])
 
+            # Find the node with the biggest interaction and its number
             if len(G[node]) > 0:
                 max_interaction_node, max_interaction_weight = max(G[node].items(), key=lambda item: item[1]['weight'] if item[0] != node else -1)
                 if max_interaction_node == node:
@@ -83,8 +95,9 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                 x1, y1 = pos[edge[1]]
                 edge_x.extend([x0, x1, None])
                 edge_y.extend([y0, y1, None])
+                # Scale edge width based on weight
                 edge_width = ((edge[2]['weight'] - min_weight) / (max_weight - min_weight)) * (max_edge_width - min_edge_width) + min_edge_width
-                edge_color = mcolors.rgb2hex(cmap(norm(edge[2]['weight'])))
+                edge_color = mcolors.rgb2hex(cmap(norm(edge[2]['weight'])))  # Get the color from the colormap
                 edge_traces.append(
                     go.Scatter(
                         x=[x0, x1, None],
@@ -117,7 +130,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                         y=(y0 + y1) / 2,
                         text=str(edge[2]['weight']),
                         showarrow=False,
-                        font=dict(color='red', size=14, weight='bold'),
+                        font=dict(color='red', size=14, weight='bold'),  # Increased size and boldness
                         bgcolor='#f7f7f7'
                     )
                 )
@@ -126,10 +139,10 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             annotations.append(
                 dict(
                     x=x,
-                    y=y + 0.1,
+                    y=y + 0.1,  # Adjust the position slightly above the node
                     text=weight,
                     showarrow=False,
-                    font=dict(color='red', size=14, weight='bold'),
+                    font=dict(color='red', size=14, weight='bold'),  # Increased size and boldness
                     bgcolor='#f7f7f7'
                 )
             )
@@ -141,12 +154,13 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                     y=node_y[i],
                     text=text,
                     showarrow=False,
-                    font=dict(size=14, color='black', weight='bold'),
+                    font=dict(size=14, color='black', weight='bold'),  # Increased size and boldness
                     align='center',
                     bgcolor='#f7f7f7'
                 )
             )
 
+        # Add color bar for the edge weights excluding self-interactions
         color_bar = go.Scatter(
             x=[None],
             y=[None],
@@ -163,7 +177,10 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             hoverinfo='none'
         )
 
+        # Adjust the x coordinate to move the example nodes to the right
         example_x = 1.5
+
+        # Add example nodes for min and max self-interaction sizes
         example_min_node = go.Scatter(
             x=[example_x],
             y=[1.0],
@@ -234,8 +251,8 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                             margin=dict(b=20, l=5, r=5, t=40),
                             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                            paper_bgcolor='#f7f7f7',
-                            plot_bgcolor='#f7f7f7'
+                            paper_bgcolor='#f7f7f7',  # Background color
+                            plot_bgcolor='#f7f7f7'  # Plot area background color
                         ))
 
         return fig
@@ -243,9 +260,9 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     @dash_app.callback(
         Output('network-graph', 'figure'),
         [Input('project-dropdown', 'value'),
-         Input('meeting-dropdown', 'value'),
-         Input('speaker-dropdown', 'value'),
-         Input('reset-button', 'n_clicks')]
+        Input('meeting-dropdown', 'value'),
+        Input('speaker-dropdown', 'value'),
+        Input('reset-button', 'n_clicks')]
     )
     def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks):
         if not selected_project:
@@ -262,11 +279,14 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
 
         if selected_meeting:
             df_filtered = df_filtered[df_filtered['meeting_number'].isin(selected_meeting)]
-        if selected_speakers:
-            df_filtered = df_filtered[df_filtered['speaker_number'].isin(selected_speakers) |
-                                      df_filtered['next_speaker_id'].isin(selected_speakers)]
 
-        G = create_interaction_graph(df_filtered)
+        if selected_speakers:
+            selected_speakers = [f"SPEAKER_{speaker:02d}" for speaker in selected_speakers]
+            df_filtered = df_filtered[df_filtered['speaker_number'].isin([int(s.split('_')[1]) for s in selected_speakers]) |
+                                    df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
+            G = create_interaction_graph(df_filtered, selected_speakers)
+        else:
+            G = create_interaction_graph(df_filtered)
 
         return plot_interaction_network(G)
 

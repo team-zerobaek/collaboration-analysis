@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 import networkx as nx
 import pandas as pd
 from asgiref.wsgi import WsgiToAsgi
+import matplotlib.cm as cm
 import matplotlib.colors as mcolors
-import plotly.express as px
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
@@ -22,19 +22,6 @@ dash_app = Dash(__name__, requests_pathname_prefix='/dash/')
 
 # Load dataset
 dataset = pd.read_csv('/app/data/dataset_collaboration.csv')
-
-# Compute Interaction Frequencies Excluding Self-Interactions
-interaction_summary = dataset[dataset['speaker_number'] != dataset['next_speaker_id']].groupby(
-    ['project', 'meeting_number', 'speaker_number', 'next_speaker_id'])['count'].sum().reset_index()
-
-# Ensure not to count the same speaker multiple times within a meeting
-interaction_summary = interaction_summary.groupby(
-    ['project', 'meeting_number', 'speaker_number'])['count'].sum().reset_index()
-
-# Normalize interaction frequencies by duration
-interaction_summary = pd.merge(interaction_summary, dataset[['project', 'meeting_number', 'duration']].drop_duplicates(),
-                               on=['project', 'meeting_number'])
-interaction_summary['normalized_interaction_count'] = interaction_summary['count'] / interaction_summary['duration']
 
 # Summarize speech frequencies by speaker within each meeting
 speech_summary = dataset.groupby(['project', 'meeting_number', 'speaker_number'])['speech_frequency'].sum().reset_index()
@@ -54,7 +41,20 @@ meeting_durations = dataset.groupby(['project', 'meeting_number'])['duration'].f
 speech_summary = pd.merge(speech_summary, meeting_durations, on=['project', 'meeting_number'])
 speech_summary['normalized_speech_frequency'] = speech_summary['adjusted_speech_frequency'] / speech_summary['duration']
 
-# Define the SNA graph creation functions (unchanged)
+# Compute Interaction Frequencies Excluding Self-Interactions
+interaction_summary = dataset[dataset['speaker_number'] != dataset['next_speaker_id']].groupby(
+    ['project', 'meeting_number', 'speaker_number', 'next_speaker_id'])['count'].sum().reset_index()
+
+# Ensure not to count the same speaker multiple times within a meeting
+interaction_summary = interaction_summary.groupby(
+    ['project', 'meeting_number', 'speaker_number'])['count'].sum().reset_index()
+
+# Normalize interaction frequencies by duration
+interaction_summary = pd.merge(interaction_summary, dataset[['project', 'meeting_number', 'duration']].drop_duplicates(),
+                               on=['project', 'meeting_number'])
+interaction_summary['normalized_interaction_count'] = interaction_summary['count'] / interaction_summary['duration']
+
+
 def create_interaction_graph(df):
     G = nx.DiGraph()
     for i in range(len(df)):
@@ -73,13 +73,16 @@ def create_interaction_graph(df):
                 G.add_edge(next_speaker, prev_speaker, weight=count)
     return G
 
+
 def get_pos_and_labels(G):
     pos = nx.spring_layout(G)
     edge_labels = nx.get_edge_attributes(G, 'weight')
     return pos, edge_labels
 
+
 def create_blue_red_colormap():
     return mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
+
 
 def plot_interaction_network(G):
     pos, edge_labels = get_pos_and_labels(G)
@@ -227,7 +230,7 @@ def plot_interaction_network(G):
     )
 
     # Adjust the x coordinate to move the example nodes to the right
-    example_x = 1.0  # Adjusted value to move the example nodes to the right
+    example_x = 1.5
 
     # Add example nodes for min and max self-interaction sizes
     example_min_node = go.Scatter(
@@ -306,64 +309,112 @@ def plot_interaction_network(G):
 
     return fig
 
+
 # Define the layout
 dash_app.layout = html.Div([
     html.H1("Interactive Network Graph Dashboard"),
-    dcc.Dropdown(
-        id='project-dropdown',
-        options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
-        placeholder="Select a project",
-    ),
-    dcc.Dropdown(
-        id='meeting-dropdown',
-        placeholder="Select a meeting",
-    ),
-    dcc.Dropdown(
-        id='speaker-dropdown',
-        multi=True,
-        placeholder="Select speakers",
-    ),
-    html.Button('Reset', id='reset-button', n_clicks=0),
+    html.Div([
+        dcc.Dropdown(
+            id='project-dropdown',
+            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+            placeholder="Select a project",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.Dropdown(
+            id='meeting-dropdown',
+            placeholder="Select a meeting",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.Dropdown(
+            id='speaker-dropdown',
+            placeholder="Select speakers",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        html.Button('Reset', id='reset-button', n_clicks=0)
+    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
     dcc.Graph(id='network-graph'),
-    html.Hr(),
-    html.H2("Normalized Speech Frequencies Over Meetings"),
-    dcc.Dropdown(
-        id='speech-type-dropdown',
-        options=[
-            {'label': 'Total', 'value': 'total'},
-            {'label': 'By Speakers', 'value': 'by_speakers'}
-        ],
-        value='total',
-        clearable=False
-    ),
-    dcc.Dropdown(
-        id='speech-project-dropdown',
-        options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
-        placeholder="Select a project",
-        multi=True
-    ),
-    dcc.Dropdown(
-        id='speech-meeting-dropdown',
-        placeholder="Select a meeting",
-        multi=True
-    ),
-    dcc.Dropdown(
-        id='speech-speaker-dropdown',
-        multi=True,
-        placeholder="Select speakers",
-    ),
-    dcc.Graph(id='speech-frequency-graph')
+    html.H1("Normalized Speech Frequency"),
+    html.Div([
+        dcc.Dropdown(
+            id='speech-project-dropdown',
+            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+            placeholder="Select projects",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.Dropdown(
+            id='speech-meeting-dropdown',
+            placeholder="Select meetings",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.Dropdown(
+            id='speech-speaker-dropdown',
+            placeholder="Select speakers",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.RadioItems(
+            id='speech-type-radio',
+            options=[
+                {'label': 'Total', 'value': 'total'},
+                {'label': 'By Speakers', 'value': 'by_speakers'}
+            ],
+            value='total',
+            labelStyle={'display': 'inline-block'}
+        ),
+        html.Button('Reset', id='reset-speech-button', n_clicks=0)
+    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+    dcc.Graph(id='speech-frequency-graph'),
+    html.H1("Normalized Interaction Frequency"),
+    html.Div([
+        dcc.Dropdown(
+            id='interaction-project-dropdown',
+            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+            placeholder="Select projects",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.Dropdown(
+            id='interaction-meeting-dropdown',
+            placeholder="Select meetings",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.Dropdown(
+            id='interaction-speaker-dropdown',
+            placeholder="Select speakers",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.RadioItems(
+            id='interaction-type-radio',
+            options=[
+                {'label': 'Total', 'value': 'total'},
+                {'label': 'By Speakers', 'value': 'by_speakers'}
+            ],
+            value='total',
+            labelStyle={'display': 'inline-block'}
+        ),
+        html.Button('Reset', id='reset-interaction-button', n_clicks=0)
+    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+    dcc.Graph(id='interaction-frequency-graph')
 ])
+
 
 @dash_app.callback(
     Output('meeting-dropdown', 'options'),
     [Input('project-dropdown', 'value')]
 )
 def set_meeting_options(selected_project):
-    if selected_project is None:
+    if not selected_project:
         return []
-    meetings = dataset[dataset['project'] == selected_project]['meeting_number'].unique()
+    meetings = dataset[dataset['project'].isin(selected_project)]['meeting_number'].unique()
     return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
+
 
 @dash_app.callback(
     Output('speaker-dropdown', 'options'),
@@ -371,11 +422,14 @@ def set_meeting_options(selected_project):
      Input('meeting-dropdown', 'value')]
 )
 def set_speaker_options(selected_project, selected_meeting):
-    if selected_project is None or selected_meeting is None:
+    if not selected_project:
         return []
-    speakers = dataset[(dataset['project'] == selected_project) &
-                       (dataset['meeting_number'] == selected_meeting)]['speaker_number'].unique()
+    filtered_df = dataset[dataset['project'].isin(selected_project)]
+    if selected_meeting:
+        filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+    speakers = filtered_df['speaker_number'].unique()
     return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
+
 
 @dash_app.callback(
     [Output('project-dropdown', 'value'),
@@ -386,6 +440,7 @@ def set_speaker_options(selected_project, selected_meeting):
 def reset_filters(n_clicks):
     return None, None, None
 
+
 @dash_app.callback(
     Output('network-graph', 'figure'),
     [Input('project-dropdown', 'value'),
@@ -394,8 +449,7 @@ def reset_filters(n_clicks):
      Input('reset-button', 'n_clicks')]
 )
 def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks):
-    # Clear the graph if no project or meeting is selected
-    if selected_project is None or selected_meeting is None:
+    if not selected_project or not selected_meeting:
         fig = go.Figure()
         fig.update_layout(
             paper_bgcolor='#f7f7f7',
@@ -405,131 +459,268 @@ def update_graph(selected_project, selected_meeting, selected_speakers, reset_cl
         )
         return fig
 
-    # Filter the dataset based on the selected filters
-    df_filtered = dataset[(dataset['project'] == selected_project) &
-                          (dataset['meeting_number'] == selected_meeting)]
+    df_filtered = dataset[(dataset['project'].isin(selected_project)) &
+                          (dataset['meeting_number'].isin(selected_meeting))]
 
     if selected_speakers:
         df_filtered = df_filtered[df_filtered['speaker_number'].isin(selected_speakers) |
                                   df_filtered['next_speaker_id'].isin(selected_speakers)]
 
-    # Create the interaction graph
     G = create_interaction_graph(df_filtered)
 
-    # Plot the interaction network
     return plot_interaction_network(G)
+
 
 @dash_app.callback(
     Output('speech-meeting-dropdown', 'options'),
     [Input('speech-project-dropdown', 'value')]
 )
-def set_speech_meeting_options(selected_projects):
-    if selected_projects is None or not selected_projects:
+def set_speech_meeting_options(selected_project):
+    if not selected_project:
         return []
-    meetings = dataset[dataset['project'].isin(selected_projects)]['meeting_number'].unique()
+    meetings = dataset[dataset['project'].isin(selected_project)]['meeting_number'].unique()
     return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
+
 
 @dash_app.callback(
     Output('speech-speaker-dropdown', 'options'),
     [Input('speech-project-dropdown', 'value'),
      Input('speech-meeting-dropdown', 'value')]
 )
-def set_speech_speaker_options(selected_projects, selected_meetings):
-    if (selected_projects is None or not selected_projects) and (selected_meetings is None or not selected_meetings):
+def set_speech_speaker_options(selected_project, selected_meeting):
+    if not selected_project:
         return []
-    if selected_projects and selected_meetings:
-        speakers = dataset[(dataset['project'].isin(selected_projects)) &
-                           (dataset['meeting_number'].isin(selected_meetings))]['speaker_number'].unique()
-    elif selected_projects:
-        speakers = dataset[dataset['project'].isin(selected_projects)]['speaker_number'].unique()
-    else:
-        speakers = dataset[dataset['meeting_number'].isin(selected_meetings)]['speaker_number'].unique()
+    filtered_df = dataset[dataset['project'].isin(selected_project)]
+    if selected_meeting:
+        filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+    speakers = filtered_df['speaker_number'].unique()
     return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
+
+
+@dash_app.callback(
+    [Output('speech-project-dropdown', 'value'),
+     Output('speech-meeting-dropdown', 'value'),
+     Output('speech-speaker-dropdown', 'value')],
+    [Input('reset-speech-button', 'n_clicks')]
+)
+def reset_speech_filters(n_clicks):
+    return None, None, None
+
 
 @dash_app.callback(
     Output('speech-frequency-graph', 'figure'),
-    [Input('speech-type-dropdown', 'value'),
-     Input('speech-project-dropdown', 'value'),
+    [Input('speech-project-dropdown', 'value'),
      Input('speech-meeting-dropdown', 'value'),
-     Input('speech-speaker-dropdown', 'value')]
+     Input('speech-speaker-dropdown', 'value'),
+     Input('speech-type-radio', 'value')]
 )
-def update_speech_graph(selected_type, selected_projects, selected_meetings, selected_speakers):
-    df_filtered = speech_summary.copy()
-    if selected_projects:
-        df_filtered = df_filtered[df_filtered['project'].isin(selected_projects)]
-    if selected_meetings:
-        df_filtered = df_filtered[df_filtered['meeting_number'].isin(selected_meetings)]
+def update_speech_graph(selected_project, selected_meeting, selected_speakers, speech_type):
+    filtered_df = speech_summary
+
+    if selected_project:
+        filtered_df = filtered_df[filtered_df['project'].isin(selected_project)]
+    if selected_meeting:
+        filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
     if selected_speakers:
-        df_filtered = df_filtered[df_filtered['speaker_number'].isin(selected_speakers)]
+        filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
 
-    if selected_meetings and len(selected_meetings) == 1:
-        # Display bar graph for the selected meeting
-        meeting_data = df_filtered[df_filtered['meeting_number'] == selected_meetings[0]]
-        colorscale = create_blue_red_colormap()
-        min_freq = meeting_data['normalized_speech_frequency'].min()
-        max_freq = meeting_data['normalized_speech_frequency'].max()
-        norm = mcolors.Normalize(vmin=min_freq, vmax=max_freq)
+    if speech_type == 'total':
+        speech_comparison_df = filtered_df.groupby(['project', 'meeting_number'])['normalized_speech_frequency'].sum().reset_index()
+        speech_comparison_df_pivot = speech_comparison_df.pivot(index='meeting_number', columns='project', values='normalized_speech_frequency')
+        speech_comparison_df_pivot.columns = [f'Normalized_Speech_Frequency_Project{i}' for i in speech_comparison_df_pivot.columns]
+        speech_comparison_df_pivot.reset_index(inplace=True)
 
-        bar_colors = [mcolors.rgb2hex(colorscale(norm(freq))) for freq in meeting_data['normalized_speech_frequency']]
+        meeting_numbers_with_data = speech_comparison_df_pivot[(speech_comparison_df_pivot > 0).any(axis=1)]['meeting_number']
 
-        fig = go.Figure(data=[
-            go.Bar(
-                x=meeting_data['speaker_number'],
-                y=meeting_data['normalized_speech_frequency'],
-                marker=dict(color=bar_colors),
-                showlegend=False  # Disable legend for bar trace
-            )
-        ])
+        fig = go.Figure()
+        for column in speech_comparison_df_pivot.columns[1:]:
+            fig.add_trace(go.Scatter(x=speech_comparison_df_pivot['meeting_number'],
+                                     y=speech_comparison_df_pivot[column],
+                                     mode='lines+markers',
+                                     name=column))
 
-        # Add color bar
+        fig.update_layout(
+            title='Comparison of Normalized Speech Frequencies by Meeting',
+            xaxis_title='Meeting Number',
+            yaxis_title='Normalized Speech Frequency',
+            xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
+            showlegend=True
+        )
+    else:
+        fig = go.Figure()
+        for speaker in filtered_df['speaker_number'].unique():
+            speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
+            fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
+                                     y=speaker_df['normalized_speech_frequency'],
+                                     mode='lines+markers',
+                                     name=f'Speaker {speaker}'))
+
+        fig.update_layout(
+            title='Normalized Speech Frequencies by Meeting and Speaker',
+            xaxis_title='Meeting Number',
+            yaxis_title='Normalized Speech Frequency',
+            showlegend=True
+        )
+
+    if selected_meeting:
+        bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+        colorscale = mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
+        bar_colors = bar_data['normalized_speech_frequency'].apply(lambda x: mcolors.rgb2hex(colorscale(x / bar_data['normalized_speech_frequency'].max())))
+        fig = go.Figure(data=[go.Bar(
+            x=bar_data['speaker_number'],
+            y=bar_data['normalized_speech_frequency'],
+            marker_color=bar_colors
+        )])
+        fig.update_layout(
+            title=f'Normalized Speech Frequency for Selected Meetings',
+            xaxis_title='Speaker Number',
+            yaxis_title='Normalized Speech Frequency',
+            showlegend=False
+        )
+
         color_bar = go.Scatter(
             x=[None],
             y=[None],
             mode='markers',
             marker=dict(
                 colorscale=[[0, 'blue'], [1, 'red']],
-                cmin=min_freq,
-                cmax=max_freq,
+                cmin=0,
+                cmax=bar_data['normalized_speech_frequency'].max(),
                 colorbar=dict(
                     title="Speech Frequency",
                     titleside="right"
                 )
             ),
-            hoverinfo='none',
-            showlegend=False  # Disable legend for color bar trace
+            hoverinfo='none'
         )
-
         fig.add_trace(color_bar)
+
+    return fig
+
+
+@dash_app.callback(
+    Output('interaction-meeting-dropdown', 'options'),
+    [Input('interaction-project-dropdown', 'value')]
+)
+def set_interaction_meeting_options(selected_project):
+    if not selected_project:
+        return []
+    meetings = dataset[dataset['project'].isin(selected_project)]['meeting_number'].unique()
+    return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
+
+
+@dash_app.callback(
+    Output('interaction-speaker-dropdown', 'options'),
+    [Input('interaction-project-dropdown', 'value'),
+     Input('interaction-meeting-dropdown', 'value')]
+)
+def set_interaction_speaker_options(selected_project, selected_meeting):
+    if not selected_project:
+        return []
+    filtered_df = dataset[dataset['project'].isin(selected_project)]
+    if selected_meeting:
+        filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+    speakers = filtered_df['speaker_number'].unique()
+    return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
+
+
+@dash_app.callback(
+    [Output('interaction-project-dropdown', 'value'),
+     Output('interaction-meeting-dropdown', 'value'),
+     Output('interaction-speaker-dropdown', 'value')],
+    [Input('reset-interaction-button', 'n_clicks')]
+)
+def reset_interaction_filters(n_clicks):
+    return None, None, None
+
+
+@dash_app.callback(
+    Output('interaction-frequency-graph', 'figure'),
+    [Input('interaction-project-dropdown', 'value'),
+     Input('interaction-meeting-dropdown', 'value'),
+     Input('interaction-speaker-dropdown', 'value'),
+     Input('interaction-type-radio', 'value')]
+)
+def update_interaction_graph(selected_project, selected_meeting, selected_speakers, interaction_type):
+    filtered_df = interaction_summary
+
+    if selected_project:
+        filtered_df = filtered_df[filtered_df['project'].isin(selected_project)]
+    if selected_meeting:
+        filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+    if selected_speakers:
+        filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
+
+    if interaction_type == 'total':
+        interaction_comparison_df = filtered_df.groupby(['project', 'meeting_number'])['normalized_interaction_count'].sum().reset_index()
+        interaction_comparison_df_pivot = interaction_comparison_df.pivot(index='meeting_number', columns='project', values='normalized_interaction_count')
+        interaction_comparison_df_pivot.columns = [f'Normalized_Interaction_Frequency_Project{i}' for i in interaction_comparison_df_pivot.columns]
+        interaction_comparison_df_pivot.reset_index(inplace=True)
+
+        meeting_numbers_with_data = interaction_comparison_df_pivot[(interaction_comparison_df_pivot > 0).any(axis=1)]['meeting_number']
+
+        fig = go.Figure()
+        for column in interaction_comparison_df_pivot.columns[1:]:
+            fig.add_trace(go.Scatter(x=interaction_comparison_df_pivot['meeting_number'],
+                                     y=interaction_comparison_df_pivot[column],
+                                     mode='lines+markers',
+                                     name=column))
+
         fig.update_layout(
-            title=f'Normalized Speech Frequencies for Meeting {selected_meetings[0]}',
-            xaxis_title='Speaker Number',
-            yaxis_title='Normalized Speech Frequency',
-            paper_bgcolor='#f7f7f7',
-            plot_bgcolor='#f7f7f7'
+            title='Comparison of Normalized Interaction Frequencies by Meeting',
+            xaxis_title='Meeting Number',
+            yaxis_title='Normalized Interaction Frequency',
+            xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
+            showlegend=True
         )
     else:
-        if selected_type == 'total':
-            normalized_speech_comparison_df = df_filtered.groupby(['project', 'meeting_number'])['normalized_speech_frequency'].sum().reset_index()
-            fig = px.line(normalized_speech_comparison_df, x='meeting_number', y='normalized_speech_frequency', color='project',
-                          labels={'normalized_speech_frequency': 'Normalized Speech Frequency', 'meeting_number': 'Meeting Number'},
-                          title='Comparison of Normalized Speech Frequencies by Meeting')
-        else:
-            fig = px.line(df_filtered, x='meeting_number', y='normalized_speech_frequency', color='speaker_number',
-                          labels={'normalized_speech_frequency': 'Normalized Speech Frequency', 'meeting_number': 'Meeting Number'},
-                          title='Normalized Speech Frequencies by Speaker')
+        fig = go.Figure()
+        for speaker in filtered_df['speaker_number'].unique():
+            speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
+            fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
+                                     y=speaker_df['normalized_interaction_count'],
+                                     mode='lines+markers',
+                                     name=f'Speaker {speaker}'))
 
-    fig.update_layout(
-        paper_bgcolor='#f7f7f7',
-        plot_bgcolor='#f7f7f7'
-    )
+        fig.update_layout(
+            title='Normalized Interaction Frequencies by Meeting and Speaker',
+            xaxis_title='Meeting Number',
+            yaxis_title='Normalized Interaction Frequency',
+            showlegend=True
+        )
 
-    # Set x-ticks to only those meetings with data points for the selected projects or meetings
-    if selected_meetings and len(selected_meetings) > 1:
-        x_ticks = sorted(df_filtered['meeting_number'].unique())
-    else:
-        x_ticks = sorted(df_filtered['meeting_number'].unique())
+    if selected_meeting:
+        bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+        colorscale = mcolors.LinearSegmentedColormap.from_list('blue_red', ['blue', 'red'])
+        bar_colors = bar_data['normalized_interaction_count'].apply(lambda x: mcolors.rgb2hex(colorscale(x / bar_data['normalized_interaction_count'].max())))
+        fig = go.Figure(data=[go.Bar(
+            x=bar_data['speaker_number'],
+            y=bar_data['normalized_interaction_count'],
+            marker_color=bar_colors
+        )])
+        fig.update_layout(
+            title=f'Normalized Interaction Frequency for Selected Meetings',
+            xaxis_title='Speaker Number',
+            yaxis_title='Normalized Interaction Frequency',
+            showlegend=False
+        )
 
-    fig.update_xaxes(tickvals=x_ticks)
+        color_bar = go.Scatter(
+            x=[None],
+            y=[None],
+            mode='markers',
+            marker=dict(
+                colorscale=[[0, 'blue'], [1, 'red']],
+                cmin=0,
+                cmax=bar_data['normalized_interaction_count'].max(),
+                colorbar=dict(
+                    title="Interaction Frequency",
+                    titleside="right"
+                )
+            ),
+            hoverinfo='none'
+        )
+        fig.add_trace(color_bar)
 
     return fig
 

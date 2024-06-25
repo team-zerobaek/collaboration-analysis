@@ -15,7 +15,7 @@ fastapi_app = FastAPI()
 dash_app = Dash(__name__, requests_pathname_prefix='/dash/')
 
 # Load dataset
-dataset = pd.read_csv('/app/data/dataset_collaboration.csv')
+dataset = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
 
 # Define the layout
 dash_app.layout = html.Div([

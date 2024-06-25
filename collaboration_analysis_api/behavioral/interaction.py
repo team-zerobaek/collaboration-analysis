@@ -13,6 +13,9 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
+    # Filter out self-interactions
+    dataset = dataset[dataset['speaker_number'] != dataset['next_speaker_id']]
+
     interaction_summary = dataset.groupby(['project', 'meeting_number', 'speaker_number', 'next_speaker_id'])['count'].sum().reset_index()
     interaction_summary = pd.merge(interaction_summary, dataset[['project', 'meeting_number', 'duration']].drop_duplicates(),
                                    on=['project', 'meeting_number'])
@@ -128,8 +131,9 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
             )
         else:
             fig = go.Figure()
-            for speaker in filtered_df['speaker_number'].unique():
-                speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
+            speaker_interactions = filtered_df.groupby(['meeting_number', 'speaker_number'])['normalized_interaction_count'].sum().reset_index()
+            for speaker in speaker_interactions['speaker_number'].unique():
+                speaker_df = speaker_interactions[speaker_interactions['speaker_number'] == speaker]
                 fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
                                          y=speaker_df['normalized_interaction_count'],
                                          mode='lines+markers',

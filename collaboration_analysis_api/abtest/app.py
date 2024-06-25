@@ -3,6 +3,7 @@ from dash import Dash, dcc, html
 from fastapi.middleware.wsgi import WSGIMiddleware
 from abtest.on_off import initialize_abtest_app
 from abtest.casual import initialize_casual_app
+from abtest.text_voice import initialize_text_voice_app
 import pandas as pd
 
 # Initialize the FastAPI app
@@ -12,7 +13,8 @@ fastapi_app = FastAPI()
 dash_app = Dash(__name__, requests_pathname_prefix='/abtest/')
 
 # Load dataset
-dataset = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
+dataset_voice = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
+dataset_text = pd.read_csv('/app/data/kakao_data.csv')
 
 # Define the layout
 dash_app.layout = html.Div([
@@ -49,8 +51,9 @@ dash_app.layout = html.Div([
 ])
 
 # Initialize the individual apps
-initialize_abtest_app(dash_app, dataset)
-initialize_casual_app(dash_app, dataset)
+initialize_abtest_app(dash_app, dataset_voice)
+initialize_casual_app(dash_app, dataset_voice)
+initialize_text_voice_app(dash_app, dataset_voice, dataset_text)
 
 # Mount the Dash app to FastAPI using WSGIMiddleware
 fastapi_app.mount("/", WSGIMiddleware(dash_app.server))

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from dash import Dash, dcc, html
 from fastapi.middleware.wsgi import WSGIMiddleware
 from abtest.on_off import initialize_abtest_app
+from abtest.casual import initialize_casual_app
 import pandas as pd
 
 # Initialize the FastAPI app
@@ -22,7 +23,8 @@ dash_app.layout = html.Div([
         html.A(html.Button('A/B Test', style={'margin-right': '10px'}), href='/abtest'),
         html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
-    html.H2("A/B Test: Online vs. Offline", style={'text-align': 'center'}),
+    html.H2("A/B Test", style={'text-align': 'center'}),
+    html.H3("A/B Test: Online vs. Offline", style={'text-align': 'center'}),
     html.Div([
         dcc.RadioItems(
             id='abtest-view-type',
@@ -46,8 +48,9 @@ dash_app.layout = html.Div([
     ], style={'display': 'flex', 'justify-content': 'space-between'})
 ])
 
-# Initialize the A/B test app
+# Initialize the individual apps
 initialize_abtest_app(dash_app, dataset)
+initialize_casual_app(dash_app, dataset)
 
 # Mount the Dash app to FastAPI using WSGIMiddleware
 fastapi_app.mount("/", WSGIMiddleware(dash_app.server))

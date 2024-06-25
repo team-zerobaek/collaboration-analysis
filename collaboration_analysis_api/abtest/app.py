@@ -1,12 +1,17 @@
 from fastapi import FastAPI
 from dash import Dash, dcc, html
 from fastapi.middleware.wsgi import WSGIMiddleware
+from abtest.on_off import initialize_abtest_app
+import pandas as pd
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
 
 # Initialize the Dash app
 dash_app = Dash(__name__, requests_pathname_prefix='/abtest/')
+
+# Load dataset
+dataset = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
 
 # Define the layout
 dash_app.layout = html.Div([
@@ -17,9 +22,32 @@ dash_app.layout = html.Div([
         html.A(html.Button('A/B Test', style={'margin-right': '10px'}), href='/abtest'),
         html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
-    html.H2("A/B Test", style={'text-align': 'center'}),
-    # Add your layout and components here for A/B Test page
+    html.H2("A/B Test: Online vs. Offline", style={'text-align': 'center'}),
+    html.Div([
+        dcc.RadioItems(
+            id='abtest-view-type',
+            options=[
+                {'label': 'Total', 'value': 'total'},
+                {'label': 'By Speakers', 'value': 'by_speakers'}
+            ],
+            value='total',
+            labelStyle={'display': 'inline-block'}
+        ),
+    ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+    html.Div([
+        html.Div([
+            dcc.Graph(id='abtest-graph-speech'),
+            html.Div(id='abtest-table-speech')
+        ], style={'width': '48%', 'display': 'inline-block'}),
+        html.Div([
+            dcc.Graph(id='abtest-graph-interaction'),
+            html.Div(id='abtest-table-interaction')
+        ], style={'width': '48%', 'display': 'inline-block'})
+    ], style={'display': 'flex', 'justify-content': 'space-between'})
 ])
+
+# Initialize the A/B test app
+initialize_abtest_app(dash_app, dataset)
 
 # Mount the Dash app to FastAPI using WSGIMiddleware
 fastapi_app.mount("/", WSGIMiddleware(dash_app.server))

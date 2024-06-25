@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from dash import Dash, dcc, html
 from fastapi.middleware.wsgi import WSGIMiddleware
 from subjective.overall import initialize_overall_app
-from subjective.individual import initialize_individual_app
+from subjective.individual_others import initialize_individual_app
+from subjective.individual_self import initialize_self_score_app
 import pandas as pd
 
 # Initialize the FastAPI app
@@ -75,12 +76,39 @@ dash_app.layout = html.Div([
         ),
         html.Button('Reset', id='individual-reset-button', n_clicks=0)
     ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-    dcc.Graph(id='individual-score-graph')
+    dcc.Graph(id='individual-score-graph'),
+    html.H2("Individual Collaboration Score (Self)", style={'text-align': 'center'}),
+    html.Div([
+        dcc.Dropdown(
+            id='self-meeting-dropdown',
+            placeholder="Select a meeting",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.Dropdown(
+            id='self-speaker-dropdown',
+            placeholder="Select speakers",
+            multi=True,
+            style={'width': '200px'}
+        ),
+        dcc.RadioItems(
+            id='self-view-type-radio',
+            options=[
+                {'label': 'Total', 'value': 'total'},
+                {'label': 'By Speakers', 'value': 'by_speakers'}
+            ],
+            value='total',
+            labelStyle={'display': 'inline-block'}
+        ),
+        html.Button('Reset', id='self-reset-button', n_clicks=0)
+    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+    dcc.Graph(id='self-score-graph')
 ])
 
 # Initialize the individual apps
 initialize_overall_app(dash_app, dataset)
 initialize_individual_app(dash_app, dataset)
+initialize_self_score_app(dash_app, dataset)
 
 # Mount the Dash app to FastAPI using WSGIMiddleware
 fastapi_app.mount("/", WSGIMiddleware(dash_app.server))

@@ -84,8 +84,6 @@ def initialize_individual_app(dash_app, dataset):
 
         if selected_meeting:
             filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
-        if selected_speakers:
-            filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
 
         fig = go.Figure()
 
@@ -123,22 +121,40 @@ def initialize_individual_app(dash_app, dataset):
         else:  # view_type == 'by_speakers'
             others_scores_by_speaker = filtered_df[filtered_df['speaker_id'] != filtered_df['next_speaker_id']].groupby(['meeting_number', 'next_speaker_id'])['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()
 
-            for speaker in others_scores_by_speaker['next_speaker_id'].unique():
-                speaker_data = others_scores_by_speaker[others_scores_by_speaker['next_speaker_id'] == speaker]
-                color = color_map[speaker]
-                fig.add_trace(go.Scatter(
-                    x=speaker_data['meeting_number'],
-                    y=speaker_data['mean'],
-                    mode='lines+markers',
-                    name=f'Speaker {speaker}',
-                    line=dict(color=color),
-                    marker=dict(color=color),
-                    error_y=dict(
-                        type='data',
-                        array=speaker_data['sem'],
-                        visible=True
-                    )
-                ))
+            if selected_speakers:
+                for speaker in selected_speakers:
+                    speaker_data = others_scores_by_speaker[others_scores_by_speaker['next_speaker_id'] == speaker]
+                    color = color_map[speaker]
+                    fig.add_trace(go.Scatter(
+                        x=speaker_data['meeting_number'],
+                        y=speaker_data['mean'],
+                        mode='lines+markers',
+                        name=f'Speaker {speaker}',
+                        line=dict(color=color),
+                        marker=dict(color=color),
+                        error_y=dict(
+                            type='data',
+                            array=speaker_data['sem'],
+                            visible=True
+                        )
+                    ))
+            else:
+                for speaker in others_scores_by_speaker['next_speaker_id'].unique():
+                    speaker_data = others_scores_by_speaker[others_scores_by_speaker['next_speaker_id'] == speaker]
+                    color = color_map[speaker]
+                    fig.add_trace(go.Scatter(
+                        x=speaker_data['meeting_number'],
+                        y=speaker_data['mean'],
+                        mode='lines+markers',
+                        name=f'Speaker {speaker}',
+                        line=dict(color=color),
+                        marker=dict(color=color),
+                        error_y=dict(
+                            type='data',
+                            array=speaker_data['sem'],
+                            visible=True
+                        )
+                    ))
 
         fig.update_layout(
             title='Mean Individual Collaboration Score (Others) by Meeting',

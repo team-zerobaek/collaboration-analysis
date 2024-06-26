@@ -27,29 +27,6 @@ dash_app.layout = html.Div([
         html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.H2("Monitoring", style={'text-align': 'center'}),
-    html.Div([
-        dcc.Dropdown(
-            id='project-dropdown',
-            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
-            placeholder="Select a project",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.Dropdown(
-            id='meeting-dropdown',
-            placeholder="Select a meeting",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        dcc.Dropdown(
-            id='speaker-dropdown',
-            placeholder="Select speakers",
-            multi=True,
-            style={'width': '200px'}
-        ),
-        html.Button('Reset', id='reset-button', n_clicks=0)
-    ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-    dcc.Graph(id='network-graph'),
 ])
 
 # Initialize the individual apps

@@ -2,6 +2,7 @@ from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 import networkx as nx
 import matplotlib.colors as mcolors
+from dash import dcc, html
 
 # Initialize Dash app and dataset within the SNA context
 dash_app = None
@@ -276,7 +277,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             )
             return fig
 
-        df_filtered = dataset[dataset['project'].isin(selected_project)]
+        df_filtered = dataset[dataset['project'] == selected_project]
 
         if selected_meeting:
             df_filtered = df_filtered[df_filtered['meeting_number'].isin(selected_meeting)]
@@ -298,7 +299,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     def set_meeting_options(selected_project):
         if not selected_project:
             return []
-        meetings = dataset[dataset['project'].isin(selected_project)]['meeting_number'].unique()
+        meetings = dataset[dataset['project'] == selected_project]['meeting_number'].unique()
         return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
 
     @dash_app.callback(
@@ -309,7 +310,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     def set_speaker_options(selected_project, selected_meeting):
         if not selected_project:
             return []
-        filtered_df = dataset[dataset['project'].isin(selected_project)]
+        filtered_df = dataset[dataset['project'] == selected_project]
         if selected_meeting:
             filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
         speakers = filtered_df['speaker_number'].unique()
@@ -323,3 +324,32 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     )
     def reset_filters(n_clicks):
         return None, None, None
+
+    # Define the layout for SNA-specific elements
+    sna_layout = html.Div([
+        html.Div([
+            dcc.Dropdown(
+                id='project-dropdown',
+                options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                placeholder="Select a project",
+                multi=False,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='meeting-dropdown',
+                placeholder="Select a meeting",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='speaker-dropdown',
+                placeholder="Select speakers",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            html.Button('Reset', id='reset-button', n_clicks=0)
+        ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+        dcc.Graph(id='network-graph'),
+    ])
+
+    dash_app.layout.children.append(sna_layout)

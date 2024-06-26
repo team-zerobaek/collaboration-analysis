@@ -101,14 +101,24 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
          Input('speech-type-radio', 'value')]
     )
     def update_speech_graph(selected_project, selected_meeting, selected_speakers, speech_type):
-        filtered_df = speech_summary
-
-        if selected_project:
+        if speech_type == 'total':
+            filtered_df = speech_summary
+            if not selected_project:
+                # Show all projects when "Total" is selected
+                selected_project = dataset['project'].unique()
             filtered_df = filtered_df[filtered_df['project'].isin(selected_project)]
+        else:
+            if not selected_project:
+                # Show most recent project (project 4) when "By Speakers" is selected
+                selected_project = [4]
+            filtered_df = speech_summary[speech_summary['project'].isin(selected_project)]
+
         if selected_meeting:
             filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
         if selected_speakers:
             filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
+
+        fig = go.Figure()
 
         if speech_type == 'total':
             speech_comparison_df = filtered_df.groupby(['project', 'meeting_number'])['normalized_speech_frequency'].sum().reset_index()
@@ -118,7 +128,6 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
 
             meeting_numbers_with_data = speech_comparison_df_pivot[(speech_comparison_df_pivot > 0).any(axis=1)]['meeting_number']
 
-            fig = go.Figure()
             for column in speech_comparison_df_pivot.columns[1:]:
                 fig.add_trace(go.Scatter(x=speech_comparison_df_pivot['meeting_number'],
                                          y=speech_comparison_df_pivot[column],
@@ -133,7 +142,6 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
                 showlegend=True
             )
         else:
-            fig = go.Figure()
             for speaker in filtered_df['speaker_number'].unique():
                 speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
                 fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
@@ -141,10 +149,13 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
                                          mode='lines+markers',
                                          name=f'Speaker {speaker}'))
 
+            meeting_numbers_with_data = filtered_df['meeting_number'].unique()
+
             fig.update_layout(
                 title='Normalized Speech Frequencies by Meeting and Speaker',
                 xaxis_title='Meeting Number',
                 yaxis_title='Normalized Speech Frequency',
+                xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
                 showlegend=True
             )
 

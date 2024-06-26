@@ -7,7 +7,7 @@ from dash import dcc, html
 
 def initialize_self_score_app(dash_app, dataset):
     self_score_layout = html.Div([
-        html.H1("Individual Collaboration Score (Self)"),
+        html.H1("Individual Collaboration Score (Self)", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
                 id='self-meeting-dropdown',
@@ -64,6 +64,13 @@ def initialize_self_score_app(dash_app, dataset):
     )
     def reset_self_filters(n_clicks):
         return None, None
+
+    @dash_app.callback(
+        Output('self-meeting-dropdown', 'disabled'),
+        Input('self-view-type-radio', 'value')
+    )
+    def disable_meeting_dropdown(view_type):
+        return view_type != 'by_speakers'
 
     @dash_app.callback(
         Output('self-score-graph', 'figure'),
@@ -140,7 +147,6 @@ def initialize_self_score_app(dash_app, dataset):
             bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
             if not bar_data.empty:
                 bar_data_agg = bar_data[bar_data['speaker_id'] == bar_data['next_speaker_id']].groupby('speaker_number')['individual_collaboration_score'].mean().reset_index()
-                bar_data_agg = bar_data_agg.sort_values(by='individual_collaboration_score', ascending=False)
                 fig = go.Figure(data=[go.Bar(
                     x=bar_data_agg['speaker_number'],
                     y=bar_data_agg['individual_collaboration_score'],

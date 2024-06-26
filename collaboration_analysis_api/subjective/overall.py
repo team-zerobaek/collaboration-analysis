@@ -7,7 +7,7 @@ from dash import dcc, html
 
 def initialize_overall_app(dash_app, dataset):
     overall_layout = html.Div([
-        html.H1("Overall Collaboration Score"),
+        html.H1("Overall Collaboration Score", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
                 id='meeting-dropdown',
@@ -59,6 +59,13 @@ def initialize_overall_app(dash_app, dataset):
     )
     def reset_filters(n_clicks):
         return None, None
+
+    @dash_app.callback(
+        Output('meeting-dropdown', 'disabled'),
+        Input('view-type-radio', 'value')
+    )
+    def disable_meeting_dropdown(view_type):
+        return view_type != 'by_speakers'
 
     @dash_app.callback(
         Output('collaboration-score-graph', 'figure'),
@@ -129,7 +136,6 @@ def initialize_overall_app(dash_app, dataset):
             bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
             if not bar_data.empty:
                 bar_data_agg = bar_data.groupby('speaker_number')['overall_collaboration_score'].mean().reset_index()
-                bar_data_agg = bar_data_agg.sort_values(by='overall_collaboration_score', ascending=False)
                 fig = go.Figure(data=[go.Bar(
                     x=bar_data_agg['speaker_number'],
                     y=bar_data_agg['overall_collaboration_score'],

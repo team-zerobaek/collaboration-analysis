@@ -3,8 +3,39 @@ import plotly.graph_objects as go
 import pandas as pd
 import seaborn as sns
 import matplotlib.colors as mcolors
+from dash import dcc, html
 
 def initialize_self_score_app(dash_app, dataset):
+    self_score_layout = html.Div([
+        html.H1("Individual Collaboration Score (Self)"),
+        html.Div([
+            dcc.Dropdown(
+                id='self-meeting-dropdown',
+                placeholder="Select a meeting",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='self-speaker-dropdown',
+                placeholder="Select speakers",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.RadioItems(
+                id='self-view-type-radio',
+                options=[
+                    {'label': 'Total', 'value': 'total'},
+                    {'label': 'By Speakers', 'value': 'by_speakers'}
+                ],
+                value='total',
+                labelStyle={'display': 'inline-block'}
+            ),
+            html.Button('Reset', id='self-reset-button', n_clicks=0)
+        ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+        dcc.Graph(id='self-score-graph')
+    ])
+    dash_app.layout.children.append(self_score_layout)
+
     @dash_app.callback(
         Output('self-meeting-dropdown', 'options'),
         Input('self-view-type-radio', 'value')
@@ -109,6 +140,7 @@ def initialize_self_score_app(dash_app, dataset):
             bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
             if not bar_data.empty:
                 bar_data_agg = bar_data[bar_data['speaker_id'] == bar_data['next_speaker_id']].groupby('speaker_number')['individual_collaboration_score'].mean().reset_index()
+                bar_data_agg = bar_data_agg.sort_values(by='individual_collaboration_score', ascending=False)
                 fig = go.Figure(data=[go.Bar(
                     x=bar_data_agg['speaker_number'],
                     y=bar_data_agg['individual_collaboration_score'],

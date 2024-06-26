@@ -3,8 +3,39 @@ import plotly.graph_objects as go
 import pandas as pd
 import seaborn as sns
 import matplotlib.colors as mcolors
+from dash import dcc, html
 
 def initialize_individual_app(dash_app, dataset):
+    individual_others_layout = html.Div([
+        html.H1("Individual Collaboration Score (Others)"),
+        html.Div([
+            dcc.Dropdown(
+                id='individual-meeting-dropdown',
+                placeholder="Select a meeting",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='individual-speaker-dropdown',
+                placeholder="Select speakers",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.RadioItems(
+                id='individual-view-type-radio',
+                options=[
+                    {'label': 'Total', 'value': 'total'},
+                    {'label': 'By Speakers', 'value': 'by_speakers'}
+                ],
+                value='total',
+                labelStyle={'display': 'inline-block'}
+            ),
+            html.Button('Reset', id='individual-reset-button', n_clicks=0)
+        ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+        dcc.Graph(id='individual-score-graph')
+    ])
+    dash_app.layout.children.append(individual_others_layout)
+
     @dash_app.callback(
         Output('individual-meeting-dropdown', 'options'),
         Input('individual-view-type-radio', 'value')
@@ -109,6 +140,7 @@ def initialize_individual_app(dash_app, dataset):
             bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
             if not bar_data.empty:
                 bar_data_agg = bar_data[bar_data['speaker_id'] != bar_data['next_speaker_id']].groupby('next_speaker_id')['individual_collaboration_score'].mean().reset_index()
+                bar_data_agg = bar_data_agg.sort_values(by='individual_collaboration_score', ascending=False)
                 fig = go.Figure(data=[go.Bar(
                     x=bar_data_agg['next_speaker_id'],
                     y=bar_data_agg['individual_collaboration_score'],

@@ -3,8 +3,39 @@ import plotly.graph_objects as go
 import pandas as pd
 import seaborn as sns
 import matplotlib.colors as mcolors
+from dash import dcc, html
 
 def initialize_overall_app(dash_app, dataset):
+    overall_layout = html.Div([
+        html.H1("Overall Collaboration Score"),
+        html.Div([
+            dcc.Dropdown(
+                id='meeting-dropdown',
+                placeholder="Select a meeting",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='speaker-dropdown',
+                placeholder="Select speakers",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.RadioItems(
+                id='view-type-radio',
+                options=[
+                    {'label': 'Total', 'value': 'total'},
+                    {'label': 'By Speakers', 'value': 'by_speakers'}
+                ],
+                value='total',
+                labelStyle={'display': 'inline-block'}
+            ),
+            html.Button('Reset', id='reset-button', n_clicks=0)
+        ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+        dcc.Graph(id='collaboration-score-graph')
+    ])
+    dash_app.layout.children.append(overall_layout)
+
     @dash_app.callback(
         Output('meeting-dropdown', 'options'),
         Input('view-type-radio', 'value')
@@ -98,6 +129,7 @@ def initialize_overall_app(dash_app, dataset):
             bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
             if not bar_data.empty:
                 bar_data_agg = bar_data.groupby('speaker_number')['overall_collaboration_score'].mean().reset_index()
+                bar_data_agg = bar_data_agg.sort_values(by='overall_collaboration_score', ascending=False)
                 fig = go.Figure(data=[go.Bar(
                     x=bar_data_agg['speaker_number'],
                     y=bar_data_agg['overall_collaboration_score'],

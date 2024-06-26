@@ -3,8 +3,40 @@ import plotly.graph_objects as go
 import pandas as pd
 import seaborn as sns
 import matplotlib.colors as mcolors
+from dash import dcc, html
 
 def initialize_gap_app(dash_app, dataset):
+    gap_layout = html.Div([
+        html.H1("Gap between Individual Collaboration Score (Others - Self)"),
+        html.Div([
+            dcc.Dropdown(
+                id='gap-meeting-dropdown',
+                placeholder="Select a meeting",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.Dropdown(
+                id='gap-speaker-dropdown',
+                placeholder="Select speakers",
+                multi=True,
+                style={'width': '200px'}
+            ),
+            dcc.RadioItems(
+                id='gap-view-type-radio',
+                options=[
+                    {'label': 'Total', 'value': 'total'},
+                    {'label': 'By Meeting', 'value': 'by_meeting'}
+                ],
+                value='total',
+                labelStyle={'display': 'inline-block'}
+            ),
+            html.Button('Reset', id='gap-reset-button', n_clicks=0)
+        ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
+        dcc.Graph(id='gap-score-graph')
+    ])
+    dash_app.layout.children.append(gap_layout)
+
+
     @dash_app.callback(
         Output('gap-meeting-dropdown', 'options'),
         Input('gap-view-type-radio', 'value')

@@ -6,8 +6,8 @@ from dash import html, dcc
 
 def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
     def calculate_team_meeting_metrics(meetings):
-        unique_speech_frequencies = meetings.groupby(['meeting_number', 'speaker_id'])['normalized_speech_frequency'].mean().reset_index()
-        meeting_metrics = unique_speech_frequencies.groupby('meeting_number').agg({'normalized_speech_frequency': 'sum'}).reset_index()
+        unique_speech_frequencies = meetings.groupby(['meeting_number', 'speaker_id'])['speech_frequency'].mean().reset_index()
+        meeting_metrics = unique_speech_frequencies.groupby('meeting_number').agg({'speech_frequency': 'sum'}).reset_index()
         interaction_metrics = meetings.groupby('meeting_number').agg({'count': 'sum'}).reset_index()
         self_interactions = meetings[meetings['speaker_id'] == meetings['next_speaker_id']]
         total_self_interactions = self_interactions.groupby('meeting_number')['count'].sum().reset_index()
@@ -18,9 +18,9 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
         return combined_metrics
 
     def calculate_individual_metrics(meetings, meeting_count):
-        unique_speech_frequencies = meetings.groupby(['meeting_number', 'speaker_id'])['normalized_speech_frequency'].mean().reset_index()
-        individual_metrics = unique_speech_frequencies.groupby('speaker_id').agg({'normalized_speech_frequency': 'sum'}).reset_index()
-        individual_metrics['normalized_speech_frequency'] /= meeting_count
+        unique_speech_frequencies = meetings.groupby(['meeting_number', 'speaker_id'])['speech_frequency'].mean().reset_index()
+        individual_metrics = unique_speech_frequencies.groupby('speaker_id').agg({'speech_frequency': 'sum'}).reset_index()
+        individual_metrics['speech_frequency'] /= meeting_count
         interaction_metrics = meetings.groupby('speaker_id').agg({'count': 'sum'}).reset_index()
         self_interactions = meetings[meetings['speaker_id'] == meetings['next_speaker_id']]
         total_self_interactions = self_interactions.groupby('speaker_id')['count'].sum().reset_index()
@@ -33,7 +33,7 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
 
     def perform_ttest(group1, group2):
         ttest_results = {}
-        ttest_results['normalized_speech_frequency'] = ttest_ind(group1['normalized_speech_frequency'], group2['normalized_speech_frequency'], equal_var=False)
+        ttest_results['speech_frequency'] = ttest_ind(group1['speech_frequency'], group2['speech_frequency'], equal_var=False)
         ttest_results['count'] = ttest_ind(group1['count'], group2['count'], equal_var=False)
         return ttest_results
 
@@ -41,9 +41,9 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
         rows_speech = []
         rows_interaction = []
         if view_type == 'total':
-            variables = ['normalized_speech_frequency', 'count']
+            variables = ['speech_frequency', 'count']
             for var in variables:
-                if var == 'normalized_speech_frequency':
+                if var == 'speech_frequency':
                     row_voice = {
                         'Group': 'Voice',
                         'Mean': round(group1[var].mean(), 2),
@@ -85,17 +85,17 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
             for speaker in group1['speaker_id'].unique():
                 row_voice = {
                     'Group': f'Voice (Speaker {speaker})',
-                    'Mean': round(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency'].mean(), 2),
-                    'Std': round(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency'].std(), 2),
-                    'df': len(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency']) - 1,
-                    't-statistic': round(ttest_results['normalized_speech_frequency'].statistic, 2),
-                    'p-value': round(ttest_results['normalized_speech_frequency'].pvalue, 2)
+                    'Mean': round(group1[group1['speaker_id'] == speaker]['speech_frequency'].mean(), 2),
+                    'Std': round(group1[group1['speaker_id'] == speaker]['speech_frequency'].std(), 2),
+                    'df': len(group1[group1['speaker_id'] == speaker]['speech_frequency']) - 1,
+                    't-statistic': round(ttest_results['speech_frequency'].statistic, 2),
+                    'p-value': round(ttest_results['speech_frequency'].pvalue, 2)
                 }
                 row_text = {
                     'Group': f'Text (Speaker {speaker})',
-                    'Mean': round(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency'].mean(), 2),
-                    'Std': round(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency'].std(), 2),
-                    'df': len(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency']) - 1,
+                    'Mean': round(group2[group2['speaker_id'] == speaker]['speech_frequency'].mean(), 2),
+                    'Std': round(group2[group2['speaker_id'] == speaker]['speech_frequency'].std(), 2),
+                    'df': len(group2[group2['speaker_id'] == speaker]['speech_frequency']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
@@ -150,8 +150,8 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
         if view_type == 'total':
             fig_speech.add_trace(go.Bar(
                 x=['Voice', 'Text'],
-                y=[voice_metrics['normalized_speech_frequency'].mean(), text_metrics['normalized_speech_frequency'].mean()],
-                error_y=dict(type='data', array=[voice_metrics['normalized_speech_frequency'].std(), text_metrics['normalized_speech_frequency'].std()]),
+                y=[voice_metrics['speech_frequency'].mean(), text_metrics['speech_frequency'].mean()],
+                error_y=dict(type='data', array=[voice_metrics['speech_frequency'].std(), text_metrics['speech_frequency'].std()]),
                 marker_color=['#1f77b4', '#ff7f0e']
             ))
 
@@ -162,23 +162,23 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
                 marker_color=['#1f77b4', '#ff7f0e']
             ))
 
-            speech_y_max = max(voice_metrics['normalized_speech_frequency'].mean() + 1.1 * voice_metrics['normalized_speech_frequency'].std(),
-                               text_metrics['normalized_speech_frequency'].mean() + 1.1 * text_metrics['normalized_speech_frequency'].std())
+            speech_y_max = max(voice_metrics['speech_frequency'].mean() + 1.1 * voice_metrics['speech_frequency'].std(),
+                               text_metrics['speech_frequency'].mean() + 1.1 * text_metrics['speech_frequency'].std())
             interaction_y_max = max(voice_metrics['count'].mean() + 1.1 * voice_metrics['count'].std(),
                                     text_metrics['count'].mean() + 1.1 * text_metrics['count'].std())
 
             fig_speech.update_layout(
-                title='A/B Test: Normalized Speech Frequency',
+                title='A/B Test:  Speech Frequency',
                 xaxis_title='Condition',
-                yaxis_title='Normalized Speech Frequency',
+                yaxis_title=' Speech Frequency',
                 yaxis=dict(range=[0, speech_y_max]),
                 showlegend=False
             )
 
             fig_interaction.update_layout(
-                title='A/B Test: Normalized Interaction Count',
+                title='A/B Test:  Interaction Count',
                 xaxis_title='Condition',
-                yaxis_title='Normalized Interaction Count',
+                yaxis_title=' Interaction Count',
                 yaxis=dict(range=[0, interaction_y_max]),
                 showlegend=False
             )
@@ -186,10 +186,10 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
             for speaker in voice_metrics['speaker_id'].unique():
                 fig_speech.add_trace(go.Bar(
                     x=['Voice', 'Text'],
-                    y=[voice_metrics[voice_metrics['speaker_id'] == speaker]['normalized_speech_frequency'].mean(),
-                       text_metrics[text_metrics['speaker_id'] == speaker]['normalized_speech_frequency'].mean()],
-                    error_y=dict(type='data', array=[voice_metrics[voice_metrics['speaker_id'] == speaker]['normalized_speech_frequency'].std(),
-                                                     text_metrics[text_metrics['speaker_id'] == speaker]['normalized_speech_frequency'].std()]),
+                    y=[voice_metrics[voice_metrics['speaker_id'] == speaker]['speech_frequency'].mean(),
+                       text_metrics[text_metrics['speaker_id'] == speaker]['speech_frequency'].mean()],
+                    error_y=dict(type='data', array=[voice_metrics[voice_metrics['speaker_id'] == speaker]['speech_frequency'].std(),
+                                                     text_metrics[text_metrics['speaker_id'] == speaker]['speech_frequency'].std()]),
                     name=f'Speaker {speaker}'
                 ))
 
@@ -203,16 +203,16 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
                 ))
 
             fig_speech.update_layout(
-                title='A/B Test: Normalized Speech Frequency by Speaker',
+                title='A/B Test:  Speech Frequency by Speaker',
                 xaxis_title='Condition',
-                yaxis_title='Normalized Speech Frequency',
+                yaxis_title=' Speech Frequency',
                 showlegend=True
             )
 
             fig_interaction.update_layout(
-                title='A/B Test: Normalized Interaction Count by Speaker',
+                title='A/B Test:  Interaction Count by Speaker',
                 xaxis_title='Condition',
-                yaxis_title='Normalized Interaction Count',
+                yaxis_title=' Interaction Count',
                 showlegend=True
             )
 

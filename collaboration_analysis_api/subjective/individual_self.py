@@ -89,6 +89,14 @@ def initialize_self_score_app(dash_app, dataset):
 
         fig = go.Figure()
 
+        color_map = {
+            0: 'blue',
+            1: 'red',
+            2: 'green',
+            3: 'purple',
+            4: 'orange'
+        }
+
         if view_type == 'total':
             self_scores = filtered_df[filtered_df['speaker_id'] == filtered_df['next_speaker_id']].groupby('meeting_number')['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()
             fig.add_trace(go.Scatter(
@@ -114,8 +122,6 @@ def initialize_self_score_app(dash_app, dataset):
 
         else:  # view_type == 'by_speakers'
             self_scores_by_speaker = filtered_df[filtered_df['speaker_id'] == filtered_df['next_speaker_id']].groupby(['meeting_number', 'speaker_number'])['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()
-            palette = sns.color_palette('tab10', n_colors=self_scores_by_speaker['speaker_number'].nunique())
-            color_map = {speaker: mcolors.rgb2hex(palette[i % len(palette)]) for i, speaker in enumerate(self_scores_by_speaker['speaker_number'].unique())}
 
             for speaker in self_scores_by_speaker['speaker_number'].unique():
                 speaker_data = self_scores_by_speaker[self_scores_by_speaker['speaker_number'] == speaker]

@@ -7,7 +7,7 @@ from dash import dcc, html
 
 def initialize_gap_app(dash_app, dataset):
     gap_layout = html.Div([
-        html.H1("Gap between Individual Collaboration Score (Others - Self)"),
+        html.H1("Gap between Individual Collaboration Score (Others - Self)", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
                 id='gap-meeting-dropdown',
@@ -35,7 +35,6 @@ def initialize_gap_app(dash_app, dataset):
         dcc.Graph(id='gap-score-graph')
     ])
     dash_app.layout.children.append(gap_layout)
-
 
     @dash_app.callback(
         Output('gap-meeting-dropdown', 'options'),
@@ -97,13 +96,18 @@ def initialize_gap_app(dash_app, dataset):
 
         fig = go.Figure()
 
+        color_map = {
+            0: 'blue',
+            1: 'red',
+            2: 'green',
+            3: 'purple',
+            4: 'orange'
+        }
+
         if view_type == 'total':
             if selected_meeting:
                 combined_scores = combined_scores[combined_scores['meeting_number'].isin(selected_meeting)]
             gap_scores_total = combined_scores.groupby('next_speaker_id')['gap'].agg(['mean', 'sem']).reset_index()
-            palette = sns.color_palette('tab10', n_colors=gap_scores_total['next_speaker_id'].nunique())
-            color_map = {speaker: mcolors.rgb2hex(palette[i % len(palette)]) for i, speaker in enumerate(gap_scores_total['next_speaker_id'].unique())}
-
             fig.add_trace(go.Bar(
                 x=gap_scores_total['next_speaker_id'],
                 y=gap_scores_total['mean'],
@@ -121,9 +125,6 @@ def initialize_gap_app(dash_app, dataset):
                 showlegend=False
             )
         else:
-            palette = sns.color_palette('tab10', n_colors=combined_scores['next_speaker_id'].nunique())
-            color_map = {speaker: mcolors.rgb2hex(palette[i % len(palette)]) for i, speaker in enumerate(combined_scores['next_speaker_id'].unique())}
-
             if selected_speakers:
                 for speaker in selected_speakers:
                     speaker_data = combined_scores[combined_scores['next_speaker_id'] == speaker]

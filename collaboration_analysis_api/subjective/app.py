@@ -29,8 +29,8 @@ dash_app.layout = html.Div([
 ])
 
 # Initialize the individual apps
-initialize_gap_app(dash_app, dataset)  # Initialize the new gap app
 initialize_overall_app(dash_app, dataset)
+initialize_gap_app(dash_app, dataset)
 initialize_individual_app(dash_app, dataset)
 initialize_self_score_app(dash_app, dataset)
 

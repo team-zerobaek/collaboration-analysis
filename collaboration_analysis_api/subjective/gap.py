@@ -6,7 +6,7 @@ import matplotlib.colors as mcolors
 from dash import dcc, html
 
 def initialize_gap_app(dash_app, dataset):
-    gap_layout = html.Div([
+    gap_layout = html.Div(id ='gap', children=[
         html.H1("Gap between Individual Collaboration Score (Others - Self)", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(

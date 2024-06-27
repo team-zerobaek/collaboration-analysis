@@ -6,7 +6,7 @@ import matplotlib.colors as mcolors
 from dash import dcc, html
 
 def initialize_self_score_app(dash_app, dataset):
-    self_score_layout = html.Div([
+    self_score_layout = html.Div(id='individual-self', children=[
         html.H1("Individual Collaboration Score (Self)", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(

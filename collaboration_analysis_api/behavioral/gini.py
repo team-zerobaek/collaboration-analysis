@@ -12,7 +12,7 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
     dataset = dataset_instance
 
     dash_app.layout.children.append(html.Div([
-        html.H1("Gini Coefficient"),
+        html.H1("How evenly interacted? (Gini Coefficient)"),
         html.Div([
             dcc.Dropdown(
                 id='gini-project-dropdown',

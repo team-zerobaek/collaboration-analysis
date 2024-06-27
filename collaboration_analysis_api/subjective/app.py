@@ -19,7 +19,7 @@ dataset = dataset[(dataset['overall_collaboration_score'] != -1) & (dataset['ind
 
 # Define the layout
 dash_app.layout = html.Div([
-    html.H1("Collaboration Analysis", style={'text-align': 'center'}),
+    html.H1("How We Collaborate", style={'text-align': 'center'}),
     html.Div([
         html.A(html.Button('Monitoring', style={'margin-right': '10px'}), href='/dash'),
         html.A(html.Button('Subjective Scoring', style={'margin-right': '10px'}), href='/subjective'),

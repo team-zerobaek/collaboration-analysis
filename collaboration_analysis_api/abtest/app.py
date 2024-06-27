@@ -18,7 +18,7 @@ dataset_text = pd.read_csv('/app/data/kakao_data.csv')
 
 # Define the layout
 dash_app.layout = html.Div([
-    html.H1("Collaboration Analysis", style={'text-align': 'center'}),
+    html.H1("How We Collaborate", style={'text-align': 'center'}),
     html.Div([
         html.A(html.Button('Monitoring', style={'margin-right': '10px'}), href='/dash'),
         html.A(html.Button('Subjective Scoring', style={'margin-right': '10px'}), href='/subjective'),

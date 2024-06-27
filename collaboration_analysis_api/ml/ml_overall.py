@@ -126,15 +126,15 @@ def build_overall_model():
             training_time = end_time - start_time
 
             y_pred = grid.predict(X_test)
-            r2 = r2_score(y_test, y_pred)
-            mse = mean_squared_error(y_test, y_pred)
+            r2 = round(r2_score(y_test, y_pred), 2)
+            mse = round(mean_squared_error(y_test, y_pred), 2)
 
             kf = KFold(n_splits=10, shuffle=True, random_state=42)
             cv_scores = cross_val_score(grid.best_estimator_, X_train, y_train, cv=kf, scoring='r2')
-            mean_cv_score = np.mean(cv_scores)
-            std_cv_score = np.std(cv_scores)
+            mean_cv_score = round(np.mean(cv_scores), 2)
+            std_cv_score = round(np.std(cv_scores), 2)
 
-            performance = alpha * r2 + gamma * mean_cv_score + beta * (1/mse) + (1 - alpha - beta - gamma)
+            performance = round(alpha * r2 + gamma * mean_cv_score + beta * (1/mse) + (1 - alpha - beta - gamma), 2)
 
             model_performance.append({
                 'Model': model_name,
@@ -143,7 +143,7 @@ def build_overall_model():
                 'MSE': mse,
                 'CV Mean': mean_cv_score,
                 'CV Std': std_cv_score,
-                'Training Time': training_time,
+                'Training Time': round(training_time, 2),
                 'Params': grid.best_params_
             })
 
@@ -156,18 +156,9 @@ def build_overall_model():
                     'cv_mean_r2': mean_cv_score,
                     'cv_std_r2': std_cv_score,
                     'params': grid.best_params_,
+                    'training_time': round(training_time, 2),
                     'model_object': grid.best_estimator_
                 }
-
-            # Update intermediate results
-            dash_app.layout.children.append(html.Div([
-                html.H4(f'Current Model: {model_name}'),
-                html.P(f'R2: {r2}'),
-                html.P(f'MSE: {mse}'),
-                html.P(f'CV Mean R2: {mean_cv_score}'),
-                html.P(f'CV Std R2: {std_cv_score}'),
-                html.P(f'Best Params: {grid.best_params_}')
-            ]))
 
         return best_model_info, model_performance
 
@@ -177,9 +168,6 @@ def build_overall_model():
         best_model = best_reg_model_info['model_object']
         best_model.fit(X_train, y_train)
         y_pred = best_model.predict(X_test)
-
-        mse = mean_squared_error(y_test, y_pred)
-        r2 = r2_score(y_test, y_pred)
 
         results_df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
         results_with_test_df = pd.concat([X_test.reset_index(drop=True), results_df.reset_index(drop=True)], axis=1)
@@ -199,7 +187,7 @@ def build_overall_model():
     X_vif = pd.DataFrame(column_transformer.fit_transform(features), columns=column_transformer.get_feature_names_out())
     vif_data = pd.DataFrame()
     vif_data['Feature'] = X_vif.columns
-    vif_data['VIF'] = [variance_inflation_factor(X_vif.values, i) for i in range(X_vif.shape[1])]
+    vif_data['VIF'] = [round(variance_inflation_factor(X_vif.values, i), 2) for i in range(X_vif.shape[1])]
 
     # Feature Importance
     if hasattr(best_reg_model_info['model_object'].named_steps['model'], 'feature_importances_'):
@@ -218,9 +206,28 @@ def build_overall_model():
     # Model Performance Table
     model_performance_df = pd.DataFrame(model_performance)
 
-    return html.Div([
-        html.H3('Model Building Completed!'),
-        html.H4('Model Performance Comparison:'),
+    input_summary = html.Div([
+        html.H3('Input Summary'),
+        html.H4('Features and Label Used'),
+        dcc.Graph(
+            figure=go.Figure(
+                data=[
+                    go.Table(
+                        header=dict(values=['Feature', 'Label'],
+                                    fill_color='paleturquoise',
+                                    align='left'),
+                        cells=dict(values=[list(features.columns), ['overall_collaboration_score']],
+                                   fill_color='lavender',
+                                   align='left'))
+                ]
+            )
+        ),
+        html.H4('Encodings Used'),
+        html.P('StandardScaler applied to: meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency')
+    ])
+
+    model_comparison = html.Div([
+        html.H3('Model Performance Comparison'),
         dcc.Graph(
             figure=go.Figure(
                 data=[
@@ -233,8 +240,47 @@ def build_overall_model():
                                    align='left'))
                 ]
             )
+        )
+    ])
+
+    hyperparameter_tuning = html.Div([
+        html.H3('Hyperparameter Tuning'),
+        html.P(f"Selected Model: {best_reg_model_info['model']}"),
+        html.P(f"R2: {best_reg_model_info['r2']}"),
+        html.P(f"MSE: {best_reg_model_info['mse']}"),
+        html.P(f"CV Mean R2: {best_reg_model_info['cv_mean_r2']}"),
+        html.P(f"CV Std R2: {best_reg_model_info['cv_std_r2']}"),
+        html.P(f"Training Time: {best_reg_model_info['training_time']} seconds"),
+        html.P(f"Best Hyperparameters: {best_reg_model_info['params']}")
+    ])
+
+    performance_summary = html.Div([
+        html.H3('Performance Summary'),
+        html.H4('Feature Importance'),
+        html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode()),
+        html.H4('Actual vs Predicted'),
+        html.Img(src='data:image/png;base64,' + base64.b64encode(open('actual_vs_predicted.png', 'rb').read()).decode())
+    ])
+
+    model_validity = html.Div([
+        html.H3('Model Validity Check'),
+        html.H4('Overfitting Check (Cross-Validation Results)'),
+        dcc.Graph(
+            figure=go.Figure(
+                data=[
+                    go.Table(
+                        header=dict(values=['Model', 'CV Mean R2', 'CV Std R2'],
+                                    fill_color='paleturquoise',
+                                    align='left'),
+                        cells=dict(values=[[model['Model'] for model in model_performance],
+                                           [model['CV Mean'] for model in model_performance],
+                                           [model['CV Std'] for model in model_performance]],
+                                   fill_color='lavender',
+                                   align='left'))
+                ]
+            )
         ),
-        html.H4('Multicollinearity Check (VIF):'),
+        html.H4('Multicollinearity Check (VIF)'),
         dcc.Graph(
             figure=go.Figure(
                 data=[
@@ -247,12 +293,18 @@ def build_overall_model():
                                    align='left'))
                 ]
             )
-        ),
-        html.H4('Feature Importance:'),
-        html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode()),
-        html.H4('Actual vs Predicted:'),
-        html.Img(src='data:image/png;base64,' + base64.b64encode(open('actual_vs_predicted.png', 'rb').read()).decode())
+        )
     ])
 
-# Example call to initialize the app
-# initialize_overall_ml_app(dash_app_instance, dataset_instance)
+    return html.Div([
+        input_summary,
+        model_comparison,
+        hyperparameter_tuning,
+        performance_summary,
+        model_validity
+    ])
+
+if __name__ == '__main__':
+    app = Dash(__name__)
+    initialize_overall_ml_app(app, dataset)  # Replace `dataset` with your actual dataset variable
+    app.run_server(debug=True, port=8080)

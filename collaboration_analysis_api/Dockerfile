@@ -12,10 +12,12 @@ COPY . /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
-# RUN pip install --no-cache-dir -r requirements.txt
 
 # Define environment variable
 ENV NAME World
 
+# Expose port 8080 to the outside world
+EXPOSE 8080
+
 # Run app.py when the container launches
-CMD ["python", "main.py"]
+CMD ["uvicorn", "main:main_app", "--host", "0.0.0.0", "--port", "8080"]

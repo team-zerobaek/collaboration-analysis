@@ -275,25 +275,25 @@ def initialize_abtest_app(dash_app, dataset):
             dcc.Graph(id='abtest-graph-speech'),
             html.Div(id='abtest-table-speech'),
             html.Details([
-                html.Summary('AB Test - Speech 설명'),
+                html.Summary('AB Test - Speech 설명',style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
                     **Speech** 데이터에 대한 AB 테스트 결과:
                     - 결과의 주요 포인트 설명
                     - 통계적 유의성 분석
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
-            ])
+            ], style={'margin-top': '5px', 'margin-bottom': '10px'})
         ], style={'width': '48%', 'display': 'inline-block'}),
         html.Div([
             dcc.Graph(id='abtest-graph-interaction'),
             html.Div(id='abtest-table-interaction'),
             html.Details([
-                html.Summary('AB Test - Interaction 설명'),
+                html.Summary('AB Test - Interaction 설명',style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
                     **Interaction** 데이터에 대한 AB 테스트 결과:
                     - 상호작용 패턴 분석
                     - 사용자 참여도 변화
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
-            ])
+            ], style={'margin-top': '5px', 'margin-bottom': '10px'})
         ], style={'width': '48%', 'display': 'inline-block'})
     ], style={'display': 'flex', 'justify-content': 'space-between'}))
 

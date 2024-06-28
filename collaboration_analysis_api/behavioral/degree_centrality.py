@@ -37,12 +37,16 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
             html.Button('Reset', id='reset-degree-centrality-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
         dcc.Graph(id='degree-centrality-graph'),
-        
-        html.P(
-            id='degree-centrality-description', 
-            children="Description: This graph represents the degree centrality of speakers in various meetings of the selected project. Degree centrality is a measure of the number of direct connections a node has. It helps in understanding the contribution and influence of each speaker.",
-            style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'}
-        )
+
+        html.Details([
+            html.Summary('Description', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                ### Middle Title
+                - Content 1
+                - Content 2
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px','margin-bottom': '80px'})
+
     ]))
 
     @dash_app.callback(

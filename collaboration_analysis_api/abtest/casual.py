@@ -31,6 +31,10 @@ def initialize_casual_app(dash_app, dataset):
         combined_metrics = individual_metrics.merge(interaction_metrics, on='speaker_id')
         return combined_metrics
 
+    def calculate_individual_meeting_metrics(meetings):
+        grouped = meetings.groupby(['meeting_number', 'speaker_id']).agg({'normalized_speech_frequency': 'mean', 'count': 'sum'}).reset_index()
+        return grouped
+
     def perform_ttest(group1, group2):
         ttest_results = {}
         ttest_results['normalized_speech_frequency'] = ttest_ind(group1['normalized_speech_frequency'], group2['normalized_speech_frequency'], equal_var=False)
@@ -82,44 +86,55 @@ def initialize_casual_app(dash_app, dataset):
                     rows_interaction.append(row_not_used)
                     rows_interaction.append(row_used)
         else:
-            for speaker in group1['speaker_id'].unique():
+            speakers = group1['speaker_id'].unique()
+            for speaker in speakers:
+                not_used_speaker = group1[group1['speaker_id'] == speaker]
+                used_speaker = group2[group2['speaker_id'] == speaker]
+
+                if len(not_used_speaker) > 1 and len(used_speaker) > 1:
+                    ttest_speech = ttest_ind(not_used_speaker['normalized_speech_frequency'], used_speaker['normalized_speech_frequency'], equal_var=False)
+                    ttest_count = ttest_ind(not_used_speaker['count'], used_speaker['count'], equal_var=False)
+                else:
+                    ttest_speech = ttest_count = None
+
                 row_not_used = {
                     'Group': f'Not Used (Speaker {speaker})',
-                    'Mean': round(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency'].mean(), 2),
-                    'Std': round(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency'].std(), 2),
-                    'df': len(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency']) - 1,
-                    't-statistic': round(ttest_results['normalized_speech_frequency'].statistic, 2),
-                    'p-value': round(ttest_results['normalized_speech_frequency'].pvalue, 2)
+                    'Mean': round(not_used_speaker['normalized_speech_frequency'].mean(), 2),
+                    'Std': round(not_used_speaker['normalized_speech_frequency'].std(), 2),
+                    'df': len(not_used_speaker['normalized_speech_frequency']) - 1,
+                    't-statistic': round(ttest_speech.statistic, 2) if ttest_speech else None,
+                    'p-value': round(ttest_speech.pvalue, 2) if ttest_speech else None
                 }
                 row_used = {
                     'Group': f'Used (Speaker {speaker})',
-                    'Mean': round(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency'].mean(), 2),
-                    'Std': round(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency'].std(), 2),
-                    'df': len(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency']) - 1,
+                    'Mean': round(used_speaker['normalized_speech_frequency'].mean(), 2),
+                    'Std': round(used_speaker['normalized_speech_frequency'].std(), 2),
+                    'df': len(used_speaker['normalized_speech_frequency']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
                 rows_speech.append(row_not_used)
                 rows_speech.append(row_used)
-            for speaker in group1['speaker_id'].unique():
+
                 row_not_used = {
                     'Group': f'Not Used (Speaker {speaker})',
-                    'Mean': round(group1[group1['speaker_id'] == speaker]['count'].mean(), 2),
-                    'Std': round(group1[group1['speaker_id'] == speaker]['count'].std(), 2),
-                    'df': len(group1[group1['speaker_id'] == speaker]['count']) - 1,
-                    't-statistic': round(ttest_results['count'].statistic, 2),
-                    'p-value': round(ttest_results['count'].pvalue, 2)
+                    'Mean': round(not_used_speaker['count'].mean(), 2),
+                    'Std': round(not_used_speaker['count'].std(), 2),
+                    'df': len(not_used_speaker['count']) - 1,
+                    't-statistic': round(ttest_count.statistic, 2) if ttest_count else None,
+                    'p-value': round(ttest_count.pvalue, 2) if ttest_count else None
                 }
                 row_used = {
                     'Group': f'Used (Speaker {speaker})',
-                    'Mean': round(group2[group2['speaker_id'] == speaker]['count'].mean(), 2),
-                    'Std': round(group2[group2['speaker_id'] == speaker]['count'].std(), 2),
-                    'df': len(group2[group2['speaker_id'] == speaker]['count']) - 1,
+                    'Mean': round(used_speaker['count'].mean(), 2),
+                    'Std': round(used_speaker['count'].std(), 2),
+                    'df': len(used_speaker['count']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
                 rows_interaction.append(row_not_used)
                 rows_interaction.append(row_used)
+
         detailed_df_speech = pd.DataFrame(rows_speech)
         detailed_df_interaction = pd.DataFrame(rows_interaction)
         return detailed_df_speech, detailed_df_interaction
@@ -139,8 +154,8 @@ def initialize_casual_app(dash_app, dataset):
             not_used_metrics = calculate_team_meeting_metrics(not_used_meetings)
             used_metrics = calculate_team_meeting_metrics(used_meetings)
         else:
-            not_used_metrics = calculate_individual_metrics(not_used_meetings, 8)
-            used_metrics = calculate_individual_metrics(used_meetings, 6)
+            not_used_metrics = calculate_individual_meeting_metrics(not_used_meetings)
+            used_metrics = calculate_individual_meeting_metrics(used_meetings)
 
         ttest_results = perform_ttest(not_used_metrics, used_metrics)
 

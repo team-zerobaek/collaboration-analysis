@@ -46,12 +46,20 @@ def initialize_individual_self_ml_app(dash_app_instance, dataset_instance):
 
     dataset.loc[:, 'normalized_interaction_frequency'] = dataset['interaction_count'] / dataset['duration']
 
-    dash_app.layout.children.append(html.Div([
+    dash_app.layout.children.append(html.Div(id ='self', children=[
         html.H1("ML Models for Self-Interaction Individual Collaboration Score"),
         html.Div(id='ml-output-individual-self'),
         html.Button('Run Dummy Model', id='run-dummy-individual-self', n_clicks=0),
         html.Button('Run Actual Model', id='run-actual-individual-self', n_clicks=0),
-        dcc.Loading(id="loading-individual-self", type="default", children=html.Div(id="loading-output-individual-self"))
+        dcc.Loading(id="loading-individual-self", type="default", children=html.Div(id="loading-output-individual-self")),
+        html.Details([
+            html.Summary('Description', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                ### Middle Title
+                - Content 1
+                - Content 2
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px','margin-bottom': '80px'})
     ]))
 
     @dash_app.callback(

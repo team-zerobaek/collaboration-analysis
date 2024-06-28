@@ -32,7 +32,15 @@ def initialize_gap_app(dash_app, dataset):
             ),
             html.Button('Reset', id='gap-reset-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-        dcc.Graph(id='gap-score-graph')
+        dcc.Graph(id='gap-score-graph'),
+        html.Details([
+            html.Summary('Description', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                ### Middle Title
+                - Content 1
+                - Content 2
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px','margin-bottom': '20px'})
     ])
     dash_app.layout.children.append(gap_layout)
 

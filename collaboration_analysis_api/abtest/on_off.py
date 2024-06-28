@@ -257,18 +257,10 @@ def initialize_abtest_app(dash_app, dataset):
 
         return fig_speech, fig_interaction, speech_table, interaction_table
 
-    dash_app.layout = html.Div([
-        html.H1("Collaboration Analysis", style={'text-align': 'center'}),
-        html.Div([
-            html.A(html.Button('Monitoring', style={'margin-right': '10px'}), href='/dash'),
-            html.A(html.Button('Subjective Scoring', style={'margin-right': '10px'}), href='/subjective'),
-            html.A(html.Button('A/B Test', style={'margin-right': '10px'}), href='/abtest'),
-            html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml'),
-        ], style={'text-align': 'center', 'margin-bottom': '20px'}),
-        html.H2("A/B Test", style={'text-align': 'center'}),
-        html.H3("A/B Test: Online vs. Offline", style={'text-align': 'center'}),
-        html.Div([
-            dcc.RadioItems(
+    dash_app.layout.children.append(html.Div(id ='onoff', children=[html.H2("A/B Test: Online vs. Offline", style={'text-align': 'center'})]))
+    
+    dash_app.layout.children.append(html.Div([
+        dcc.RadioItems(
                 id='abtest-view-type',
                 options=[
                     {'label': 'Total', 'value': 'total'},
@@ -277,15 +269,32 @@ def initialize_abtest_app(dash_app, dataset):
                 value='total',
                 labelStyle={'display': 'inline-block'}
             ),
-        ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+        ], style={'text-align': 'center', 'margin-bottom': '20px'}))
+    dash_app.layout.children.append(html.Div([
         html.Div([
-            html.Div([
-                dcc.Graph(id='abtest-graph-speech'),
-                html.Div(id='abtest-table-speech')
-            ], style={'width': '48%', 'display': 'inline-block'}),
-            html.Div([
-                dcc.Graph(id='abtest-graph-interaction'),
-                html.Div(id='abtest-table-interaction')
-            ], style={'width': '48%', 'display': 'inline-block'})
-        ], style={'display': 'flex', 'justify-content': 'space-between'})
-    ])
+            dcc.Graph(id='abtest-graph-speech'),
+            html.Div(id='abtest-table-speech'),
+            html.Details([
+                html.Summary('AB Test - Speech 설명'),
+                dcc.Markdown("""
+                    **Speech** 데이터에 대한 AB 테스트 결과:
+                    - 결과의 주요 포인트 설명
+                    - 통계적 유의성 분석
+                """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+            ])
+        ], style={'width': '48%', 'display': 'inline-block'}),
+        html.Div([
+            dcc.Graph(id='abtest-graph-interaction'),
+            html.Div(id='abtest-table-interaction'),
+            html.Details([
+                html.Summary('AB Test - Interaction 설명'),
+                dcc.Markdown("""
+                    **Interaction** 데이터에 대한 AB 테스트 결과:
+                    - 상호작용 패턴 분석
+                    - 사용자 참여도 변화
+                """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+            ])
+        ], style={'width': '48%', 'display': 'inline-block'})
+    ], style={'display': 'flex', 'justify-content': 'space-between'}))
+
+    

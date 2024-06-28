@@ -24,7 +24,7 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
     speech_summary = pd.merge(speech_summary, meeting_durations, on=['project', 'meeting_number'])
     speech_summary['normalized_speech_frequency'] = speech_summary['adjusted_speech_frequency'] / speech_summary['duration']
 
-    dash_app.layout.children.append(html.Div([
+    dash_app.layout.children.append(html.Div(id ='word', children=[
         html.H1("How many words were spoken? (by word-unit)"),
         html.Div([
             dcc.Dropdown(

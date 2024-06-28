@@ -31,6 +31,10 @@ def initialize_abtest_app(dash_app, dataset):
         combined_metrics = individual_metrics.merge(interaction_metrics, on='speaker_id')
         return combined_metrics
 
+    def calculate_individual_meeting_metrics(meetings):
+        grouped = meetings.groupby(['meeting_number', 'speaker_id']).agg({'normalized_speech_frequency': 'mean', 'count': 'sum'}).reset_index()
+        return grouped
+
     def perform_ttest(group1, group2):
         ttest_results = {}
         ttest_results['normalized_speech_frequency'] = ttest_ind(group1['normalized_speech_frequency'], group2['normalized_speech_frequency'], equal_var=False)
@@ -82,44 +86,55 @@ def initialize_abtest_app(dash_app, dataset):
                     rows_interaction.append(row_online)
                     rows_interaction.append(row_offline)
         else:
-            for speaker in group1['speaker_id'].unique():
+            speakers = group1['speaker_id'].unique()
+            for speaker in speakers:
+                online_speaker = group1[group1['speaker_id'] == speaker]
+                offline_speaker = group2[group2['speaker_id'] == speaker]
+
+                if len(online_speaker) > 1 and len(offline_speaker) > 1:
+                    ttest_speech = ttest_ind(online_speaker['normalized_speech_frequency'], offline_speaker['normalized_speech_frequency'], equal_var=False)
+                    ttest_count = ttest_ind(online_speaker['count'], offline_speaker['count'], equal_var=False)
+                else:
+                    ttest_speech = ttest_count = None
+
                 row_online = {
                     'Group': f'Online (Speaker {speaker})',
-                    'Mean': round(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency'].mean(), 2),
-                    'Std': round(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency'].std(), 2),
-                    'df': len(group1[group1['speaker_id'] == speaker]['normalized_speech_frequency']) - 1,
-                    't-statistic': round(ttest_results['normalized_speech_frequency'].statistic, 2),
-                    'p-value': round(ttest_results['normalized_speech_frequency'].pvalue, 2)
+                    'Mean': round(online_speaker['normalized_speech_frequency'].mean(), 2),
+                    'Std': round(online_speaker['normalized_speech_frequency'].std(), 2),
+                    'df': len(online_speaker['normalized_speech_frequency']) - 1,
+                    't-statistic': round(ttest_speech.statistic, 2) if ttest_speech else None,
+                    'p-value': round(ttest_speech.pvalue, 2) if ttest_speech else None
                 }
                 row_offline = {
                     'Group': f'Offline (Speaker {speaker})',
-                    'Mean': round(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency'].mean(), 2),
-                    'Std': round(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency'].std(), 2),
-                    'df': len(group2[group2['speaker_id'] == speaker]['normalized_speech_frequency']) - 1,
+                    'Mean': round(offline_speaker['normalized_speech_frequency'].mean(), 2),
+                    'Std': round(offline_speaker['normalized_speech_frequency'].std(), 2),
+                    'df': len(offline_speaker['normalized_speech_frequency']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
                 rows_speech.append(row_online)
                 rows_speech.append(row_offline)
-            for speaker in group1['speaker_id'].unique():
+
                 row_online = {
                     'Group': f'Online (Speaker {speaker})',
-                    'Mean': round(group1[group1['speaker_id'] == speaker]['count'].mean(), 2),
-                    'Std': round(group1[group1['speaker_id'] == speaker]['count'].std(), 2),
-                    'df': len(group1[group1['speaker_id'] == speaker]['count']) - 1,
-                    't-statistic': round(ttest_results['count'].statistic, 2),
-                    'p-value': round(ttest_results['count'].pvalue, 2)
+                    'Mean': round(online_speaker['count'].mean(), 2),
+                    'Std': round(online_speaker['count'].std(), 2),
+                    'df': len(online_speaker['count']) - 1,
+                    't-statistic': round(ttest_count.statistic, 2) if ttest_count else None,
+                    'p-value': round(ttest_count.pvalue, 2) if ttest_count else None
                 }
                 row_offline = {
                     'Group': f'Offline (Speaker {speaker})',
-                    'Mean': round(group2[group2['speaker_id'] == speaker]['count'].mean(), 2),
-                    'Std': round(group2[group2['speaker_id'] == speaker]['count'].std(), 2),
-                    'df': len(group2[group2['speaker_id'] == speaker]['count']) - 1,
+                    'Mean': round(offline_speaker['count'].mean(), 2),
+                    'Std': round(offline_speaker['count'].std(), 2),
+                    'df': len(offline_speaker['count']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
                 rows_interaction.append(row_online)
                 rows_interaction.append(row_offline)
+
         detailed_df_speech = pd.DataFrame(rows_speech)
         detailed_df_interaction = pd.DataFrame(rows_interaction)
         return detailed_df_speech, detailed_df_interaction
@@ -139,8 +154,8 @@ def initialize_abtest_app(dash_app, dataset):
             online_metrics = calculate_team_meeting_metrics(online_meetings)
             offline_metrics = calculate_team_meeting_metrics(offline_meetings)
         else:
-            online_metrics = calculate_individual_metrics(online_meetings, 9)
-            offline_metrics = calculate_individual_metrics(offline_meetings, 4)
+            online_metrics = calculate_individual_meeting_metrics(online_meetings)
+            offline_metrics = calculate_individual_meeting_metrics(offline_meetings)
 
         ttest_results = perform_ttest(online_metrics, offline_metrics)
 

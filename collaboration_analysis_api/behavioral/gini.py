@@ -22,7 +22,15 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
                 style={'width': '200px'}
             )
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-        dcc.Graph(id='gini-graph')
+        dcc.Graph(id='gini-graph'), 
+        html.Details([
+            html.Summary('Description', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                ### Middle Title
+                - Content 1
+                - Content 2
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px'})
     ]))
 
     @dash_app.callback(

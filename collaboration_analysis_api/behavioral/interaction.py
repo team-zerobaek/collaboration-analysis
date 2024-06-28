@@ -54,7 +54,15 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
             ),
             html.Button('Reset', id='reset-interaction-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-        dcc.Graph(id='interaction-frequency-graph')
+        dcc.Graph(id='interaction-frequency-graph'),
+        html.Details([
+            html.Summary('Description', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                ### Middle Title
+                - Content 1
+                - Content 2
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px'})
     ]))
 
     @dash_app.callback(

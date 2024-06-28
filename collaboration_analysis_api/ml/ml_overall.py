@@ -5,7 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.model_selection import train_test_split, GridSearchCV, KFold, cross_val_score
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.linear_model import LinearRegression
@@ -80,12 +80,13 @@ def build_actual_model():
 
     # Features and target
     features = dataset_filtered[['meeting_number', 'normalized_speech_frequency', 'gini_coefficient',
-                                 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency']]
+                                 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id', 'next_speaker_id']]
     target = dataset_filtered['overall_collaboration_score']
 
     column_transformer = ColumnTransformer(
         transformers=[
-            ('scaler', StandardScaler(), ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency'])
+            ('scaler', StandardScaler(), ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency']),
+            ('onehot', OneHotEncoder(), ['speaker_id', 'next_speaker_id'])
         ]
     )
 
@@ -153,8 +154,7 @@ def build_actual_model():
                 'MSE': round(mse, 2),
                 'CV Mean': round(mean_cv_score, 2),
                 'CV Std': round(std_cv_score, 2),
-                'Training Time': round(training_time, 2),
-                'Params': grid.best_params_
+                'Training Time': round(training_time, 2)
             })
 
             if performance > best_performance:
@@ -219,14 +219,42 @@ def build_actual_model():
     # Model Performance Table
     model_performance_df = pd.DataFrame(model_performance)
 
+    # Hyperparameter details
+    hyperparameter_details = [
+        {'Model': 'Decision Tree', 'Parameters': 'max_depth: [3, 5, 7]'},
+        {'Model': 'Random Forest Regressor', 'Parameters': 'n_estimators: [50, 100, 150], max_depth: [5, 10, 15]'},
+        {'Model': 'XGBRegressor', 'Parameters': 'n_estimators: [50, 100], max_depth: [3, 5, 7], learning_rate: [0.01, 0.1, 0.2]'},
+        {'Model': 'Gradient Boosting Regressor', 'Parameters': 'n_estimators: [50, 100], max_depth: [3, 5], learning_rate: [0.01, 0.1, 0.2, 0.5]'},
+        {'Model': 'K-Nearest Neighbors Regressor', 'Parameters': 'n_neighbors: [3, 5, 7]'},
+        {'Model': 'LightGBM Regressor', 'Parameters': 'n_estimators: [50, 100, 200], num_leaves: [31, 62], learning_rate: [0.01, 0.1, 0.3]'},
+        {'Model': 'CatBoost Regressor', 'Parameters': 'iterations: [100, 200, 400], depth: [4, 6, 10]'},
+        {'Model': 'SVM Regressor', 'Parameters': 'C: [0.1, 1, 10], kernel: [linear, rbf]'}
+    ]
+
+    hyperparameter_df = pd.DataFrame(hyperparameter_details)
+
     return html.Div([
         html.H3('Model Building Completed!'),
         html.H4('Input Summary'),
         html.P('Features and Label used:'),
-        html.P('Features: meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency'),
+        html.P('Features: meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency, speaker_id, next_speaker_id'),
         html.P('Label: overall_collaboration_score'),
-        html.P('Encodings used: StandardScaler for all features'),
-        html.P('Models compared: ' + ', '.join(regression_models.keys())),
+        html.P('Encodings used: StandardScaler for all features, OneHotEncoder for speaker_id and next_speaker_id'),
+        html.P('Models compared: Linear Regression, Decision Tree, Random Forest Regressor, XGBRegressor, Gradient Boosting Regressor, K-Nearest Neighbors Regressor, LightGBM Regressor, CatBoost Regressor, SVM Regressor'),
+        html.H4('Hyperparameter Tuning'),
+        dcc.Graph(
+            figure=go.Figure(
+                data=[
+                    go.Table(
+                        header=dict(values=list(hyperparameter_df.columns),
+                                    fill_color='paleturquoise',
+                                    align='left'),
+                        cells=dict(values=[hyperparameter_df[col] for col in hyperparameter_df.columns],
+                                   fill_color='lavender',
+                                   align='left'))
+                ]
+            )
+        ),
         html.H4('Performance Summary'),
         html.H5('Model Performance Comparison:'),
         dcc.Graph(
@@ -290,15 +318,15 @@ def build_actual_model():
 def build_dummy_model():
     # Dummy values for demonstration purposes
     model_performance = [
-        {'Model': 'Linear Regression', 'Performance': 0.75, 'R2': 0.76, 'MSE': 1.25, 'CV Mean': 0.72, 'CV Std': 0.03, 'Training Time': 0.1, 'Params': {}},
-        {'Model': 'Decision Tree', 'Performance': 0.82, 'R2': 0.85, 'MSE': 1.15, 'CV Mean': 0.80, 'CV Std': 0.04, 'Training Time': 0.2, 'Params': {'model__max_depth': 5}},
-        {'Model': 'Random Forest Regressor', 'Performance': 0.90, 'R2': 0.92, 'MSE': 0.85, 'CV Mean': 0.88, 'CV Std': 0.02, 'Training Time': 0.5, 'Params': {'model__n_estimators': 100, 'model__max_depth': 10}},
-        {'Model': 'XGBRegressor', 'Performance': 0.88, 'R2': 0.90, 'MSE': 0.95, 'CV Mean': 0.87, 'CV Std': 0.03, 'Training Time': 0.7, 'Params': {'model__n_estimators': 50, 'model__max_depth': 3, 'model__learning_rate': 0.1}},
-        {'Model': 'Gradient Boosting Regressor', 'Performance': 0.89, 'R2': 0.91, 'MSE': 0.90, 'CV Mean': 0.88, 'CV Std': 0.03, 'Training Time': 0.6, 'Params': {'model__n_estimators': 50, 'model__max_depth': 3, 'model__learning_rate': 0.1}},
-        {'Model': 'K-Nearest Neighbors Regressor', 'Performance': 0.80, 'R2': 0.83, 'MSE': 1.10, 'CV Mean': 0.79, 'CV Std': 0.04, 'Training Time': 0.3, 'Params': {'model__n_neighbors': 5}},
-        {'Model': 'LightGBM Regressor', 'Performance': 0.91, 'R2': 0.93, 'MSE': 0.80, 'CV Mean': 0.89, 'CV Std': 0.02, 'Training Time': 0.4, 'Params': {'model__n_estimators': 100, 'model__num_leaves': 31, 'model__learning_rate': 0.1}},
-        {'Model': 'CatBoost Regressor', 'Performance': 0.92, 'R2': 0.94, 'MSE': 0.75, 'CV Mean': 0.91, 'CV Std': 0.02, 'Training Time': 0.5, 'Params': {'model__iterations': 200, 'model__depth': 6}},
-        {'Model': 'SVM Regressor', 'Performance': 0.78, 'R2': 0.80, 'MSE': 1.30, 'CV Mean': 0.76, 'CV Std': 0.03, 'Training Time': 0.4, 'Params': {'model__C': 1, 'model__kernel': 'rbf'}}
+        {'Model': 'Linear Regression', 'Performance': 0.75, 'R2': 0.76, 'MSE': 1.25, 'CV Mean': 0.72, 'CV Std': 0.03, 'Training Time': 0.1},
+        {'Model': 'Decision Tree', 'Performance': 0.82, 'R2': 0.85, 'MSE': 1.15, 'CV Mean': 0.80, 'CV Std': 0.04, 'Training Time': 0.2},
+        {'Model': 'Random Forest Regressor', 'Performance': 0.90, 'R2': 0.92, 'MSE': 0.85, 'CV Mean': 0.88, 'CV Std': 0.02, 'Training Time': 0.5},
+        {'Model': 'XGBRegressor', 'Performance': 0.88, 'R2': 0.90, 'MSE': 0.95, 'CV Mean': 0.87, 'CV Std': 0.03, 'Training Time': 0.7},
+        {'Model': 'Gradient Boosting Regressor', 'Performance': 0.89, 'R2': 0.91, 'MSE': 0.90, 'CV Mean': 0.88, 'CV Std': 0.03, 'Training Time': 0.6},
+        {'Model': 'K-Nearest Neighbors Regressor', 'Performance': 0.80, 'R2': 0.83, 'MSE': 1.10, 'CV Mean': 0.79, 'CV Std': 0.04, 'Training Time': 0.3},
+        {'Model': 'LightGBM Regressor', 'Performance': 0.91, 'R2': 0.93, 'MSE': 0.80, 'CV Mean': 0.89, 'CV Std': 0.02, 'Training Time': 0.4},
+        {'Model': 'CatBoost Regressor', 'Performance': 0.92, 'R2': 0.94, 'MSE': 0.75, 'CV Mean': 0.91, 'CV Std': 0.02, 'Training Time': 0.5},
+        {'Model': 'SVM Regressor', 'Performance': 0.78, 'R2': 0.80, 'MSE': 1.30, 'CV Mean': 0.76, 'CV Std': 0.03, 'Training Time': 0.4}
     ]
 
     best_reg_model_info = {
@@ -313,8 +341,8 @@ def build_dummy_model():
 
     # Generate dummy importance plot
     importance_df_reg = pd.DataFrame({
-        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency'],
-        'Importance': [0.15, 0.25, 0.10, 0.20, 0.18, 0.12]
+        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id', 'next_speaker_id'],
+        'Importance': [0.15, 0.25, 0.10, 0.20, 0.18, 0.12, 0.13, 0.14]
     }).sort_values(by='Importance', ascending=False)
 
     plt.figure(figsize=(10, 8))
@@ -334,20 +362,48 @@ def build_dummy_model():
 
     # Dummy VIF data
     vif_data = pd.DataFrame({
-        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency'],
-        'VIF': [1.5, 2.0, 1.2, 1.8, 1.4, 1.6]
+        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id', 'next_speaker_id'],
+        'VIF': [1.5, 2.0, 1.2, 1.8, 1.4, 1.6, 1.7, 1.3]
     })
 
     model_performance_df = pd.DataFrame(model_performance)
+
+    # Dummy hyperparameter details
+    hyperparameter_details = [
+        {'Model': 'Decision Tree', 'Parameters': 'max_depth: [3, 5, 7]'},
+        {'Model': 'Random Forest Regressor', 'Parameters': 'n_estimators: [50, 100, 150], max_depth: [5, 10, 15]'},
+        {'Model': 'XGBRegressor', 'Parameters': 'n_estimators: [50, 100], max_depth: [3, 5, 7], learning_rate: [0.01, 0.1, 0.2]'},
+        {'Model': 'Gradient Boosting Regressor', 'Parameters': 'n_estimators: [50, 100], max_depth: [3, 5], learning_rate: [0.01, 0.1, 0.2, 0.5]'},
+        {'Model': 'K-Nearest Neighbors Regressor', 'Parameters': 'n_neighbors: [3, 5, 7]'},
+        {'Model': 'LightGBM Regressor', 'Parameters': 'n_estimators: [50, 100, 200], num_leaves: [31, 62], learning_rate: [0.01, 0.1, 0.3]'},
+        {'Model': 'CatBoost Regressor', 'Parameters': 'iterations: [100, 200, 400], depth: [4, 6, 10]'},
+        {'Model': 'SVM Regressor', 'Parameters': 'C: [0.1, 1, 10], kernel: [linear, rbf]'}
+    ]
+
+    hyperparameter_df = pd.DataFrame(hyperparameter_details)
 
     return html.Div([
         html.H3('Model Building Completed! (Dummy)'),
         html.H4('Input Summary'),
         html.P('Features and Label used:'),
-        html.P('Features: meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency'),
+        html.P('Features: meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency, speaker_id, next_speaker_id'),
         html.P('Label: overall_collaboration_score'),
-        html.P('Encodings used: StandardScaler for all features'),
+        html.P('Encodings used: StandardScaler for all features, OneHotEncoder for speaker_id and next_speaker_id'),
         html.P('Models compared: Linear Regression, Decision Tree, Random Forest Regressor, XGBRegressor, Gradient Boosting Regressor, K-Nearest Neighbors Regressor, LightGBM Regressor, CatBoost Regressor, SVM Regressor'),
+        html.H4('Hyperparameter Tuning'),
+        dcc.Graph(
+            figure=go.Figure(
+                data=[
+                    go.Table(
+                        header=dict(values=list(hyperparameter_df.columns),
+                                    fill_color='paleturquoise',
+                                    align='left'),
+                        cells=dict(values=[hyperparameter_df[col] for col in hyperparameter_df.columns],
+                                   fill_color='lavender',
+                                   align='left'))
+                ]
+            )
+        ),
         html.H4('Performance Summary'),
         html.H5('Model Performance Comparison:'),
         dcc.Graph(

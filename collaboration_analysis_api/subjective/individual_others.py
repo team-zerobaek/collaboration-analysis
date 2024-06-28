@@ -1,12 +1,13 @@
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 import pandas as pd
-import seaborn as sns
-import matplotlib.colors as mcolors
 from dash import dcc, html
 
 def initialize_individual_app(dash_app, dataset):
-    individual_others_layout = html.Div(id = 'individual-others', children=[
+    # Filter for project 4 data only
+    dataset = dataset[dataset['project'] == 4]
+
+    individual_others_layout = html.Div(id='individual-others', children=[
         html.H1("Individual Collaboration Score (Others)", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
@@ -96,7 +97,7 @@ def initialize_individual_app(dash_app, dataset):
         }
 
         if view_type == 'total':
-            others_scores = filtered_df[filtered_df['speaker_id'] != filtered_df['next_speaker_id']].groupby('meeting_number')['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()
+            others_scores = filtered_df.groupby('meeting_number')['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()
             fig.add_trace(go.Scatter(
                 x=others_scores['meeting_number'],
                 y=others_scores['mean'],
@@ -119,11 +120,11 @@ def initialize_individual_app(dash_app, dataset):
             ))
 
         else:  # view_type == 'by_speakers'
-            others_scores_by_speaker = filtered_df[filtered_df['speaker_id'] != filtered_df['next_speaker_id']].groupby(['meeting_number', 'next_speaker_id'])['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()
+            others_scores_by_speaker = filtered_df.groupby(['meeting_number', 'speaker_id'])['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()
 
             if selected_speakers:
                 for speaker in selected_speakers:
-                    speaker_data = others_scores_by_speaker[others_scores_by_speaker['next_speaker_id'] == speaker]
+                    speaker_data = others_scores_by_speaker[others_scores_by_speaker['speaker_id'] == speaker]
                     color = color_map[speaker]
                     fig.add_trace(go.Scatter(
                         x=speaker_data['meeting_number'],
@@ -139,8 +140,8 @@ def initialize_individual_app(dash_app, dataset):
                         )
                     ))
             else:
-                for speaker in others_scores_by_speaker['next_speaker_id'].unique():
-                    speaker_data = others_scores_by_speaker[others_scores_by_speaker['next_speaker_id'] == speaker]
+                for speaker in others_scores_by_speaker['speaker_id'].unique():
+                    speaker_data = others_scores_by_speaker[others_scores_by_speaker['speaker_id'] == speaker]
                     color = color_map[speaker]
                     fig.add_trace(go.Scatter(
                         x=speaker_data['meeting_number'],
@@ -168,11 +169,11 @@ def initialize_individual_app(dash_app, dataset):
         if selected_meeting:
             bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
             if not bar_data.empty:
-                bar_data_agg = bar_data[bar_data['speaker_id'] != bar_data['next_speaker_id']].groupby('next_speaker_id')['individual_collaboration_score'].mean().reset_index()
+                bar_data_agg = bar_data.groupby('speaker_id')['individual_collaboration_score'].mean().reset_index()
                 fig = go.Figure(data=[go.Bar(
-                    x=bar_data_agg['next_speaker_id'],
+                    x=bar_data_agg['speaker_id'],
                     y=bar_data_agg['individual_collaboration_score'],
-                    marker_color=[color_map[speaker] for speaker in bar_data_agg['next_speaker_id']]
+                    marker_color=[color_map[speaker] for speaker in bar_data_agg['speaker_id']]
                 )])
                 fig.update_layout(
                     title='Mean Individual Collaboration Score (Others) by Speaker for Selected Meetings',

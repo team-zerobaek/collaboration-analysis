@@ -41,6 +41,7 @@ def initialize_individual_others_ml_app(dash_app_instance, dataset_instance):
     dataset['num_speakers'] = dataset.groupby(['project', 'meeting_number'])['speaker_id'].transform('nunique')
 
     # Ensure interaction_count column exists
+    dataset['interaction_count'] = dataset['count']
     if 'interaction_count' not in dataset.columns:
         dataset['interaction_count'] = 0  # Or some appropriate default value
 

@@ -43,12 +43,20 @@ def initialize_overall_ml_app(dash_app_instance, dataset_instance):
 
     dataset['normalized_interaction_frequency'] = dataset['interaction_count'] / dataset['duration']
 
-    dash_app.layout.children.append(html.Div([
+    dash_app.layout.children.append(html.Div(id ='overall', children=[
         html.H1("ML Models for Overall Collaboration Score"),
         html.Div(id='ml-output'),
         html.Button('Run Dummy Model', id='run-dummy', n_clicks=0),
         html.Button('Run Actual Model', id='run-actual', n_clicks=0),
-        dcc.Loading(id="loading", type="default", children=html.Div(id="loading-output"))
+        dcc.Loading(id="loading", type="default", children=html.Div(id="loading-output")),
+        html.Details([
+            html.Summary('Description', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                ### Middle Title
+                - Content 1
+                - Content 2
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px','margin-bottom': '20px'})
     ]))
 
     @dash_app.callback(

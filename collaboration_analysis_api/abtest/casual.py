@@ -257,7 +257,7 @@ def initialize_casual_app(dash_app, dataset):
 
         return fig_speech, fig_interaction, speech_table, interaction_table
 
-    dash_app.layout.children.append(html.H2("A/B Test: Casual Language Used", style={'text-align': 'center'}))
+    dash_app.layout.children.append(html.Div(id ='casual', children=[html.H3("A/B Test: Casual Language Used", style={'text-align': 'center'})]))
     dash_app.layout.children.append(html.Div([
         dcc.RadioItems(
             id='casual-view-type',
@@ -270,12 +270,29 @@ def initialize_casual_app(dash_app, dataset):
         ),
     ], style={'text-align': 'center', 'margin-bottom': '20px'}))
     dash_app.layout.children.append(html.Div([
-        html.Div([
-            dcc.Graph(id='casual-graph-speech'),
-            html.Div(id='casual-table-speech')
-        ], style={'width': '48%', 'display': 'inline-block'}),
-        html.Div([
-            dcc.Graph(id='casual-graph-interaction'),
-            html.Div(id='casual-table-interaction')
-        ], style={'width': '48%', 'display': 'inline-block'})
-    ], style={'display': 'flex', 'justify-content': 'space-between'}))
+    html.Div([
+        dcc.Graph(id='casual-graph-speech'),
+        html.Div(id='casual-table-speech'),
+        html.Details([
+            html.Summary('Speech Interaction 설명', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                #### Speech Interaction에 대한 상세 설명
+                - **Speech Interaction** 은 사용자 간의 음성 기반 상호작용을 분석한다.
+                - 이 데이터는 어떻게 음성이 팀 작업에 영향을 미치는지를 보여준다.
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px', 'margin-bottom': '20px'})
+    ], style={'width': '48%', 'display': 'inline-block'}),
+
+    html.Div([
+        dcc.Graph(id='casual-graph-interaction'),
+        html.Div(id='casual-table-interaction'),
+        html.Details([
+            html.Summary('Interaction 설명', style={'margin-bottom': '10px'}),
+            dcc.Markdown("""
+                #### Interaction에 대한 상세 설명
+                - **Interaction** 섹션은 텍스트와 음성을 통한 상호작용의 차이를 비교 분석한다.
+                - 사용자 경험을 개선하기 위한 인사이트를 제공한다.
+            """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+        ], style={'margin-top': '10px', 'margin-bottom': '20px'})
+    ], style={'width': '48%', 'display': 'inline-block'})
+], style={'display': 'flex', 'justify-content': 'space-between'}))

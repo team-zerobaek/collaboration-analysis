@@ -257,7 +257,7 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
 
         return fig_speech, fig_interaction, speech_table, interaction_table
 
-    dash_app.layout.children.append(html.H2("A/B Test: Text-based vs. Voice-based", style={'text-align': 'center'}))
+    dash_app.layout.children.append(html.Div(id ='voice', children=[html.H2("A/B Test: Text-based vs. Voice-based", style={'text-align': 'center'})]))
     dash_app.layout.children.append(html.Div([
         dcc.RadioItems(
             id='text-voice-view-type',
@@ -272,10 +272,26 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
     dash_app.layout.children.append(html.Div([
         html.Div([
             dcc.Graph(id='text-voice-graph-speech'),
-            html.Div(id='text-voice-table-speech')
+            html.Div(id='text-voice-table-speech'),
+            html.Details([
+                html.Summary('Text vs Voice - Speech 설명'),
+                dcc.Markdown("""
+                    **Speech** 데이터에 대한 텍스트 대 음성 분석 결과:
+                    - 주요 발견 사항
+                    - 음성 및 텍스트 사용의 장단점
+                """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+            ])
         ], style={'width': '48%', 'display': 'inline-block'}),
         html.Div([
             dcc.Graph(id='text-voice-graph-interaction'),
-            html.Div(id='text-voice-table-interaction')
+            html.Div(id='text-voice-table-interaction'),
+            html.Details([
+                html.Summary('Text vs Voice - Interaction 설명'),
+                dcc.Markdown("""
+                    **Interaction** 데이터에 대한 텍스트 대 음성 분석 결과:
+                    - 상호작용 형식에 따른 차이점
+                    - 이해도 및 효율성 평가
+                """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
+            ])
         ], style={'width': '48%', 'display': 'inline-block'})
     ], style={'display': 'flex', 'justify-content': 'space-between'}))

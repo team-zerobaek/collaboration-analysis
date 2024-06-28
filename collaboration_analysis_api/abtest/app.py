@@ -5,6 +5,8 @@ from abtest.on_off import initialize_abtest_app
 from abtest.casual import initialize_casual_app
 from abtest.text_voice import initialize_text_voice_app
 import pandas as pd
+from dash.dependencies import Input, Output
+
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
@@ -26,29 +28,60 @@ dash_app.layout = html.Div([
         html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.H2("A/B Test", style={'text-align': 'center'}),
-    html.H3("A/B Test: Online vs. Offline", style={'text-align': 'center'}),
     html.Div([
-        dcc.RadioItems(
-            id='abtest-view-type',
-            options=[
-                {'label': 'Total', 'value': 'total'},
-                {'label': 'By Speakers', 'value': 'by_speakers'}
-            ],
-            value='total',
-            labelStyle={'display': 'inline-block'}
-        ),
+        html.A("Online vs. Offline", href='#onoff', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Casual Language Used", href='#casual', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Text-based vs. Voice-based", href='#voice', style={'margin-right': '20px'}, className='scroll-link'),
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
-    html.Div([
-        html.Div([
-            dcc.Graph(id='abtest-graph-speech'),
-            html.Div(id='abtest-table-speech')
-        ], style={'width': '48%', 'display': 'inline-block'}),
-        html.Div([
-            dcc.Graph(id='abtest-graph-interaction'),
-            html.Div(id='abtest-table-interaction')
-        ], style={'width': '48%', 'display': 'inline-block'})
-    ], style={'display': 'flex', 'justify-content': 'space-between'})
+
+    html.Script('''
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.scroll-link');
+            links.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    var targetElement = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    ''')
 ])
+dash_app.layout.children.append(
+    html.Button('Top', id='top-button', style={
+        'position': 'fixed',
+        'bottom': '20px',
+        'right': '20px',
+        'padding': '10px 20px',
+        'font-size': '16px',
+        'z-index': '1000',
+        'background-color': '#007bff',
+        'color': 'white',
+        'border': 'none',
+        'border-radius': '5px',
+        'cursor': 'pointer'
+    })
+)
+
+dash_app.clientside_callback(
+    """
+    function(n_clicks) {
+        if (n_clicks > 0) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        return '';
+    }
+    """,
+    Output('top-button', 'n_clicks'),
+    [Input('top-button', 'n_clicks')]
+)
 
 # Initialize the individual apps
 initialize_abtest_app(dash_app, dataset_voice)

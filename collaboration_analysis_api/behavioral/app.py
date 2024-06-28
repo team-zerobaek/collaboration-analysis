@@ -7,6 +7,7 @@ from behavioral.interaction import initialize_interaction_app
 from behavioral.gini import initialize_gini_app
 from behavioral.sna import initialize_sna_app
 import pandas as pd
+from dash.dependencies import Input, Output
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
@@ -27,7 +28,61 @@ dash_app.layout = html.Div([
         html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.H2("Monitoring", style={'text-align': 'center'}),
+    html.Div([
+        html.A("How evenly interacted? (Gini Coefficient)", href='#gini', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("How much contributed? (Degree Centrality", href='#degree', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("How much interacted? (turn-switch based)", href='#turn', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("How many words were spoken? (by word-unit))", href='#word', className='scroll-link')
+    ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+
+    html.Script('''
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.scroll-link');
+            links.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    var targetElement = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    ''')
 ])
+dash_app.layout.children.append(
+    html.Button('Top', id='top-button', style={
+        'position': 'fixed',
+        'bottom': '20px',
+        'right': '20px',
+        'padding': '10px 20px',
+        'font-size': '16px',
+        'z-index': '1000',
+        'background-color': '#007bff',
+        'color': 'white',
+        'border': 'none',
+        'border-radius': '5px',
+        'cursor': 'pointer'
+    })
+)
+
+dash_app.clientside_callback(
+    """
+    function(n_clicks) {
+        if (n_clicks > 0) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        return '';
+    }
+    """,
+    Output('top-button', 'n_clicks'),
+    [Input('top-button', 'n_clicks')]
+)
 
 # Initialize the individual apps
 initialize_sna_app(dash_app, dataset)

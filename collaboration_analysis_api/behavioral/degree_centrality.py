@@ -12,7 +12,7 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
-    dash_app.layout.children.append(html.Div([
+    dash_app.layout.children.append(html.Div(id ='degree', children=[
         html.H1("How much contributed? (Degree Centrality)"),
         html.Div([
             dcc.Dropdown(
@@ -36,7 +36,13 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
             ),
             html.Button('Reset', id='reset-degree-centrality-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
-        dcc.Graph(id='degree-centrality-graph')
+        dcc.Graph(id='degree-centrality-graph'),
+        
+        html.P(
+            id='degree-centrality-description', 
+            children="Description: This graph represents the degree centrality of speakers in various meetings of the selected project. Degree centrality is a measure of the number of direct connections a node has. It helps in understanding the contribution and influence of each speaker.",
+            style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'}
+        )
     ]))
 
     @dash_app.callback(

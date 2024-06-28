@@ -31,6 +31,10 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
         combined_metrics = individual_metrics.merge(interaction_metrics, on='speaker_id')
         return combined_metrics
 
+    def calculate_individual_meeting_metrics(meetings):
+        grouped = meetings.groupby(['meeting_number', 'speaker_id']).agg({'speech_frequency': 'mean', 'count': 'sum'}).reset_index()
+        return grouped
+
     def perform_ttest(group1, group2):
         ttest_results = {}
         ttest_results['speech_frequency'] = ttest_ind(group1['speech_frequency'], group2['speech_frequency'], equal_var=False)
@@ -82,44 +86,55 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
                     rows_interaction.append(row_voice)
                     rows_interaction.append(row_text)
         else:
-            for speaker in group1['speaker_id'].unique():
+            speakers = group1['speaker_id'].unique()
+            for speaker in speakers:
+                voice_speaker = group1[group1['speaker_id'] == speaker]
+                text_speaker = group2[group2['speaker_id'] == speaker]
+
+                if len(voice_speaker) > 1 and len(text_speaker) > 1:
+                    ttest_speech = ttest_ind(voice_speaker['speech_frequency'], text_speaker['speech_frequency'], equal_var=False)
+                    ttest_count = ttest_ind(voice_speaker['count'], text_speaker['count'], equal_var=False)
+                else:
+                    ttest_speech = ttest_count = None
+
                 row_voice = {
                     'Group': f'Voice (Speaker {speaker})',
-                    'Mean': round(group1[group1['speaker_id'] == speaker]['speech_frequency'].mean(), 2),
-                    'Std': round(group1[group1['speaker_id'] == speaker]['speech_frequency'].std(), 2),
-                    'df': len(group1[group1['speaker_id'] == speaker]['speech_frequency']) - 1,
-                    't-statistic': round(ttest_results['speech_frequency'].statistic, 2),
-                    'p-value': round(ttest_results['speech_frequency'].pvalue, 2)
+                    'Mean': round(voice_speaker['speech_frequency'].mean(), 2),
+                    'Std': round(voice_speaker['speech_frequency'].std(), 2),
+                    'df': len(voice_speaker['speech_frequency']) - 1,
+                    't-statistic': round(ttest_speech.statistic, 2) if ttest_speech else None,
+                    'p-value': round(ttest_speech.pvalue, 2) if ttest_speech else None
                 }
                 row_text = {
                     'Group': f'Text (Speaker {speaker})',
-                    'Mean': round(group2[group2['speaker_id'] == speaker]['speech_frequency'].mean(), 2),
-                    'Std': round(group2[group2['speaker_id'] == speaker]['speech_frequency'].std(), 2),
-                    'df': len(group2[group2['speaker_id'] == speaker]['speech_frequency']) - 1,
+                    'Mean': round(text_speaker['speech_frequency'].mean(), 2),
+                    'Std': round(text_speaker['speech_frequency'].std(), 2),
+                    'df': len(text_speaker['speech_frequency']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
                 rows_speech.append(row_voice)
                 rows_speech.append(row_text)
-            for speaker in group1['speaker_id'].unique():
+
                 row_voice = {
                     'Group': f'Voice (Speaker {speaker})',
-                    'Mean': round(group1[group1['speaker_id'] == speaker]['count'].mean(), 2),
-                    'Std': round(group1[group1['speaker_id'] == speaker]['count'].std(), 2),
-                    'df': len(group1[group1['speaker_id'] == speaker]['count']) - 1,
-                    't-statistic': round(ttest_results['count'].statistic, 2),
-                    'p-value': round(ttest_results['count'].pvalue, 2)
+                    'Mean': round(voice_speaker['count'].mean(), 2),
+                    'Std': round(voice_speaker['count'].std(), 2),
+                    'df': len(voice_speaker['count']) - 1,
+                    't-statistic': round(ttest_count.statistic, 2) if ttest_count else None,
+                    'p-value': round(ttest_count.pvalue, 2) if ttest_count else None
                 }
                 row_text = {
                     'Group': f'Text (Speaker {speaker})',
-                    'Mean': round(group2[group2['speaker_id'] == speaker]['count'].mean(), 2),
-                    'Std': round(group2[group2['speaker_id'] == speaker]['count'].std(), 2),
-                    'df': len(group2[group2['speaker_id'] == speaker]['count']) - 1,
+                    'Mean': round(text_speaker['count'].mean(), 2),
+                    'Std': round(text_speaker['count'].std(), 2),
+                    'df': len(text_speaker['count']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
                 rows_interaction.append(row_voice)
                 rows_interaction.append(row_text)
+
         detailed_df_speech = pd.DataFrame(rows_speech)
         detailed_df_interaction = pd.DataFrame(rows_interaction)
         return detailed_df_speech, detailed_df_interaction
@@ -132,15 +147,15 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
         [Input('text-voice-view-type', 'value')]
     )
     def update_text_voice_graph_table(view_type):
-        voice_meetings = dataset_voice
-        text_meetings = dataset_text
+        voice_meetings = dataset_voice[dataset_voice['meeting_number'] >= 10]
+        text_meetings = dataset_text[dataset_text['meeting_number'] >= 10]
 
         if view_type == 'total':
             voice_metrics = calculate_team_meeting_metrics(voice_meetings)
             text_metrics = calculate_team_meeting_metrics(text_meetings)
         else:
-            voice_metrics = calculate_individual_metrics(voice_meetings, 12)
-            text_metrics = calculate_individual_metrics(text_meetings, 9)
+            voice_metrics = calculate_individual_meeting_metrics(voice_meetings)
+            text_metrics = calculate_individual_meeting_metrics(text_meetings)
 
         ttest_results = perform_ttest(voice_metrics, text_metrics)
 
@@ -264,4 +279,3 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
             html.Div(id='text-voice-table-interaction')
         ], style={'width': '48%', 'display': 'inline-block'})
     ], style={'display': 'flex', 'justify-content': 'space-between'}))
-

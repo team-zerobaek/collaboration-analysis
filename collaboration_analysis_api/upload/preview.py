@@ -1,4 +1,4 @@
-# behavioral/total_summary.py
+# upload/preview.py
 from dash.dependencies import Input, Output
 from dash import dcc, html
 import plotly.graph_objects as go
@@ -30,8 +30,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     most_recent_project = dataset['project'].max()
 
     dash_app.layout.children.append(
-        html.Div(id='total-summary-section', children=[
-            html.H2("Summary", style={'text-align': 'center'}),
+        html.Div(id='preview-section-content', children=[
             html.Div([
                 html.Div([
                     html.H3("Who Spoke the Most"),

@@ -8,6 +8,7 @@ import os
 
 # Import processing functions
 from upload.preprocessing_behavioral import process_transcripts, extract_speaker_turns, create_dataset, process_files_in_directory, process_and_save
+from upload.preview import initialize_summary_app  # Import the summary initialization function
 
 # Initialize the FastAPI app
 upload_app = FastAPI()
@@ -16,7 +17,7 @@ upload_app = FastAPI()
 dash_app = Dash(__name__, requests_pathname_prefix='/upload/')
 
 # Load default dataset
-default_dataset = pd.read_csv('data/dataset_collaboration_with_survey_scores.csv')
+default_dataset = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
 dataset = default_dataset.copy()
 
 # Define the layout for the upload page
@@ -54,9 +55,18 @@ dash_app.layout = html.Div([
                 'margin-top': '10px'
             })
         ]),
-        html.Div(id='output-data-upload')
+        html.Div(id='output-data-upload'),
     ]),
+
+    # Preview section
+    html.Div(id='preview-section', children=[
+        html.H2("Preview", style={'text-align': 'center'}),
+        html.Div(id='preview-content', style={'display': 'none'})  # Placeholder for preview content
+    ])
 ])
+
+# Initialize the summary charts
+initialize_summary_app(dash_app, dataset)
 
 # Callback to handle file uploads and process the transcripts
 @dash_app.callback(
@@ -83,19 +93,20 @@ def update_output(contents, filenames, last_modified):
             html.H5(', '.join(filenames)),
             html.H6(datetime.datetime.fromtimestamp(last_modified[0])),
             html.Div('Data uploaded and processed successfully!'),
-            dcc.Location(pathname='/dash', id='redirect')
+            dcc.Location(pathname='/upload', id='redirect')
         ])
 
-# Callback to handle the use of default data
+# Callback to handle the use of default data and show the preview section
 @dash_app.callback(
-    Output('output-data-upload', 'children'),
+    Output('preview-content', 'style'),
     Input('use-default-data', 'n_clicks')
 )
 def use_default_data(n_clicks):
     if n_clicks:
         global dataset
         dataset = default_dataset.copy()
-        return dcc.Location(pathname='/dash', id='redirect')
+        return {'display': 'block'}
+    return {'display': 'none'}
 
 # Log initialization
 print("Initialized upload page")

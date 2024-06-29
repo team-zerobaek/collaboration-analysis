@@ -1,9 +1,9 @@
-# upload/preview.py
 from dash.dependencies import Input, Output
 from dash import dcc, html
 import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
+from abtest.on_off import get_meetings_by_condition  # Import function to get meeting conditions
 
 dash_app = None
 dataset = None
@@ -86,6 +86,18 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                     ),
                     dcc.Graph(id='pie-chart-individual-self')
                 ], style={'width': '45%', 'display': 'inline-block', 'vertical-align': 'top'}),
+            ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+
+            # New bar chart for interaction differences
+            html.Div([
+                html.H3("Interaction Difference Between Online and Offline Conditions"),
+                dcc.Dropdown(
+                    id='project-dropdown-interaction-diff',
+                    options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                    value=most_recent_project,
+                    style={'width': '80%', 'margin': '0 auto'}
+                ),
+                dcc.Graph(id='bar-chart-interaction-diff')
             ], style={'text-align': 'center', 'margin-bottom': '20px'})
         ])
     )
@@ -163,4 +175,30 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         fig = go.Figure(data=[go.Pie(labels=self_scores['speaker_number'], values=self_scores['individual_collaboration_score'], hole=.3)])
         fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in self_scores['speaker_number']]))
         fig.update_layout(title=f'Individual Collaboration Score (Self) for Project {selected_project}')
+        return fig
+
+    @dash_app.callback(
+        Output('bar-chart-interaction-diff', 'figure'),
+        [Input('project-dropdown-interaction-diff', 'value')]
+    )
+    def update_bar_chart_difference(selected_project):
+        if selected_project is None:
+            selected_project = most_recent_project
+        online_meetings, offline_meetings = get_meetings_by_condition(dataset)
+        online_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin(online_meetings))]
+        offline_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin(offline_meetings))]
+        online_interactions = online_meetings.groupby('speaker_number')['count'].sum().reset_index()
+        offline_interactions = offline_meetings.groupby('speaker_number')['count'].sum().reset_index()
+        interaction_diff = pd.merge(online_interactions, offline_interactions, on='speaker_number', suffixes=('_online', '_offline'))
+        interaction_diff['diff'] = interaction_diff['count_offline'] - interaction_diff['count_online']
+        interaction_diff = interaction_diff.sort_values(by='diff', ascending=False)
+        color_map = get_color_map(len(interaction_diff))
+        fig = go.Figure(data=[go.Bar(
+            x=interaction_diff['speaker_number'],
+            y=interaction_diff['diff'],
+            marker=dict(color=[color_map[int(speaker)] for speaker in interaction_diff['speaker_number']])
+        )])
+        fig.update_layout(title=f'Interaction Difference Between Online and Offline for Project {selected_project}',
+                          xaxis_title='Speaker Number',
+                          yaxis_title='Interaction Difference')
         return fig

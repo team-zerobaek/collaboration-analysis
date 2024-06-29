@@ -8,7 +8,7 @@ import os
 
 # Import processing functions
 from upload.preprocessing_behavioral import process_transcripts, extract_speaker_turns, create_dataset, process_files_in_directory, process_and_save
-from upload.preview import initialize_summary_app  # Import the summary initialization function
+from upload.preview import initialize_summary_app
 
 # Initialize the FastAPI app
 upload_app = FastAPI()

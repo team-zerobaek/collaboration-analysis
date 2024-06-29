@@ -62,6 +62,30 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                     ),
                     dcc.Graph(id='pie-chart-degree-centrality')
                 ], style={'width': '30%', 'display': 'inline-block', 'vertical-align': 'top'}),
+            ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+
+            # New pie charts for Individual Collaboration Score (Others) and (Self)
+            html.Div([
+                html.Div([
+                    html.H3("Mean Individual Collaboration Score (Others)"),
+                    dcc.Dropdown(
+                        id='project-dropdown-individual-others',
+                        options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                        value=most_recent_project,
+                        style={'width': '80%', 'margin': '0 auto'}
+                    ),
+                    dcc.Graph(id='pie-chart-individual-others')
+                ], style={'width': '45%', 'display': 'inline-block', 'vertical-align': 'top'}),
+                html.Div([
+                    html.H3("Mean Individual Collaboration Score (Self)"),
+                    dcc.Dropdown(
+                        id='project-dropdown-individual-self',
+                        options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                        value=most_recent_project,
+                        style={'width': '80%', 'margin': '0 auto'}
+                    ),
+                    dcc.Graph(id='pie-chart-individual-self')
+                ], style={'width': '45%', 'display': 'inline-block', 'vertical-align': 'top'}),
             ], style={'text-align': 'center', 'margin-bottom': '20px'})
         ])
     )
@@ -109,4 +133,34 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         fig = go.Figure(data=[go.Pie(labels=degree_centrality_freq['speaker_number'], values=degree_centrality_freq['degree_centrality'], hole=.3)])
         fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in degree_centrality_freq['speaker_number']]))
         fig.update_layout(title=f'Degree Centrality Distribution for Project {selected_project}')
+        return fig
+
+    @dash_app.callback(
+        Output('pie-chart-individual-others', 'figure'),
+        [Input('project-dropdown-individual-others', 'value')]
+    )
+    def update_individual_others_pie_chart(selected_project):
+        if selected_project is None:
+            selected_project = most_recent_project
+        filtered_df = dataset[dataset['project'] == selected_project]
+        others_scores = filtered_df.groupby('speaker_number')['individual_collaboration_score'].mean().reset_index()
+        color_map = get_color_map(len(others_scores))
+        fig = go.Figure(data=[go.Pie(labels=others_scores['speaker_number'], values=others_scores['individual_collaboration_score'], hole=.3)])
+        fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in others_scores['speaker_number']]))
+        fig.update_layout(title=f'Individual Collaboration Score (Others) for Project {selected_project}')
+        return fig
+
+    @dash_app.callback(
+        Output('pie-chart-individual-self', 'figure'),
+        [Input('project-dropdown-individual-self', 'value')]
+    )
+    def update_individual_self_pie_chart(selected_project):
+        if selected_project is None:
+            selected_project = most_recent_project
+        filtered_df = dataset[dataset['project'] == selected_project]
+        self_scores = filtered_df[filtered_df['speaker_id'] == filtered_df['next_speaker_id']].groupby('speaker_number')['individual_collaboration_score'].mean().reset_index()
+        color_map = get_color_map(len(self_scores))
+        fig = go.Figure(data=[go.Pie(labels=self_scores['speaker_number'], values=self_scores['individual_collaboration_score'], hole=.3)])
+        fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in self_scores['speaker_number']]))
+        fig.update_layout(title=f'Individual Collaboration Score (Self) for Project {selected_project}')
         return fig

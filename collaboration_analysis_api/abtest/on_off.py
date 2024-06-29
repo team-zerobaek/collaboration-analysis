@@ -275,11 +275,13 @@ def initialize_abtest_app(dash_app, dataset):
             dcc.Graph(id='abtest-graph-speech'),
             html.Div(id='abtest-table-speech'),
             html.Details([
-                html.Summary('AB Test - Speech 설명',style={'margin-top': '20px','margin-bottom': '10px'}),
+                html.Summary('Online vs. Offline - Normalized Speech Frequency',style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
-                    **Speech** 데이터에 대한 AB 테스트 결과:
-                    - 결과의 주요 포인트 설명
-                    - 통계적 유의성 분석
+                    **Normalized Speech Frequency - Total**  
+                    Normalized Speech Frequency refers to the speech amount during a meeting normalized by dividing it by the duration. By observing the changes in the Normalized Speech Frequency values in the Total graph, we can determine how the difference between online and offline environments affected the overall speech frequency in the meeting.  
+                      
+                    **Normalized Speech Frequency - by Speaker**  
+                    The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine if the change had a significant effect on specific individuals.  
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
             ], style={'margin-top': '5px', 'margin-bottom': '10px'})
         ], style={'width': '48%', 'display': 'inline-block'}),
@@ -287,11 +289,13 @@ def initialize_abtest_app(dash_app, dataset):
             dcc.Graph(id='abtest-graph-interaction'),
             html.Div(id='abtest-table-interaction'),
             html.Details([
-                html.Summary('AB Test - Interaction 설명',style={'margin-top': '20px','margin-bottom': '10px'}),
+                html.Summary('Online vs. Offline - Normalized Interaction Count',style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
-                    **Interaction** 데이터에 대한 AB 테스트 결과:
-                    - 상호작용 패턴 분석
-                    - 사용자 참여도 변화
+                    **Normalized Interaction Count - Total**  
+                    Normalized Interaction Count refers to the number of interactions by the speakers. This allows us to see how much interaction occurred between speakers during the meeting. By observing the changes in the Normalized Interaction Count values in the Total graph, we can determine how the difference between online and offline environments affected the overall interaction count in the meeting.  
+                      
+                    **Normalized Interaction Count - by Speaker**  
+                    The by Speaker graph allows us to see the interaction count for each speaker. This helps determine if the change had a significant effect on specific individuals.  
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
             ], style={'margin-top': '5px', 'margin-bottom': '10px'})
         ], style={'width': '48%', 'display': 'inline-block'})

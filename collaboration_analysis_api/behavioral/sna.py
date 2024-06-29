@@ -353,9 +353,21 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Network Interaction Graph Explanation
+                This graph represents a directed network of communication interactions recorded during a meeting. 
+                
+                #### Components
+                - **Nodes**: Each node represents a meeting participant.
+                - **Edges**: Each edge signifies the number of interactions between participants. The thickness and color of the edges denote the frequency of interactions, ranging from blue (fewer interactions) to red (more interactions).
+                - **Self-Interactions**: Numbers in parentheses above the nodes indicate self-interactions, which occur when a participant speaks at length or explains something extensively.
+                
+                #### Insights
+                - **Interaction Frequency**: The edge thickness and color give a clear visual representation of how frequently participants interact with each other.
+                - **Meeting Dynamics**: The dashboard provides detailed information about participant interactions in a specific meeting.
+                - **Cumulative Data**: By selecting multiple meetings, you can view the cumulative number of interactions across those meetings.
+                - **Focused Analysis**: The dashboard allows for selecting specific participants to analyze their interactions and relationships within the group.
+                
+                This tool is useful for analyzing communication patterns, understanding meeting dynamics, and identifying key contributors in discussions.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px'})
     ])

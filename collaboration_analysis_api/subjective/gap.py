@@ -36,9 +36,14 @@ def initialize_gap_app(dash_app, dataset):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Graph Explanation
+                This graph visualizes the individual collaboration score differences between others' average and self for specific meetings and speakers.
+
+                - **X-axis**: Speaker number
+                - **Y-axis**: Collaboration score gap (Others - Self)
+                - **Graph type**: Bar chart, allowing visual comparison of score differences for each speaker
+
+                The graph can be dynamically updated based on the selected meetings and speakers.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '20px'})
     ])

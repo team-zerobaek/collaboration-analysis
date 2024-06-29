@@ -37,9 +37,14 @@ def initialize_individual_app(dash_app, dataset):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Individual Collaboration Score (Others) Explanation
+                - This graph represents the collaboration score each member received from other members.
+                         
+                    - X-axis: Indicates the sequential number of analyzed meetings. Each dot on the x-axis represents a specific meeting.
+
+                    - Y-axis: The "total" tab shows average collaboration score each individual received as a member, and the "by speakers" tab shows individual's collaboration score as evaluated by others.
+                
+                - This visualization helps you understand how each person's collaboration score changes over time and how they perform compared to other people's evaluation scores. It can be used to evaluate individual collaboration performance and analyze collaboration dynamics within a team.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '20px'})
     ])

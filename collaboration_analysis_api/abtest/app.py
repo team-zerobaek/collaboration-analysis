@@ -22,6 +22,7 @@ dataset_text = pd.read_csv('/app/data/kakao_data.csv')
 dash_app.layout = html.Div([
     html.H1("How We Collaborate", style={'text-align': 'center'}),
     html.Div([
+        html.A(html.Button('Upload', style={'margin-right': '10px'}), href='/upload'),
         html.A(html.Button('Monitoring', style={'margin-right': '10px'}), href='/dash'),
         html.A(html.Button('Subjective Scoring', style={'margin-right': '10px'}), href='/subjective'),
         html.A(html.Button('A/B Test', style={'margin-right': '10px'}), href='/abtest'),

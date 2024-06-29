@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 import uvicorn
+from upload.app import upload_app
 from behavioral.app import fastapi_app as dashboard_app
 from subjective.app import fastapi_app as subjective_app
 from abtest.app import fastapi_app as abtest_app
@@ -10,6 +11,7 @@ from ml.app import fastapi_app as ml_app
 main_app = FastAPI()
 
 # Mount the sub-apps to different paths
+main_app.mount("/upload", upload_app)
 main_app.mount("/dash", dashboard_app)
 main_app.mount("/subjective", subjective_app)
 main_app.mount("/abtest", abtest_app)

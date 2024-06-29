@@ -37,6 +37,7 @@ main_layout = html.Div([
 
     html.H2("Monitoring", style={'text-align': 'center'}),
     html.Div([
+        html.A("Participant Network Graph", href='#sna', style={'margin-right': '20px'}, className='scroll-link'),
         html.A("How evenly interacted? (Gini Coefficient)", href='#gini', style={'margin-right': '20px'}, className='scroll-link'),
         html.A("How much contributed? (Degree Centrality)", href='#degree', style={'margin-right': '20px'}, className='scroll-link'),
         html.A("How much interacted? (turn-switch based)", href='#turn', style={'margin-right': '20px'}, className='scroll-link'),
@@ -98,10 +99,10 @@ dash_app.clientside_callback(
 # Initialize the individual apps
 initialize_summary_app(dash_app, dataset)  # Initialize the new summary app
 initialize_sna_app(dash_app, dataset)
-initialize_frequency_app(dash_app, dataset)
-initialize_interaction_app(dash_app, dataset)
 initialize_gini_app(dash_app, dataset)
 initialize_degree_centrality_app(dash_app, dataset)
+initialize_frequency_app(dash_app, dataset)
+initialize_interaction_app(dash_app, dataset)
 
 # Log initialization
 print("Initialized individual apps with dataset")

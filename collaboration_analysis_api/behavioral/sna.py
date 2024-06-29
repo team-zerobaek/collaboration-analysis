@@ -327,6 +327,9 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
 
     # Define the layout for SNA-specific elements
     sna_layout = html.Div([
+        html.Div(id='sna', children=[
+            html.H1("Participants Network Graph")
+        ]),
         html.Div([
             dcc.Dropdown(
                 id='project-dropdown',
@@ -371,5 +374,6 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px'})
     ])
-
+    
     dash_app.layout.children.append(sna_layout)
+

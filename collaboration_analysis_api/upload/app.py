@@ -60,7 +60,7 @@ dash_app.layout = html.Div([
 
     # Preview section
     html.Div(id='preview-section', children=[
-        html.H2("Preview", style={'text-align': 'center'}),
+        html.H1("Preview", style={'text-align': 'center'}),
         html.Div(id='preview-content', style={'display': 'none'})  # Placeholder for preview content
     ])
 ])

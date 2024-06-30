@@ -1,4 +1,3 @@
-# upload/preview.py
 from dash.dependencies import Input, Output
 from dash import dcc, html
 import plotly.graph_objects as go
@@ -49,7 +48,8 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     dash_app.layout.children.append(
         html.Div(id='preview-section-content', children=[
             html.Div([
-                html.H2("Behavioral Data Analysis", style={'text-align': 'center'}),
+                html.H2("Behavioral Data Analysis", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
+                html.A(html.Button("monitoring"), href="/dash", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
                         html.H3("Who Spoke the Most"),
@@ -86,10 +86,11 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
 
             # New pie charts for Individual Collaboration Score (Others) and (Self)
             html.Div([
-                html.H2("Subjective Data Analysis", style={'text-align': 'center'}),
+                html.H2("Subjective Data Analysis", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
+                html.A(html.Button("subjective scoring"), href="/subjective", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
-                        html.H3("Mean Individual Collaboration Score (Others)"),
+                        html.H3("How Evaluated by Others?"),
                         dcc.Dropdown(
                             id='project-dropdown-individual-others',
                             options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
@@ -99,7 +100,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         dcc.Graph(id='pie-chart-individual-others')
                     ], style={'width': '45%', 'display': 'inline-block', 'vertical-align': 'top'}),
                     html.Div([
-                        html.H3("Mean Individual Collaboration Score (Self)"),
+                        html.H3("How Evaluated by Self?"),
                         dcc.Dropdown(
                             id='project-dropdown-individual-self',
                             options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
@@ -113,10 +114,11 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
 
             # New bar charts for interaction differences
             html.Div([
-                html.H2("Effective Channels Analysis", style={'text-align': 'center'}),
+                html.H2("Effective Channels Analysis", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
+                html.A(html.Button("A/B Test"), href="/abtest", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
-                        html.H3("Interaction Difference Between Online and Offline Conditions"),
+                        html.H3("The Effect of Offline vs. Online"),
                         dcc.Dropdown(
                             id='project-dropdown-interaction-diff',
                             options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
@@ -126,7 +128,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         dcc.Graph(id='bar-chart-interaction-diff')
                     ], style={'width': '30%', 'display': 'inline-block'}),
                     html.Div([
-                        html.H3("Casual Language Usage Difference"),
+                        html.H3("The Effect of Casual Language Usage"),
                         dcc.Dropdown(
                             id='project-dropdown-casual',
                             options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
@@ -136,7 +138,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         dcc.Graph(id='bar-chart-casual')
                     ], style={'width': '30%', 'display': 'inline-block'}),
                     html.Div([
-                        html.H3("Text-based vs. Voice-based Difference"),
+                        html.H3("The Effect of Voice-based vs. Text-based"),
                         dcc.Dropdown(
                             id='project-dropdown-text-voice',
                             options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
@@ -150,19 +152,20 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
 
             # New tables for Behavioral Data
             html.Div([
-                html.H2("ML Examples", style={'text-align': 'center'}),
+                html.H2("ML Examples", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
+                html.A(html.Button("ML"), href="/ml", style={'display': 'inline-block'}),
                 html.Div([
-                    html.H4("Behavioral Data - Overall"),
+                    html.H4("Predict Members' Perception of Collaboration in the Project"),
                     dcc.Graph(id='overall-table')
-                ], style={'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '10px', 'borderRadius': '5px'}),
+                ], style={'margin-bottom': '20px', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
                 html.Div([
-                    html.H4("Behavioral Data - Individual Others"),
+                    html.H4("Predict Peer Evaluation Scores for Collaboration"),
                     dcc.Graph(id='individual-others-table')
-                ], style={'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '10px', 'borderRadius': '5px'}),
+                ], style={'margin-bottom': '20px', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
                 html.Div([
-                    html.H4("Behavioral Data - Individual Self"),
+                    html.H4("Predict Self-Evaluation Scores for Collaboration"),
                     dcc.Graph(id='individual-self-table')
-                ], style={'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '10px', 'borderRadius': '5px'})
+                ], style={'margin-bottom': '20px', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'})
             ], style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'})
         ])
     )
@@ -179,8 +182,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         color_map = get_color_map(len(speech_freq))
         fig = go.Figure(data=[go.Pie(labels=speech_freq['speaker_number'], values=speech_freq['speech_frequency'], hole=.3)])
         fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in speech_freq['speaker_number']]))
-        fig.update_layout(title=f'Speech Frequency Distribution for Project {selected_project}',
-                          paper_bgcolor='#f8f8f8')
+        fig.update_layout(paper_bgcolor='#f8f8f8')
         return fig
 
     @dash_app.callback(
@@ -195,8 +197,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         color_map = get_color_map(len(interaction_freq))
         fig = go.Figure(data=[go.Pie(labels=interaction_freq['speaker_number'], values=interaction_freq['normalized_interaction_frequency'], hole=.3)])
         fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in interaction_freq['speaker_number']]))
-        fig.update_layout(title=f'Interaction Frequency Distribution for Project {selected_project}',
-                          paper_bgcolor='#f8f8f8')
+        fig.update_layout(paper_bgcolor='#f8f8f8')
         return fig
 
     @dash_app.callback(
@@ -211,8 +212,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         color_map = get_color_map(len(degree_centrality_freq))
         fig = go.Figure(data=[go.Pie(labels=degree_centrality_freq['speaker_number'], values=degree_centrality_freq['degree_centrality'], hole=.3)])
         fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in degree_centrality_freq['speaker_number']]))
-        fig.update_layout(title=f'Degree Centrality Distribution for Project {selected_project}',
-                          paper_bgcolor='#f8f8f8')
+        fig.update_layout(paper_bgcolor='#f8f8f8')
         return fig
 
     @dash_app.callback(
@@ -227,8 +227,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         color_map = get_color_map(len(others_scores))
         fig = go.Figure(data=[go.Pie(labels=others_scores['speaker_number'], values=others_scores['individual_collaboration_score'], hole=.3)])
         fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in others_scores['speaker_number']]))
-        fig.update_layout(title=f'Individual Collaboration Score (Others) for Project {selected_project}',
-                          paper_bgcolor='#f8f8f8')
+        fig.update_layout(paper_bgcolor='#f8f8f8')
         return fig
 
     @dash_app.callback(
@@ -243,8 +242,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         color_map = get_color_map(len(self_scores))
         fig = go.Figure(data=[go.Pie(labels=self_scores['speaker_number'], values=self_scores['individual_collaboration_score'], hole=.3)])
         fig.update_traces(marker=dict(colors=[color_map[int(speaker)] for speaker in self_scores['speaker_number']]))
-        fig.update_layout(title=f'Individual Collaboration Score (Self) for Project {selected_project}',
-                          paper_bgcolor='#f8f8f8')
+        fig.update_layout(paper_bgcolor='#f8f8f8')
         return fig
 
     @dash_app.callback(
@@ -268,8 +266,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
             y=interaction_diff['diff'],
             marker=dict(color=[color_map[int(speaker)] for speaker in interaction_diff['speaker_number']])
         )])
-        fig.update_layout(title=f'Interaction Difference Between Online and Offline for Project {selected_project}',
-                          xaxis_title='Speaker Number',
+        fig.update_layout(xaxis_title='Speaker Number',
                           yaxis_title='Interaction Difference (Offline - Online)',
                           xaxis={'categoryorder':'total descending'},  # Ensure bars are sorted by y-values
                           paper_bgcolor='#f8f8f8')
@@ -295,8 +292,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
             y=casual_diff['diff'],
             marker=dict(color=[color_map[int(speaker)] for speaker in casual_diff['speaker_number']])
         )])
-        fig.update_layout(title=f'Casual Language Usage Difference for Project {selected_project}',
-                          xaxis_title='Speaker Number',
+        fig.update_layout(xaxis_title='Speaker Number',
                           yaxis_title='Interaction Difference (Used - Not Used)',
                           xaxis={'categoryorder':'total descending'},  # Ensure bars are sorted by y-values
                           paper_bgcolor='#f8f8f8')
@@ -322,8 +318,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
             y=text_voice_diff['diff'],
             marker=dict(color=[color_map[int(speaker)] for speaker in text_voice_diff['speaker_number']])
         )])
-        fig.update_layout(title=f'Text-based vs. Voice-based Difference for Project {selected_project}',
-                          xaxis_title='Speaker Number',
+        fig.update_layout(xaxis_title='Speaker Number',
                           yaxis_title='Interaction Difference (Voice - Text)',
                           xaxis={'categoryorder':'total descending'},  # Ensure bars are sorted by y-values
                           paper_bgcolor='#f8f8f8')

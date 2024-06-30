@@ -177,7 +177,6 @@ def initialize_casual_app(dash_app, dataset):
                                     used_metrics['normalized_interaction_frequency'].mean() + 1.1 * used_metrics['normalized_interaction_frequency'].std())
 
             fig_speech.update_layout(
-                title='A/B Test: Normalized Speech Frequency',
                 xaxis_title='Condition',
                 yaxis_title='Normalized Speech Frequency',
                 yaxis=dict(range=[0, speech_y_max]),
@@ -185,7 +184,6 @@ def initialize_casual_app(dash_app, dataset):
             )
 
             fig_interaction.update_layout(
-                title='A/B Test: Normalized Interaction Count',
                 xaxis_title='Condition',
                 yaxis_title='Normalized Interaction Frequency',
                 yaxis=dict(range=[0, interaction_y_max]),
@@ -212,14 +210,12 @@ def initialize_casual_app(dash_app, dataset):
                 ))
 
             fig_speech.update_layout(
-                title='A/B Test: Normalized Speech Frequency by Speaker',
                 xaxis_title='Condition',
                 yaxis_title='Normalized Speech Frequency',
                 showlegend=True
             )
 
-            fig_interaction.update_layout(
-                title='A/B Test: Normalized Interaction Frequency by Speaker',
+            fig_interaction.update_layout(              
                 xaxis_title='Condition',
                 yaxis_title='Normalized Interaction Frequency',
                 showlegend=True

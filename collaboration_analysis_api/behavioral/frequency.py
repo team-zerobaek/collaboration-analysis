@@ -143,7 +143,6 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
                                          name=column))
 
             fig.update_layout(
-                title='Comparison of Normalized Speech Frequencies by Meeting',
                 xaxis_title='Meeting Number',
                 yaxis_title='Normalized Speech Frequency',
                 xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
@@ -160,7 +159,6 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
             meeting_numbers_with_data = filtered_df['meeting_number'].unique()
 
             fig.update_layout(
-                title='Normalized Speech Frequencies by Meeting and Speaker',
                 xaxis_title='Meeting Number',
                 yaxis_title='Normalized Speech Frequency',
                 xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
@@ -177,7 +175,6 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
                 marker_color=bar_colors
             )])
             fig.update_layout(
-                title=f'Normalized Speech Frequency for Selected Meetings',
                 xaxis_title='Speaker Number',
                 yaxis_title='Normalized Speech Frequency',
                 showlegend=False

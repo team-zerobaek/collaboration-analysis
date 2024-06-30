@@ -58,23 +58,10 @@ def initialize_individual_self_ml_app(dash_app_instance, dataset_instance):
                 ### Prediction of Self-Evaluation Scores
                 - **Best Performance Model**: CatBoost
                 - **Feature Importance (in order)**: Meeting number, Gini coefficient, Degree centrality, Normalized speech frequency
-                #### Model Selection and Performance Evaluation
-
-                Grid search was used to tune the hyperparameters of the CatBoost model. The performance of the model was evaluated using the following metrics to ensure generalizability and accuracy:
-
-                - **R² score**: Measures the proportion of the variance in the dependent variable (self-evaluation scores) that is predictable from the independent variables. A higher R² indicates better model performance.
-                - **MSE (Mean Squared Error)**: Represents the average of the squares of the errors—that is, the average squared difference between the predicted values and the actual self-evaluation scores. Lower MSE indicates better model performance.
-                - **Cross-Validation**: Ensures that the model's performance is consistent across different subsets of the data, indicating its ability to generalize well to unseen data.
-
-                #### Insights and Explanation
-                The CatBoost model was identified as the best performing model for predicting how individuals evaluate their own performance. This result is supported by the following feature importances:
-
-                1. **Meeting number**: This feature might capture specific contextual or temporal elements of the meetings that significantly influence self-evaluation. Different meetings could have varying dynamics, expectations, or participation levels, which in turn affect how individuals rate their own performance.
-                2. **Gini coefficient**: This measure of inequality in contribution among participants can highlight how balanced or skewed the participation was. A higher Gini coefficient could indicate a few dominant speakers, potentially leading individuals to rate their own performance lower if they felt overshadowed.
-                3. **Degree centrality**: This network analysis measure indicates how central a person is within the interaction network. A higher degree centrality suggests greater involvement in the discussion, likely leading individuals to evaluate their own performance more positively.
-                4. **Normalized speech frequency**: This feature represents the frequency of speech adjusted for the length of the meeting or number of participants. Higher speech frequency generally reflects more active participation, which could positively influence self-evaluation as individuals perceive themselves as more engaged and contributing.
-
-                This thorough approach to model selection and performance evaluation helps in building a robust predictive model for self-evaluation scores, with CatBoost emerging as the best performer due to its ability to handle categorical features effectively and its robustness to overfitting.
+                
+                The CatBoost model was identified as the best performing model for predicting how individuals evaluate their own performance.
+                         
+                This thorough approach to model selection and performance evaluation helps in building a robust predictive model for self-evaluation scores.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '80px'})
     ]))

@@ -64,7 +64,6 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
         xticks = gini_df['Meeting'] if not gini_df.empty else []
 
         fig.update_layout(
-            title='Gini Coefficient by Meeting',
             xaxis_title='Meeting',
             yaxis_title='Gini Coefficient',
             yaxis=dict(autorange='reversed'),  # Reverse y-axis

@@ -183,7 +183,6 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
                                     text_metrics['count'].mean() + 1.1 * text_metrics['count'].std())
 
             fig_speech.update_layout(
-                title='A/B Test:  Speech Frequency',
                 xaxis_title='Condition',
                 yaxis_title=' Speech Frequency',
                 yaxis=dict(range=[0, speech_y_max]),
@@ -191,7 +190,6 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
             )
 
             fig_interaction.update_layout(
-                title='A/B Test:  Interaction Count',
                 xaxis_title='Condition',
                 yaxis_title=' Interaction Count',
                 yaxis=dict(range=[0, interaction_y_max]),
@@ -218,14 +216,12 @@ def initialize_text_voice_app(dash_app, dataset_voice, dataset_text):
                 ))
 
             fig_speech.update_layout(
-                title='A/B Test:  Speech Frequency by Speaker',
                 xaxis_title='Condition',
                 yaxis_title=' Speech Frequency',
                 showlegend=True
             )
 
             fig_interaction.update_layout(
-                title='A/B Test:  Interaction Count by Speaker',
                 xaxis_title='Condition',
                 yaxis_title=' Interaction Count',
                 showlegend=True

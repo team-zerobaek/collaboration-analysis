@@ -142,7 +142,6 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                                          name=column))
 
             fig.update_layout(
-                title='Comparison of Normalized Interaction Frequencies by Meeting',
                 xaxis_title='Meeting Number',
                 yaxis_title='Normalized Interaction Frequency',
                 xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
@@ -161,7 +160,6 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
             meeting_numbers_with_data = speaker_interactions['meeting_number'].unique()
 
             fig.update_layout(
-                title='Normalized Interaction Frequencies by Meeting and Speaker',
                 xaxis_title='Meeting Number',
                 yaxis_title='Normalized Interaction Frequency',
                 xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
@@ -178,7 +176,6 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                 marker_color=bar_colors
             )])
             fig.update_layout(
-                title=f'Normalized Interaction Frequency by Speaker for Selected Meetings',
                 xaxis_title='Speaker Number',
                 yaxis_title='Normalized Interaction Frequency',
                 xaxis=dict(tickmode='array', tickvals=bar_data['speaker_number'].unique()),  # Ensure x-ticks are displayed

@@ -132,7 +132,6 @@ def initialize_gap_app(dash_app, dataset):
                 marker_color=[color_map[speaker] for speaker in gap_scores_total['next_speaker_id']]
             ))
             fig.update_layout(
-                title='Gap between Individual Collaboration Score (Others - Self) by Speaker',
                 xaxis_title='Speaker Number',
                 yaxis_title='Gap (Others - Self)',
                 showlegend=False
@@ -175,7 +174,6 @@ def initialize_gap_app(dash_app, dataset):
             x_ticks = combined_scores['meeting_number'].unique()
 
             fig.update_layout(
-                title='Gap between Individual Collaboration Score (Others - Self) by Meeting',
                 xaxis_title='Meeting Number',
                 yaxis_title='Gap (Others - Self)',
                 xaxis=dict(tickmode='array', tickvals=x_ticks),

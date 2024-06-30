@@ -110,7 +110,6 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
         if filtered_df.empty:
             fig = go.Figure()
             fig.update_layout(
-                title='Degree Centrality by Meeting and Speaker',
                 xaxis_title='Meeting Number',
                 yaxis_title='Degree Centrality',
                 showlegend=True
@@ -128,7 +127,6 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
                 marker_color=bar_colors
             )])
             fig.update_layout(
-                title=f'Degree Centrality for Selected Meetings',
                 xaxis_title='Speaker Number',
                 yaxis_title='Degree Centrality',
                 showlegend=False
@@ -174,7 +172,6 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
             xticks = filtered_df['meeting_number'].unique()
 
             fig.update_layout(
-                title='Degree Centrality by Meeting and Speaker',
                 xaxis_title='Meeting Number',
                 yaxis_title='Degree Centrality',
                 xaxis=dict(tickmode='array', tickvals=xticks),

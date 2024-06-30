@@ -171,7 +171,6 @@ def initialize_individual_app(dash_app, dataset):
                     ))
 
         fig.update_layout(
-            title='Mean Individual Collaboration Score (Others) by Meeting',
             xaxis_title='Meeting Number',
             yaxis_title='Mean Individual Collaboration Score (Others)',
             xaxis=dict(tickmode='array', tickvals=filtered_df['meeting_number'].unique()),
@@ -189,7 +188,6 @@ def initialize_individual_app(dash_app, dataset):
                     marker_color=[color_map[speaker] for speaker in bar_data_agg['speaker_id']]
                 )])
                 fig.update_layout(
-                    title='Mean Individual Collaboration Score (Others) by Speaker for Selected Meetings',
                     xaxis_title='Speaker Number',
                     yaxis_title='Individual Collaboration Score (Others)',
                     showlegend=False

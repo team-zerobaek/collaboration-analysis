@@ -32,9 +32,109 @@ def initialize_abtest_app(dash_app, dataset):
         ttest_results['count'] = ttest_ind(group1['count'], group2['count'], equal_var=False)
         return ttest_results
 
+    def dataframe_generator(ttest_results, group1, group2, view_type):
+        rows_speech = []
+        rows_interaction = []
+        if view_type == 'total':
+            variables = ['normalized_speech_frequency', 'count']
+            for var in variables:
+                if var == 'normalized_speech_frequency':
+                    row_online = {
+                        'Group': 'Online',
+                        'Mean': round(group1[var].mean(), 2),
+                        'Std': round(group1[var].std(), 2),
+                        'df': len(group1[var]) - 1,
+                        't-statistic': round(ttest_results[var].statistic, 2),
+                        'p-value': round(ttest_results[var].pvalue, 2)
+                    }
+                    row_offline = {
+                        'Group': 'Offline',
+                        'Mean': round(group2[var].mean(), 2),
+                        'Std': round(group2[var].std(), 2),
+                        'df': len(group2[var]) - 1,
+                        't-statistic': '',
+                        'p-value': ''
+                    }
+                    rows_speech.append(row_online)
+                    rows_speech.append(row_offline)
+                else:
+                    row_online = {
+                        'Group': 'Online',
+                        'Mean': round(group1[var].mean(), 2),
+                        'Std': round(group1[var].std(), 2),
+                        'df': len(group1[var]) - 1,
+                        't-statistic': round(ttest_results[var].statistic, 2),
+                        'p-value': round(ttest_results[var].pvalue, 2)
+                    }
+                    row_offline = {
+                        'Group': 'Offline',
+                        'Mean': round(group2[var].mean(), 2),
+                        'Std': round(group2[var].std(), 2),
+                        'df': len(group2[var]) - 1,
+                        't-statistic': '',
+                        'p-value': ''
+                    }
+                    rows_interaction.append(row_online)
+                    rows_interaction.append(row_offline)
+        else:
+            speakers = group1['speaker_id'].unique()
+            for speaker in speakers:
+                online_speaker = group1[group1['speaker_id'] == speaker]
+                offline_speaker = group2[group2['speaker_id'] == speaker]
+
+                if len(online_speaker) > 1 and len(offline_speaker) > 1:
+                    ttest_speech = ttest_ind(online_speaker['normalized_speech_frequency'], offline_speaker['normalized_speech_frequency'], equal_var=False)
+                    ttest_count = ttest_ind(online_speaker['count'], offline_speaker['count'], equal_var=False)
+                else:
+                    ttest_speech = ttest_count = None
+
+                row_online = {
+                    'Group': f'Online (Speaker {speaker})',
+                    'Mean': round(online_speaker['normalized_speech_frequency'].mean(), 2),
+                    'Std': round(online_speaker['normalized_speech_frequency'].std(), 2),
+                    'df': len(online_speaker['normalized_speech_frequency']) - 1,
+                    't-statistic': round(ttest_speech.statistic, 2) if ttest_speech else None,
+                    'p-value': round(ttest_speech.pvalue, 2) if ttest_speech else None
+                }
+                row_offline = {
+                    'Group': f'Offline (Speaker {speaker})',
+                    'Mean': round(offline_speaker['normalized_speech_frequency'].mean(), 2),
+                    'Std': round(offline_speaker['normalized_speech_frequency'].std(), 2),
+                    'df': len(offline_speaker['normalized_speech_frequency']) - 1,
+                    't-statistic': '',
+                    'p-value': ''
+                }
+                rows_speech.append(row_online)
+                rows_speech.append(row_offline)
+
+                row_online = {
+                    'Group': f'Online (Speaker {speaker})',
+                    'Mean': round(online_speaker['count'].mean(), 2),
+                    'Std': round(online_speaker['count'].std(), 2),
+                    'df': len(online_speaker['count']) - 1,
+                    't-statistic': round(ttest_count.statistic, 2) if ttest_count else None,
+                    'p-value': round(ttest_count.pvalue, 2) if ttest_count else None
+                }
+                row_offline = {
+                    'Group': f'Offline (Speaker {speaker})',
+                    'Mean': round(offline_speaker['count'].mean(), 2),
+                    'Std': round(offline_speaker['count'].std(), 2),
+                    'df': len(offline_speaker['count']) - 1,
+                    't-statistic': '',
+                    'p-value': ''
+                }
+                rows_interaction.append(row_online)
+                rows_interaction.append(row_offline)
+
+        detailed_df_speech = pd.DataFrame(rows_speech)
+        detailed_df_interaction = pd.DataFrame(rows_interaction)
+        return detailed_df_speech, detailed_df_interaction
+
     @dash_app.callback(
         [Output('abtest-graph-speech', 'figure'),
-         Output('abtest-graph-interaction', 'figure')],
+         Output('abtest-graph-interaction', 'figure'),
+         Output('abtest-table-speech', 'children'),
+         Output('abtest-table-interaction', 'children')],
         [Input('abtest-view-type', 'value')]
     )
     def update_abtest_graph_table(view_type):
@@ -116,7 +216,31 @@ def initialize_abtest_app(dash_app, dataset):
                 showlegend=True
             )
 
-        return fig_speech, fig_interaction
+        detailed_df_speech, detailed_df_interaction = dataframe_generator(ttest_results, online_metrics, offline_metrics, view_type)
+
+        speech_table = html.Table([
+            html.Thead(
+                html.Tr([html.Th(col) for col in ['Group', 'Mean', 'Std', 'df', 't-statistic', 'p-value']])
+            ),
+            html.Tbody([
+                html.Tr([
+                    html.Td(detailed_df_speech.iloc[i][col]) for col in ['Group', 'Mean', 'Std', 'df', 't-statistic', 'p-value']
+                ]) for i in range(len(detailed_df_speech))
+            ])
+        ], style={'margin': 'auto', 'text-align': 'center', 'width': '100%', 'white-space': 'nowrap'})
+
+        interaction_table = html.Table([
+            html.Thead(
+                html.Tr([html.Th(col) for col in ['Group', 'Mean', 'Std', 'df', 't-statistic', 'p-value']])
+            ),
+            html.Tbody([
+                html.Tr([
+                    html.Td(detailed_df_interaction.iloc[i][col]) for col in ['Group', 'Mean', 'Std', 'df', 't-statistic', 'p-value']
+                ]) for i in range(len(detailed_df_interaction))
+            ])
+        ], style={'margin': 'auto', 'text-align': 'center', 'width': '100%', 'white-space': 'nowrap'})
+
+        return fig_speech, fig_interaction, speech_table, interaction_table
 
     dash_app.layout.children.append(html.Div(id='onoff', children=[
         html.H2("A/B Test: Online vs. Offline", style={'text-align': 'center'})
@@ -136,10 +260,12 @@ def initialize_abtest_app(dash_app, dataset):
 
     dash_app.layout.children.append(html.Div([
         html.Div([
-            dcc.Graph(id='abtest-graph-speech')
+            dcc.Graph(id='abtest-graph-speech'),
+            html.Div(id='abtest-table-speech')
         ], style={'width': '48%', 'display': 'inline-block'}),
         html.Div([
-            dcc.Graph(id='abtest-graph-interaction')
+            dcc.Graph(id='abtest-graph-interaction'),
+            html.Div(id='abtest-table-interaction')
         ], style={'width': '48%', 'display': 'inline-block'})
     ], style={'display': 'flex', 'justify-content': 'space-between'}))
 

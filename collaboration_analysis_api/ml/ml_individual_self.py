@@ -1,7 +1,6 @@
 from dash import Dash, dcc, html, Input, Output
 import dash
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.model_selection import train_test_split, GridSearchCV, KFold, cross_val_score
 from sklearn.pipeline import Pipeline
@@ -38,16 +37,16 @@ def initialize_individual_self_ml_app(dash_app_instance, dataset_instance):
     dataset = dataset[dataset['speaker_id'] == dataset['next_speaker_id']].copy()
 
     # Create necessary columns
-    dataset.loc[:, 'num_speakers'] = dataset.groupby(['project', 'meeting_number'])['speaker_id'].transform('nunique')
+    dataset['num_speakers'] = dataset.groupby(['project', 'meeting_number'])['speaker_id'].transform('nunique')
 
     # Ensure interaction_count column exists
     dataset['interaction_count'] = dataset['count']
     if 'interaction_count' not in dataset.columns:
-        dataset.loc[:, 'interaction_count'] = 0  # Or some appropriate default value
+        dataset['interaction_count'] = 0  # Or some appropriate default value
 
-    dataset.loc[:, 'normalized_interaction_frequency'] = dataset['interaction_count'] / dataset['duration']
+    dataset['normalized_interaction_frequency'] = dataset['interaction_count'] / dataset['duration']
 
-    dash_app.layout.children.append(html.Div(id ='self', children=[
+    dash_app.layout.children.append(html.Div(id='self', children=[
         html.H1("ML Models for Self-Interaction Individual Collaboration Score"),
         html.Div(id='ml-output-individual-self'),
         html.Button('Run Dummy Model', id='run-dummy-individual-self', n_clicks=0),
@@ -66,7 +65,7 @@ def initialize_individual_self_ml_app(dash_app_instance, dataset_instance):
                 - **R² score**: Measures the proportion of the variance in the dependent variable (self-evaluation scores) that is predictable from the independent variables. A higher R² indicates better model performance.
                 - **MSE (Mean Squared Error)**: Represents the average of the squares of the errors—that is, the average squared difference between the predicted values and the actual self-evaluation scores. Lower MSE indicates better model performance.
                 - **Cross-Validation**: Ensures that the model's performance is consistent across different subsets of the data, indicating its ability to generalize well to unseen data.
-                         
+
                 #### Insights and Explanation
                 The CatBoost model was identified as the best performing model for predicting how individuals evaluate their own performance. This result is supported by the following feature importances:
 
@@ -76,8 +75,6 @@ def initialize_individual_self_ml_app(dash_app_instance, dataset_instance):
                 4. **Normalized speech frequency**: This feature represents the frequency of speech adjusted for the length of the meeting or number of participants. Higher speech frequency generally reflects more active participation, which could positively influence self-evaluation as individuals perceive themselves as more engaged and contributing.
 
                 This thorough approach to model selection and performance evaluation helps in building a robust predictive model for self-evaluation scores, with CatBoost emerging as the best performer due to its ability to handle categorical features effectively and its robustness to overfitting.
-                    
-
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '80px'})
     ]))
@@ -111,13 +108,13 @@ def build_actual_model():
 
     # Features and target
     features = dataset_filtered[['meeting_number', 'normalized_speech_frequency', 'gini_coefficient',
-                                 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id', 'next_speaker_id']]
+                                 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id']]
     target = dataset_filtered['individual_collaboration_score']
 
     column_transformer = ColumnTransformer(
         transformers=[
             ('scaler', StandardScaler(), ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency']),
-            ('onehot', OneHotEncoder(), ['speaker_id', 'next_speaker_id'])
+            ('onehot', OneHotEncoder(), ['speaker_id'])
         ]
     )
 
@@ -148,11 +145,7 @@ def build_actual_model():
     }
 
     def find_best_hyperparameters_regression(X_train, y_train, X_test, y_test):
-        alpha = 0.35  # Weight for the performance metric (adjust as necessary)
-        beta = 0.33
-        gamma = 0.3
-
-        best_performance = -float('inf')
+        best_r2 = -float('inf')
         best_model_info = {}
         model_performance = []
 
@@ -176,11 +169,8 @@ def build_actual_model():
             mean_cv_score = np.mean(cv_scores)
             std_cv_score = np.std(cv_scores)
 
-            performance = alpha * r2 + gamma * mean_cv_score + beta * (1/mse) + (1 - alpha - beta - gamma)
-
             model_performance.append({
                 'Model': model_name,
-                'Performance': round(performance, 2),
                 'R2': round(r2, 2),
                 'MSE': round(mse, 2),
                 'CV Mean': round(mean_cv_score, 2),
@@ -188,8 +178,8 @@ def build_actual_model():
                 'Training Time': round(training_time, 2)
             })
 
-            if performance > best_performance:
-                best_performance = performance
+            if r2 > best_r2:
+                best_r2 = r2
                 best_model_info = {
                     'model': model_name,
                     'r2': round(r2, 2),
@@ -266,98 +256,145 @@ def build_actual_model():
 
     return html.Div([
         html.H3('Model Building Completed!'),
-        html.H4('Input Summary'),
-        html.P('Features and Label used:'),
-        html.P('Features: meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency, speaker_id, next_speaker_id'),
-        html.P('Label: individual_collaboration_score'),
-        html.P('Encodings used: StandardScaler for all features, OneHotEncoder for speaker_id and next_speaker_id'),
-        html.P('Models compared: Linear Regression, Decision Tree, Random Forest Regressor, XGBRegressor, Gradient Boosting Regressor, K-Nearest Neighbors Regressor, LightGBM Regressor, CatBoost Regressor, SVM Regressor'),
-        html.H4('Hyperparameter Tuning'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=list(hyperparameter_df.columns),
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[hyperparameter_df[col] for col in hyperparameter_df.columns],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
-        html.H4('Performance Summary'),
-        html.H5('Model Performance Comparison:'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=list(model_performance_df.columns),
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[model_performance_df[col] for col in model_performance_df.columns],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
-        html.H5('Selected Model:'),
-        html.P(f"Model: {best_reg_model_info['model']}"),
-        html.P(f"R2: {best_reg_model_info['r2']}"),
-        html.P(f"MSE: {best_reg_model_info['mse']}"),
-        html.P(f"CV Mean R2: {best_reg_model_info['cv_mean_r2']}"),
-        html.P(f"CV Std R2: {best_reg_model_info['cv_std_r2']}"),
-        html.P(f"Training Time: {best_reg_model_info['training_time']} seconds"),
-        html.P(f"Best Params: {best_reg_model_info['params']}"),
-        html.H5('Feature Importance:'),
-        html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode()),
-        html.H5('Actual vs Predicted:'),
-        html.Img(src='data:image/png;base64,' + base64.b64encode(open('actual_vs_predicted.png', 'rb').read()).decode()),
-        html.H4('Model Validity Check'),
-        html.H5('Overfitting Check (Cross-Validation Results):'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=['Model', 'CV Mean R2', 'CV Std R2'],
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[[model['Model'] for model in model_performance],
-                                           [model['CV Mean'] for model in model_performance],
-                                           [model['CV Std'] for model in model_performance]],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
-        html.H5('Multicollinearity Check (VIF):'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=list(vif_data.columns),
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[vif_data[col] for col in vif_data.columns],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'}, children=[
+            html.H2('Input Summary'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Feature', 'Label', 'Encodings', 'Models Compared'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[
+                                'meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency, speaker_id',
+                                'individual_collaboration_score',
+                                'StandardScaler for all features, OneHotEncoder for speaker_id',
+                                'Linear Regression, Decision Tree, Random Forest Regressor, XGBRegressor, Gradient Boosting Regressor, K-Nearest Neighbors Regressor, LightGBM Regressor, CatBoost Regressor, SVM Regressor'
+                            ],
+                            height=30,
+                            fill_color='lavender',
+                            align='left'))
+                    ]
+                )
+            ),
+        ]),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H2('Hyperparameter Tuning'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=list(hyperparameter_df.columns),
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[hyperparameter_df[col] for col in hyperparameter_df.columns],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+        ]),
+        html.H2('---Model Built---', style={'text-align': 'center', 'margin-top': '20px', 'margin-bottom': '20px'}),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H2('Performance Summary'),
+            html.H3('Model Performance Comparison:'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Model', 'R2', 'MSE', 'CV Mean', 'CV Std', 'Training Time'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[model_performance_df[col] for col in model_performance_df.columns],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+            html.H3('Selected Model:'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Metric', 'Value'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[
+                                ['Model', 'R2', 'MSE', 'CV Mean R2', 'CV Std R2', 'Training Time', 'Best Params'],
+                                [
+                                    best_reg_model_info['model'],
+                                    best_reg_model_info['r2'],
+                                    best_reg_model_info['mse'],
+                                    best_reg_model_info['cv_mean_r2'],
+                                    best_reg_model_info['cv_std_r2'],
+                                    best_reg_model_info['training_time'],
+                                    str(best_reg_model_info['params'])
+                                ]
+                            ],
+                            height=30,
+                            fill_color='lavender',
+                            align='left'))
+                    ]
+                )
+            ),
+        ]),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H3('Feature Importance:'),
+            html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode()),
+            html.H3('Actual vs Predicted:'),
+            html.Img(src='data:image/png;base64,' + base64.b64encode(open('actual_vs_predicted.png', 'rb').read()).decode()),
+        ]),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H2('Model Validity Check'),
+            html.H3('Overfitting Check (Cross-Validation Results):'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Model', 'CV Mean R2', 'CV Std R2'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[[model['Model'] for model in model_performance],
+                                               [model['CV Mean'] for model in model_performance],
+                                               [model['CV Std'] for model in model_performance]],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+            html.H3('Multicollinearity Check (VIF):'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=list(vif_data.columns),
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[vif_data[col] for col in vif_data.columns],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+        ])
     ])
 
 def build_dummy_model():
     # Dummy values for demonstration purposes
     model_performance = [
-        {'Model': 'Linear Regression', 'Performance': 0.75, 'R2': 0.76, 'MSE': 1.25, 'CV Mean': 0.72, 'CV Std': 0.03, 'Training Time': 0.1},
-        {'Model': 'Decision Tree', 'Performance': 0.82, 'R2': 0.85, 'MSE': 1.15, 'CV Mean': 0.80, 'CV Std': 0.04, 'Training Time': 0.2},
-        {'Model': 'Random Forest Regressor', 'Performance': 0.90, 'R2': 0.92, 'MSE': 0.85, 'CV Mean': 0.88, 'CV Std': 0.02, 'Training Time': 0.5},
-        {'Model': 'XGBRegressor', 'Performance': 0.88, 'R2': 0.90, 'MSE': 0.95, 'CV Mean': 0.87, 'CV Std': 0.03, 'Training Time': 0.7},
-        {'Model': 'Gradient Boosting Regressor', 'Performance': 0.89, 'R2': 0.91, 'MSE': 0.90, 'CV Mean': 0.88, 'CV Std': 0.03, 'Training Time': 0.6},
-        {'Model': 'K-Nearest Neighbors Regressor', 'Performance': 0.80, 'R2': 0.83, 'MSE': 1.10, 'CV Mean': 0.79, 'CV Std': 0.04, 'Training Time': 0.3},
-        {'Model': 'LightGBM Regressor', 'Performance': 0.91, 'R2': 0.93, 'MSE': 0.80, 'CV Mean': 0.89, 'CV Std': 0.02, 'Training Time': 0.4},
-        {'Model': 'CatBoost Regressor', 'Performance': 0.92, 'R2': 0.94, 'MSE': 0.75, 'CV Mean': 0.91, 'CV Std': 0.02, 'Training Time': 0.5},
-        {'Model': 'SVM Regressor', 'Performance': 0.78, 'R2': 0.80, 'MSE': 1.30, 'CV Mean': 0.76, 'CV Std': 0.03, 'Training Time': 0.4}
+        {'Model': 'Linear Regression', 'R2': 0.76, 'MSE': 1.25, 'CV Mean': 0.72, 'CV Std': 0.03, 'Training Time': 0.1},
+        {'Model': 'Decision Tree', 'R2': 0.85, 'MSE': 1.15, 'CV Mean': 0.80, 'CV Std': 0.04, 'Training Time': 0.2},
+        {'Model': 'Random Forest Regressor', 'R2': 0.92, 'MSE': 0.85, 'CV Mean': 0.88, 'CV Std': 0.02, 'Training Time': 0.5},
+        {'Model': 'XGBRegressor', 'R2': 0.90, 'MSE': 0.95, 'CV Mean': 0.87, 'CV Std': 0.03, 'Training Time': 0.7},
+        {'Model': 'Gradient Boosting Regressor', 'R2': 0.91, 'MSE': 0.90, 'CV Mean': 0.88, 'CV Std': 0.03, 'Training Time': 0.6},
+        {'Model': 'K-Nearest Neighbors Regressor', 'R2': 0.83, 'MSE': 1.10, 'CV Mean': 0.79, 'CV Std': 0.04, 'Training Time': 0.3},
+        {'Model': 'LightGBM Regressor', 'R2': 0.93, 'MSE': 0.80, 'CV Mean': 0.89, 'CV Std': 0.02, 'Training Time': 0.4},
+        {'Model': 'CatBoost Regressor', 'R2': 0.94, 'MSE': 0.75, 'CV Mean': 0.91, 'CV Std': 0.02, 'Training Time': 0.5},
+        {'Model': 'SVM Regressor', 'R2': 0.80, 'MSE': 1.30, 'CV Mean': 0.76, 'CV Std': 0.03, 'Training Time': 0.4}
     ]
 
     best_reg_model_info = {
@@ -372,8 +409,8 @@ def build_dummy_model():
 
     # Generate dummy importance plot
     importance_df_reg = pd.DataFrame({
-        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id', 'next_speaker_id'],
-        'Importance': [0.15, 0.25, 0.10, 0.20, 0.18, 0.12, 0.13, 0.14]
+        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id'],
+        'Importance': [0.15, 0.25, 0.10, 0.20, 0.18, 0.12, 0.13]
     }).sort_values(by='Importance', ascending=False)
 
     plt.figure(figsize=(10, 8))
@@ -393,8 +430,8 @@ def build_dummy_model():
 
     # Dummy VIF data
     vif_data = pd.DataFrame({
-        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id', 'next_speaker_id'],
-        'VIF': [1.5, 2.0, 1.2, 1.8, 1.4, 1.6, 1.7, 1.3]
+        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id'],
+        'VIF': [1.5, 2.0, 1.2, 1.8, 1.4, 1.6, 1.7]
     })
 
     model_performance_df = pd.DataFrame(model_performance)
@@ -415,85 +452,129 @@ def build_dummy_model():
 
     return html.Div([
         html.H3('Model Building Completed! (Dummy)'),
-        html.H4('Input Summary'),
-        html.P('Features and Label used:'),
-        html.P('Features: meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency, speaker_id, next_speaker_id'),
-        html.P('Label: individual_collaboration_score'),
-        html.P('Encodings used: StandardScaler for all features, OneHotEncoder for speaker_id and next_speaker_id'),
-        html.P('Models compared: Linear Regression, Decision Tree, Random Forest Regressor, XGBRegressor, Gradient Boosting Regressor, K-Nearest Neighbors Regressor, LightGBM Regressor, CatBoost Regressor, SVM Regressor'),
-        html.H4('Hyperparameter Tuning'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=list(hyperparameter_df.columns),
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[hyperparameter_df[col] for col in hyperparameter_df.columns],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
-        html.H4('Performance Summary'),
-        html.H5('Model Performance Comparison:'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=list(model_performance_df.columns),
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[model_performance_df[col] for col in model_performance_df.columns],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
-        html.H5('Selected Model:'),
-        html.P(f"Model: {best_reg_model_info['model']}"),
-        html.P(f"R2: {best_reg_model_info['r2']}"),
-        html.P(f"MSE: {best_reg_model_info['mse']}"),
-        html.P(f"CV Mean R2: {best_reg_model_info['cv_mean_r2']}"),
-        html.P(f"CV Std R2: {best_reg_model_info['cv_std_r2']}"),
-        html.P(f"Training Time: {best_reg_model_info['training_time']} seconds"),
-        html.P(f"Best Params: {best_reg_model_info['params']}"),
-        html.H5('Feature Importance:'),
-        html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode()),
-        html.H5('Actual vs Predicted:'),
-        html.Img(src='data:image/png;base64,' + base64.b64encode(open('actual_vs_predicted.png', 'rb').read()).decode()),
-        html.H4('Model Validity Check'),
-        html.H5('Overfitting Check (Cross-Validation Results):'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=['Model', 'CV Mean R2', 'CV Std R2'],
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[[model['Model'] for model in model_performance],
-                                           [model['CV Mean'] for model in model_performance],
-                                           [model['CV Std'] for model in model_performance]],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
-        html.H5('Multicollinearity Check (VIF):'),
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Table(
-                        header=dict(values=list(vif_data.columns),
-                                    fill_color='paleturquoise',
-                                    align='left'),
-                        cells=dict(values=[vif_data[col] for col in vif_data.columns],
-                                   fill_color='lavender',
-                                   align='left'))
-                ]
-            )
-        ),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'}, children=[
+            html.H2('Input Summary'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Feature', 'Label', 'Encodings', 'Models Compared'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[
+                                'meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency, speaker_id',
+                                'individual_collaboration_score',
+                                'StandardScaler for all features, OneHotEncoder for speaker_id',
+                                'Linear Regression, Decision Tree, Random Forest Regressor, XGBRegressor, Gradient Boosting Regressor, K-Nearest Neighbors Regressor, LightGBM Regressor, CatBoost Regressor, SVM Regressor'
+                            ],
+                            height=30,
+                            fill_color='lavender',
+                            align='left'))
+                    ]
+                )
+            ),
+        ]),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H2('Hyperparameter Tuning'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=list(hyperparameter_df.columns),
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[hyperparameter_df[col] for col in hyperparameter_df.columns],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+        ]),
+        html.H2('---Model Built---', style={'text-align': 'center', 'margin-top': '20px', 'margin-bottom': '20px'}),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H2('Performance Summary'),
+            html.H3('Model Performance Comparison:'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Model', 'R2', 'MSE', 'CV Mean', 'CV Std', 'Training Time'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[model_performance_df[col] for col in model_performance_df.columns],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+            html.H3('Selected Model:'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Metric', 'Value'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[
+                                ['Model', 'R2', 'MSE', 'CV Mean R2', 'CV Std R2', 'Training Time', 'Best Params'],
+                                [
+                                    best_reg_model_info['model'],
+                                    best_reg_model_info['r2'],
+                                    best_reg_model_info['mse'],
+                                    best_reg_model_info['cv_mean_r2'],
+                                    best_reg_model_info['cv_std_r2'],
+                                    best_reg_model_info['training_time'],
+                                    str(best_reg_model_info['params'])
+                                ]
+                            ],
+                            height=30,
+                            fill_color='lavender',
+                            align='left'))
+                    ]
+                )
+            ),
+        ]),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H3('Feature Importance:'),
+            html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode()),
+            html.H3('Actual vs Predicted:'),
+            html.Img(src='data:image/png;base64,' + base64.b64encode(open('actual_vs_predicted.png', 'rb').read()).decode()),
+        ]),
+        html.Div(style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'marginTop': '20px'}, children=[
+            html.H2('Model Validity Check'),
+            html.H3('Overfitting Check (Cross-Validation Results):'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=['Model', 'CV Mean R2', 'CV Std R2'],
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[[model['Model'] for model in model_performance],
+                                               [model['CV Mean'] for model in model_performance],
+                                               [model['CV Std'] for model in model_performance]],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+            html.H3('Multicollinearity Check (VIF):'),
+            dcc.Graph(
+                figure=go.Figure(
+                    data=[
+                        go.Table(
+                            header=dict(values=list(vif_data.columns),
+                                        fill_color='paleturquoise',
+                                        align='left'),
+                            cells=dict(values=[vif_data[col] for col in vif_data.columns],
+                                       height=30,
+                                       fill_color='lavender',
+                                       align='left'))
+                    ]
+                )
+            ),
+        ])
     ])
-
-# Example call to initialize the app
-# initialize_individual_self_ml_app(dash_app_instance, dataset_instance)

@@ -1,7 +1,4 @@
-﻿Talk_2024.6.26 10:16-1.txt
-저장한 날짜 : 2024. 6. 26. 오전 11:56
-
-
+﻿
 
 2024년 5월 21일 화요일
 2024. 5. 21. 오후 6:21: Speaker SPEAKER_03님이 Speaker SPEAKER_01님, Speaker SPEAKER_00님, Speaker SPEAKER_02님과 Speaker SPEAKER_04님을 초대했습니다.
@@ -4739,3 +4736,1185 @@ https://clovanote.naver.com/s/HEVxnteqeecBR34SosKmNQS
 2024. 6. 26. 오전 10:14, Speaker SPEAKER_00 : 오키오키! 사실 이제야 도커 어케 실행 정상적으로 하는지 파악해서 어제 안보이던 subjective scoring tag랑 a/b test tag 확인했어ㅎㅎ… 올려준거부터 시도해볼게!
 2024. 6. 26. 오전 10:16, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @노해수  @Speaker SPEAKER_04  @미경  
 내가 계속 develop의 api를 풀리퀘없이 직접 push하며 업데이트하고 있기 때문에 계속 중간중간 develop 풀 받아야 최신 코드로 유지가 돼. 만일 api 안의 코드를 바꾼 게 없다면 문제가 없지만 풀 안받은 상태로 수정했다면 충돌이 날거야.
+2024. 6. 26. 오후 12:35, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @노해수  @Speaker SPEAKER_04  @미경  
+오전 시간동안 api에 꽤나 많은 업데이트를 했다오. 자세한 내용은 commit 메세지로도 볼 수 있지만 대략적으로는 아래 내용들이야. develop을 풀하고 아래의 내용이 잘 업데이트 되어서 보이는지 각자 확인해보자!
+
+[collaboration_analysis_api update history]
+1. 공통
+   1.1. 모든 그래프에서 x-축에 모든 meeting number가 보입니다.
+   1.2. 모든 그래프에서 speaker 번호가 고유의 색을 가지게 통일했습니다.
+2. Monitoring tab
+   2.1. sna 그래프에서 project dropdown은 한가지 옵션만 선택 가능합니다.
+   2.2. interaction 그래프에서 self-interaction을 제외하고 값을 계산합니다.
+   2.3. gini 그래프에서 y-축이 뒤집힙니다. gini coefficient는 낮을수록 값들이 균일하다는 의미입니다.
+   2.4. degree 그래프에서 평균값을 검은색 dash 선으로 표시합니다.
+3. Subjective tab
+   3.1. overall 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+   3.2. 메타 인지 정확도를 보여주는 gap 그래프가 추가되었습니다.
+   3.3. others 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+   3.4. self 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+
+
+2024. 6. 26. 오후 12:37, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @노해수  그리고 현서야 subjective 탭에 others 그래프 내가 남에게 준 점수가 아니라 남이 내게 준 점수의 평균이 맞는 거 같거든? 이게 남에게 준 점수 같다고 저번 미팅 때 현서가 그랬잖아? 다시 한번 확인해볼래?
+
+만약 이 그래프가 문제가 없다면 해수가 더 수정할 것도 없겠어.
+2024. 6. 26. 오후 12:37, Speaker SPEAKER_03 : @Speaker SPEAKER_04  준영아 내가 이제 a/b test text-based/voice-based 수정할 거라 혹시 아직 시작 안했다면 할 필요없고 하는 중이라면 이제 충돌 안나게 작업 중인 코드를 따로 빼놓는 게 좋겠어.
+2024. 6. 26. 오후 12:38, Speaker SPEAKER_02 : 평균말고 By Speakers로 선택하고 필터에서 한명을 선택한 경우에 그렇게 나왔었어!!
+2024. 6. 26. 오후 12:38, Speaker SPEAKER_04 : 옹 다해놨는데 ㅋㅋㅋㅋ 오케이용
+2024. 6. 26. 오후 12:38, Speaker SPEAKER_03 : 아 다 했음? 그럼 그거 풀리퀘 해볼래?
+2024. 6. 26. 오후 12:39, Speaker SPEAKER_04 : 아냐아냐 아마 똑같이했을거같은데? 
+2024. 6. 26. 오후 12:39, Speaker SPEAKER_03 : 아하 그러네 ㅇㅋ 이거 수정해야겠다 @노해수  이거 내가 수정할게
+2024. 6. 26. 오후 12:39, Speaker SPEAKER_04 : 아 글구 카톡 데이터
+2024. 6. 26. 오후 12:39, Speaker SPEAKER_03 : 아 나는 아직 시작 안함
+2024. 6. 26. 오후 12:39, Speaker SPEAKER_04 : 업데이트 한거 이따가 풀리퀘할게!
+2024. 6. 26. 오후 12:40, Speaker SPEAKER_02 : 데이터 업데이트하니까 생각난건데 @Speaker SPEAKER_04  @노해수  설문조사 해주세요~!
+2024. 6. 26. 오후 12:43, Speaker SPEAKER_04 : 사진
+2024. 6. 26. 오후 12:44, Speaker SPEAKER_04 : 이정도 나오면 괜찮나 형?
+2024. 6. 26. 오후 12:44, Speaker SPEAKER_04 : 좀 나아지긴 했네
+2024. 6. 26. 오후 12:44, Speaker SPEAKER_03 : 아니 ㅋㅋㅋ 아직도 왜 이렇게 차이가 크지 ㅋㅋㅋ 아 이게 우리가 음성 기반 미팅을 많이 해서 그런가?
+2024. 6. 26. 오후 12:44, Speaker SPEAKER_04 : 그런가봐....
+2024. 6. 26. 오후 12:45, Speaker SPEAKER_03 : 일단 그 버전 코드로 업데이트하고 수정을 더 해도 그 기반으로 해보자. 풀리퀘 부탁.
+2024. 6. 26. 오후 12:45, Speaker SPEAKER_03 : text_voice.py <- 이거만 바꾼거지?
+2024. 6. 26. 오후 12:45, Speaker SPEAKER_04 : 오케이
+2024. 6. 26. 오후 12:45, Speaker SPEAKER_04 : ㅇㅇㅇㅇ
+2024. 6. 26. 오후 12:45, Speaker SPEAKER_04 : 그리고 data도 바꾼거 리퀘 할게
+2024. 6. 26. 오후 12:49, Speaker SPEAKER_04 : 근데 밥먹으러나와섴ㅋㅋㅋ 이따가 해도되나ㅠㅠ
+2024. 6. 26. 오후 12:50, Speaker SPEAKER_03 : ㅇㅇ 괜찮지. 나는 ml 탭 쪽 작업해야겠다. 내가 subjective 쪽 문제 수정해서 업데이트를 한번 더 했으니 준영이는 풀리퀘하기 전에 develop 풀만 한번 더 하고 풀리퀘하자.
+2024. 6. 26. 오후 12:53, Speaker SPEAKER_03 : subjective의 others 그래프 문제도 수정했으. 아래 업데이트 내역이 각자의 로컬 환경에서도 제대로 작동하는지 확인해봅시다.
+
+[collaboration_analysis_api update history]
+1. 공통
+   1.1. 모든 그래프에서 x-축에 모든 meeting number가 보입니다.
+   1.2. 모든 그래프에서 speaker 번호가 고유의 색을 가지게 통일했습니다.
+2. Monitoring tab
+   2.1. sna 그래프에서 project dropdown은 한가지 옵션만 선택 가능합니다.
+   2.2. interaction 그래프에서 self-interaction을 제외하고 값을 계산합니다.
+   2.3. gini 그래프에서 y-축이 뒤집힙니다. gini coefficient는 낮을수록 값들이 균일하다는 의미입니다.
+   2.4. degree 그래프에서 평균값을 검은색 dash 선으로 표시합니다.
+3. Subjective tab
+   3.1. overall 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+   3.2. 메타 인지 정확도를 보여주는 gap 그래프가 추가되었습니다.
+   3.3. others 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+   3.4. others 그래프에서 speakers dropdown에서 speaker가 선택되었을 때도 다른 4명에게 받은 평가의 평균이 표시됩니다.
+   3.5. self 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+2024. 6. 26. 오후 12:59, Speaker SPEAKER_04 : 넹
+2024. 6. 26. 오후 1:32, Speaker SPEAKER_00 : 했어용
+2024. 6. 26. 오후 1:32, Speaker SPEAKER_00 : 우리 오늘 저녁 6시에 미팅 있는거지?
+2024. 6. 26. 오후 1:33, Speaker SPEAKER_00 : 2-3시쯤에 1:1 미팅있고?
+2024. 6. 26. 오후 1:33, Speaker SPEAKER_03 : ㅇㅇ 글치 6시에는 그 되는시간 COO 피드백 미팅
+2024. 6. 26. 오후 1:34, Speaker SPEAKER_00 : 생각해보니 그럼 ppt 사용해야하는구나
+2024. 6. 26. 오후 1:34, Speaker SPEAKER_04 : 저는 그 미팅 안됄거 같아요ㅠㅠ 교수님이 메일을 안보시네여...ㅠㅠ 동영상으로 보겠습니다!
+2024. 6. 26. 오후 1:34, Speaker SPEAKER_03 : 아쉽지만 어쩔 수 없지 ㅠ 그렇게 하자
+2024. 6. 26. 오후 1:35, Speaker SPEAKER_03 : ㅇㅇ 그래야지 이거 그냥 내가 만들게
+2024. 6. 26. 오후 1:35, Speaker SPEAKER_00 : 확인이염
+2024. 6. 26. 오후 2:31, Speaker SPEAKER_04 : 풀리퀘 했엉
+2024. 6. 26. 오후 2:33, Speaker SPEAKER_04 : 잉 근데 내가 id meeting 넘버 다른거 전에 고쳣는데 왜 그대로지
+2024. 6. 26. 오후 2:33, Speaker SPEAKER_04 : 사진
+2024. 6. 26. 오후 2:33, Speaker SPEAKER_04 : 다시 고쳐?
+2024. 6. 26. 오후 2:34, Speaker SPEAKER_04 : ml 도울거 없어? 없으면 시키실거 시켜주세요
+2024. 6. 26. 오후 2:35, Speaker SPEAKER_04 : 아 글구 @Speaker SPEAKER_02  평가 했어 늦어서 미안해ㅠㅠ
+2024. 6. 26. 오후 2:41, Speaker SPEAKER_03 : 중간에 뭐 업데이트 하면서 덮어써졌나보다 일단 id는 고유하기만 하면 되지 그 내용이 정확한지는 상관없어서 요건 나중에 하자
+2024. 6. 26. 오후 2:42, Speaker SPEAKER_03 : 내가 ml 이제 거의 작업완료해서 업데이트 할 거거든? 그거 보면서 더 추가 수정 보완해보자 ㅋㅋㅋ 이제 슬슬 ppt 작업해야할 듯
+2024. 6. 26. 오후 2:52, Speaker SPEAKER_00 : 나는 이제 어느정도 api 이해했는데 2번 쪽으로 가는게 좋을 것 같아서 보고서 같이 진행할게
+2024. 6. 26. 오후 2:52, Speaker SPEAKER_00 : 혹시 지금까지 진행된 부분 있으면 내용 공유 좀 해주라
+2024. 6. 26. 오후 2:52, Speaker SPEAKER_02 : https://docs.google.com/document/d/1b12mCo3EBde-Vm0mspR7Nm_tcZpSquhn/edit?usp=sharing&ouid=111397530131493498109&rtpof=true&sd=true
+2024. 6. 26. 오후 2:52, Speaker SPEAKER_01 : 지금 현서가 구글 docs로 작성해놓은 냐용있고 거기에 내가 1:1미팅끝나고 내용추가할계획이었스!
+2024. 6. 26. 오후 2:56, Speaker SPEAKER_03 : 준영이 풀리퀘는 시간이 촉박해서 내가 머지했어 충돌날 파일이 없어보이기도 했고 실제로 풀 받아보니 충돌도 없네
+2024. 6. 26. 오후 2:56, Speaker SPEAKER_04 : 넵 그럼 나더 잠시 보고서로 붙어?
+2024. 6. 26. 오후 2:56, Speaker SPEAKER_04 : 나 시켜줘 맘껏 시켜줘
+2024. 6. 26. 오후 2:56, Speaker SPEAKER_04 : 이모티콘 
+2024. 6. 26. 오후 2:57, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 훌륭하다 ㅋㅋㅋ 고마우이
+2024. 6. 26. 오후 2:57, Speaker SPEAKER_04 : 그보고서 지금 공유 되어있는 파일있어??/
+2024. 6. 26. 오후 2:58, Speaker SPEAKER_03 : 음 잠깐 그럴래? 어차피 나도 그렇고 전부 다 보고서와 PPT도 참여해야하니까
+2024. 6. 26. 오후 2:58, Speaker SPEAKER_04 : 오케이!
+2024. 6. 26. 오후 2:58, Speaker SPEAKER_03 : 아 잠만 근데 ㅋㅋㅋ
+2024. 6. 26. 오후 2:58, Speaker SPEAKER_04 : 엉엉!
+2024. 6. 26. 오후 2:59, Speaker SPEAKER_03 : 혹시 준영야 그 text-based 쪽 a/b 그거 좀 frequency 좀 비교가 너무 말도 안되게 크게 나지 않게 normalization할 방법이 없으려나
+2024. 6. 26. 오후 2:59, Speaker SPEAKER_04 : 흠 그거 한번 봐볼게 
+2024. 6. 26. 오후 2:59, Speaker SPEAKER_03 : 나도 고민해보긴 할건데 ml 작업하고 ppt 쪽으로 넘어가야 할 듯해서 일단 적어도 오늘은
+2024. 6. 26. 오후 2:59, Speaker SPEAKER_04 : 아니면 
+2024. 6. 26. 오후 2:59, Speaker SPEAKER_04 : 아니ㅏㄷ
+2024. 6. 26. 오후 2:59, Speaker SPEAKER_04 : 생각해볼게유
+2024. 6. 26. 오후 3:00, Speaker SPEAKER_00 : @Speaker SPEAKER_02 @미경 떙큐! 혹시 지금 파트 나눠서 작업하고 있는거야?
+2024. 6. 26. 오후 3:00, Speaker SPEAKER_00 : 나눠서 하고 있으면 뭐뭐 하고 있는지 알려주라~ 비는 부분 나도 바로 시작할게
+2024. 6. 26. 오후 3:01, Speaker SPEAKER_04 : ㅇㅇㅇ 구글 닥스로 공유하면서 하는게 나을거같은뎅
+2024. 6. 26. 오후 3:01, Speaker SPEAKER_00 : 요기
+2024. 6. 26. 오후 3:01, Speaker SPEAKER_00 : 준영아
+2024. 6. 26. 오후 3:01, Speaker SPEAKER_04 : 오 모야
+2024. 6. 26. 오후 3:01, Speaker SPEAKER_00 : 링크 현서가 올려줬으
+2024. 6. 26. 오후 3:01, Speaker SPEAKER_04 : 빠르다잉
+2024. 6. 26. 오후 3:02, Speaker SPEAKER_00 : ㅋㅋㅋㅋ말하기 전에 올려준건 안비밀
+2024. 6. 26. 오후 3:02, Speaker SPEAKER_04 : ㅎㅎ ㅎㅎ
+2024. 6. 26. 오후 3:02, Speaker SPEAKER_02 : 나눠서 한건 아니고 내가 지금 나와있어서ㅠㅠ 오전에 미리하고 보냈던거였어...!!
+2024. 6. 26. 오후 3:02, Speaker SPEAKER_02 : 빈부분 그냥 채우면 될것같아....
+2024. 6. 26. 오후 3:03, Speaker SPEAKER_02 : 권한은 다 허용했어용
+2024. 6. 26. 오후 3:03, Speaker SPEAKER_04 : 오게이
+2024. 6. 26. 오후 3:04, Speaker SPEAKER_00 : 아하 오키
+2024. 6. 26. 오후 3:04, Speaker SPEAKER_00 : 미경이는 무슨 부분 하고 있어?
+2024. 6. 26. 오후 3:04, Speaker SPEAKER_04 : 사진
+2024. 6. 26. 오후 3:04, Speaker SPEAKER_04 : 누나 지금 미팅중일거야
+2024. 6. 26. 오후 3:04, Speaker SPEAKER_00 : ㅋㅋㅋㅋㅋ 아하 오키
+2024. 6. 26. 오후 3:04, Speaker SPEAKER_00 : 이따 갔다오면 알려주셔
+2024. 6. 26. 오후 3:21, Speaker SPEAKER_01 : 정답
+2024. 6. 26. 오후 3:21, Speaker SPEAKER_04 : 사진
+2024. 6. 26. 오후 3:21, Speaker SPEAKER_01 : 나 미팅하고 있었으요
+2024. 6. 26. 오후 3:21, Speaker SPEAKER_01 : 이제 해수차례~
+2024. 6. 26. 오후 3:21, Speaker SPEAKER_04 : 이거 어떡할지 생각해봐주세요ㅠㅠ 차이가 너무 심하긴하네
+2024. 6. 26. 오후 3:22, Speaker SPEAKER_01 : 나 아직 만진부분은 없고 현서꺼 읽어보고 수정할 부분이나 추가하고 싶은 부분 넣으려고했어..!!
+2024. 6. 26. 오후 3:23, Speaker SPEAKER_01 : 너도 수정하고 싶은 부분이나 추가하고 싶은 부분 편하게 댓글형식이나 바로 수정하면서 이야기봐도 괜찮을거가타!!
+2024. 6. 26. 오후 3:25, Speaker SPEAKER_01 : 나는 이제 본록쪽..써볼까하고있긴해
+2024. 6. 26. 오후 3:35, Speaker SPEAKER_00 : 흠… 이게 전체적으로 데이터 양이 적은게 아니라 회차마다 편차가 너무 커서 사용해도 괜찮을까 의문이 든다…
+2024. 6. 26. 오후 3:35, Speaker SPEAKER_00 : 아하 오케이 본론에 파트 하나씩 잡고 쭉 쓰면 좋을 것 같네
+2024. 6. 26. 오후 3:36, Speaker SPEAKER_00 : 나 그럼 바로 2.1부터 시작할게
+2024. 6. 26. 오후 3:41, Speaker SPEAKER_04 : 오케이...
+2024. 6. 26. 오후 3:41, Speaker SPEAKER_04 : 어렵네
+2024. 6. 26. 오후 3:43, Speaker SPEAKER_04 : 그리고 보고서 쓸때 글머리 표? 그 댕그라미? 그거 최대한 통일화하면서 써봅시다요
+2024. 6. 26. 오후 3:43, Speaker SPEAKER_01 : 에 이거 나 쓰고있었오..
+2024. 6. 26. 오후 3:44, Speaker SPEAKER_00 : 나이스 빨리 알려줘서 고맙다잉
+2024. 6. 26. 오후 3:44, Speaker SPEAKER_00 : 다른거 할게~
+2024. 6. 26. 오후 3:44, Speaker SPEAKER_01 : 내가 2.2까지 우선쓸테니 그 아래부터 
+2024. 6. 26. 오후 3:44, Speaker SPEAKER_01 : 해줄 수 있나..?
+2024. 6. 26. 오후 3:44, Speaker SPEAKER_00 : 오키!
+2024. 6. 26. 오후 3:44, Speaker SPEAKER_01 : ㅠㅠ
+2024. 6. 26. 오후 3:44, Speaker SPEAKER_01 : 감쟈
+2024. 6. 26. 오후 3:49, Speaker SPEAKER_01 : 영훈오빠 우리 그 온라인 회의 녹화 프로그램 이름 뭔지 알 수 있을까???
+2024. 6. 26. 오후 3:49, Speaker SPEAKER_01 : 그냥 간단하게 언급정도 하려구..
+2024. 6. 26. 오후 4:00, Speaker SPEAKER_04 : 저는 텍스트 15차? 그거 먼저 할게요.... 사람이 많아서 오래 걸리네요...ㅠㅠ
+2024. 6. 26. 오후 4:12, Speaker SPEAKER_04 : @선영훈  형 AB test 카톡은 안하는게 나을것 같아! 흠... 그리고 피드백 안쓰게 된 이유 어제 얘기 해보자 했는데 그냥 넘어갔다고 했는데 혹시 sd가 너무 커서 그런건가?
+2024. 6. 26. 오후 4:12, Speaker SPEAKER_00 : 동의합니다 - 절대 보고서 쓸게 줄어서가 아니라요ㅎㅎ
+2024. 6. 26. 오후 4:13, Speaker SPEAKER_04 : 나한테 쓸게 너무 많다고 전화했자나!!!!!어딜!!!!!!
+2024. 6. 26. 오후 4:13, Speaker SPEAKER_00 : 상시날조… 
+2024. 6. 26. 오후 4:13, Speaker SPEAKER_00 : 너 대학원 가서 그러면 큰일나 준영아
+2024. 6. 26. 오후 4:13, Speaker SPEAKER_03 : ? 이건 왜
+2024. 6. 26. 오후 4:14, Speaker SPEAKER_03 : 미팅마다 내용 편차가 큰건 미팅별로 값을 비교할 때 문제가 되지 전체 발화량 혹은 인터렉션을 비교할 땐 문제가 없다고 보는데
+2024. 6. 26. 오후 4:15, Speaker SPEAKER_03 : 피드백 A/B가 빠진 건 처치 간 그룹 분할이 피드백 A/B와 반말 A/B가 아주 유사하기 때문이었어
+2024. 6. 26. 오후 4:16, Speaker SPEAKER_03 : 아 위에 답글을 잘못 적었군 피드백 A/B가 빠진 건 처치 간 그룹 분할이 피드백 A/B와 반말 A/B가 아주 유사하기 때문이었어
+2024. 6. 26. 오후 4:16, Speaker SPEAKER_03 : 두 a/b 중 하나를 고른다면 casual/formal이 더 매력적이라고 생각했기 때문이지 이걸 저번 미팅 때 얘기하려고 했는데 시간이 부족했지
+2024. 6. 26. 오후 4:19, Speaker SPEAKER_04 : 카톡 vs 미팅이 처치하고자 하면 동등한 조건을 줘야 하는데 안 맞다고 생각했어
+카카오톡 대 미팅을 동일한 조건하에 비교하여 특정 목표(예를 들어 의사결정의 질 향상 등)에 대한 효과를 측정 했어야 했다고 봐.
+
+우리가 미팅하는 시간이 말하는게 아닌 채팅으로만 대화를 했어야 처치 라고 생각하는데 카톡은 평소에하고 미팅은 정해진 3시간 안에 하면 처치가 아니라고 생각을 하는데
+
+미팅과 카카오톡의 사용을 일정 시간 동안 동등하게 설정하고 했어야 AB 처치이지 않을까?
+2024. 6. 26. 오후 4:20, Speaker SPEAKER_04 : 아닌가.. 그래도 보이스 대 채팅 으로 비교하면 상관 없는건가....
+2024. 6. 26. 오후 4:21, Speaker SPEAKER_03 : sreenrec이라는 프로그램이야
+https://screenrec.com/
+2024. 6. 26. 오후 4:22, Speaker SPEAKER_03 : 음 그럼 발화의 밀도라고 생각하고 그날 첫번째 카톡 시간 ~ 마지막 카톡 시간으로 하면 되겠다
+2024. 6. 26. 오후 4:23, Speaker SPEAKER_03 : 분명 텍스트 기반 소통에서 발화량과 인터렉션의 차이가 발생하고 특정 인원별로도 볼 수가 있기에 아예 제거하기엔 아깝다고 생각해
+2024. 6. 26. 오후 4:23, Speaker SPEAKER_04 : 나도 그걸 생각해봤거덩? 근데 만약 00:01 분에 처음 하고 23:50 분에 답장오면 밀도가 안되지 않아?
+2024. 6. 26. 오후 4:23, Speaker SPEAKER_03 : 그런 경우가 있나?
+2024. 6. 26. 오후 4:24, Speaker SPEAKER_03 : 우리가 하루 종일 비슷한 밀도로 얘기한 날은 없는 듯한데
+2024. 6. 26. 오후 4:25, Speaker SPEAKER_03 : 그래서 혹시 우리가 이런 경우가 있더라도 대화 밀도가 높았던 시간 범위로 맞춰서 좀 잘라주면 될 듯
+2024. 6. 26. 오후 4:27, Speaker SPEAKER_04 : 나는 사용할거면 정규화? 시간으로 나누는건 하면 안됀다 생각하는데 그냥 frequency랑 count로 보는게 맞다고 생각하는데 
+
+시간으로 정규화 하게 되면 격차는 더욱 커질수 밖에 없다고 봐... 보이스는 길어야 3시간인데 채팅은 3시간 넘는게 훨 많을거 같은데
+2024. 6. 26. 오후 4:28, Speaker SPEAKER_04 : 아니면 내가 생각해본건
+2024. 6. 26. 오후 4:30, Speaker SPEAKER_04 : 카톡 데이터를 보면 12:01 이 있고 02:02 (시간) 가 있을거아니야? 
+
+그럼 시간 단위로 시간으로 나누는거지
+예를 들어 12:01 , 12:40 이 있으면 12에서 최소 최대 차이를 구한다음에 시간마다 다 적용해서 더하면 그날 했던 실질적인 카톡 얘기 분 시간이 나올거 같은데 
+그래도 3시간 넘는게 많을거 같긴해
+2024. 6. 26. 오후 4:30, Speaker SPEAKER_04 : 애초에 우리가 카톡하는게 훨적으니까....
+2024. 6. 26. 오후 4:34, Speaker SPEAKER_00 : 우리가 자꾸 불편함을 느끼는 이유가… 일단 전체적으로 데이터의 양 차이가 너무 많고, 데이터가 특정 날에만 몰려있기도 해서 확인하려는 voice기반 회의랑 text기반 회의에서의 차이를 잘 보여주지 못한다는 생각이 들어서 아닐까?
+2024. 6. 26. 오후 4:35, Speaker SPEAKER_04 : 일단 오늘 미팅 끝나고 생각해보자!
+2024. 6. 26. 오후 4:35, Speaker SPEAKER_00 : 그니까 이건 한번 모여서 얘기를 하는게
+2024. 6. 26. 오후 4:35, Speaker SPEAKER_00 : 좋을 것 같아 생각도 좀 정리해보고
+2024. 6. 26. 오후 4:40, Speaker SPEAKER_04 : 데이터 업데이트 해서 풀리퀘 할게 15차 추가했어! 영훈이형이랑 나랑 화자 구분 없는데 그냥 포기하고 영훈이형으로 다했엌ㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 26. 오후 4:42, Speaker SPEAKER_03 : 내가 api로 해본 거에서는 10명으로 구분하더라고 이걸 보고 합치는 게 나을지도
+2024. 6. 26. 오후 4:42, Speaker SPEAKER_03 : ㅋㅋㅋ 아 그래 좀 요번 미팅은 끝나고 해보자
+2024. 6. 26. 오후 4:42, Speaker SPEAKER_04 : 아 그래?
+2024. 6. 26. 오후 4:42, Speaker SPEAKER_03 : 지금 ppt랑 ml 작업 같이 하고 있는데 이것만으로도 너무 정신없다 ㅋㅋㅋ 다른 거까지 생각하기 너무 힘드네
+2024. 6. 26. 오후 4:42, Speaker SPEAKER_04 : 엉엉 형 언넝 해유
+2024. 6. 26. 오후 4:42, Speaker SPEAKER_03 : 끝나고 해봅시다 이제 시간도 너무 얼마 안남았군
+2024. 6. 26. 오후 4:43, Speaker SPEAKER_04 : 넵!
+2024. 6. 26. 오후 4:44, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @노해수  @Speaker SPEAKER_04  @미경  
+그럼 준영이는 참여가 어려우니 어쩔 수 없고 나머지는 피드백 미팅 끝나고도 게더에서 잠깐만 얘기해보자 이제까지 얼마나 진행됐는지 내일까지 미팅 전까지 뭘 해보면 좋을지
+2024. 6. 26. 오후 4:44, Speaker SPEAKER_04 : 나한테 시킬거 아무거나 시켜줘도 됭~~~
+2024. 6. 26. 오후 4:46, Speaker SPEAKER_03 : ㅇㅇ 이거 ml을 서비스로 올리려니 갑자기 막 모듈 간 dependency 이슈부터 뭐가 문제가 생기는데 이것만 좀 해결되면 모델 구성이나 인코딩, 피쳐, 튜닝 등등 좀 같이 고쳐보면 좋을 듯
+2024. 6. 26. 오후 4:46, Speaker SPEAKER_04 : 넵 그리고 ml 모델 빌딩도 다시한번 확인해볼게
+2024. 6. 26. 오후 4:50, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @노해수  @Speaker SPEAKER_04  @미경  
+아 그리고 카톡 데이터를 음성과 a/b 테스트 형태로 비교해서 보여주기 어렵다면 어떻게 카톡 데이터와 음성 데이터에서 상호작용 형태가 다르다는 걸 보여줄 수 있을지도 생각해보자. 반드시 a/b 테스트 형태일 필요는 없긴 하지.
+2024. 6. 26. 오후 5:26, Speaker SPEAKER_03 : deveop 브랜치에 ML 탭 파일 업데이트했어. 지금은 제일 첫번째 버튼만 작동하는 상태로 돌리면 시간 좀 걸리고나서 아래처럼 보일거야.
+2024. 6. 26. 오후 5:26, Speaker SPEAKER_03 : 사진
+2024. 6. 26. 오후 5:27, Speaker SPEAKER_03 : 파일: 발표자료_팀제로백_How we collaborate.pptx
+2024. 6. 26. 오후 5:28, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @노해수  @Speaker SPEAKER_04  @미경  
+그리고 시간이 진짜 얼마 안남긴 했는데 ㅋㅋ 저거 슬라이드 2개뿐이거든?? 나머지는 시연으로 보여주려고 하는데 저걸로 괜찮으려나 뭐가 추가, 수정, 삭제되면 좋을까 혹시 의견 있으면 아무거나 좋으니 피드백 부탁해!
+2024. 6. 26. 오후 5:33, Speaker SPEAKER_01 : 나머지는 시연으로 보여드릴거니까 저정도면 되지 않을까 싶어 나는! 말할 때 현재 프로젝트에 대한 필요성 및 생각의 흐름을 통해 이런 방향으로 가고있다만 잘 전달되면 될 거 같아
+2024. 6. 26. 오후 5:34, Speaker SPEAKER_02 : 내용은 나도 좋은 것 같은데 팀원 소개가 들어가야하지 않았었나??
+2024. 6. 26. 오후 5:34, Speaker SPEAKER_03 : 아 ㅋㅋㅋ 뭐라 쓰지 ㅋㅋㅋ
+2024. 6. 26. 오후 5:35, Speaker SPEAKER_03 : 지금 빨리 자기소개 같은 거 한줄 적어볼래?
+2024. 6. 26. 오후 5:35, Speaker SPEAKER_01 : 이름 전공 맡은역할정도 쓰면 될 거 같으
+2024. 6. 26. 오후 5:35, Speaker SPEAKER_02 : 역할: 이름 (전공)
+2024. 6. 26. 오후 5:35, Speaker SPEAKER_02 : 이정도로만 쓰면 될듯...?
+2024. 6. 26. 오후 5:35, Speaker SPEAKER_02 : 아니면 반대로 해야되나
+2024. 6. 26. 오후 5:36, Speaker SPEAKER_03 : 자 다들 전공 뭐였지? 적어보자.
+2024. 6. 26. 오후 5:36, Speaker SPEAKER_04 : 역할은 굳이 안써도 되지 않나? 아닌가 시간도 없을텐뎅
+2024. 6. 26. 오후 5:36, Speaker SPEAKER_02 : 근데 멘토님이 써주신 형식이
+2024. 6. 26. 오후 5:36, Speaker SPEAKER_02 : 이름, 전공, 역할이라서
+2024. 6. 26. 오후 5:36, Speaker SPEAKER_02 : 언니가 그렇게말한거가타
+2024. 6. 26. 오후 5:36, Speaker SPEAKER_01 : 그냥 그럼 간략히 전공 및 관련있는 분야정도만 적을까..?
+2024. 6. 26. 오후 5:36, Speaker SPEAKER_03 : ㅋㅋㅋ 근데 그 형식 꼭 지켜야되나는 생각이 갑자기 드는 군
+2024. 6. 26. 오후 5:37, Speaker SPEAKER_03 : 아이디어명, 1줄 설명
+제공 기능 - 핵심분석내용 1, 2가지를 잘 이해할 수 있도록
+1차 프로토타입(안) - 본 과정을 마칠때 예상하는 결과물의 형태, 이미지와 함께
+팀원 소개 (이름, 전공, 맡은 역할)
+향후 계획
+그 외 궁금한 점
+2024. 6. 26. 오후 5:37, Speaker SPEAKER_03 : 팀원 소개뿐만 아니라 저거 지키려면 뭘 많이 추가해야겠는데? ㅋㅋ
+2024. 6. 26. 오후 5:38, Speaker SPEAKER_03 : 그래도 여튼 그럼 빨리 전공 적어보자 첫페이지에 간략하게 적어볼까 해
+2024. 6. 26. 오후 5:38, Speaker SPEAKER_01 : 그렇담 나는 그냥 인공지능 관련 학과라고 적어줘...ㅎ 전공명이 너무 복잡해서..ㅎ
+2024. 6. 26. 오후 5:39, Speaker SPEAKER_04 : 아하! 가릿 
+저 대신 설명해 주세요! ㅎㅎ 
+전공: 수학통계학+컴공
+
+2024. 6. 26. 오후 5:39, Speaker SPEAKER_03 : 자 그럼 하나씩 정리해보자
+선영훈(심리학과)
+이미경(인공지능)
+Speaker SPEAKER_04(수학통계학, 컴퓨터공학)
+Speaker SPEAKER_02()
+노해수(경영학과)
+
+2024. 6. 26. 오후 5:39, Speaker SPEAKER_03 : 해수 경영학이라고 적으면 되나?
+2024. 6. 26. 오후 5:39, Speaker SPEAKER_04 : ㅇㅇㅇ 그럴거야
+2024. 6. 26. 오후 5:40, Speaker SPEAKER_03 : 현서가 정확히 부서 이름이 뭐였지? 전자통신학과였나?
+2024. 6. 26. 오후 5:41, Speaker SPEAKER_02 : 응 전자통신공학과
+2024. 6. 26. 오후 5:41, Speaker SPEAKER_03 : @노해수  해수 이렇게 경항학과라고 적으면 돼?
+2024. 6. 26. 오후 5:41, Speaker SPEAKER_03 : 오 맞췄다 ㅋㅋㅋ
+2024. 6. 26. 오후 5:41, Speaker SPEAKER_03 : 선영훈(심리학과)
+이미경(인공지능)
+Speaker SPEAKER_04(수학통계학, 컴퓨터공학)
+Speaker SPEAKER_02(전자통신공학과)
+노해수(경영학과)
+2024. 6. 26. 오후 5:41, Speaker SPEAKER_04 : 나 컴공 빼도되 너무 길어 혼자 외로워
+2024. 6. 26. 오후 5:42, Speaker SPEAKER_01 : 나도 뒤에 학과 붙여ㅕ줘 외로워
+2024. 6. 26. 오후 5:42, Speaker SPEAKER_01 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅎㅎ
+2024. 6. 26. 오후 5:42, Speaker SPEAKER_03 : 선영훈(심리학)
+이미경(인공지능)
+Speaker SPEAKER_04(수학통계학)
+Speaker SPEAKER_02(전자통신공학)
+노해수(경영학과)
+2024. 6. 26. 오후 5:42, Speaker SPEAKER_03 : 아냐 우리 다 줄이자 조금이라도 줄여야지 ㅋㅋ
+2024. 6. 26. 오후 5:42, Speaker SPEAKER_01 : ㅜㅜ
+2024. 6. 26. 오후 5:42, Speaker SPEAKER_03 : 그럼 이렇게 적는다? 그리고 이게 역할을 적기가 좀 그런데 ㅋㅋ 뭐라고 적냐 우리가 딱 분할해서 한것도 아니고
+@Speaker SPEAKER_02  @노해수  @Speaker SPEAKER_04  @미경  
+2024. 6. 26. 오후 5:43, Speaker SPEAKER_03 : 선영훈(심리학)
+이미경(인공지능)
+Speaker SPEAKER_04(수학통계학)
+Speaker SPEAKER_02(전자통신공학)
+노해수(경영학)
+2024. 6. 26. 오후 5:43, Speaker SPEAKER_02 : 이모티콘 
+2024. 6. 26. 오후 5:43, Speaker SPEAKER_04 : 이모티콘 
+2024. 6. 26. 오후 5:43, Speaker SPEAKER_00 : 엉엉
+2024. 6. 26. 오후 5:44, Speaker SPEAKER_00 : 역할 필요 없을 것 같은데
+2024. 6. 26. 오후 5:44, Speaker SPEAKER_00 : 사실 우리 소개가 필요할깦
+2024. 6. 26. 오후 5:44, Speaker SPEAKER_00 : ?
+2024. 6. 26. 오후 5:44, Speaker SPEAKER_00 : 그냥 형식상…
+2024. 6. 26. 오후 5:44, Speaker SPEAKER_04 : 그것도 그랰ㅋㅋㅋㅋ
+2024. 6. 26. 오후 5:44, Speaker SPEAKER_00 : 적어두신거 아닐까?
+2024. 6. 26. 오후 5:44, Speaker SPEAKER_01 : 진짜 형식상..
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_03 : 야 그럼 ㅋㅋㅋ 우리 걍 학과도 뺄까? 이게 중요한가? ㅋㅋㅋㅋ
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_00 : 그리고 자기소개에 시간 투자하기엔
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_00 : 우리 미팅 시간이 너뮤 아까워
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_03 : 또 넣으려니 공간이 마땅치 않네 첫페이지도
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_04 : 맞아 그냥 소개 없애쟈~~~ 백수입니다!
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_00 : 좋다~
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_03 : 그래 ㅋㅋㅋㅋ 물어보면 답하는걸로
+2024. 6. 26. 오후 5:45, Speaker SPEAKER_03 : 시간이 한정되어있으니 최대한 프로젝트 내용 위주로 갑시다
+2024. 6. 26. 오후 5:47, Speaker SPEAKER_03 : 와 시간 개부족했네 ㅋㅋㅋ ml 썩을 ㅋㅋㅋ 뭔 호환성 문제가 생기면서 갑자기 다커도 무거워지고 아예 서비스가 에러 안나게 하는 것도 시간 한참 걸렸네 ㅋㅋㅋ
+2024. 6. 26. 오후 5:47, Speaker SPEAKER_03 : 그 안의 ml 모델 수정은 이번 피드백 회의 끝나고 차차 다같이 해봅시다
+2024. 6. 26. 오후 5:48, Speaker SPEAKER_03 : 아 지금은 requirements.txt만 잘 develop에서 풀 받으면 호환성 문제 해결됐습니닷
+2024. 6. 26. 오후 5:49, Speaker SPEAKER_00 : 굿굿 
+2024. 6. 26. 오후 5:49, Speaker SPEAKER_04 : 고생 많았어요ㅠㅠ
+2024. 6. 26. 오후 5:49, Speaker SPEAKER_00 : 고생했으
+2024. 6. 26. 오후 5:49, Speaker SPEAKER_01 : 고생해써
+2024. 6. 26. 오후 5:50, Speaker SPEAKER_03 : ㅋㅋㅋ 감사 감사 ㅋㅋ 근데 서비스에 올라만 갔다 뿐 올라간 ml 자체의 문제는 많아서 수정을 계속 하긴 해야 해
+2024. 6. 26. 오후 5:51, Speaker SPEAKER_03 : @Speaker SPEAKER_04  아 근데 준영이 이 시간까지 카톡할 수 있는게 혹시 이번 회의도 참여 가능한건가? 아님 교수님 보기 전에 잠간 카톡하는거야?
+2024. 6. 26. 오후 5:53, Speaker SPEAKER_04 : 아닝 나 이제 교수님 만나러 가야지...또륵
+2024. 6. 26. 오후 5:53, Speaker SPEAKER_03 : 아 ㅋㅋㅋ 글쿤 ㅋㅋ 그럼 교수님 미팅 잘하고 내일 봅세 ㅋㅋ
+2024. 6. 26. 오후 5:53, Speaker SPEAKER_04 : 네ㅠㅠ 전 털리러 가볼게용
+2024. 6. 26. 오후 5:55, Speaker SPEAKER_00 : ㅋㅋㅋㅋ.. ㅎㅇㅌ
+2024. 6. 26. 오후 5:55, Speaker SPEAKER_02 : 구글미트 링크 공유 아직 안된거져
+2024. 6. 26. 오후 5:55, Speaker SPEAKER_02 : 아닌가? 나만 못찾고있나?
+2024. 6. 26. 오후 5:55, Speaker SPEAKER_00 : ㅋㅋㅋ노노
+2024. 6. 26. 오후 5:55, Speaker SPEAKER_00 : 나도
+2024. 6. 26. 오후 5:55, Speaker SPEAKER_00 : 기다리는중
+2024. 6. 26. 오후 5:55, Speaker SPEAKER_01 : 아직 공유안해주신거같아유
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_03 : ㅋㅋㅋ 좀 늦으시나
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_00 : 현서야
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_00 : 다 들어와서
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_00 : 기다리는데
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_00 : 언제와?
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_02 : 네?ㅠㅠ
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_00 : ㅈㅅ..
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_02 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_02 : 나도 재밌게 받아치고싶다
+2024. 6. 26. 오후 5:56, Speaker SPEAKER_01 : 못된거봐
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_00 : 자꾸하면 이런 대접 받아..
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_00 : 괜찮겠어?
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_02 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_02 : 어 올라왔다
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_01 : 어
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_01 : 올라옴!!!!
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_01 : 들어욋죵
+2024. 6. 26. 오후 5:57, Speaker SPEAKER_01 : 오시죠
+2024. 6. 26. 오후 7:46, Speaker SPEAKER_00 : 🥰준영이를 위한 회의 내용 간단 요약🥰
+
+* 미팅 내용 요약
+- 비슷한 서비스 있음 '콜라보' 확인해보쇼
+- so what?? 분석은 했는데 그래서 소비자에게 주는 이점이 뭔지 정리해보세여
+- 잠재고객들 정하고 인터뷰 해봤나요? 비슷한 서비스들이 있기에 고객 타게팅 중요함
+- 결과 값을 사용자들에게 어떤 가이드로 제공할건가요?
+-> 서비스 목적이 뭐고 대상이 누구고 어떤 효과를 기대하는지 소비자 입장에서 좀 더 생각해 보십쇼!
+
+* 다음 회의 안건
+- A/B test text, voice 사용할건가?
+- ML 어떤 피쳐 사용할지 등 디테일
+- 서비스 업데이트 내용 잘 굴러가는지 확인, 개선사항
+- aws 활용 계획 수립
+2024. 6. 26. 오후 7:46, Speaker SPEAKER_01 : 그 되는시간 미팅내용은 나도 노션에 적어뒀당..ㅎ
+2024. 6. 26. 오후 7:46, Speaker SPEAKER_01 : 별건아님^_^…
+2024. 6. 26. 오후 7:46, Speaker SPEAKER_00 : -시간 남으면 프로젝트 목적과 기대효과에 대해 토론
+2024. 6. 26. 오후 7:47, Speaker SPEAKER_00 : 굿걸
+2024. 6. 26. 오후 7:48, Speaker SPEAKER_01 : 이모티콘 
+2024. 6. 26. 오후 7:48, Speaker SPEAKER_00 : 내일까지는 보고서(2.5 모델링까지)에 포커스 하기로했어 준영이 너는 ml너가한 내용 적으면 될 듯!
+2024. 6. 26. 오후 7:52, Speaker SPEAKER_04 : 감덩 ㅠㅠ
+2024. 6. 26. 오후 8:05, Speaker SPEAKER_03 : 아 젠장... 역시 좋은 얘기가 아니었군 집주인이 갑자기 담달까지 이사 가라고 하네 ㅋㅋㅋㅋ 아나 ㅋㅋ 갑자기 또 이사를 해야하네 ㅠㅜ
+2024. 6. 26. 오후 8:06, Speaker SPEAKER_04 : 에???
+2024. 6. 26. 오후 8:10, Speaker SPEAKER_01 : 헐
+2024. 6. 26. 오후 8:10, Speaker SPEAKER_01 : 뮤슨얘기였어?왜??
+2024. 6. 26. 오후 8:11, Speaker SPEAKER_01 : 계약기간이잌ㅅ는데 갑자기 나가라해..??
+2024. 6. 26. 오후 8:11, Speaker SPEAKER_03 : 아니 뭐 건축물 불법 사항이 걸려서 원룸 2개를 합쳐서 투룸으로 만드는 공사를 갑자기 해야한대 ㅠ 들어온지 3개월인데 이게 무슨 난리람 ㅠ
+2024. 6. 26. 오후 8:12, Speaker SPEAKER_03 : 벽을 트는 공사를 한다는데 계약서 가지고 싸우는 것도 의미없겠다 싶고 ㅠ ㅋㅋㅋ 그냥 이사 용달비라도 지원해주겠다고 할때 얼른 방 알아봐야겠네 뭐 이런 경우가 다 있냐
+2024. 6. 26. 오후 8:13, Speaker SPEAKER_01 : 근데 그럼 계약기간안지키는데 이사비랑 그런건 다 즈긴해야지…
+2024. 6. 26. 오후 8:13, Speaker SPEAKER_01 : 근데그거랑별개로 신경쓸게많아지겠네ㅠ
+2024. 6. 26. 오후 8:13, Speaker SPEAKER_03 : ㅋㅋㅋ 하필이면 타이밍도 거지같네 ㅋㅋ 한 두세달만 뒤여도 낫겠구만 ㅠ
+2024. 6. 26. 오후 8:18, Speaker SPEAKER_00 : 아이고… 한여름에 또 집보러 돌아다녀야 한다고?
+2024. 6. 26. 오후 8:18, Speaker SPEAKER_00 : 진짜 너무한다…
+2024. 6. 26. 오후 8:46, Speaker SPEAKER_03 : ㅋㅋㅋ 원룸 난리난 거는 난리난 거고 우리 내일 모일 때 유사한 서비스인 콜라보도 한번씩 확인해보고 옵시다. 여기서 좀 따올 만한 요소 있으면 참고하자.
+
+https://callabo.ai/ko
+2024. 6. 26. 오후 9:18, Speaker SPEAKER_00 : 오키!
+
+2024년 6월 27일 목요일
+2024. 6. 27. 오전 11:27, Speaker SPEAKER_03 : ㅎㅎㅎ 잠깐 정줄 놨지만 다시 열심히 해봐야겠군
+2024. 6. 27. 오전 11:27, Speaker SPEAKER_03 : 혹시 새로 업데이트된 코드로 서비스 ml 탭 실행해본 분??
+2024. 6. 27. 오전 11:28, Speaker SPEAKER_03 : 결과 레이아웃에 더 보였으면 좋겠거나 구성 요소 같은 거 제안 있으면 같이 생각해보자
+2024. 6. 27. 오전 11:28, Speaker SPEAKER_03 : 그리고 내가 monitoring tab에 title들 이름을 임시 수정했단 말이지? 전체 웹페이지 제목도 바꿨고
+2024. 6. 27. 오전 11:29, Speaker SPEAKER_03 : 데이터 분석 기술에 익숙하지 않은 사람들에게도 전달력을 가지기 위해서는 각 문구의 내용이나 경우에 따라서는 이미지나 아이콘을 넣어도 좋겠어. 이것도 각자 좀 생각해보자.
+2024. 6. 27. 오전 11:30, Speaker SPEAKER_03 : @Speaker SPEAKER_04  @미경  @Speaker SPEAKER_02   혹시 ml_overall.py 참고해서 ml_individual_self.py나 ml_individual_others.py도 작동되게 코드 고쳐볼 수 있을까? 물론 ml_overall.py도 개선해보면 좋겠지. 각자가 작업했던 ml 영역을 한번 보면 좋을 듯 해.
+2024. 6. 27. 오전 11:34, Speaker SPEAKER_04 : 넵 나도 계속 성능이랑 일반화 늘리려고 계속 해보고 있긴했는데 overall 에 맞게 고칠게유
+2024. 6. 27. 오전 11:45, Speaker SPEAKER_04 : 그리고 overall좀 수정해도 되지?
+2024. 6. 27. 오전 11:45, Speaker SPEAKER_04 : 충돌 내보자!!!!!!!!
+2024. 6. 27. 오전 11:45, Speaker SPEAKER_04 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 27. 오전 11:46, Speaker SPEAKER_03 : ㅇㅇ 나도 수정하고 있어서 충돌날거 같긴 한데 이참에 연습해보자 충돌 어떻게 해결할지 ㅋㅋㅋ
+2024. 6. 27. 오전 11:46, Speaker SPEAKER_04 : ㅋㅋㅋㅋㅋㅋㅋㅋ 오케이!
+2024. 6. 27. 오전 11:46, Speaker SPEAKER_03 : 내가 overall에서 틀을 갖춰지면 그거 가지고 나머지 둘 적용하려고 하거든
+2024. 6. 27. 오전 11:46, Speaker SPEAKER_03 : 일단 overall부터 작업해보자
+2024. 6. 27. 오전 11:46, Speaker SPEAKER_04 : 어 나도 그렇게 하려공 ㅎㅎ
+2024. 6. 27. 오전 11:51, Speaker SPEAKER_03 : 아 준영아 일단 너 그럼 웹브라우저에서 모델 빌딩되고 결과는 나오는거지? 수정할 점은 많지만
+2024. 6. 27. 오전 11:51, Speaker SPEAKER_04 : 엉엉 overall만 나오던데?
+2024. 6. 27. 오전 11:51, Speaker SPEAKER_04 : 아래 두개는 안나와
+2024. 6. 27. 오전 11:51, Speaker SPEAKER_04 : 내가 수정해볼게!
+2024. 6. 27. 오전 11:51, Speaker SPEAKER_03 : ㅋㅋㅋ 응 ㅋㅋ 그렇더라고 ㅋㅋ 일단 overall 작업해보자
+2024. 6. 27. 오전 11:51, Speaker SPEAKER_04 : 형은 나와?
+2024. 6. 27. 오전 11:51, Speaker SPEAKER_04 : 아하
+2024. 6. 27. 오전 11:52, Speaker SPEAKER_04 : 넵
+2024. 6. 27. 오전 11:52, Speaker SPEAKER_03 : 요렇게 나오는 거 맞지?
+2024. 6. 27. 오전 11:52, Speaker SPEAKER_04 : 엉엉 
+2024. 6. 27. 오전 11:52, Speaker SPEAKER_04 : 맞앙
+2024. 6. 27. 오전 11:52, Speaker SPEAKER_04 : 그래프 잘리는거 해결해보고 있어
+2024. 6. 27. 오전 11:53, Speaker SPEAKER_03 : 음 ㅋㅋ 지금 코드 전반을 갈아엎고 있긴 한데 그래도 어떨 때 잘리는지 파악해두면 확실히 나중에도 도움 될듯
+2024. 6. 27. 오전 11:53, Speaker SPEAKER_04 : 형 근데 나 궁금한게 있는데 py파일 고치고 다시 실행하려면! 혹시 컨테이너 삭제 했다가 다시 실행 해야 해?
+2024. 6. 27. 오전 11:53, Speaker SPEAKER_04 : 난 계속 그러고 있는데
+2024. 6. 27. 오전 11:53, Speaker SPEAKER_03 : 앞에거는 어떻게든 오류 안나고 한번은 나와라 느낌으로 막 했던 게 있어서 ㅋㅋ
+2024. 6. 27. 오전 11:53, Speaker SPEAKER_03 : ㅇㅇ 그래야해
+2024. 6. 27. 오전 11:53, Speaker SPEAKER_04 : 아하 오케이
+2024. 6. 27. 오전 11:53, Speaker SPEAKER_03 : 아니면 컨터이너에 들어가서 직접 이미지를 고칠 수도 있는데
+2024. 6. 27. 오전 11:54, Speaker SPEAKER_03 : 그러면 vscode의 도움 없이 완전 쌩 터미널 작업해야해
+2024. 6. 27. 오전 11:54, Speaker SPEAKER_04 : 그렇구마이 
+2024. 6. 27. 오전 11:54, Speaker SPEAKER_03 : 아니면 터미널 내 vim 환경이라든가?
+2024. 6. 27. 오전 11:54, Speaker SPEAKER_04 : 편한거 찾다가 까비
+2024. 6. 27. 오전 11:54, Speaker SPEAKER_03 : 그래서 다커 이미지가 크지 않으면 걍 이미지 통으로 지우고 다시 빌딩하는 게 낫겠더라고
+2024. 6. 27. 오전 11:54, Speaker SPEAKER_03 : 나는 ml 라이브러리 추가되니 빌딩 한 1분쯤 걸리던데 오래 걸림?
+2024. 6. 27. 오전 11:55, Speaker SPEAKER_04 : 나도 딱 1분정도 걸려
+2024. 6. 27. 오전 11:57, Speaker SPEAKER_04 : 사진
+2024. 6. 27. 오전 11:57, Speaker SPEAKER_04 : 해결
+2024. 6. 27. 오전 11:58, Speaker SPEAKER_03 : 오 ㅋㅋㅋ 일단 풀리퀘해보자. 어디 바꿈??
+2024. 6. 27. 오전 11:59, Speaker SPEAKER_00 : 사진
+2024. 6. 27. 오전 11:59, Speaker SPEAKER_00 : @Speaker SPEAKER_02 주의하시오 일찍 다니는 현서
+2024. 6. 27. 오전 11:59, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 괜히 뭔가 찔리네 ㅋㅋㅋ
+2024. 6. 27. 오후 12:00, Speaker SPEAKER_00 : 제대로 한국 감성인 나머지 분들은 평소처럼 하시면 됩니다^^
+2024. 6. 27. 오후 12:00, Speaker SPEAKER_00 : ㅋㅋ나 포함..
+2024. 6. 27. 오후 12:01, Speaker SPEAKER_04 : 왜 나는 빼???
+2024. 6. 27. 오후 12:30, Speaker SPEAKER_03 : @Speaker SPEAKER_04  풀리퀘 머지함! ㅋㅋㅋ 역시 변경 내용이 있으니 develop 풀이 거절되는군 ㅋㅋ 이거 해결해봐야겠네
+2024. 6. 27. 오후 12:31, Speaker SPEAKER_04 : 맞아...그게 문제여 근데 그거 바꾼건 아마 py파일은 아닐텐데
+2024. 6. 27. 오후 12:31, Speaker SPEAKER_03 : 어 맞네 ㅋㅋ 근데 왜 경고창 떴던거지 ㅋㅋ
+2024. 6. 27. 오후 12:31, Speaker SPEAKER_03 : 일단 덮어쓰는 방식으로 해결은 함
+2024. 6. 27. 오후 12:32, Speaker SPEAKER_04 : 난 문제가 없는디
+2024. 6. 27. 오후 12:32, Speaker SPEAKER_03 : api overall 파일도 풀리퀘 함 해봐봐
+2024. 6. 27. 오후 12:32, Speaker SPEAKER_04 : 모짘ㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 27. 오후 12:32, Speaker SPEAKER_04 : 오케이 근데 그거 바꾼거 한줄임ㅋㅋㅋㅋㅋ
+2024. 6. 27. 오후 12:32, Speaker SPEAKER_03 : 아 그래도 연습겸 ㅋㅋ 해봅시다
+2024. 6. 27. 오후 12:32, Speaker SPEAKER_03 : 근데 어딘데? 여기다가도 그 한줄 올려줄래?
+2024. 6. 27. 오후 12:34, Speaker SPEAKER_04 : plt.figure(figsize=(10, 8))
+        sns.barplot(x='Importance', y='Feature', data=importance_df_reg)
+        plt.title('Feature Importance Analysis (Regression)')
+        plt.subplots_adjust(left=0.3)
+        plt.savefig('feature_importance.png')
+        plt.show()
+
+이거 옆에 비율 조절해줬어
+plt.subplots_adjust(left=0.3)
+
+html.H4('Feature Importance:'),
+        html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode(),style={ 'margin-left': '30px'}),
+        html.H4('Actual vs Predicted:'),
+        html.Img(src='data:image/png;base64,' + base64.b64encode(open('actual_vs_predicted.png', 'rb').read()).decode())
+    ])
+
+그리고 혹시 몰라서 그래프 왼쪽에 마진 넣었고
+html.Img(src='data:image/png;base64,' + base64.b64encode(open('feature_importance.png', 'rb').read()).decode(),style={ 'margin-left': '30px'}),
+2024. 6. 27. 오후 12:35, Speaker SPEAKER_04 : 사진
+2024. 6. 27. 오후 1:07, Speaker SPEAKER_00 : 아 오늘은 제가 커피 사가겠슴다
+2024. 6. 27. 오후 1:07, Speaker SPEAKER_00 : 다들 메뉴 미리 올려주십쇼
+2024. 6. 27. 오후 1:07, Speaker SPEAKER_03 : 아니 왜 ㅋㅋㅋ 왜 오늘도 늦는 사람이 삽니다 ㅋㅋ
+2024. 6. 27. 오후 1:07, Speaker SPEAKER_03 : 삽시다
+2024. 6. 27. 오후 1:34, Speaker SPEAKER_03 : 우리 노션에 어제 COO 미팅이랑 우리가 그뒤에 이어한 미팅 15.5차라는 이름으로 링크 업로드했어
+2024. 6. 27. 오후 1:34, Speaker SPEAKER_03 : 우리 15차 미팅은 누구 녹음으로 transcript 뽑은거지? 그 원본 파일 링크도 노션에 업로드하자.
+2024. 6. 27. 오후 1:35, Speaker SPEAKER_02 : 아마 준영오빠 폰으로 녹음한 파일일텐데
+2024. 6. 27. 오후 1:36, Speaker SPEAKER_02 : 내폰으로 한것도 올릴까여?
+2024. 6. 27. 오후 1:36, Speaker SPEAKER_03 : 그러자 뒤에 _syh 처럼 이니셜 붙여서 나도 올릴게
+2024. 6. 27. 오후 1:40, Speaker SPEAKER_03 : @Speaker SPEAKER_04  준영이 혹시 관심 있으면 피드백 부분만 들어봐도 좋을 듯
+2024. 6. 27. 오후 1:41, Speaker SPEAKER_03 : 아마 녹음 파일 20분 쯤부터 피드백일 듯 그전엔 각자 자기소개랑 프로젝트 내용 발표이고
+2024. 6. 27. 오후 1:56, Speaker SPEAKER_04 : 예썰
+2024. 6. 27. 오후 3:29, Speaker SPEAKER_03 : 오늘도 제가 늦을 듯 하군요 ㅠ 다들 마시고픈거 적어주십쇼!
+2024. 6. 27. 오후 3:35, Speaker SPEAKER_01 : 헙 저번에도 오빠가 샀는데?
+2024. 6. 27. 오후 3:35, Speaker SPEAKER_01 : ㅠㅠ
+2024. 6. 27. 오후 3:36, Speaker SPEAKER_00 : 이번에는 제가 사게 해주쇼
+2024. 6. 27. 오후 3:36, Speaker SPEAKER_00 : 아니면 안마심~
+2024. 6. 27. 오후 3:36, Speaker SPEAKER_03 : ㅋㅋㅋㅋㅋ 그래 그래 고마우이 ㅋㅋ 근데 나 한 1-20분 늦을 듯
+2024. 6. 27. 오후 3:37, Speaker SPEAKER_03 : 다들 사이트 내가 업데이트 꽤 해뒀으니 여러탭과 ml탭 돌려보고 있자
+2024. 6. 27. 오후 3:37, Speaker SPEAKER_03 : 아 나는 커피 아이스아메리카노 작은 거 샷 추가!
+2024. 6. 27. 오후 3:38, Speaker SPEAKER_03 : 그리고 우리 콜라보도 함 돌러보자 나도 앱세팅 해두긴 했는데 한명만 더 해보자 그래서 오늘 회의는 콜라보로도 녹음해서 분석해보자
+2024. 6. 27. 오후 3:41, Speaker SPEAKER_00 : 오케이
+2024. 6. 27. 오후 3:41, Speaker SPEAKER_00 : 다른분들도 뭐 마실지 올려주세여
+2024. 6. 27. 오후 3:46, Speaker SPEAKER_04 : 아아 샷추가 영훈이형이랑 쌤입니다 감삽다
+2024. 6. 27. 오후 3:46, Speaker SPEAKER_01 : 나는 그러면..자몽에이드 ㅎ 
+2024. 6. 27. 오후 3:46, Speaker SPEAKER_01 : 이모티콘 
+2024. 6. 27. 오후 3:46, Speaker SPEAKER_01 : 혼자드실수있나요
+2024. 6. 27. 오후 3:47, Speaker SPEAKER_00 : 녜
+2024. 6. 27. 오후 3:48, Speaker SPEAKER_00 : @Speaker SPEAKER_02 현서는?
+2024. 6. 27. 오후 3:48, Speaker SPEAKER_01 : 그럼 전 쿨하게 갑니다?
+2024. 6. 27. 오후 3:49, Speaker SPEAKER_00 : 녜
+2024. 6. 27. 오후 3:49, Speaker SPEAKER_02 : 저는 유자차 따뜻한걸루
+2024. 6. 27. 오후 3:49, Speaker SPEAKER_00 : 따뜻? 어메이징
+2024. 6. 27. 오후 3:49, Speaker SPEAKER_02 : ㅠㅠ
+2024. 6. 27. 오후 3:49, Speaker SPEAKER_00 : 오키오키
+2024. 6. 27. 오후 3:57, Speaker SPEAKER_03 : 아니 ㅋㅋㅋ 나 거의 도착했으 ㅋㅋ 기사님이 엄청 빨리 가시네
+2024. 6. 27. 오후 3:57, Speaker SPEAKER_01 : 굿굿
+2024. 6. 27. 오후 4:05, Speaker SPEAKER_00 : 손님 몰려서 아직도 기다리는중…
+2024. 6. 27. 오후 4:05, Speaker SPEAKER_02 : 이모티콘 
+2024. 6. 27. 오후 7:15, Speaker SPEAKER_01 : 현서준영발견
+2024. 6. 27. 오후 7:15, Speaker SPEAKER_01 : 사진
+2024. 6. 27. 오후 7:15, Speaker SPEAKER_01 : ㅋㅌㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 27. 오후 7:15, Speaker SPEAKER_01 : 나버스탔는데 버스탄거랑 걷는게 시간이 비슷하네..?
+2024. 6. 27. 오후 7:15, Speaker SPEAKER_03 : 사진
+2024. 6. 27. 오후 7:16, Speaker SPEAKER_03 : 이야 콜라보 서비스 내용 요약까지 해주는데? ㅋㅋㅋㅋ
+2024. 6. 27. 오후 7:16, Speaker SPEAKER_03 : 대단한데
+2024. 6. 27. 오후 7:16, Speaker SPEAKER_03 : 업로드 후 분석까지도 10분쯤 걸리네
+2024. 6. 27. 오후 7:17, Speaker SPEAKER_03 : https://callabo.ai/w/suntisfied/record/21074
+2024. 6. 27. 오후 7:17, Speaker SPEAKER_03 : 여기 들어가지나 함 볼래??
+2024. 6. 27. 오후 7:18, Speaker SPEAKER_03 : 생각보다 퀄리티가 높은데? ㅋㅋㅋ
+2024. 6. 27. 오후 7:18, Speaker SPEAKER_02 : 오 로그인해야되네...
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_03 : 아 로그인 없이 그냥은 접근이 안되나보군 생각보다 내용분석을 훨씬 더 잘해주네 ㅋㅋ 근데 상호작용에 대한 내용은 없긴 해
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_03 : 사진
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_02 : 구글로그인 해보려고했는데
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_03 : 참석자 구분도 잘하네
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_02 : 액세스 차단됐대
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_02 : 뭐지..
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_00 : 모바일이라
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_00 : 안들어가지는건지
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_00 : 아니면
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_03 : 응? 아 그래? 잠만 뭐 설정이 있나
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_00 : 접근이 불가능한건지
+2024. 6. 27. 오후 7:20, Speaker SPEAKER_00 : 모르겠네
+2024. 6. 27. 오후 7:21, Speaker SPEAKER_03 : 📝 Callabo 미팅 공유
+제목: 새로운 미팅 2024년 06월 27일 04:35 PM 16차 회의
+링크: https://callabo.ai/w/suntisfied/s/f0e82d7a-8d70-5e50-8e84-f75a5b425616?pw=aDU4anA3Zmk%3D
+공유 받은 미팅 정보를 확인해 보세요.
+2024. 6. 27. 오후 7:21, Speaker SPEAKER_03 : 이걸로 다시 함 들어가볼래?
+2024. 6. 27. 오후 7:21, Speaker SPEAKER_00 : 옹
+2024. 6. 27. 오후 7:21, Speaker SPEAKER_00 : 들어가져
+2024. 6. 27. 오후 7:21, Speaker SPEAKER_03 : 오 ㅋㅋㅋ 링크에 비밀번호 포함 이 옵션을 체크해야하나봐
+2024. 6. 27. 오후 7:21, Speaker SPEAKER_03 : 비밀번호라고 적혀있길래 뺐더니
+2024. 6. 27. 오후 7:22, Speaker SPEAKER_00 : 📝 Callabo 미팅 공유
+제목: 새로운 미팅 2024년 06월 27일 04:33 PM
+링크: https://callabo.ai/w/zerobeak/s/387963a1-c07e-50b7-9697-a2131e5e54a4?pw=bmpzdmx1NmE=
+공유 받은 미팅 정보를 확인해 보세요.
+2024. 6. 27. 오후 7:22, Speaker SPEAKER_00 : 나는 액션 아이템 같은거 따로 안나왔어…
+2024. 6. 27. 오후 7:23, Speaker SPEAKER_03 : 사진
+2024. 6. 27. 오후 7:23, Speaker SPEAKER_03 : 뭐야 해수가 한건 문단 요약도 없네?
+2024. 6. 27. 오후 7:23, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 성능이 들쭉날쭉하구만?
+2024. 6. 27. 오후 7:23, Speaker SPEAKER_00 : 그러게
+2024. 6. 27. 오후 7:24, Speaker SPEAKER_00 : 차별하는거 봐라…
+2024. 6. 27. 오후 7:24, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 근데 내가 링크 공유한 거 보면 꽤 그럴듯하게 잘했더라고 요약도
+2024. 6. 27. 오후 7:24, Speaker SPEAKER_00 : 그니까
+2024. 6. 27. 오후 7:25, Speaker SPEAKER_00 : 내용 요약되는거 짱이다
+2024. 6. 27. 오후 7:25, Speaker SPEAKER_03 : 와 뭐지 llm이 내장되어있나보네
+2024. 6. 27. 오후 7:26, Speaker SPEAKER_03 : 사진
+2024. 6. 27. 오후 7:26, Speaker SPEAKER_03 : 텍스트 추출도 엄청 잘하네 ㅋㅋ
+2024. 6. 27. 오후 7:26, Speaker SPEAKER_04 : 저런게 있으니 데싸 입지가 줄어드는거지~~~하하하하하하하하하하 슬프다ㅠㅠ
+2024. 6. 27. 오후 7:26, Speaker SPEAKER_02 : 이모티콘 
+2024. 6. 27. 오후 7:26, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 그러게 ㅋㅋㅋ 진짜 비서 느낌 나네
+2024. 6. 27. 오후 7:26, Speaker SPEAKER_00 : 아니 뭐야
+2024. 6. 27. 오후 7:26, Speaker SPEAKER_00 : 화자 나이도 구분하나?
+2024. 6. 27. 오후 7:27, Speaker SPEAKER_00 : 분명 반말로했는디
+2024. 6. 27. 오후 7:27, Speaker SPEAKER_00 : 자동으로 존대
+2024. 6. 27. 오후 7:27, Speaker SPEAKER_00 : ㅋㅋㅋㅋㅋ패치됐어…
+2024. 6. 27. 오후 7:27, Speaker SPEAKER_04 : ㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 27. 오후 7:27, Speaker SPEAKER_03 : 하지만 여러분! 저 분석에서는 사람들간 상호작용 분석이 없습니다!
+2024. 6. 27. 오후 7:27, Speaker SPEAKER_03 : ㅋㅋㅋㅋㅋ 우리가 차별점이 있긴 해 ㅋㅋ
+2024. 6. 27. 오후 7:27, Speaker SPEAKER_00 : ㅋㅋㅋㅋㅋㅋㅋ맞아~
+2024. 6. 27. 오후 7:28, Speaker SPEAKER_03 : 정말 내용을 요약해주는 느낌이긴 해도 구성원 간 관계 분석은 안되니까 ㅋㅋㅋ 우린 상호작용을 좀더 내세워야겠군
+2024. 6. 27. 오후 7:28, Speaker SPEAKER_03 : 근데 어차피 sna 자체가 관계 분석이니 우린 뿌리부터 상호작용 중점이긴 했지
+2024. 6. 27. 오후 7:31, Speaker SPEAKER_03 : 아 맞네 ㅋㅋㅋ 이건 뭐냐 ㅋㅋ
+2024. 6. 27. 오후 10:58, Speaker SPEAKER_04 : 데이터 오류 수정해서 풀리퀘 했어 혹시 맞는지 확인 한번 해줘 검토 하긴 했는데 맞는거 같긴한데 한번씩만 봐줘용
+2024. 6. 27. 오후 11:08, Speaker SPEAKER_03 : 앜ㅋㅋ 해야지 하면서 못하고 있었는데 준영이가 했군 ㅋㅋ 감사 감사
+2024. 6. 27. 오후 11:08, Speaker SPEAKER_04 : 천천히 해유~~~ 오늘은 쉬엄 쉬엄 해유
+2024. 6. 27. 오후 11:09, Speaker SPEAKER_04 : 내일부터 바쁠 예정인디
+2024. 6. 27. 오후 11:09, Speaker SPEAKER_03 : 아 이거 근데 영 데이터 보기가 불편한데 새로 나온 csv 여기에 함 올려볼래? 브랜치 옮겨가도 되지만 여기에 csv 있는 게 다들 확인하기 편할 듯
+2024. 6. 27. 오후 11:09, Speaker SPEAKER_04 : 파일: dataset_collaboration_with_survey_scores.csv
+2024. 6. 27. 오후 11:10, Speaker SPEAKER_03 : 이건 다들 한번씩 열어보고 확인한 다음에 넘어가자 ㅋㅋㅋ 시간 없는데 또 문제가 있으면 곤란하니
+2024. 6. 27. 오후 11:11, Speaker SPEAKER_03 : @Speaker SPEAKER_02  특히 현서가 주관 평정 원데이터가 있는만큼 이거 구글폼 원본이랑도 같은지 확인부탁해! 우리는 자기가 한 점수랑 합쳐지기 전 csv랑만 비교할 수 있다보니
+2024. 6. 27. 오후 11:12, Speaker SPEAKER_02 : 넹~~
+2024. 6. 27. 오후 11:22, Speaker SPEAKER_03 : 음 이거 값이 바뀌긴 했는데 이게 컬럼값 보는 게 조금 이상해지긴 하네. 각 레코드가 이제 받은 점수는 되지만 그게 next_speaker_id로부터 speaker_id가 받은 점수가 되는군.
+
+이전 버전에서는 speaker_id가 next_speaker_id에게 주는 점수였던거고
+
+근데 각 레코드의 individual_collaboration_score 예측값이 받는 점수가 되려면 이렇게 가긴 해야겠구나 
+2024. 6. 27. 오후 11:22, Speaker SPEAKER_03 : @Speaker SPEAKER_04  이런 느낌으로 바꾼 거 맞아?
+2024. 6. 27. 오후 11:22, Speaker SPEAKER_04 : ㅇㅇㅇㅇㅇ 맞아!!!
+2024. 6. 27. 오후 11:23, Speaker SPEAKER_04 : spekerid에 대한 행이니까 그걸 next가 평가한 개념으로 하는게 맞는거 같아서! 
+2024. 6. 27. 오후 11:23, Speaker SPEAKER_03 : ㅇㅇ 그렇지 근데 어차피 주는 값이여도 받는 값도 충분히 계산할 수 있기 때문에  주관 평정 others 그래프가 정확히 그려지는 거였군
+
+2024년 6월 28일 금요일
+2024. 6. 28. 오전 12:26, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오전 12:26, Speaker SPEAKER_04 : 만들었다 히히 
+2024. 6. 28. 오전 12:37, Speaker SPEAKER_00 : 굿보이
+2024. 6. 28. 오전 12:39, Speaker SPEAKER_00 : 나는 aws에서 elastic beanstalk이라는 기능 사용하면 웹 배포 날먹할 수 있다해서 좀 끼적 거리다 내일 아침에 본격적으로 해볼생각
+2024. 6. 28. 오전 12:41, Speaker SPEAKER_03 : ㅋㅋㅋ 이것도 풀리퀘 해놓자
+2024. 6. 28. 오전 12:41, Speaker SPEAKER_03 : 다들 csv 파일 함 확인해보고 저것부터 머지하고 넘어갑시다
+2024. 6. 28. 오전 12:42, Speaker SPEAKER_03 : 아 이게 답장이 안걸리고 적혔군 이것도 풀리퀘 해둡시다
+2024. 6. 28. 오전 12:42, Speaker SPEAKER_00 : 지금 풀리퀘 안올리면 내일 아침에 어프로브 해준다~
+2024. 6. 28. 오전 12:44, Speaker SPEAKER_04 : 저 아직 고치고 있어서 subjective안에있는 파일만 돈 터치 부탁 드려도 되는 부분일까요~~~
+2024. 6. 28. 오전 12:44, Speaker SPEAKER_03 : ㅇㅇ ㅋㅋ 어차피 난 낼부터 작업할거라 ㅋㅋ
+2024. 6. 28. 오전 12:45, Speaker SPEAKER_00 : 이번에만 봐준다
+2024. 6. 28. 오전 12:45, Speaker SPEAKER_00 : 다음부턴 얄짤없어
+2024. 6. 28. 오전 12:45, Speaker SPEAKER_04 : 진짜 감덩 ㅠㅠ 곰아워 ㅎㅎ
+2024. 6. 28. 오전 1:00, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오전 1:01, Speaker SPEAKER_04 : 늦은 시간에 쏘리 목차 누르면 해당 섹션으로 이동하고 top누르면 꼭대기로 가게 했어 다들 잘자유
+2024. 6. 28. 오전 1:03, Speaker SPEAKER_03 : 고생했어!! 요거까지 풀리퀘해두면 내일 확인하고 머지할게!
+2024. 6. 28. 오전 8:55, Speaker SPEAKER_03 : 이어서 기능 개발하려고 머지함. 내가 확인했을 땐 바꾼 csv 로직도 문제 없고 하이퍼링크 기능도 잘 작동하네 top 버튼도 잘 작동하고.
+2024. 6. 28. 오전 8:56, Speaker SPEAKER_03 : 특히 이 csv는 각자들도 확인해보고 자신이 확인한 부분에서는 문제가 있다면 얘기해줘
+2024. 6. 28. 오전 9:04, Speaker SPEAKER_03 : 이거 주관평정 탭에만 있던데 나머지 구간은 다른 애들이 만들기로 한 거야?
+2024. 6. 28. 오전 9:43, Speaker SPEAKER_04 : 다른 탭에도 하려고!
+2024. 6. 28. 오전 9:44, Speaker SPEAKER_03 : 그거 ml 탭을 가장 마지막에 하자. 내가 지금 계속 파일을 업데이트 중이라.
+2024. 6. 28. 오전 9:44, Speaker SPEAKER_04 : 오케입
+2024. 6. 28. 오전 9:44, Speaker SPEAKER_04 : 그럼 일댄
+2024. 6. 28. 오전 9:44, Speaker SPEAKER_04 : ml 업데이트 먼저할게
+2024. 6. 28. 오전 9:44, Speaker SPEAKER_04 : 그 주ㅎ피터 노트븍!
+2024. 6. 28. 오전 9:44, Speaker SPEAKER_03 : ㅇㅇ 그러자. 값 비교해보자.
+2024. 6. 28. 오전 10:34, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @Speaker SPEAKER_04  @미경  
+최신 develop을 pull 받으면 이제 ml_overall, ml_individual_others, ml_individual_self 모두 동작할거야. 결과물도 hyperparameter tunning을 더 잘 확인할 수 있게 레이아웃을 바꿨어. 
+
+각자 서비스 내의 feature와 encoding, hyperparameter를 맞췄을 때 주피터 노트북으로 같은 결과값이 나오는지 확인해줘. 만약 오류가 있거나 성능 개선 방법이 있다면 언제든 자유롭게 제안해줘.
+2024. 6. 28. 오전 10:35, Speaker SPEAKER_04 : 오케이 난 behavioral 폴더 수정중!
+2024. 6. 28. 오전 10:36, Speaker SPEAKER_03 : ㅇㅇ 난 이제 a/b test text-based/voice-based 쪽 수정 후 주관 평정 others 그래프가 바뀐 csv 반영해서 다시 제대로 받은 점수 평균을 그리게 바꿀거야.
+2024. 6. 28. 오전 10:36, Speaker SPEAKER_04 : 오케이!
+2024. 6. 28. 오전 10:36, Speaker SPEAKER_03 : 아 근데 그럼 ml 주피터 노트북은 완료된거야? 값 비교 함 해볼래???
+2024. 6. 28. 오전 10:36, Speaker SPEAKER_03 : 주피터 노트북도 풀리퀘 함 해주고
+2024. 6. 28. 오전 10:37, Speaker SPEAKER_04 : 오케이
+2024. 6. 28. 오전 10:37, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오전 10:41, Speaker SPEAKER_03 : 오 좋아 ㅋㅋㅋ 저런 느낌으로 박스칸 하나 추가해서 내용 넣자. 근데 완전 줄글보다는 노션처럼
+
+Description:
+middle title
+- content 1
+- content 2
+
+이런 느낌으로 가는 게 더 눈에 들어오지 않을까? 아래로 길어지니 드랍다운으로 만들어서 ... 같은 거 누르면 길어지게 하면 좋겠다 ㅋㅋ
+2024. 6. 28. 오전 10:42, Speaker SPEAKER_03 : 아 근데 기능 구현이 어렵다면 줄글로 가되 특히 degree centrality랑 gini는 계산 공식도 넣어주자
+2024. 6. 28. 오전 10:42, Speaker SPEAKER_04 : 엉엉 그건 바꿀게 드랍다운? 오케이
+2024. 6. 28. 오전 11:16, Speaker SPEAKER_04 : 일단 behaviral 폴더 넣었고 계속 바꾸는건 이 폴더로 할게! 그 설명란 쓰는곳 해볼게
+2024. 6. 28. 오전 11:16, Speaker SPEAKER_04 : 풀리퀘 했앙
+2024. 6. 28. 오전 11:20, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오전 11:20, Speaker SPEAKER_04 : 이런 느낌으로 할까? description누르면 아래로 펼처지게?
+2024. 6. 28. 오전 11:20, Speaker SPEAKER_04 : 삭제된 메시지입니다. 
+2024. 6. 28. 오전 11:21, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오전 11:21, Speaker SPEAKER_04 : 아니면 어느 정도 내용앞에 나오고 more 누르면 더 나오게? 
+2024. 6. 28. 오전 11:22, Speaker SPEAKER_04 : 이건 html에서 안해봤어서 찾아봐야해ㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오전 11:22, Speaker SPEAKER_03 : 오 ㅋㅋㅋ 좋아 좋아
+2024. 6. 28. 오전 11:22, Speaker SPEAKER_03 : 이게 더 좋을 거 같긴 한데 ㅋㅋ
+2024. 6. 28. 오전 11:23, Speaker SPEAKER_03 : 요거는 구현되어있는거면 일단 이것도 풀리퀘하자
+2024. 6. 28. 오전 11:25, Speaker SPEAKER_03 : 여기까진 머지함
+2024. 6. 28. 오전 11:27, Speaker SPEAKER_03 : 사진
+2024. 6. 28. 오전 11:27, Speaker SPEAKER_03 : 음 설명 박스 잘 작동하네
+2024. 6. 28. 오전 11:28, Speaker SPEAKER_04 : 그건 전에 한거고 한번 실험 끝에 풀리퀘 해볼게!
+2024. 6. 28. 오전 11:42, Speaker SPEAKER_04 : 일단 지금까지 한거 풀리퀘했어 좀만 셨다가 올게유 ㅎㅎ
+2024. 6. 28. 오전 11:46, Speaker SPEAKER_03 : 여기까지 머지함. 잘 작동하네. 고생했어!!
+2024. 6. 28. 오전 11:46, Speaker SPEAKER_03 : 사진
+2024. 6. 28. 오전 11:47, Speaker SPEAKER_04 : 오켓
+2024. 6. 28. 오후 12:43, Speaker SPEAKER_03 : [collaboration_analysis_api update history 2] 2024.06.28 12:42
+1. subjective scoring 탭에서 others 그래프가 바뀐 data csv 파일에 맞춰 다른 사람에게 받은 점수를 계산합니다.
+2. a/b test 탭의 모든 그래프가 by speakers 버튼이 눌렸을 때 정확한 t-statistic과 p-value를 계산합니다.
+3. a/b test 탭의 Text-based vs. Voice-based가 미팅 10차부터 반영합니다.
+4. ml 탭의 overall, others, self 모든 모델이 dummy와 actual data로 ml을 빌딩합니다.
+5. 추가된 features: speaker_id, next_speaker_id (one-hot-encoding)
+6. ml 탭에서 hyperparameter tunning 섹션이 추가되었습니다.
+
+[collaboration_analysis_api update history 1]
+1. 공통
+   1.1. 모든 그래프에서 x-축에 모든 meeting number가 보입니다.
+   1.2. 모든 그래프에서 speaker 번호가 고유의 색을 가지게 통일했습니다.
+2. Monitoring tab
+   2.1. sna 그래프에서 project dropdown은 한가지 옵션만 선택 가능합니다.
+   2.2. interaction 그래프에서 self-interaction을 제외하고 값을 계산합니다.
+   2.3. gini 그래프에서 y-축이 뒤집힙니다. gini coefficient는 낮을수록 값들이 균일하다는 의미입니다.
+   2.4. degree 그래프에서 평균값을 검은색 dash 선으로 표시합니다.
+3. Subjective tab
+   3.1. overall 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+   3.2. 메타 인지 정확도를 보여주는 gap 그래프가 추가되었습니다.
+   3.3. others 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+   3.4. others 그래프에서 speakers dropdown에서 speaker가 선택되었을 때도 다른 4명에게 받은 평가의 평균이 표시됩니다.
+   3.5. self 그래프에서 by speaker 옵션 버튼을 클릭했을 때만 meeting dropdown이 활성화됩니다.
+2024. 6. 28. 오후 12:43, Speaker SPEAKER_03 : 톡게시판 '공지': [collaboration_analysis_api update history 2] 2024.06.28 12:42
+1. subjective scoring 탭에서 others 그래프가 바뀐 data csv 파일에 맞춰 다른 사람에게 받은 점수를 계산합니다.
+2. a/b test 탭의 모든 그래프가 by speakers 버튼이 눌렸을 때 정확한 t-statistic과 p-value를 계산합니다.
+3. a/b test 탭의 Text-based vs. Voice-based가 미팅 10차부터 반영합니다.
+4. ml 탭의 overall, others, self 모든 모델이 dummy와 actual data로 ml을 빌딩합니다.
+5. 추가된 features: speaker_id, next_speaker_id (one-hot-encoding)
+6. ml 탭에서 hyperparameter tunning 섹션이 추가되었습니다.
+
+[collaboration_analysis_api update histor
+2024. 6. 28. 오후 12:43, Speaker SPEAKER_03 : ml 내용 업데이트와 회의 때 나온 오류 수정 완료했어 각자 공지에 업데이트 로그 보고 한번씩 더 확인해보자.
+2024. 6. 28. 오후 12:44, Speaker SPEAKER_04 : 넵
+2024. 6. 28. 오후 12:44, Speaker SPEAKER_03 : 1. 특히 ml은 세팅을 서비스와 동일하게 맞췄을 때 값이 동일한지 @Speaker SPEAKER_02  @Speaker SPEAKER_04  @미경  
+2. a/b test의 값이 주피터 노트북 결과와 동일한지 @노해수  
+확인해보자.
+2024. 6. 28. 오후 12:45, Speaker SPEAKER_03 : @노해수  해수야 혹시 aws 서비스 진행된거 있어? 아직까지 혹시 진행 중이라면 이제부터 aws 쪽은 내가 할게. 그 다음 우선 순위 작업으로 넘어가서 진행하면 좋을 듯 해
+2024. 6. 28. 오후 12:46, Speaker SPEAKER_03 : 다들 api 내용 웹브라우져에서 확인할 때 develop 최신으로 pull 됐는지도 확인하고 보자!
+2024. 6. 28. 오후 12:48, Speaker SPEAKER_02 : 넵
+2024. 6. 28. 오후 12:57, Speaker SPEAKER_01 : 넴
+2024. 6. 28. 오후 1:07, Speaker SPEAKER_00 : 아 그래??
+2024. 6. 28. 오후 1:08, Speaker SPEAKER_00 : aws elastic beanstalk 이용해서 배포해보려고 시도했고 오류가 좀 발생해서 원인 알아보다가 잔 상태였어. 오키오키
+2024. 6. 28. 오후 1:08, Speaker SPEAKER_03 : ㅇㅇ 지금 이거 보면서 하는데 우린 docker 파일이 있으니 금방 해볼 수 있을듯??
+https://www.youtube.com/watch?v=2BoVhej0QVI
+2024. 6. 28. 오후 1:08, Speaker SPEAKER_03 : 아 그랴 ㅋㅋㅋ 그럼 그 오류 메시지나 상황 공유 좀 해줄래?
+2024. 6. 28. 오후 1:10, Speaker SPEAKER_00 : 사진
+2024. 6. 28. 오후 1:10, Speaker SPEAKER_00 : 도커파일이 올바르게 인식이 안되는 것 같은데
+2024. 6. 28. 오후 1:11, Speaker SPEAKER_00 : 업로드하는 과정에서 고르는게 겁나 많더라고
+2024. 6. 28. 오후 1:12, Speaker SPEAKER_03 : 아하 감사 감사 ㅋㅋㅋ 어쩌면 나도 똑같은 문제가 생길지도 ㅋㅋ 일단 함 해볼게
+2024. 6. 28. 오후 1:12, Speaker SPEAKER_00 : 응응 형도 해보고 함 알려줘
+2024. 6. 28. 오후 1:12, Speaker SPEAKER_00 : 업로드하는 파일 종류 도커로 선택하고 요금제에서 micro였나 선택하고 small 빼준거 말고 특별히 따로 선택한건 없었던 것 같아
+2024. 6. 28. 오후 1:19, Speaker SPEAKER_00 : https://velog.io/@woohobi/1.%EB%8F%84%EC%BB%A4%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-beanstalk-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-with-Github-Actions
+
+나는 이거 참고해서 한번 더 진행해보려고
+2024. 6. 28. 오후 1:20, Speaker SPEAKER_00 : 이것도 실패하면 바로 다음 해야할 일로 넘어갈게…
+2024. 6. 28. 오후 1:51, Speaker SPEAKER_04 : 그럼 형 나 ml이랑 다른 파일 만져도되?
+2024. 6. 28. 오후 1:51, Speaker SPEAKER_04 : ml ab
+2024. 6. 28. 오후 1:51, Speaker SPEAKER_03 : ㅇㅇ 이후 추가 기능은 일단 함 aws에 올려보고 하려구
+2024. 6. 28. 오후 1:51, Speaker SPEAKER_04 : 오케이
+2024. 6. 28. 오후 1:52, Speaker SPEAKER_03 : 아 이거 나도 같은 문제가 생기네 ㅋㅋ
+ 찾아보니 도커랑은 관계없고 aws iam 설정에서 ec2 instance profile을 만져줘야한대서 진행 중
+2024. 6. 28. 오후 1:53, Speaker SPEAKER_00 : 나돟,,,
+2024. 6. 28. 오후 1:53, Speaker SPEAKER_00 : https://ckanywhere.tistory.com/5
+2024. 6. 28. 오후 1:53, Speaker SPEAKER_00 : 이거 참고해서 다시 하는중
+2024. 6. 28. 오후 2:16, Speaker SPEAKER_00 : @선영훈 형 잘되가?? 하.. 무슨 갑자기 계정에 권한이 사라지고 난리 나서 멘탈 터짐…
+2024. 6. 28. 오후 2:17, Speaker SPEAKER_00 : 나는 점심 먹고 다음 우선순위 진행할게… 못해먹겠다
+2024. 6. 28. 오후 2:17, Speaker SPEAKER_03 : 잘되가는 건 아닌데 조금씩 무슨 문제인지는 알아가는 중 이게 기본 인스턴스가 원래는 자동 생성됐는데 이제는 수동으로 해줘야한다네
+
+https://stackoverflow.com/questions/30790666/error-with-not-existing-instance-profile-while-trying-to-get-a-django-project-ru/76620598#76620598
+2024. 6. 28. 오후 2:17, Speaker SPEAKER_03 : ㅇㅇ 얼렁 밥 먹고 와! 내가 함 해볼게 ㅋㅋ
+2024. 6. 28. 오후 2:18, Speaker SPEAKER_00 : 문제점 파악하고 있다니 다행이네ㅜㅜ 오키 고생해 후딱 먹고 올게!
+2024. 6. 28. 오후 2:37, Speaker SPEAKER_04 : 그리고 글 정리 하는 사람들 파이썬 마크다우운 형식으로  정리해주세요
+2024. 6. 28. 오후 3:04, Speaker SPEAKER_00 : 넵
+2024. 6. 28. 오후 3:11, Speaker SPEAKER_03 : 사진
+2024. 6. 28. 오후 3:11, Speaker SPEAKER_00 : 오?
+2024. 6. 28. 오후 3:12, Speaker SPEAKER_00 : 성공???!
+2024. 6. 28. 오후 3:12, Speaker SPEAKER_03 : deploy 자체는 성공해서 url에 웹페이지가 뜨기는 하는데 필요한 웹정보가 없어서 화면이 이렇게밖에 안나와 ㅋㅋㅋ
+
+2024. 6. 28. 오후 3:12, Speaker SPEAKER_03 : 사진
+2024. 6. 28. 오후 3:12, Speaker SPEAKER_03 : 계속 업데이트 후 재배포하면서 확인 중
+2024. 6. 28. 오후 3:13, Speaker SPEAKER_03 : 로컬 서버에서 돌아가게 만든거라 웹 설정을 또 잡아줘야 한다는군
+2024. 6. 28. 오후 3:13, Speaker SPEAKER_00 : 아이고 일단 그래도 deploy 성공에 갬동
+2024. 6. 28. 오후 3:13, Speaker SPEAKER_00 : 나이스~~
+2024. 6. 28. 오후 3:13, Speaker SPEAKER_03 : 여튼 배포 자체는 성공 iam 문제가 맞았더라고
+2024. 6. 28. 오후 3:13, Speaker SPEAKER_00 : 아 역시...
+2024. 6. 28. 오후 3:13, Speaker SPEAKER_03 : 이게 원래는 자동으로 설정됐는데 aws 측 버그라고도 하더라 스택오버플로우에서 ㅋㅋㅋ 근데 그게 이미 1년도 더 전 글인데 왜 업데이트를 안하는지 ㅋㅋ
+2024. 6. 28. 오후 3:14, Speaker SPEAKER_00 : 그니까 읽다보니 원래는 자동이야~ 뭐 그러는디
+2024. 6. 28. 오후 3:14, Speaker SPEAKER_00 : 결국 수동으로 해줘야 한다고...
+2024. 6. 28. 오후 3:15, Speaker SPEAKER_03 : ㅇㅇ 그래서 시키는대로 수동으로 하하고 service 랑 ec2 instance를 어플리케이션 만들 때 잡아주니 배포 자체는 잘되더군
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_03 : 와아우 여러분 ㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_03 : http://collaboration-analysis-api-env.eba-usqw6syp.ap-northeast-2.elasticbeanstalk.com/dash/
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_03 : 들어가보십셔
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_03 : 사진
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_00 : ahdi
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_00 : 모야
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_04 : 오
+2024. 6. 28. 오후 3:16, Speaker SPEAKER_04 : 와우
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_00 : 됐네?
+
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_04 : 그거 알려쥬라 나중에
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_03 : 아 근데 ㅋㅋㅋ 혹시 모르니 너무 많이 들어가지는말자 ㅋㅋㅋ 새로고침 조금만 하기 ㅋㅋ
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_00 : 그니까
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_00 : 어떻게 한건지 궁금해
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_04 : 난 안들어갈게
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_00 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_00 : ㅇㅋㅇㅋ
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_03 : ㅇㅇ ㅋㅋㅋㅋ
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_04 : 무서워
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_00 : 한번만 구경하고
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_00 : 방뺄게...
+2024. 6. 28. 오후 3:17, Speaker SPEAKER_03 : 그래도 한번씩은 들어가보자
+2024. 6. 28. 오후 3:18, Speaker SPEAKER_03 : @Speaker SPEAKER_04  @노해수  시간되면 7월 3일 전에, 시간이 빠듯하면 그 이후에라도 내가 아예 시연하면서 다같이 함 해보자 ㅋㅋㅋ
+2024. 6. 28. 오후 3:18, Speaker SPEAKER_03 : 이걸로 나 3차도 aws에 올려야지 ㅋㅋ
+2024. 6. 28. 오후 3:18, Speaker SPEAKER_03 : 이게 requirements.txt를 엄청 업데이트 해줘야 했어
+2024. 6. 28. 오후 3:18, Speaker SPEAKER_03 : Dockerfile도 다시 잡아줬고
+2024. 6. 28. 오후 3:18, Speaker SPEAKER_00 : 그래그래 알려줘ㅠㅠ 굿 대박 고생했다 형
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_00 : 결국 aws beanstalk
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_00 : 사용한거지?
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_03 : 여튼 여러분 ㅋㅋㅋㅋ 이제 aws 서비스까지 다 됐습니다! 다만 배포가 수동이기에 계속 깃헙의 레포를 업데이트하고 수동으로 배포를 해야지
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_03 : ㅇㅇ 그렇지
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_00 : 오케이오케이
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_00 : 생각보다 일찍 됐네요
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_00 : 텍스트 부분에 열심을 다해겠습니다
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_00 : 고생했어용
+2024. 6. 28. 오후 3:19, Speaker SPEAKER_03 : 그러게 ㅋㅋㅋ 조금 고생했지만 ㅋㅋ 몇일 생각했는데 몇시간만에 됐네 ㅋㅋ
+2024. 6. 28. 오후 3:20, Speaker SPEAKER_04 : 나 일단 코드 풀리퀘 할게
+2024. 6. 28. 오후 3:20, Speaker SPEAKER_03 : 서버 배포용으로 업데이트한 requirements.txt와 Dockerfile도 깃헙 레포에 업로드할게
+2024. 6. 28. 오후 3:20, Speaker SPEAKER_03 : ㅇㅇ 어차피 안겹치니 타이밍 생각 안하고 풀리퀘해도 될듯
+2024. 6. 28. 오후 3:20, Speaker SPEAKER_03 : 근데 다들 이 링크 작동은 되는거지?
+http://collaboration-analysis-api-env.eba-usqw6syp.ap-northeast-2.elasticbeanstalk.com/dash/
+2024. 6. 28. 오후 3:20, Speaker SPEAKER_04 : 나 하고 싶은게 있는데 top 버튼이있고 위에 목차? 같은게 있어도 메뉴바 누르면 해당 지점으로 가는 그거 또 만들어 보게! 그리고 메뉴 눌렀을때 smooth하게 스크롤이 안돼는거 같아서 고치게
+2024. 6. 28. 오후 3:20, Speaker SPEAKER_03 : 함 확인은 해보자
+2024. 6. 28. 오후 3:22, Speaker SPEAKER_04 : 이거 업데이트 하면 자동으로 얘도 업데이트해?
+2024. 6. 28. 오후 3:22, Speaker SPEAKER_04 : 우리 코드 업데이트 되면?
+2024. 6. 28. 오후 3:22, Speaker SPEAKER_00 : 응응! 잘 됨!
+2024. 6. 28. 오후 3:22, Speaker SPEAKER_03 : 놉. 아직 그건 아냐. 그러려면 github action으로 레포랑 연결해줘야하는데 그렇게는 안해서 수동으로 업데이트 -> 재배포해야해
+2024. 6. 28. 오후 3:22, Speaker SPEAKER_04 : 아항
+2024. 6. 28. 오후 3:22, Speaker SPEAKER_04 : 가릿
+2024. 6. 28. 오후 3:22, Speaker SPEAKER_03 : CI/CD도 시도해볼순 있지
+2024. 6. 28. 오후 3:23, Speaker SPEAKER_00 : 맞아 저렇다고 들어으
+2024. 6. 28. 오후 3:23, Speaker SPEAKER_00 : 믓지다
+2024. 6. 28. 오후 3:23, Speaker SPEAKER_04 : 아항
+2024. 6. 28. 오후 3:23, Speaker SPEAKER_04 : 나도 따로 공부해야겠다
+2024. 6. 28. 오후 3:23, Speaker SPEAKER_03 : 하지만 ㅋㅋㅋ 이건 낮은 우선순위로 시간 남으면 합시다 ㅋㅋ 일단 재배포가 5분 정도밖에 안걸리고 아직 할게 많다고 하니
+2024. 6. 28. 오후 3:23, Speaker SPEAKER_00 : 영훈이형한테 들을 특강이 점점 늘어나는 구만
+2024. 6. 28. 오후 3:23, Speaker SPEAKER_03 : 많다고 하니가 아니라 많으니
+2024. 6. 28. 오후 3:24, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 여러분 ㅋㅋ 7월 3일 지나도 이것저것 얘기해봅시다 ㅋㅋ
+2024. 6. 28. 오후 3:24, Speaker SPEAKER_03 : 이렇게 유인책 하나 추가
+2024. 6. 28. 오후 3:24, Speaker SPEAKER_00 : ㅋㅋㅋ좋아요~
+2024. 6. 28. 오후 3:26, Speaker SPEAKER_03 : http://collaboration-analysis-api-env.eba-usqw6syp.ap-northeast-2.elasticbeanstalk.com/dash/
+
+이거 링크 다들 한번씩은 들어가보자. 잘 작동되는지.
+@Speaker SPEAKER_02  @Speaker SPEAKER_04  @미경  
+2024. 6. 28. 오후 3:26, Speaker SPEAKER_03 : 잘 작동된다고 하면 이제 다운시켜놓을거임 ㅋㅋ
+2024. 6. 28. 오후 3:26, Speaker SPEAKER_04 : 난 잘되
+2024. 6. 28. 오후 3:27, Speaker SPEAKER_04 : 근데 나 7월 3일 이후에 빠져야 할수도...ㅠㅠ 연구실 때문에 바빠질것 같아...ㅎㅎ
+2024. 6. 28. 오후 3:27, Speaker SPEAKER_03 : 아 글쿤 ㅠ 어쩔 수 없지 ㅠ 당연히 연구실이 중요하니까
+2024. 6. 28. 오후 3:28, Speaker SPEAKER_03 : 웹 배포에 필요한 라이브러리가 다 포함된 requirements.txt랑 포트 잡아주는 Dockerfile도 develop에 업로드 했어 requirements.txt 확인해보면 진짜 많이 추가됐어.
+2024. 6. 28. 오후 3:29, Speaker SPEAKER_04 : 넵 형 내 코드 풀리퀘 받아서 한번 다 돌려봐 오류있으면 말해주고
+2024. 6. 28. 오후 3:33, Speaker SPEAKER_03 : 오 이거 모든 탭에 다 드랍다운 추가했네? 음 다 문제 없이 잘 작동하네.
+2024. 6. 28. 오후 3:33, Speaker SPEAKER_03 : 사진
+2024. 6. 28. 오후 3:34, Speaker SPEAKER_04 : 다행이당 그럼 디자인도 좀 생각해볼까? 아까 그거 먼저 해볼까? 어느 정도 말이 나오고 more 누르면 더 다오는거? 아니면 이건 후순위로 해도될거같은데
+2024. 6. 28. 오후 3:35, Speaker SPEAKER_03 : 나도 후순위로 해도 될듯. 정보 접근성상 있으면 더 좋다고 생각은 하지만 지금도 충분히 좋긴 하니까.
+2024. 6. 28. 오후 3:36, Speaker SPEAKER_04 : 오케이 그럼 ml확인이랑 내용 추가에 더 집중할게
+2024. 6. 28. 오후 3:46, Speaker SPEAKER_00 : 머야…? pull 했더니 api 파일 requirements들이 엄청 늘어났네
+2024. 6. 28. 오후 3:46, Speaker SPEAKER_00 : httptools 라이브러리 설치가 안된거 보니까
+2024. 6. 28. 오후 3:46, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 글치? ㅋㅋㅋ 2배도 넘게 늘어남 ㅋㅋ
+2024. 6. 28. 오후 3:46, Speaker SPEAKER_00 : 서버용 라이브러리 인가?
+2024. 6. 28. 오후 3:46, Speaker SPEAKER_00 : 난 또 왜… 이미지 만들기에 실패하는가...
+2024. 6. 28. 오후 3:47, Speaker SPEAKER_03 : ㅇㅇ 서버 웹소켓 리퀘스트 관리할 때 필요한 애들이래
+2024. 6. 28. 오후 3:47, Speaker SPEAKER_03 : 뭐지 ㅋㅋㅋ 이게 또 호환성 문제가 있나
+2024. 6. 28. 오후 3:47, Speaker SPEAKER_00 : 아하 형은 이거 httptools 깔기 위해 따로 설치하거나 한거 있어?
+2024. 6. 28. 오후 3:47, Speaker SPEAKER_03 : 근데 지금 웹에 올린 것도 aws 리눅스 버전이라 마찬가지로 유닉스 기반일텐데
+2024. 6. 28. 오후 3:48, Speaker SPEAKER_00 : 혹시 다른 사람들
+2024. 6. 28. 오후 3:48, Speaker SPEAKER_00 : 한번 해볼 수 있나?
+2024. 6. 28. 오후 3:48, Speaker SPEAKER_03 : 아니? http는 unvicorn이 관리할텐데? 우리 프로그램에서는
+2024. 6. 28. 오후 3:48, Speaker SPEAKER_00 : httptools이거 잘 깔리는지?
+2024. 6. 28. 오후 3:48, Speaker SPEAKER_00 : 나는 이미지 빌딩하는 단계에서
+2024. 6. 28. 오후 3:48, Speaker SPEAKER_00 : 계속 에러 발생하거든
+2024. 6. 28. 오후 3:48, Speaker SPEAKER_03 : 에러메세지 공유 가능해?
+2024. 6. 28. 오후 3:49, Speaker SPEAKER_03 : 근데 어차피 그냥 확인용이라고 하면 
+fastapi==0.70.0
+dash==2.7.0
+pandas==1.3.5
+networkx==2.6.3
+asgiref==3.4.1
+seaborn==0.11.2
+matplotlib==3.4.3
+scipy==1.7.3
+scikit-learn==1.0.2
+catboost==1.0.4
+lightgbm==3.3.1
+xgboost==1.5.0
+uvicorn==0.15.0
+statsmodels==0.13.2
+이걸 제외한 건 그냥 지우고 빌딩하고 로컬 서버에서 돌리고 그렇게 해도 되긴 할거야
+2024. 6. 28. 오후 3:49, Speaker SPEAKER_00 : 엉엉 나도 그럴라고
+2024. 6. 28. 오후 3:49, Speaker SPEAKER_00 : 로컬로
+2024. 6. 28. 오후 3:49, Speaker SPEAKER_00 : 하는 코드는 거기까지만 필요하니께
+2024. 6. 28. 오후 3:49, Speaker SPEAKER_03 : 그 requirements.txt를 업로드만 안하면 되니까
+2024. 6. 28. 오후 3:50, Speaker SPEAKER_00 : 엉엉 뭐 커밋하거나 할 때 빼고 하면 되는거니까
+2024. 6. 28. 오후 3:50, Speaker SPEAKER_00 : 오키
+2024. 6. 28. 오후 3:50, Speaker SPEAKER_03 : ㅇㅇ 일단 그럽시다
+2024. 6. 28. 오후 3:50, Speaker SPEAKER_00 : 넵
+2024. 6. 28. 오후 3:50, Speaker SPEAKER_04 : 나 하는중
+2024. 6. 28. 오후 3:50, Speaker SPEAKER_04 : ㄱㄷ
+2024. 6. 28. 오후 3:52, Speaker SPEAKER_04 : 잘 되는뎅
+2024. 6. 28. 오후 3:52, Speaker SPEAKER_00 : 또 나만 문제야~
+2024. 6. 28. 오후 3:53, Speaker SPEAKER_00 : 오케이 난 로컬로 진행할게ㅎㅎ...
+2024. 6. 28. 오후 3:55, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 혹시 arm기반이라서 그런가 ㅋㅋ 해수 맥 m 시리즈야?
+2024. 6. 28. 오후 3:55, Speaker SPEAKER_00 : 응응 나 m2
+2024. 6. 28. 오후 3:55, Speaker SPEAKER_04 : 역시
+2024. 6. 28. 오후 3:55, Speaker SPEAKER_03 : 그럼 어쩌면 그것 때문일지도
+2024. 6. 28. 오후 3:55, Speaker SPEAKER_04 : 사과는 컷이야
+2024. 6. 28. 오후 3:55, Speaker SPEAKER_03 : 유닉스기반과는 상관없이 arm은 아직도 호환성이 좀 걸린다고들 하니
+2024. 6. 28. 오후 3:55, Speaker SPEAKER_00 : 엉엉 오늘도 사과 따잇
+2024. 6. 28. 오후 3:56, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 그래도 일부 지우면 로컬에서는 돌아갈테니 일단 그렇게 합시다
+2024. 6. 28. 오후 4:04, Speaker SPEAKER_02 : 이거 링크로 들어가면 첫번째 페이지는 나오는데 다른 탭들은 다 연결안되는게 맞나여..??
+2024. 6. 28. 오후 4:05, Speaker SPEAKER_03 : 아니 ㅋㅋㅋ 그거 아마 타이밍 ㅋㅋ
+2024. 6. 28. 오후 4:05, Speaker SPEAKER_03 : 내가 방금 내림 ㅋㅋ
+2024. 6. 28. 오후 4:05, Speaker SPEAKER_02 : 아하....ㅜ
+2024. 6. 28. 오후 4:05, Speaker SPEAKER_03 : 잠만 다시 열어볼게
+2024. 6. 28. 오후 4:05, Speaker SPEAKER_04 : 형 하나 풀리큐ㅔ 시간되면 받아쥬ㅓ~~~간격조절 한거야
+2024. 6. 28. 오후 4:05, Speaker SPEAKER_03 : 내가 ml 빌딩까지 해봤는데 잘 되더라고 한 3분 걸리더라
+2024. 6. 28. 오후 4:09, Speaker SPEAKER_03 : 사진
+2024. 6. 28. 오후 4:09, Speaker SPEAKER_03 : 확실히 보기 더 낫네. 좀 딱 붙은 느낌이었긴 하지.
+2024. 6. 28. 오후 4:10, Speaker SPEAKER_03 : 머지했고 문제없이 잘 작동합니닷!
+2024. 6. 28. 오후 4:10, Speaker SPEAKER_04 : 넵 계속 하면서 간격 조절 할게! 
+2024. 6. 28. 오후 4:10, Speaker SPEAKER_03 : @Speaker SPEAKER_02  다시 들어가볼래??
+http://collaboration-analysis-api-env.eba-usqw6syp.ap-northeast-2.elasticbeanstalk.com/ml/
+
+2024. 6. 28. 오후 4:10, Speaker SPEAKER_02 : 와 빨라졌다
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_03 : @미경  혹시 미경이도 가능하면 함 들어가보자
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_03 : ㅇㅇ 이게 가장 낮은 성능인 free tier여도 역시 서버컴은 서버컴인가봐
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_03 : ml 빌딩도 빨리 됨 ㅋㅋ
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_01 : 나 위에 아직 카톡을 못읽었는데
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_01 : 그 url형태로
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_01 : 만든건가..?
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_03 : ㅇㅇ 그것도 이제 천천히 읽지만 걍 저 url 눌러보자
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_03 : ㅇㅇ 배포 성공!
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_01 : 눌러쓰
+2024. 6. 28. 오후 4:11, Speaker SPEAKER_02 : 오 진짜 빠르다
+2024. 6. 28. 오후 4:12, Speaker SPEAKER_03 : 우리 웹페이지 잘 나와?
+2024. 6. 28. 오후 4:12, Speaker SPEAKER_03 : 여윽시 서버컴은 가장 구린 것도 pc랑은 비교가 안되는건가 ㅋㅋ
+2024. 6. 28. 오후 4:12, Speaker SPEAKER_01 : 페이지는 잘 열리구 지금 actual model누르고 ㄱㅣ다리는중
+2024. 6. 28. 오후 4:13, Speaker SPEAKER_01 : 잘된다!
+2024. 6. 28. 오후 4:13, Speaker SPEAKER_00 : @Speaker SPEAKER_04 아니 준영씨 pull 하고 보니까 페이지 description 넣을 곳 다 만들어놨네?
+2024. 6. 28. 오후 4:13, Speaker SPEAKER_01 : 근데 이거 원래 조금 잘리는건가? 
+2024. 6. 28. 오후 4:13, Speaker SPEAKER_01 : 사진
+2024. 6. 28. 오후 4:14, Speaker SPEAKER_03 : 아 응 ㅋㅋㅋ 그거 준영이가 전에 업데이트한거 다시 업데이트해야함 ㅋㅋ
+2024. 6. 28. 오후 4:14, Speaker SPEAKER_03 : 그건 배포 문제는 아니고 코드를 고쳐야 해
+2024. 6. 28. 오후 4:14, Speaker SPEAKER_04 : 아 알어! 그것도 하려공!
+2024. 6. 28. 오후 4:14, Speaker SPEAKER_01 : 아아 오키!! 
+2024. 6. 28. 오후 4:14, Speaker SPEAKER_01 : 위에 카톡읽어보러 총총..
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_00 : 아니 준영씨
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_03 : 자 그럼 다시 url은 닫습니다 ㅋㅋㅋ 뭐 이 정도 트레픽은 전혀 문제 없겠지만 혹시나 해서 ㅋㅋ
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_00 : 이거 다 해놓으면 난 뭐 먹고 살아
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_00 : 이제 추가하고 결과 확인하려니까 다해놨어 이양반이
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_02 : 이모티콘 
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 그니까 작업 시작할 때 선언하고 합니다 ㅋㅋ 마이볼처럼 ㅋㅋ
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_00 : = 고맙다는 말을 돌려하는중
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_04 : 재미지자나~~~
+2024. 6. 28. 오후 4:15, Speaker SPEAKER_03 : 합시다
+2024. 6. 28. 오후 4:16, Speaker SPEAKER_00 : 하여튼ㅎㅎ… 그럼 가벼운 마음으로 들어갈 내용들 정리하러갑니다~
+2024. 6. 28. 오후 4:16, Speaker SPEAKER_04 : 파이썬 마크다운 형식으로 정리해줘요! 모두 다~
+2024. 6. 28. 오후 4:16, Speaker SPEAKER_00 : 네~~ ab테스트 부분부터 할 예정!
+2024. 6. 28. 오후 4:16, Speaker SPEAKER_00 : 마이볼~
+2024. 6. 28. 오후 4:16, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 좋아 좋아 ㅋㅋㅋ
+2024. 6. 28. 오후 4:28, Speaker SPEAKER_04 : 내용 추가 할때 각자 맡은 파트의 py파일에 html.Summary 를 찾고 dcc.Markdown안에 마크 다운 형식으로 넣으면 됩니다요! 
+
+2024. 6. 28. 오후 4:28, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오후 4:31, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오후 4:31, Speaker SPEAKER_04 : 이렇게 하면 너무 가독성이 떨어지나
+2024. 6. 28. 오후 4:32, Speaker SPEAKER_00 : 나쁘지 않은데?
+2024. 6. 28. 오후 4:32, Speaker SPEAKER_00 : 아니 좋은데?
+2024. 6. 28. 오후 4:33, Speaker SPEAKER_03 : 아 좋아 ㅋㅋㅋ 내가 말한게 딱 저런 느낌 근데 이제 Components 위까지만 보이다가 ...나 more 같은 거 누르면 아래도 보이는거지 ㅋㅋ
+2024. 6. 28. 오후 5:55, Speaker SPEAKER_01 : 오빠 근데 이거 그 화자 멘토님 지우는 필터링은 반영안된거지? 일단 그런거 신경쓰지말고 서비스와 동일한 결과만 나오는지 확인만해??
+2024. 6. 28. 오후 5:56, Speaker SPEAKER_01 : 피처는 반영된거봤어!
+2024. 6. 28. 오후 5:56, Speaker SPEAKER_01 : 된건데 내가 못본건가...??
+2024. 6. 28. 오후 5:58, Speaker SPEAKER_01 : 그리고 oveall할 때랑 individual 할 떄 동일한 피처 써야하는건가? 서로 각자 speaker id하고 next speaker는 필요없기도한거같아서.. 예를 들어서 overall은 next speaker가 필요없지않지않나..? 일단 결과 동일한지만 봐..? @선영훈  
+2024. 6. 28. 오후 6:22, Speaker SPEAKER_01 : 그리고 타겟값은 1개만 나오게하는거로 된건가? 아님 meeting number당 speaker id 별로 다나오게하는거 해보기로했었나
+2024. 6. 28. 오후 8:22, Speaker SPEAKER_03 : 아 부동산 다녀왔어 ㅋㅋ 방이 없다네 ㅠ ㅋㅋ 지금부터 하나씩 볼게
+2024. 6. 28. 오후 8:22, Speaker SPEAKER_03 : 이거 반영됐어
+2024. 6. 28. 오후 8:23, Speaker SPEAKER_03 : (dataset['overall_collaboration_score'].between(1, 10))]
+2024. 6. 28. 오후 8:23, Speaker SPEAKER_03 : 화자를 직접 필터링 하는 건 아니지만 주관 평정 점수가 있는 레코드만 쓰게 했어
+2024. 6. 28. 오후 8:24, Speaker SPEAKER_01 : 아 애초에 4차 프로젝트 미팅 1에서 10회까지만 해서 그 화자 어쩌구는신경쓸필요가 없게만든거야?
+2024. 6. 28. 오후 8:24, Speaker SPEAKER_01 : 그 멘토님아예 나타나기전(?)
+2024. 6. 28. 오후 8:24, Speaker SPEAKER_03 : 아니 아니 주관 점수가 1-10일 경우만 쓰게 한거야
+2024. 6. 28. 오후 8:24, Speaker SPEAKER_01 : 아
+2024. 6. 28. 오후 8:24, Speaker SPEAKER_01 : 평정없으면
+2024. 6. 28. 오후 8:24, Speaker SPEAKER_01 : 뺴는거구나
+2024. 6. 28. 오후 8:24, Speaker SPEAKER_03 : 점수를 안준 경우에는 -1을 기본값으로 주게 했거든
+2024. 6. 28. 오후 8:25, Speaker SPEAKER_01 : 이해됐다
+2024. 6. 28. 오후 8:26, Speaker SPEAKER_03 : 이건 그렇긴 하겠네 어차피 레코드별로 overall 값은 동일할테니
+2024. 6. 28. 오후 8:26, Speaker SPEAKER_03 : 이거 빠지면 뭐 값이 바뀌나?
+2024. 6. 28. 오후 8:26, Speaker SPEAKER_03 : 함 빼봐야겠다
+2024. 6. 28. 오후 8:26, Speaker SPEAKER_01 : 영향을 크게 줄 거 같진않은데
+2024. 6. 28. 오후 8:26, Speaker SPEAKER_01 : 나도 일단 뺴고해야하는거아닐까라는생각이 들어서
+2024. 6. 28. 오후 8:26, Speaker SPEAKER_01 : 시도해보려고 하고있었어!
+2024. 6. 28. 오후 8:26, Speaker SPEAKER_01 : 그리고 그 서비스랑 똑같이 짰을 때는 결과 똑같이 나오는거같아
+2024. 6. 28. 오후 8:27, Speaker SPEAKER_03 : 이건 레코드당 1개가 나오겠지
+2024. 6. 28. 오후 8:27, Speaker SPEAKER_01 : 그 트레이닝타임만뺴고 다 같더라
+2024. 6. 28. 오후 8:27, Speaker SPEAKER_03 : 아 이건 훌륭하군
+2024. 6. 28. 오후 8:27, Speaker SPEAKER_01 : 트레이닝 타임은 컴터별로 다르게 나오는거지?
+2024. 6. 28. 오후 8:27, Speaker SPEAKER_03 : ㅇㅇ pc냐 서버컴이냐에 따라서도 또 달라지겠지
+2024. 6. 28. 오후 8:27, Speaker SPEAKER_01 : 그거빼곤 다 같은 거 같아!
+2024. 6. 28. 오후 8:27, Speaker SPEAKER_03 : 그래서 training 타임은 절대값은 의미없는데 뭐가 더 빠른지 상대값은 의미가 있어
+2024. 6. 28. 오후 8:28, Speaker SPEAKER_03 : 원래 그렇게 쓰려고 넣은 거기도 하고 어떤 모델이 얼마나 빨리 빌딩되는지 보려고
+2024. 6. 28. 오후 8:28, Speaker SPEAKER_01 : 응응 그 순서가 유의미한거지
+2024. 6. 28. 오후 8:28, Speaker SPEAKER_01 : ?
+2024. 6. 28. 오후 8:28, Speaker SPEAKER_03 : 그럼 일단 서비스와 동일하게 세팅된 주피터 노트북 풀리퀘할래?
+2024. 6. 28. 오후 8:28, Speaker SPEAKER_03 : ㅇㅇ 그렇지
+2024. 6. 28. 오후 8:28, Speaker SPEAKER_01 : 나 근데 노트북 정리는 안되어있는데
+2024. 6. 28. 오후 8:28, Speaker SPEAKER_01 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 8:29, Speaker SPEAKER_03 : 일단 그거 좀만 정리해서 풀리퀘해두고 변경해서 시도해보자
+2024. 6. 28. 오후 8:29, Speaker SPEAKER_01 : 그 전에 하던 노트북 뒤에 붙여서 했는데
+2024. 6. 28. 오후 8:29, Speaker SPEAKER_01 : 사실 상관없으려나
+2024. 6. 28. 오후 8:29, Speaker SPEAKER_03 : 내가 노트북을 각자 만들어보라고 한건 값비교도 있지만 서비스의 경우 주피터 노트북처럼 중간 중간 확인하기가 어렵고 블랙박스처럼 결과값만 볼 수 있어서 그랬어
+2024. 6. 28. 오후 8:29, Speaker SPEAKER_03 : 중간에 프린트를 걸어서 띄울 수도 있다만 그러면 레이아웃과 html 등 건드려야할 게 많아지니
+2024. 6. 28. 오후 8:30, Speaker SPEAKER_01 : 새 파일 만들기엔 파일이 넘 많아서 그냥 이전에 overall하던거에 한건데 그냥 새 파일을 뒤에 value check 붙인 파일로 올릴게
+2024. 6. 28. 오후 8:30, Speaker SPEAKER_03 : 본인을 제외한 다른 사람도 사용할 수 있을 정도만 정리하자 ㅋㅋ
+2024. 6. 28. 오후 8:30, Speaker SPEAKER_03 : ㅇㅇ 그럽시다
+2024. 6. 28. 오후 8:30, Speaker SPEAKER_01 : 근데 별로 한건없어..
+2024. 6. 28. 오후 8:30, Speaker SPEAKER_01 : 그냥 다 복붙해서 본거긴한데.. 잘못한건아니겠찌
+2024. 6. 28. 오후 8:30, Speaker SPEAKER_01 : 여튼 올리면 다시 톡방에 말할게
+2024. 6. 28. 오후 8:32, Speaker SPEAKER_01 : 이건 여름에 이사다니느 사람이 없어서그런가..?ㅠㅠ
+2024. 6. 28. 오후 8:32, Speaker SPEAKER_03 : 그렇기도 하고 ㅋㅋㅋ 지금 나 있는 건물 세대수 좀 되는데 한꺼번에 다 튀어나와서 그렇기도 하고 ㅋㅋ
+2024. 6. 28. 오후 8:33, Speaker SPEAKER_03 : 아까 한 한시간 차이로 괜찮은 방 하나 놓침 ㅠ ㅋㅋ
+2024. 6. 28. 오후 8:42, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @Speaker SPEAKER_04  아 그리고 다들 바쁘겠지만 우리 16차 미팅도 transcription이랑 주관 평정 업데이트 부탁해! 원본 녹음 파일 업로드도!
+2024. 6. 28. 오후 8:51, Speaker SPEAKER_02 : 넵!
+2024. 6. 28. 오후 8:51, Speaker SPEAKER_02 : @노해수  그런이유로 어제회의 설문 부탁드립니다...
+2024. 6. 28. 오후 8:52, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 어여 합시다!
+2024. 6. 28. 오후 8:53, Speaker SPEAKER_00 : 하하… 죄송ㅎㅎ 바로할게요~
+2024. 6. 28. 오후 8:54, Speaker SPEAKER_00 : @Speaker SPEAKER_02 했어용
+2024. 6. 28. 오후 8:55, Speaker SPEAKER_02 : 이모티콘 
+2024. 6. 28. 오후 8:55, Speaker SPEAKER_01 : 오빠 나 내 브랜치에 올려놨어 맞게한건지 봐줄수있어?
+2024. 6. 28. 오후 8:57, Speaker SPEAKER_03 : 수정한 파일이 네가 작성한 노트북 한개지? 다른 건 그대로고? 그럼 그냥 풀리퀘 후 머지한 담에 확인하자 ㅋㅋ 브랜치 옮겨다니기 번거롭 ㅋㅋㅋ
+2024. 6. 28. 오후 8:57, Speaker SPEAKER_01 : cat boost어쩌구 뭐 파일들 생긴거 말고는 그대로일걸..?
+2024. 6. 28. 오후 8:57, Speaker SPEAKER_03 : 그럼 일단 풀리퀘 해볼래? 그럼 내가 파일들 확인하고 머지할게.
+2024. 6. 28. 오후 8:58, Speaker SPEAKER_01 : 아아 알겠어!
+2024. 6. 28. 오후 8:58, Speaker SPEAKER_01 : 눌렀으
+2024. 6. 28. 오후 9:00, Speaker SPEAKER_03 : 음 이거 브랜치를 새로 파거나 기존 브랜치를 변경해서 collaboration_ml_overall_score_value_check.ipynb 이거 하나만 풀리퀘 하자. 나머지는 빼고
+2024. 6. 28. 오후 9:00, Speaker SPEAKER_03 : 특히 csv는 풀리퀘하지 말자 그냥 딱 저 노트북 파일 하나만 업데이트 해보자
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_01 : 그럼 다시 되돌리고 하면되긴해
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_01 : csv어차피 다들
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_03 : ㅇㅇ 변경되는 파일이 collaboration_ml_overall_score_value_check.ipynb 딱 이거 하나만 있게
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_01 : rdb코드 돌리고 하는건데 난 그걸 그상태로 저장해서 그래
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_01 : 문제는 아닐 거 같긴한데 ㅋㅋㅋㅋㅋ일단 다시 돌릴 수 있음 돌려볼게
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_01 : 저 캣부스트 어쩌구도 안생겨야하는거야?
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_03 : ㅇㅇ 다 빼고 저 노트북 하나만
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_02 : @선영훈  혹시
+if 'interaction_count' not in df.columns:
+    df['interaction_count'] = 0
+
+df['normalized_interaction_frequency'] = df['interaction_count'] / df['duration']
+이 부분 값이 다 0 나오게 의도한거야...??
+2024. 6. 28. 오후 9:01, Speaker SPEAKER_03 : 일단 이 풀리퀘는 닫을게
+2024. 6. 28. 오후 9:02, Speaker SPEAKER_01 : 저건 왜생기는거야?
+2024. 6. 28. 오후 9:02, Speaker SPEAKER_03 : if 'interaction_count' not in df.columns: 가 있으니 비어있을 때만 0을 넣게 한거야
+2024. 6. 28. 오후 9:02, Speaker SPEAKER_03 : 아닐 때는 원래 값을 쓰고
+2024. 6. 28. 오후 9:02, Speaker SPEAKER_02 : 근데 나 csv 파일에 interaction_count가 없어서
+2024. 6. 28. 오후 9:02, Speaker SPEAKER_02 : 전부다 0으로 들어가...
+2024. 6. 28. 오후 9:03, Speaker SPEAKER_02 : interaction_count 컬럼 만드는 코드를 내가 못본건가....?
+2024. 6. 28. 오후 9:03, Speaker SPEAKER_03 : 이게 어디에서 0으로 들어간다는거지?
+2024. 6. 28. 오후 9:03, Speaker SPEAKER_03 : 주피터 노트북에서?
+2024. 6. 28. 오후 9:03, Speaker SPEAKER_03 : 아님 api 속 코드에서?
+2024. 6. 28. 오후 9:03, Speaker SPEAKER_02 : 내 노트북에서
+2024. 6. 28. 오후 9:03, Speaker SPEAKER_02 : 사진
+2024. 6. 28. 오후 9:04, Speaker SPEAKER_02 : 나만 그런가해서 미경언니 노트북도 봤는데
+2024. 6. 28. 오후 9:04, Speaker SPEAKER_02 : 거기도 0으로 들어가더라고
+2024. 6. 28. 오후 9:04, Speaker SPEAKER_03 : 노트북과 api 코드는 상관없긴 한데
+2024. 6. 28. 오후 9:04, Speaker SPEAKER_03 : 지금 api 코드 기반으로 노트북을 수정했을 때 그렇다는 얘기야?
+2024. 6. 28. 오후 9:04, Speaker SPEAKER_02 : 응
+2024. 6. 28. 오후 9:05, Speaker SPEAKER_03 : 음 잠만 확인해볼게
+2024. 6. 28. 오후 9:06, Speaker SPEAKER_04 : if 'count' not in dataset.columns:
+    # Or some appropriate default value
+    dataset.loc[:, 'count'] = 0
+이거 이지 않을까?
+2024. 6. 28. 오후 9:06, Speaker SPEAKER_02 : 헐
+2024. 6. 28. 오후 9:07, Speaker SPEAKER_02 : 어디있는거야??
+2024. 6. 28. 오후 9:07, Speaker SPEAKER_04 : 내가 만든건뎈ㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 9:07, Speaker SPEAKER_04 : interacitrion_count가 count인거니까
+2024. 6. 28. 오후 9:07, Speaker SPEAKER_04 : 아닌강
+2024. 6. 28. 오후 9:07, Speaker SPEAKER_02 : 아 그치??
+2024. 6. 28. 오후 9:07, Speaker SPEAKER_02 : 나도 count로 쓰다가
+2024. 6. 28. 오후 9:07, Speaker SPEAKER_02 : 혹시나 싶어서 물어보긴한거라
+2024. 6. 28. 오후 9:08, Speaker SPEAKER_04 : 아닌거 같네 ㅎ,ㅁ
+2024. 6. 28. 오후 9:08, Speaker SPEAKER_04 : 흠
+2024. 6. 28. 오후 9:12, Speaker SPEAKER_03 : 컬럼을 이리저리 변경하는 과정에서 요게 빠졌나보다 ㅋㅋㅋ 노트북에서는 이렇게 넣어주면 되겠다
+
+    dataset['interaction_count'] = dataset['count']
+    if 'interaction_count' not in dataset.columns:
+        dataset['interaction_count'] = 0  # Or some appropriate default value
+2024. 6. 28. 오후 9:13, Speaker SPEAKER_03 : api 코드는 함 돌려보고 업데이트할게
+2024. 6. 28. 오후 9:13, Speaker SPEAKER_02 : 오! 감사합니당
+2024. 6. 28. 오후 9:13, Speaker SPEAKER_03 : 좋아 좋아 다른 부분에서도 이런 문제들이 있을지 몰라 코드 수정이 진짜 많았어서
+2024. 6. 28. 오후 9:13, Speaker SPEAKER_03 : 중간 결과가 나오는 주피터 노트북으로 보면서 또 이상한 부분 있으면 얘기해줘!
+2024. 6. 28. 오후 9:14, Speaker SPEAKER_04 : dataset['interaction_count'] = dataset['count'] 
+
+if 'interaction_count' not in dataset.columns: 
+    dataset['interaction_count'] = 0 
+
+이코드라는 거지?
+2024. 6. 28. 오후 9:15, Speaker SPEAKER_03 : ㅇㅇ 근데 잠만 함 확인해보고
+2024. 6. 28. 오후 9:15, Speaker SPEAKER_04 : 근데 이게 좀 이상한데
+2024. 6. 28. 오후 9:15, Speaker SPEAKER_04 : 오키
+2024. 6. 28. 오후 9:15, Speaker SPEAKER_03 : ? 왜?
+2024. 6. 28. 오후 9:17, Speaker SPEAKER_04 : dataset['interaction_count'] = dataset['count'] 
+이러면 interaction count 라는 칼럼 이 생기고, 칼럼에 interaction count 가 무조건 생기는 건데?
+
+조건문은 inter 이 칼럼이 없으면 그 칼럼을 만들고 모든 값 0으로 주라는거 아니야?
+2024. 6. 28. 오후 9:19, Speaker SPEAKER_03 : ㅇㅇ 맞지 그니까 아래 if문이 쓸모없어질 수는 있어도 별 문제는 없징 않나?
+2024. 6. 28. 오후 9:20, Speaker SPEAKER_04 : 문제는 없지
+
+2024. 6. 28. 오후 9:21, Speaker SPEAKER_03 : ㅇㅇ 저게 들어간 이유가 컬럼을 추가하고 없애면서 생긴 흔적 기관 같은 코드라 ㅋㅋㅋ 일단 두고 돌려보고 정리하면서 없앱시다 사실 원 컬럼의 count가 영 의미 표상을 못해서 바꿔버리고 싶었는데 관련 코드들이 많다보니 다시 끌어와서 쓰는거임
+2024. 6. 28. 오후 9:26, Speaker SPEAKER_03 : 아 ㅋㅋㅋ 나는 왤케 ml 빌딩 오래 걸리냐 ㅋㅋ 다들 금방 끝나? 로컬 환경에서?
+2024. 6. 28. 오후 9:28, Speaker SPEAKER_02 : 나 한 2분걸리는듯...?
+2024. 6. 28. 오후 9:29, Speaker SPEAKER_03 : 아니 ㅋㅋㅋ 뭐지 ㅋㅋ
+2024. 6. 28. 오후 9:29, Speaker SPEAKER_03 : 여튼 문제없이 잘 돌아가네
+2024. 6. 28. 오후 9:29, Speaker SPEAKER_03 : 지금 나온 거 반영해서 3개 ml 파일 업로드 했어
+2024. 6. 28. 오후 9:29, Speaker SPEAKER_02 : 근데 오빠 내가 코드 이해한건 다 똑같이 코드 조정한거같은데
+2024. 6. 28. 오후 9:29, Speaker SPEAKER_02 : 값이 완전 똑같게는 안나오는데
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_04 : 나두
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_04 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_02 : 뭔가 비슷..하긴한데
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_04 : 나도 그거 계속 보는중
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_02 : 똑같이는 안나와
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_03 : 얼마나 차이나? 예시 값 있어?
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_03 : api는 라운딩 소수점 둘째자리에 하긴 하거든?
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_02 : 나도 두번째 자리수에서 했어
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오후 9:30, Speaker SPEAKER_04 : self는 모델도 다르던데
+2024. 6. 28. 오후 9:31, Speaker SPEAKER_03 : 뭐야 저정도면 꽤나 많이 차이 나는데?
+2024. 6. 28. 오후 9:31, Speaker SPEAKER_04 : 그니까 모지 나 완전 형 코드로 다했는데
+2024. 6. 28. 오후 9:32, Speaker SPEAKER_04 : 아
+2024. 6. 28. 오후 9:32, Speaker SPEAKER_03 : 그 지금 업데이트한 코드 api로 다시 함 비교해봐
+2024. 6. 28. 오후 9:32, Speaker SPEAKER_04 : 알았다
+2024. 6. 28. 오후 9:32, Speaker SPEAKER_03 : 나 지금 기능 추가하고 있는 게 있어서 ㅋㅋ 계속 다커 재빌딩 중
+2024. 6. 28. 오후 9:33, Speaker SPEAKER_04 : 아니네 운동 갔다가 다시 확인해볼게
+2024. 6. 28. 오후 9:38, Speaker SPEAKER_02 : 사진
+2024. 6. 28. 오후 9:38, Speaker SPEAKER_03 : 아 앞으로 이 두 기능을 추가할 예정입니다.
+1. transcription 직접 업로드 버튼 추가 -> rdb 작업 자동화
+2. 전체 요약 화면: 누가 가장 말이 많았고 상호작용이 많았고 참여가 높았고 누구는 온라인이 효과가 좋고 같은 걸 첫 화면에서 한번에 보여주는 섹션 추가, 대시보드의 대시보드 느낌
+2024. 6. 28. 오후 9:38, Speaker SPEAKER_02 : 나도 베스트모델 다르네..
+2024. 6. 28. 오후 9:39, Speaker SPEAKER_01 : 영훈오빠 나 아까 말한거 다시 해서 하나만
+2024. 6. 28. 오후 9:39, Speaker SPEAKER_01 : 풀리퀘해봤는데 확인해줄수있어?
+2024. 6. 28. 오후 9:39, Speaker SPEAKER_03 : ㅇㅇ 잠만
+2024. 6. 28. 오후 9:39, Speaker SPEAKER_01 : 나 걍 이전 커밋으로 다 돌리고 pull다시받고
+2024. 6. 28. 오후 9:39, Speaker SPEAKER_01 : 내꺼 파일만 하나 띡 추가해서 풀리퀘친거긴한데
+2024. 6. 28. 오후 9:40, Speaker SPEAKER_03 : 아 글치 글치 ㅇㅇ 내가 말한게 이거였어
+2024. 6. 28. 오후 9:40, Speaker SPEAKER_01 : 아 커밋다되돌리고 하느라 뭔가 복잡했는데
+2024. 6. 28. 오후 9:40, Speaker SPEAKER_01 : 된거같긴해
+2024. 6. 28. 오후 9:40, Speaker SPEAKER_01 : 강제로 되돌리고 했으
+2024. 6. 28. 오후 9:41, Speaker SPEAKER_03 : 머지했으! ㅋㅋ 고생했어 깃도 영 사용하기 아주 편하진 않지 ㅋㅋ
+2024. 6. 28. 오후 9:42, Speaker SPEAKER_03 : @미경  미경아 근데 미경이는 값이 같다고 했나? overall에서?
+2024. 6. 28. 오후 9:42, Speaker SPEAKER_01 : 퍼포먼스 값이나 선택된 모델정보?같은거 확인했을 땐 같긴했었어
+2024. 6. 28. 오후 9:42, Speaker SPEAKER_01 : 그 타임만 빼구
+2024. 6. 28. 오후 9:43, Speaker SPEAKER_01 : 근데 내 노트북 기반으로 다시 봐줄래? 이상할수도..
+2024. 6. 28. 오후 9:43, Speaker SPEAKER_03 : ㅇㅇ 다른 사람들도 함 봐보자 develop에 머지했으니
+2024. 6. 28. 오후 9:44, Speaker SPEAKER_03 : 나 지금 기능 추가하는 거 땜에 좀만 정리하고 봐볼게
+2024. 6. 28. 오후 10:04, Speaker SPEAKER_02 : 서베이 스코어 업데이트한거 풀리퀘 했습니다아
+2024. 6. 28. 오후 10:05, Speaker SPEAKER_03 : ㅇㅇ 머지했으!
+2024. 6. 28. 오후 10:51, Speaker SPEAKER_03 : 아후 ㅋㅋ 이제 코드가 눈에 안들어오네 내일 다시 해야것다 ml 쪽도 주피터쪽이랑 비교해보고 api쪽 코드가 잘못됐다 싶으면 함 수정해서 docker 이미지 재빌딩하고 서비스 잘 돌아가는지 확인해봐봐 서비스 작동에 문제 없으면 풀리퀘해두면 내가 내일 확인해보고 머지할게! 아님 두명이상이 approve하고 머지해도 됨! @Speaker SPEAKER_02 @Speaker SPEAKER_04 @미경 
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_02 : 이모티콘 
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_04 : 없는뎅?
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_04 : 아
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_04 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_02 : 수정하면 풀리퀘하라는거 아냐?
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_02 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_04 : 이해를 개떡같이 했네
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_04 : ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_04 : 넵
+2024. 6. 28. 오후 10:52, Speaker SPEAKER_03 : @노해수 해수도 ab 쪽 확인해보고 마찬가지의 절차 후 ab쪽 파이썬 파일들 수정하고 풀리퀘해도 매우 좋음 ㅋㅋ
+2024. 6. 28. 오후 10:54, Speaker SPEAKER_03 : ㅋㅋㅋㅋ 순간 뭐가 어긋났나 고민했네 ㅋㅋㅋ 이해했음 오케이 ㅋㅋ 서비스 정상 작동만 확인하고 api 코드들도 같이 고쳐보자는 얘기였음 ㅋㅋ ml도 ab도 아님 다른 것들도
+2024. 6. 28. 오후 10:54, Speaker SPEAKER_04 : 넵! 편히 주무십시오
+2024. 6. 28. 오후 10:54, Speaker SPEAKER_04 : 내일 11시인가유?
+2024. 6. 28. 오후 10:55, Speaker SPEAKER_03 : ㅇㅇ 맞지? ㅋㅋㅋ 난 사실 더 늦게 하면 좋긴 한데 ㅋㅋㅋㅋㅋ 정해진 기본 시간은 11시니까
+2024. 6. 28. 오후 10:55, Speaker SPEAKER_04 : 오케이~~ 
+2024. 6. 28. 오후 10:57, Speaker SPEAKER_00 : ㅋㅋㅋㅋ오키! 운동 끝나고 집 가서 확인해보고 잘게!!
+2024. 6. 28. 오후 11:01, Speaker SPEAKER_04 : 사진
+2024. 6. 28. 오후 11:01, Speaker SPEAKER_04 : 이게 모야???
+2024. 6. 28. 오후 11:02, Speaker SPEAKER_02 : 수료기념 선물 같은거 아냐?
+2024. 6. 28. 오후 11:03, Speaker SPEAKER_04 : 아그랴? 빨리 신청 해야겠다
+2024. 6. 28. 오후 11:03, Speaker SPEAKER_02 : ㅋㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 11:03, Speaker SPEAKER_02 : 이모티콘 
+2024. 6. 28. 오후 11:07, Speaker SPEAKER_00 : ㅋㅋㅋㅋㅋㅋ나도 뮤ㅓㄴ지 모르는디 걍 신청함
+2024. 6. 28. 오후 11:07, Speaker SPEAKER_04 : 오예 차라리 돈으로 주지...참
+2024. 6. 28. 오후 11:08, Speaker SPEAKER_00 : 이모티콘 
+2024. 6. 28. 오후 11:08, Speaker SPEAKER_04 : https://jjester.tistory.com/328
+2024. 6. 28. 오후 11:09, Speaker SPEAKER_01 : 증말별거없다
+2024. 6. 28. 오후 11:09, Speaker SPEAKER_01 : ^^..
+2024. 6. 28. 오후 11:09, Speaker SPEAKER_04 : 돈으로 주지
+2024. 6. 28. 오후 11:09, Speaker SPEAKER_02 : ㅋㅋㅋㅋㅋㅋ
+2024. 6. 28. 오후 11:09, Speaker SPEAKER_02 : 스트레스볼 귀엽네...ㅎㅎ
+2024. 6. 28. 오후 11:14, Speaker SPEAKER_00 : 오~ 진짜 돈으로 주지…
+2024. 6. 28. 오후 11:14, Speaker SPEAKER_00 : 회식비나 주쇼
+
+2024년 6월 29일 토요일
+2024. 6. 29. 오전 10:58, Speaker SPEAKER_03 : http://collaboration-analysis-api-env.eba-usqw6syp.ap-northeast-2.elasticbeanstalk.com/dash/
+2024. 6. 29. 오전 10:58, Speaker SPEAKER_03 : 회의 때 이 버전 보면서 얘기해봅시다. 다들 이 url로 들어와서 보자. 업데이트된 건 회의하면서 설명할게
+2024. 6. 29. 오전 11:55, Speaker SPEAKER_03 : 50.47   Downloading watchgod-0.8.2-py3-none-any.whl (12 kB)
+50.56 Building wheels for collected packages: python-multipart
+50.56   Building wheel for python-multipart (setup.py): started
+51.04   Building wheel for python-multipart (setup.py): finished with status 'done'
+51.04   Created wheel for python-multipart: filename=python_multipart-0.0.5-py3-none-any.whl size=31676 sha256=82d6364a4ac6bc8033025adad0d478277d850c706b7a16346841594f9984c954
+51.04   Stored in directory: /root/.cache/pip/wheels/fe/04/d1/a10661cc45f03c3cecda50deb2d2c22f57b4e84a75b2a5987e
+51.04 Successfully built python-multipart
+51.67 Installing collected packages: pytz, httptools, dash-table, dash-html-components, dash-core-components, zipp, websockets, uvloop, typing-extensions, threadpoolctl, tenacity, sniffio, six, PyYAML, python-dotenv, pyparsing, pillow, packaging, numpy, networkx, MarkupSafe, kiwisolver, joblib, itsdangerous, idna, h11, graphviz, exceptiongroup, cycler, click, blinker, asgiref, wsproto, Werkzeug, uvicorn, scipy, python-multipart, python-dateutil, pydantic, plotly, patsy, Jinja2, importlib-metadata, anyio, xgboost, watchgod, starlette, scikit-learn, pandas, matplotlib, Flask, statsmodels, seaborn, lightgbm, fastapi, dash, catboost
+75.90 ERROR: Could not install packages due to an OSError: [Errno 28] No space left on device
+75.90
+75.98 WARNING: There was an error checking the latest version of pip.
+------
+Dockerfile:14
+--------------------
+  12 |
+  13 |     # Install any needed packages specified in requirements.txt
+  14 | >>> RUN pip install -r requirements.txt
+  15 |
+  16 |     # Define environment variable
+--------------------
+ERROR: failed to solve: process "/bin/sh -c pip install -r requirements.txt" did not complete successfully: exit code: 1
+D:\Python_Projects\collaboration_analysis\collaboration_analysis_api [develop ≡ +8 ~6 -0 !]> 
+2024. 6. 29. 오후 2:05, Speaker SPEAKER_03 : @Speaker SPEAKER_02  @Speaker SPEAKER_04  우리 이번에 16차 회의(바로 전 회의) transcription_project4_16.txt 이거 현서 녹음 기반이야 준영이 녹음 기반이야?
+2024. 6. 29. 오후 2:05, Speaker SPEAKER_04 : 그거 내 녹음 기반잊니다
+2024. 6. 29. 오후 2:06, Speaker SPEAKER_03 : 15차는 현서?
+2024. 6. 29. 오후 2:06, Speaker SPEAKER_02 : 아마 그것도 준영오빠?
+2024. 6. 29. 오후 2:06, Speaker SPEAKER_03 : 아 그래? 그럼 준영이도 15차 때 썼던 녹음 파일 원본도 노션에 올려주라
+2024. 6. 29. 오후 2:07, Speaker SPEAKER_03 : 사진
+2024. 6. 29. 오후 2:07, Speaker SPEAKER_04 : 옹? 넵 안올랔갔구나 넵
+2024. 6. 29. 오후 2:07, Speaker SPEAKER_03 : 사진
+2024. 6. 29. 오후 2:07, Speaker SPEAKER_03 : 아 그리고 준영이 링크는 링크를 가진 모두에게 공유 설정이 아니라 권한 제한이 있네 ㅋㅋ
+2024. 6. 29. 오후 2:08, Speaker SPEAKER_03 : 사진
+2024. 6. 29. 오후 2:09, Speaker SPEAKER_03 : 이거 설정을 모두에게로 하면 됨
+2024. 6. 29. 오후 2:10, Speaker SPEAKER_03 : 17차 오늘 한거 mp4, m4a 모두 올렸어
+2024. 6. 29. 오후 2:10, Speaker SPEAKER_03 : 사진
+2024. 6. 29. 오후 2:13, Speaker SPEAKER_04 : 되나유?
+2024. 6. 29. 오후 2:14, Speaker SPEAKER_03 : 잘 되네 ㅋㅋ
+2024. 6. 29. 오후 2:15, Speaker SPEAKER_03 : 사진
+2024. 6. 29. 오후 2:15, Speaker SPEAKER_03 : 나중에 이것도 어디 한군데 업로드해서 다같이 공유합시다. 이제까지 사용된 원본 파일 전문.
+2024. 6. 29. 오후 2:15, Speaker SPEAKER_03 : 전문이 아니라 전파일이겠네 ㅋㅋ
+2024. 6. 29. 오후 2:24, Speaker SPEAKER_03 : 아 ㅋㅋㅋ 그새 방 하나 또 놓쳤네 ㅋㅋ 젠장 ㅋㅋㅋ 좀 괜찮다 싶으면 너무 빨리 계약이 되는군
+2024. 6. 29. 오후 2:31, Speaker SPEAKER_01 : 그정도로 빠르게된단말이여?
+2024. 6. 29. 오후 2:31, Speaker SPEAKER_01 : 쉽지않네;
+2024. 6. 29. 오후 2:44, Speaker SPEAKER_03 : 준영이가 sna 그래프 타이틀 추가한거까지 머지했어. 16 txt 파일 이름에 txt가 중복되서 그것도 수정해서 업로드해뒀어.
+2024. 6. 29. 오후 2:44, Speaker SPEAKER_04 : 오케잇 감사합니당~~~
+2024. 6. 29. 오후 2:45, Speaker SPEAKER_03 : 아 머지 후에 잘 작동하는 것도 확인했어
+2024. 6. 29. 오후 3:35, Speaker SPEAKER_03 : summary section 이름 preview로 바꾸고 upload 탭으로 옮겼어
+2024. 6. 29. 오후 3:35, Speaker SPEAKER_03 : 사진
+2024. 6. 29. 오후 3:35, Speaker SPEAKER_03 : 사진
+2024. 6. 29. 오후 3:36, Speaker SPEAKER_03 : 이제 upload 폴더를 제외한 나머지 영역들은 당분간 내가 수정할 일이 없을테니 충돌 염려없이 수정하는대로 풀리퀘하면 될듯
+2024. 6. 29. 오후 3:37, Speaker SPEAKER_03 : 아 그냥 탭만 옮기는데 왤케 오류가 생기는지 ㅋㅋㅋ 여튼 나는 upload 쪽 얼릉 완성해볼게
+2024. 6. 29. 오후 4:03, Speaker SPEAKER_01 : 네엥

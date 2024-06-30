@@ -32,6 +32,30 @@ dash_app.layout = html.Div([
         html.A("Individual Collaboration Score", href='#other', style={'margin-right': '20px'}, className='scroll-link'),
         html.A("Self-Interaction Individual Collaboration Score", href='#self', style={'margin-right': '20px'}, className='scroll-link'),
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+    html.Div([
+        dcc.Markdown('''
+        ### Machine Learning (ML)
+        Machine Learning (ML) is a field of artificial intelligence that uses statistical techniques to give computer systems the ability to "learn" from data, without being explicitly programmed. In this dashboard, we use ML to predict collaboration scores based on various input features derived from meeting data.
+    ''', style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'width': '100%', 'margin-bottom': '5px'}),
+
+        html.Div([
+            dcc.Markdown('''
+            #### Model Selection and Performance Evaluation
+            Grid search was used to tune the hyperparameters of the model. The performance of the model was evaluated using the following metrics to ensure generalizability and accuracy:
+            - **R² score**: Measures the proportion of the variance in the dependent variable (self-evaluation scores) that is predictable from the independent variables. A higher R² indicates better model performance.
+            - **MSE (Mean Squared Error)**: Represents the average of the squares of the errors—that is, the average squared difference between the predicted values and the actual self-evaluation scores. Lower MSE indicates better model performance.
+            - **Cross-Validation**: Ensures that the model's performance is consistent across different subsets of the data, indicating its ability to generalize well to unseen data.
+        ''', style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'width': '50%', 'display': 'inline-block'}),
+
+            dcc.Markdown('''
+            #### Features considered in the model include(Feature Importance):
+            - **Meeting number**: This feature might capture specific contextual or temporal elements of the meetings that significantly influence self-evaluation. Different meetings could have varying dynamics, expectations, or participation levels, which in turn affect how individuals rate their own performance.
+            - **Gini coefficient**: This measure of inequality in contribution among participants can highlight how balanced or skewed the participation was. A higher Gini coefficient could indicate a few dominant speakers, potentially leading individuals to rate their own performance lower if they felt overshadowed.
+            - **Degree centrality**: This network analysis measure indicates how central a person is within the interaction network. A higher degree centrality suggests greater involvement in the discussion, likely leading individuals to evaluate their own performance more positively.
+            - **Normalized speech frequency**: This feature represents the frequency of speech adjusted for the length of the meeting or number of participants. Higher speech frequency generally reflects more active participation, which could positively influence self-evaluation as individuals perceive themselves as more engaged and contributing.
+        ''', style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'width': '50%', 'display': 'inline-block'})
+        ], style={'display': 'flex', 'justify-content': 'space-between', 'width': '100%'})
+    ], style={'backgroundColor': '#f0f0f0','borderRadius': '5px', 'width': '100%', 'padding': '20px'}),
 
     html.Script('''
         document.addEventListener('DOMContentLoaded', function() {

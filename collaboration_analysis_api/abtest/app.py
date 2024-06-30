@@ -34,6 +34,27 @@ dash_app.layout = html.Div([
         html.A("Casual Language Used", href='#casual', style={'margin-right': '20px'}, className='scroll-link'),
         html.A("Text-based vs. Voice-based", href='#voice', style={'margin-right': '20px'}, className='scroll-link'),
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+    html.Div([
+        dcc.Markdown('''
+        ### AB Testing Overview
+        AB Testing is an experimental approach to compare two versions, A and B, to determine which one performs better under certain conditions. This method is widely used in web development, marketing strategies, and other fields where user interaction data can significantly impact decision making.
+    ''', style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'width': '100%', 'margin-bottom': '5px'}),
+
+        html.Div([
+            dcc.Markdown('''
+            #### Key Metrics
+            - **Mean (µ)**: The average outcome within each group, indicating the central tendency. It helps understand the typical value you can expect from a data set.
+            - **Standard Deviation (SD)**: Measures the amount of variability or dispersion around the mean. A higher SD indicates more variability among the data.
+        ''', style={'backgroundColor': '#f0f0f0', 'padding': '10px',  'width': '50%', 'display': 'inline-block'}),
+
+            dcc.Markdown('''
+            #### Statistical Concepts in AB Testing
+            - **P-value**: The probability that the observed difference between two groups is due to chance. A p-value less than 0.05 is typically considered statistically significant.
+            - **T-statistic**: A measure of the difference between the means relative to the variation in the sample data. Higher t-values indicate more significant differences.
+            - **Degrees of Freedom (df)**: The number of values in the final calculation of a statistic that are free to vary.
+        ''', style={'backgroundColor': '#f0f0f0', 'padding': '10px',  'width': '50%', 'display': 'inline-block'})
+        ], style={'display': 'flex', 'justify-content': 'space-between', 'width': '100%'})
+    ], style={'backgroundColor': '#f0f0f0', 'borderRadius': '5px', 'width': '100%', 'padding': '20px'}),
 
     html.Script('''
         document.addEventListener('DOMContentLoaded', function() {

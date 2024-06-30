@@ -23,6 +23,60 @@ def get_color_map(num_speakers):
             color_map[i] = additional_colors[i - len(base_colors)]
     return color_map
 
+def generate_recommendation_text(speaker_number):
+    speaker_data = dataset[dataset['speaker_number'] == speaker_number]
+    recommendations = []
+
+    if speaker_data['speech_frequency'].mean() > dataset['speech_frequency'].mean():
+        recommendations.append(f"Speaker {speaker_number} speaks frequently.")
+    else:
+        recommendations.append(f"Speaker {speaker_number} does not speak often.")
+
+    if speaker_data['normalized_interaction_frequency'].mean() > dataset['normalized_interaction_frequency'].mean():
+        recommendations.append("This speaker interacts frequently.")
+    else:
+        recommendations.append("This speaker does not interact often.")
+
+    if speaker_data['degree_centrality'].mean() > dataset['degree_centrality'].mean():
+        recommendations.append("This member often acts as the center of meetings.")
+    else:
+        recommendations.append("This member is not often the center of meetings.")
+
+    if speaker_data['individual_collaboration_score'].mean() > dataset['individual_collaboration_score'].mean():
+        recommendations.append("This speaker receives good peer evaluations.")
+    else:
+        recommendations.append("This speaker does not receive good peer evaluations.")
+
+    if speaker_data[speaker_data['speaker_id'] == speaker_data['next_speaker_id']]['individual_collaboration_score'].mean() > dataset[dataset['speaker_id'] == dataset['next_speaker_id']]['individual_collaboration_score'].mean():
+        recommendations.append("This speaker gives themselves good self-evaluations.")
+    else:
+        recommendations.append("This speaker does not give themselves good self-evaluations.")
+
+    # Determine which channels increase interaction
+    online_meetings, offline_meetings = get_meetings_by_condition(dataset)
+    online_interactions = dataset[(dataset['meeting_number'].isin(online_meetings)) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    offline_interactions = dataset[(dataset['meeting_number'].isin(offline_meetings)) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+
+    casual_not_used_meetings = dataset[(dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    casual_used_meetings = dataset[(dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+
+    text_interactions = dataset[(dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    voice_interactions = dataset[(dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+
+    interaction_diff_online_offline = offline_interactions[offline_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean() - online_interactions[online_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean()
+    interaction_diff_casual_formal = casual_used_meetings[casual_used_meetings['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean() - casual_not_used_meetings[casual_not_used_meetings['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean()
+    interaction_diff_voice_text = voice_interactions[voice_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean() - text_interactions[text_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean()
+
+    channels_order = sorted([
+        ('offline meetings', interaction_diff_online_offline),
+        ('casual language', interaction_diff_casual_formal),
+        ('voice-based communication', interaction_diff_voice_text)
+    ], key=lambda x: x[1], reverse=True)
+
+    recommendations.append(f"The most effective channel to increase interactions for this speaker is {channels_order[0][0]}, followed by {channels_order[1][0]} and {channels_order[2][0]}.")
+
+    return html.P(' '.join(recommendations), style={'text-align': 'left'})
+
 def initialize_summary_app(dash_app_instance, dataset_instance):
     global dash_app, dataset
     dash_app = dash_app_instance
@@ -47,6 +101,18 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
 
     dash_app.layout.children.append(
         html.Div(id='preview-section-content', children=[
+            # New Overview by Speakers Section
+            html.Div([
+                html.H2("Overview for Each Speaker", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
+                html.Div(id='recommendation-texts', children=[
+                    html.Div([
+                        html.H3(f"Speaker {i}"),
+                        generate_recommendation_text(i)
+                    ], style={'text-align': 'left', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'width': '30%', 'display': 'inline-block', 'vertical-align': 'top'})
+                    for i in dataset['speaker_number'].unique() if i != 5
+                ], style={'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'center'})
+            ], style={'text-align': 'center', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'}),
+
             html.Div([
                 html.H2("Behavioral Data Analysis", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
                 html.A(html.Button("monitoring"), href="/dash", style={'display': 'inline-block'}),
@@ -171,6 +237,19 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
             ])
         ])
     )
+
+    @dash_app.callback(
+        Output('recommendation-texts', 'children'),
+        [Input('recommendation-speaker-dropdown', 'value')]
+    )
+    def update_recommendation_texts(_):
+        return [
+            html.Div([
+                html.H3(f"Speaker {i}"),
+                generate_recommendation_text(i)
+            ], style={'text-align': 'left', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'width': '30%', 'display': 'inline-block', 'vertical-align': 'top'})
+            for i in dataset['speaker_number'].unique() if i != 5
+        ]
 
     @dash_app.callback(
         Output('pie-chart-speech', 'figure'),

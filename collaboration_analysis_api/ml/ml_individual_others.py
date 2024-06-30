@@ -56,9 +56,10 @@ def initialize_individual_others_ml_app(dash_app_instance, dataset_instance):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Prediction of Individual Collaboration Score assessed by others
+                This function utilizes a machine learning model to help predict your collaboration score, which is assessed by others
+                - **feature**: 'meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id', 'next_speaker_id'
+                - **target**: 'individual_collaboration_score' filtered by 'speaker_id' != 'next_speaker_id'
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '20px'})
     ]))

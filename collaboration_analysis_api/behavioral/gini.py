@@ -26,9 +26,14 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Gini Coefficient Graph Explanation
+                This graph shows the equality of the meeting.
+                - **Gini Coefficient = 0**: All participants spoke at the same rate in the meeting
+                - **Gini Coefficient = 1**: Only one participant spoke, the rest did not speak at all
+                         
+                ### Axis Labels
+                - **X-axis**: Indicates the session number of the meeting.
+                - **Y-axis**: Indicates the Gini coefficient, with higher values representing greater inequality in participation.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px'})
     ]))

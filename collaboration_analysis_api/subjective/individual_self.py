@@ -36,9 +36,12 @@ def initialize_self_score_app(dash_app, dataset):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Individual Collaboration Score (Self) Explanation
+                This graph shows the average self-assessed collaboration  scores for each meeting, as well as the individual scores of participants.
+                         
+                ### Axis Labels
+                - **X-axis**: Indicates the session number of the meeting.
+                - **Y-axis**: Indicates self-assessed Collaboration Score
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '20px'})
     ])

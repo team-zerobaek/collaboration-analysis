@@ -10,33 +10,40 @@ def get_meetings_by_condition(dataset):
     return online_meetings, offline_meetings
 
 def initialize_abtest_app(dash_app, dataset):
+    # Ensure the normalized_interaction_frequency column exists and is calculated correctly
+    if 'normalized_interaction_frequency' not in dataset.columns:
+        dataset['normalized_interaction_frequency'] = dataset['count'] / dataset['duration']
+
+    # Exclude self-interactions
+    dataset = dataset[dataset['speaker_id'] != dataset['next_speaker_id']]
+
     def calculate_team_meeting_metrics(meetings):
         unique_speech_frequencies = meetings.groupby(['meeting_number', 'speaker_id'])['normalized_speech_frequency'].mean().reset_index()
         meeting_metrics = unique_speech_frequencies.groupby('meeting_number').agg({'normalized_speech_frequency': 'sum'}).reset_index()
-        interaction_metrics = meetings.groupby('meeting_number').agg({'count': 'sum'}).reset_index()
+        interaction_metrics = meetings.groupby('meeting_number').agg({'normalized_interaction_frequency': 'sum'}).reset_index()
         self_interactions = meetings[meetings['speaker_id'] == meetings['next_speaker_id']]
-        total_self_interactions = self_interactions.groupby('meeting_number')['count'].sum().reset_index()
+        total_self_interactions = self_interactions.groupby('meeting_number')['normalized_interaction_frequency'].sum().reset_index()
         interaction_metrics = interaction_metrics.merge(total_self_interactions, on='meeting_number', how='left', suffixes=('', '_self'))
-        interaction_metrics['count'] = interaction_metrics['count'] - interaction_metrics['count_self'].fillna(0)
-        interaction_metrics.drop(columns=['count_self'], inplace=True)
+        interaction_metrics['normalized_interaction_frequency'] = interaction_metrics['normalized_interaction_frequency'] - interaction_metrics['normalized_interaction_frequency_self'].fillna(0)
+        interaction_metrics.drop(columns=['normalized_interaction_frequency_self'], inplace=True)
         combined_metrics = meeting_metrics.merge(interaction_metrics, on='meeting_number')
         return combined_metrics
 
     def calculate_individual_meeting_metrics(meetings):
-        grouped = meetings.groupby(['meeting_number', 'speaker_id']).agg({'normalized_speech_frequency': 'mean', 'count': 'sum'}).reset_index()
+        grouped = meetings.groupby(['meeting_number', 'speaker_id']).agg({'normalized_speech_frequency': 'mean', 'normalized_interaction_frequency': 'sum'}).reset_index()
         return grouped
 
     def perform_ttest(group1, group2):
         ttest_results = {}
         ttest_results['normalized_speech_frequency'] = ttest_ind(group1['normalized_speech_frequency'], group2['normalized_speech_frequency'], equal_var=False)
-        ttest_results['count'] = ttest_ind(group1['count'], group2['count'], equal_var=False)
+        ttest_results['normalized_interaction_frequency'] = ttest_ind(group1['normalized_interaction_frequency'], group2['normalized_interaction_frequency'], equal_var=False)
         return ttest_results
 
     def dataframe_generator(ttest_results, group1, group2, view_type):
         rows_speech = []
         rows_interaction = []
         if view_type == 'total':
-            variables = ['normalized_speech_frequency', 'count']
+            variables = ['normalized_speech_frequency', 'normalized_interaction_frequency']
             for var in variables:
                 if var == 'normalized_speech_frequency':
                     row_online = {
@@ -84,7 +91,7 @@ def initialize_abtest_app(dash_app, dataset):
 
                 if len(online_speaker) > 1 and len(offline_speaker) > 1:
                     ttest_speech = ttest_ind(online_speaker['normalized_speech_frequency'], offline_speaker['normalized_speech_frequency'], equal_var=False)
-                    ttest_count = ttest_ind(online_speaker['count'], offline_speaker['count'], equal_var=False)
+                    ttest_count = ttest_ind(online_speaker['normalized_interaction_frequency'], offline_speaker['normalized_interaction_frequency'], equal_var=False)
                 else:
                     ttest_speech = ttest_count = None
 
@@ -109,17 +116,17 @@ def initialize_abtest_app(dash_app, dataset):
 
                 row_online = {
                     'Group': f'Online (Speaker {speaker})',
-                    'Mean': round(online_speaker['count'].mean(), 2),
-                    'Std': round(online_speaker['count'].std(), 2),
-                    'df': len(online_speaker['count']) - 1,
+                    'Mean': round(online_speaker['normalized_interaction_frequency'].mean(), 2),
+                    'Std': round(online_speaker['normalized_interaction_frequency'].std(), 2),
+                    'df': len(online_speaker['normalized_interaction_frequency']) - 1,
                     't-statistic': round(ttest_count.statistic, 2) if ttest_count else None,
                     'p-value': round(ttest_count.pvalue, 2) if ttest_count else None
                 }
                 row_offline = {
                     'Group': f'Offline (Speaker {speaker})',
-                    'Mean': round(offline_speaker['count'].mean(), 2),
-                    'Std': round(offline_speaker['count'].std(), 2),
-                    'df': len(offline_speaker['count']) - 1,
+                    'Mean': round(offline_speaker['normalized_interaction_frequency'].mean(), 2),
+                    'Std': round(offline_speaker['normalized_interaction_frequency'].std(), 2),
+                    'df': len(offline_speaker['normalized_interaction_frequency']) - 1,
                     't-statistic': '',
                     'p-value': ''
                 }
@@ -164,8 +171,8 @@ def initialize_abtest_app(dash_app, dataset):
 
             fig_interaction.add_trace(go.Bar(
                 x=['Online', 'Offline'],
-                y=[online_metrics['count'].mean(), offline_metrics['count'].mean()],
-                error_y=dict(type='data', array=[online_metrics['count'].std(), offline_metrics['count'].std()]),
+                y=[online_metrics['normalized_interaction_frequency'].mean(), offline_metrics['normalized_interaction_frequency'].mean()],
+                error_y=dict(type='data', array=[online_metrics['normalized_interaction_frequency'].std(), offline_metrics['normalized_interaction_frequency'].std()]),
                 marker_color=['#2ca02c', '#d62728']
             ))
 
@@ -179,7 +186,7 @@ def initialize_abtest_app(dash_app, dataset):
             fig_interaction.update_layout(
                 title='A/B Test: Normalized Interaction Count',
                 xaxis_title='Condition',
-                yaxis_title='Normalized Interaction Count',
+                yaxis_title='Normalized Interaction Frequency',
                 showlegend=False
             )
         else:
@@ -195,10 +202,10 @@ def initialize_abtest_app(dash_app, dataset):
 
                 fig_interaction.add_trace(go.Bar(
                     x=['Online', 'Offline'],
-                    y=[online_metrics[online_metrics['speaker_id'] == speaker]['count'].mean(),
-                       offline_metrics[offline_metrics['speaker_id'] == speaker]['count'].mean()],
-                    error_y=dict(type='data', array=[online_metrics[online_metrics['speaker_id'] == speaker]['count'].std(),
-                                                     offline_metrics[offline_metrics['speaker_id'] == speaker]['count'].std()]),
+                    y=[online_metrics[online_metrics['speaker_id'] == speaker]['normalized_interaction_frequency'].mean(),
+                       offline_metrics[offline_metrics['speaker_id'] == speaker]['normalized_interaction_frequency'].mean()],
+                    error_y=dict(type='data', array=[online_metrics[online_metrics['speaker_id'] == speaker]['normalized_interaction_frequency'].std(),
+                                                     offline_metrics[offline_metrics['speaker_id'] == speaker]['normalized_interaction_frequency'].std()]),
                     name=f'Speaker {speaker}'
                 ))
 
@@ -210,9 +217,9 @@ def initialize_abtest_app(dash_app, dataset):
             )
 
             fig_interaction.update_layout(
-                title='A/B Test: Normalized Interaction Count by Speaker',
+                title='A/B Test: Normalized Interaction Frequency by Speaker',
                 xaxis_title='Condition',
-                yaxis_title='Normalized Interaction Count',
+                yaxis_title='Normalized Interaction Frequency',
                 showlegend=True
             )
 

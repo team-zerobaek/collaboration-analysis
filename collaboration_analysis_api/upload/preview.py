@@ -155,18 +155,20 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                 html.H2("ML Examples", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
                 html.A(html.Button("ML"), href="/ml", style={'display': 'inline-block'}),
                 html.Div([
-                    html.H4("Predict Members' Perception of Collaboration in the Project"),
-                    dcc.Graph(id='overall-table')
-                ], style={'margin-bottom': '20px', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
-                html.Div([
-                    html.H4("Predict Peer Evaluation Scores for Collaboration"),
-                    dcc.Graph(id='individual-others-table')
-                ], style={'margin-bottom': '20px', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
-                html.Div([
-                    html.H4("Predict Self-Evaluation Scores for Collaboration"),
-                    dcc.Graph(id='individual-self-table')
-                ], style={'margin-bottom': '20px', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'})
-            ], style={'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'})
+                    html.Div([
+                        html.H4("Predict Members' Perception of Collaboration in the Project"),
+                        dcc.Graph(id='overall-table')
+                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
+                    html.Div([
+                        html.H4("Predict Peer Evaluation Scores for Collaboration"),
+                        dcc.Graph(id='individual-others-table')
+                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
+                    html.Div([
+                        html.H4("Predict Self-Evaluation Scores for Collaboration"),
+                        dcc.Graph(id='individual-self-table')
+                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
+                ], style={'text-align': 'center', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'})
+            ])
         ])
     )
 

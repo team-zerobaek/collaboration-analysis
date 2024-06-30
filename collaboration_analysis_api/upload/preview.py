@@ -118,7 +118,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                 html.A(html.Button("A/B Test"), href="/abtest", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
-                        html.H3("The Effect of Offline vs. Online"),
+                        html.H3("The Effect of Offline over Online"),
                         dcc.Dropdown(
                             id='project-dropdown-interaction-diff',
                             options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
@@ -138,7 +138,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         dcc.Graph(id='bar-chart-casual')
                     ], style={'width': '30%', 'display': 'inline-block'}),
                     html.Div([
-                        html.H3("The Effect of Voice-based vs. Text-based"),
+                        html.H3("The Effect of Voice-based over Text-based"),
                         dcc.Dropdown(
                             id='project-dropdown-text-voice',
                             options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
@@ -156,17 +156,17 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                 html.A(html.Button("ML"), href="/ml", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
-                        html.H4("Predict Members' Perception of Collaboration in the Project"),
+                        html.H3("Predict Members' Perception of Collaboration in the Project"),
                         dcc.Graph(id='overall-table')
-                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
+                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#f8f8f8', 'padding': '10px', 'borderRadius': '5px'}),
                     html.Div([
-                        html.H4("Predict Peer Evaluation Scores for Collaboration"),
+                        html.H3("Predict Peer Evaluation Scores for Collaboration"),
                         dcc.Graph(id='individual-others-table')
-                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
+                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#f8f8f8', 'padding': '10px', 'borderRadius': '5px'}),
                     html.Div([
-                        html.H4("Predict Self-Evaluation Scores for Collaboration"),
+                        html.H3("Predict Self-Evaluation Scores for Collaboration"),
                         dcc.Graph(id='individual-self-table')
-                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#e0e0e0', 'padding': '10px', 'borderRadius': '5px'}),
+                    ], style={'width': '32%', 'display': 'inline-block', 'backgroundColor': '#f8f8f8', 'padding': '10px', 'borderRadius': '5px'}),
                 ], style={'text-align': 'center', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'})
             ])
         ])

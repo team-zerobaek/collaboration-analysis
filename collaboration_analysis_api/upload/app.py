@@ -16,9 +16,12 @@ upload_app = FastAPI()
 # Initialize the Dash app
 dash_app = Dash(__name__, requests_pathname_prefix='/upload/')
 
-# Load default dataset
-default_dataset = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
-dataset = default_dataset.copy()
+# Load default datasets
+default_dataset_voice = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
+default_dataset_text = pd.read_csv('/app/data/kakao_data.csv')
+
+dataset_voice = default_dataset_voice.copy()
+dataset_text = default_dataset_text.copy()
 
 # Define the layout for the upload page
 dash_app.layout = html.Div([
@@ -66,7 +69,7 @@ dash_app.layout = html.Div([
 ])
 
 # Initialize the summary charts
-initialize_summary_app(dash_app, dataset)
+initialize_summary_app(dash_app, dataset_voice, dataset_text)
 
 # Callback to handle file uploads and process the transcripts
 @dash_app.callback(
@@ -76,18 +79,18 @@ initialize_summary_app(dash_app, dataset)
     State('upload-data', 'last_modified')
 )
 def update_output(contents, filenames, last_modified):
-    global dataset
+    global dataset_voice, dataset_text
     if contents is not None:
         transcriptions = process_transcripts(contents, filenames)
         dfs = [extract_speaker_turns(data) for data in transcriptions]
         durations = process_files_in_directory(transcriptions)
-        dataset = create_dataset(dfs, project_number=99)
-        dataset['duration'] = durations * len(dataset) // len(durations)
-        dataset['duration'] = dataset['duration'] / 60  # Convert duration from minutes to hours
-        dataset['normalized_speech_frequency'] = dataset['speech_frequency'] / dataset['duration']
+        dataset_voice = create_dataset(dfs, project_number=99)
+        dataset_voice['duration'] = durations * len(dataset_voice) // len(durations)
+        dataset_voice['duration'] = dataset_voice['duration'] / 60  # Convert duration from minutes to hours
+        dataset_voice['normalized_speech_frequency'] = dataset_voice['speech_frequency'] / dataset_voice['duration']
 
         # Save to CSV
-        process_and_save(dataset, 'data/dataset_collaboration_manual.csv')
+        process_and_save(dataset_voice, 'data/dataset_collaboration_manual.csv')
 
         return html.Div([
             html.H5(', '.join(filenames)),
@@ -103,8 +106,9 @@ def update_output(contents, filenames, last_modified):
 )
 def use_default_data(n_clicks):
     if n_clicks:
-        global dataset
-        dataset = default_dataset.copy()
+        global dataset_voice, dataset_text
+        dataset_voice = default_dataset_voice.copy()
+        dataset_text = default_dataset_text.copy()
         return {'display': 'block'}
     return {'display': 'none'}
 

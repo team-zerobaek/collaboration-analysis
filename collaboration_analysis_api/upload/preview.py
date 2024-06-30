@@ -1,13 +1,14 @@
+import pandas as pd
 from dash.dependencies import Input, Output
 from dash import dcc, html
 import plotly.graph_objects as go
-import pandas as pd
 import matplotlib.colors as mcolors
 from abtest.on_off import get_meetings_by_condition  # Import function to get meeting conditions
 from abtest.casual import initialize_casual_app  # Import function to initialize the casual app
 
 dash_app = None
-dataset = None
+dataset_voice = None
+dataset_text = None
 
 # Predefined base colors
 base_colors = ['blue', 'red', 'green', 'purple', 'orange']
@@ -24,44 +25,44 @@ def get_color_map(num_speakers):
     return color_map
 
 def generate_recommendation_text(speaker_number):
-    speaker_data = dataset[dataset['speaker_number'] == speaker_number]
+    speaker_data = dataset_voice[dataset_voice['speaker_number'] == speaker_number]
     recommendations = []
 
-    if speaker_data['speech_frequency'].mean() > dataset['speech_frequency'].mean():
+    if speaker_data['speech_frequency'].mean() > dataset_voice['speech_frequency'].mean():
         recommendations.append(f"Speaker {speaker_number} speaks frequently.")
     else:
         recommendations.append(f"Speaker {speaker_number} does not speak often.")
 
-    if speaker_data['normalized_interaction_frequency'].mean() > dataset['normalized_interaction_frequency'].mean():
+    if speaker_data['normalized_interaction_frequency'].mean() > dataset_voice['normalized_interaction_frequency'].mean():
         recommendations.append("This speaker interacts frequently.")
     else:
         recommendations.append("This speaker does not interact often.")
 
-    if speaker_data['degree_centrality'].mean() > dataset['degree_centrality'].mean():
+    if speaker_data['degree_centrality'].mean() > dataset_voice['degree_centrality'].mean():
         recommendations.append("This member often acts as the center of meetings.")
     else:
         recommendations.append("This member is not often the center of meetings.")
 
-    if speaker_data['individual_collaboration_score'].mean() > dataset['individual_collaboration_score'].mean():
+    if speaker_data['individual_collaboration_score'].mean() > dataset_voice['individual_collaboration_score'].mean():
         recommendations.append("This speaker receives good peer evaluations.")
     else:
         recommendations.append("This speaker does not receive good peer evaluations.")
 
-    if speaker_data[speaker_data['speaker_id'] == speaker_data['next_speaker_id']]['individual_collaboration_score'].mean() > dataset[dataset['speaker_id'] == dataset['next_speaker_id']]['individual_collaboration_score'].mean():
+    if speaker_data[speaker_data['speaker_id'] == speaker_data['next_speaker_id']]['individual_collaboration_score'].mean() > dataset_voice[dataset_voice['speaker_id'] == dataset_voice['next_speaker_id']]['individual_collaboration_score'].mean():
         recommendations.append("This speaker gives themselves good self-evaluations.")
     else:
         recommendations.append("This speaker does not give themselves good self-evaluations.")
 
     # Determine which channels increase interaction
-    online_meetings, offline_meetings = get_meetings_by_condition(dataset)
-    online_interactions = dataset[(dataset['meeting_number'].isin(online_meetings)) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
-    offline_interactions = dataset[(dataset['meeting_number'].isin(offline_meetings)) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    online_meetings, offline_meetings = get_meetings_by_condition(dataset_voice)
+    online_interactions = dataset_voice[(dataset_voice['meeting_number'].isin(online_meetings)) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    offline_interactions = dataset_voice[(dataset_voice['meeting_number'].isin(offline_meetings)) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
 
-    casual_not_used_meetings = dataset[(dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
-    casual_used_meetings = dataset[(dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    casual_not_used_meetings = dataset_voice[(dataset_voice['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    casual_used_meetings = dataset_voice[(dataset_voice['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
 
-    text_interactions = dataset[(dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
-    voice_interactions = dataset[(dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    text_interactions = dataset_text[(dataset_text['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset_text['speaker_id'] != dataset_text['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    voice_interactions = dataset_voice[(dataset_voice['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
 
     interaction_diff_online_offline = offline_interactions[offline_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean() - online_interactions[online_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean()
     interaction_diff_casual_formal = casual_used_meetings[casual_used_meetings['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean() - casual_not_used_meetings[casual_not_used_meetings['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean()
@@ -77,24 +78,27 @@ def generate_recommendation_text(speaker_number):
 
     return html.P(' '.join(recommendations), style={'text-align': 'left'})
 
-def initialize_summary_app(dash_app_instance, dataset_instance):
-    global dash_app, dataset
+def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_instance_text):
+    global dash_app, dataset_voice, dataset_text
     dash_app = dash_app_instance
-    dataset = dataset_instance
+    dataset_voice = dataset_instance_voice
+    dataset_text = dataset_instance_text
 
     # Ensure the normalized_interaction_frequency column exists and is calculated correctly
-    if 'normalized_interaction_frequency' not in dataset.columns:
-        dataset['normalized_interaction_frequency'] = dataset['count'] / dataset['duration']
+    for dataset in [dataset_voice, dataset_text]:
+        if 'normalized_interaction_frequency' not in dataset.columns:
+            dataset['normalized_interaction_frequency'] = dataset['count'] / dataset['duration']
 
-    most_recent_project = dataset['project'].max()
+    most_recent_project = max(dataset_voice['project'].max(), dataset_text['project'].max())
 
     def get_valid_projects_for_all_meetings():
         valid_projects = []
-        for project in dataset['project'].unique():
-            project_data = dataset[dataset['project'] == project]
-            online_meetings, offline_meetings = get_meetings_by_condition(project_data)
-            if any(project_data['meeting_number'].isin(online_meetings)) and any(project_data['meeting_number'].isin(offline_meetings)):
-                valid_projects.append(project)
+        for dataset in [dataset_voice, dataset_text]:
+            for project in dataset['project'].unique():
+                project_data = dataset[dataset['project'] == project]
+                online_meetings, offline_meetings = get_meetings_by_condition(project_data)
+                if any(project_data['meeting_number'].isin(online_meetings)) and any(project_data['meeting_number'].isin(offline_meetings)):
+                    valid_projects.append(project)
         return valid_projects
 
     valid_projects_for_all_meetings = get_valid_projects_for_all_meetings()
@@ -109,7 +113,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         html.H3(f"Speaker {i}"),
                         generate_recommendation_text(i)
                     ], style={'text-align': 'left', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'width': '30%', 'display': 'inline-block', 'vertical-align': 'top'})
-                    for i in dataset['speaker_number'].unique() if i != 5
+                    for i in dataset_voice['speaker_number'].unique() if i != 5
                 ], style={'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'center'})
             ], style={'text-align': 'center', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px'}),
 
@@ -121,7 +125,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         html.H3("Who Spoke the Most"),
                         dcc.Dropdown(
                             id='project-dropdown-speech',
-                            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                            options=[{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()],
                             value=most_recent_project,
                             style={'width': '80%', 'margin': '0 auto'}
                         ),
@@ -131,7 +135,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         html.H3("Who Interacted the Most"),
                         dcc.Dropdown(
                             id='project-dropdown-interaction',
-                            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                            options=[{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()],
                             value=most_recent_project,
                             style={'width': '80%', 'margin': '0 auto'}
                         ),
@@ -141,7 +145,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         html.H3("Who Was the Center of Meetings the Most"),
                         dcc.Dropdown(
                             id='project-dropdown-degree-centrality',
-                            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                            options=[{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()],
                             value=most_recent_project,
                             style={'width': '80%', 'margin': '0 auto'}
                         ),
@@ -197,7 +201,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         html.H3("The Effect of Casual Language Usage"),
                         dcc.Dropdown(
                             id='project-dropdown-casual',
-                            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                            options=[{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()],
                             value=most_recent_project,
                             style={'width': '80%', 'margin': '0 auto'}
                         ),
@@ -207,7 +211,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                         html.H3("The Effect of Voice-based over Text-based"),
                         dcc.Dropdown(
                             id='project-dropdown-text-voice',
-                            options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                            options=[{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()],
                             value=most_recent_project,
                             style={'width': '80%', 'margin': '0 auto'}
                         ),
@@ -248,7 +252,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                 html.H3(f"Speaker {i}"),
                 generate_recommendation_text(i)
             ], style={'text-align': 'left', 'margin-bottom': '20px', 'backgroundColor': '#f8f8f8', 'padding': '20px', 'borderRadius': '10px', 'width': '30%', 'display': 'inline-block', 'vertical-align': 'top'})
-            for i in dataset['speaker_number'].unique() if i != 5
+            for i in dataset_voice['speaker_number'].unique() if i != 5
         ]
 
     @dash_app.callback(
@@ -258,7 +262,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     def update_speech_pie_chart(selected_project):
         if selected_project is None:
             selected_project = most_recent_project
-        filtered_df = dataset[dataset['project'] == selected_project]
+        filtered_df = dataset_voice[dataset_voice['project'] == selected_project]
         speech_freq = filtered_df.groupby('speaker_number')['speech_frequency'].sum().reset_index()
         color_map = get_color_map(len(speech_freq))
         fig = go.Figure(data=[go.Pie(labels=speech_freq['speaker_number'], values=speech_freq['speech_frequency'], hole=.3)])
@@ -273,7 +277,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     def update_interaction_pie_chart(selected_project):
         if selected_project is None:
             selected_project = most_recent_project
-        filtered_df = dataset[(dataset['project'] == selected_project) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+        filtered_df = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
         interaction_freq = filtered_df.groupby('speaker_number')['normalized_interaction_frequency'].sum().reset_index()
         color_map = get_color_map(len(interaction_freq))
         fig = go.Figure(data=[go.Pie(labels=interaction_freq['speaker_number'], values=interaction_freq['normalized_interaction_frequency'], hole=.3)])
@@ -288,7 +292,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     def update_degree_centrality_pie_chart(selected_project):
         if selected_project is None:
             selected_project = most_recent_project
-        filtered_df = dataset[dataset['project'] == selected_project]
+        filtered_df = dataset_voice[dataset_voice['project'] == selected_project]
         degree_centrality_freq = filtered_df.groupby('speaker_number')['degree_centrality'].sum().reset_index()
         color_map = get_color_map(len(degree_centrality_freq))
         fig = go.Figure(data=[go.Pie(labels=degree_centrality_freq['speaker_number'], values=degree_centrality_freq['degree_centrality'], hole=.3)])
@@ -303,7 +307,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     def update_individual_others_pie_chart(selected_project):
         if selected_project is None:
             selected_project = most_recent_project
-        filtered_df = dataset[dataset['project'] == selected_project]
+        filtered_df = dataset_voice[dataset_voice['project'] == selected_project]
         others_scores = filtered_df.groupby('speaker_number')['individual_collaboration_score'].mean().reset_index()
         color_map = get_color_map(len(others_scores))
         fig = go.Figure(data=[go.Pie(labels=others_scores['speaker_number'], values=others_scores['individual_collaboration_score'], hole=.3)])
@@ -318,7 +322,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     def update_individual_self_pie_chart(selected_project):
         if selected_project is None:
             selected_project = most_recent_project
-        filtered_df = dataset[dataset['project'] == selected_project]
+        filtered_df = dataset_voice[dataset_voice['project'] == selected_project]
         self_scores = filtered_df[filtered_df['speaker_id'] == filtered_df['next_speaker_id']].groupby('speaker_number')['individual_collaboration_score'].mean().reset_index()
         color_map = get_color_map(len(self_scores))
         fig = go.Figure(data=[go.Pie(labels=self_scores['speaker_number'], values=self_scores['individual_collaboration_score'], hole=.3)])
@@ -332,10 +336,10 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     )
     def update_bar_chart_difference(selected_project):
         if selected_project is None:
-            selected_project = most_recent_project
-        online_meetings, offline_meetings = get_meetings_by_condition(dataset)
-        online_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin(online_meetings)) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
-        offline_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin(offline_meetings)) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+            selected_project is most_recent_project
+        online_meetings, offline_meetings = get_meetings_by_condition(dataset_voice)
+        online_meetings = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['meeting_number'].isin(online_meetings)) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
+        offline_meetings = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['meeting_number'].isin(offline_meetings)) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
         online_interactions = online_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
         offline_interactions = offline_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
         interaction_diff = pd.merge(online_interactions, offline_interactions, on='speaker_number', suffixes=('_online', '_offline'))
@@ -360,8 +364,8 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     def update_casual_bar_chart(selected_project):
         if selected_project is None:
             selected_project = most_recent_project
-        casual_not_used_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
-        casual_used_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+        casual_not_used_meetings = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
+        casual_used_meetings = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['meeting_number'].isin([9, 10, 11, 12, 13, 14, 15, 16, 17])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
         casual_not_used_interactions = casual_not_used_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
         casual_used_interactions = casual_used_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
         casual_diff = pd.merge(casual_not_used_interactions, casual_used_interactions, on='speaker_number', suffixes=('_not_used', '_used'))
@@ -386,8 +390,8 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
     def update_text_voice_bar_chart(selected_project):
         if selected_project is None:
             selected_project = most_recent_project
-        text_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
-        voice_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+        text_meetings = dataset_text[(dataset_text['project'] == selected_project) & (dataset_text['speaker_id'] != dataset_text['next_speaker_id'])]
+        voice_meetings = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
         text_interactions = text_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
         voice_interactions = voice_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
         text_voice_diff = pd.merge(text_interactions, voice_interactions, on='speaker_number', suffixes=('_text', '_voice'))

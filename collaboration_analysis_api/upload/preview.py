@@ -137,7 +137,21 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                     ),
                     dcc.Graph(id='bar-chart-text-voice')
                 ], style={'width': '30%', 'display': 'inline-block'})
-            ], style={'text-align': 'center', 'margin-bottom': '20px', 'display': 'flex', 'justify-content': 'space-between'})
+            ], style={'text-align': 'center', 'margin-bottom': '20px', 'display': 'flex', 'justify-content': 'space-between'}),
+
+            # New tables for Behavioral Data
+            html.Div([
+                html.H4("Behavioral Data - Overall"),
+                dcc.Graph(id='overall-table')
+            ], style={'margin-bottom': '20px'}),
+            html.Div([
+                html.H4("Behavioral Data - Individual Others"),
+                dcc.Graph(id='individual-others-table')
+            ], style={'margin-bottom': '20px'}),
+            html.Div([
+                html.H4("Behavioral Data - Individual Self"),
+                dcc.Graph(id='individual-self-table')
+            ], style={'margin-bottom': '20px'})
         ])
     )
 
@@ -294,3 +308,59 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                           yaxis_title='Interaction Difference (Voice - Text)',
                           xaxis={'categoryorder':'total descending'})  # Ensure bars are sorted by y-values
         return fig
+
+    @dash_app.callback(
+        [Output('overall-table', 'figure'),
+         Output('individual-others-table', 'figure'),
+         Output('individual-self-table', 'figure')],
+        [Input('project-dropdown-speech', 'value')]
+    )
+    def update_best_model_summary(selected_project):
+        # Creating dummy data for demonstration purposes
+        behavioral_overall = {
+            'Metric': ['Model', 'R2', 'MSE', 'CV Mean R2', 'CV Std R2', 'Training Time', 'Best Params'],
+            'Value': ['LightGBM Regressor', 0.9, 0.02, 0.99, 0.01, '152.71 seconds', "{'model__learning_rate': 0.3, 'model__n_estimators': 200, 'model__num_leaves': 31}"]
+        }
+
+        behavioral_others = {
+            'Metric': ['Model', 'R2', 'MSE', 'CV Mean R2', 'CV Std R2', 'Training Time', 'Best Params'],
+            'Value': ['XGBRegressor', 0.85, 0.03, 0.95, 0.02, '120.50 seconds', "{'model__learning_rate': 0.2, 'model__n_estimators': 150, 'model__max_depth': 5}"]
+        }
+
+        behavioral_self = {
+            'Metric': ['Model', 'R2', 'MSE', 'CV Mean R2', 'CV Std R2', 'Training Time', 'Best Params'],
+            'Value': ['Random Forest Regressor', 0.8, 0.05, 0.92, 0.03, '200.80 seconds', "{'model__n_estimators': 100, 'model__max_depth': 10}"]
+        }
+
+        overall_df = pd.DataFrame(behavioral_overall)
+        others_df = pd.DataFrame(behavioral_others)
+        self_df = pd.DataFrame(behavioral_self)
+
+        overall_table = go.Figure(data=[go.Table(
+            header=dict(values=list(overall_df.columns),
+                        fill_color='paleturquoise',
+                        align='left'),
+            cells=dict(values=[overall_df.Metric, overall_df.Value],
+                       fill_color='lavender',
+                       align='left'))
+        ])
+
+        others_table = go.Figure(data=[go.Table(
+            header=dict(values=list(others_df.columns),
+                        fill_color='paleturquoise',
+                        align='left'),
+            cells=dict(values=[others_df.Metric, others_df.Value],
+                       fill_color='lavender',
+                       align='left'))
+        ])
+
+        self_table = go.Figure(data=[go.Table(
+            header=dict(values=list(self_df.columns),
+                        fill_color='paleturquoise',
+                        align='left'),
+            cells=dict(values=[self_df.Metric, self_df.Value],
+                       fill_color='lavender',
+                       align='left'))
+        ])
+
+        return overall_table, others_table, self_table

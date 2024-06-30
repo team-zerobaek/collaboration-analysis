@@ -5,8 +5,8 @@ from scipy.stats import ttest_ind
 from dash import html, dcc
 
 def get_meetings_by_condition(dataset):
-    online_meetings = [1, 2, 3, 4, 5, 6, 7, 13, 14]
-    offline_meetings = [8, 9, 11, 12]
+    online_meetings = [1, 2, 3, 4, 5, 6, 7, 13, 14, 17]
+    offline_meetings = [8, 9, 11, 12, 15, 16]
     return online_meetings, offline_meetings
 
 def initialize_abtest_app(dash_app, dataset):

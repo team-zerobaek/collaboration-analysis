@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
 from abtest.on_off import get_meetings_by_condition  # Import function to get meeting conditions
+from abtest.casual import initialize_casual_app  # Import function to initialize the casual app
 
 dash_app = None
 dataset = None
@@ -104,17 +105,39 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
                 ], style={'width': '45%', 'display': 'inline-block', 'vertical-align': 'top'}),
             ], style={'text-align': 'center', 'margin-bottom': '20px'}),
 
-            # New bar chart for interaction differences
+            # New bar charts for interaction differences
             html.Div([
-                html.H3("Interaction Difference Between Online and Offline Conditions"),
-                dcc.Dropdown(
-                    id='project-dropdown-interaction-diff',
-                    options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
-                    value=most_recent_project if most_recent_project in valid_projects_for_all_meetings else None,
-                    style={'width': '80%', 'margin': '0 auto'}
-                ),
-                dcc.Graph(id='bar-chart-interaction-diff')
-            ], style={'text-align': 'center', 'margin-bottom': '20px'})
+                html.Div([
+                    html.H3("Interaction Difference Between Online and Offline Conditions"),
+                    dcc.Dropdown(
+                        id='project-dropdown-interaction-diff',
+                        options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
+                        value=most_recent_project if most_recent_project in valid_projects_for_all_meetings else None,
+                        style={'width': '80%', 'margin': '0 auto'}
+                    ),
+                    dcc.Graph(id='bar-chart-interaction-diff')
+                ], style={'width': '30%', 'display': 'inline-block'}),
+                html.Div([
+                    html.H3("Casual Language Usage Difference"),
+                    dcc.Dropdown(
+                        id='project-dropdown-casual',
+                        options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                        value=most_recent_project,
+                        style={'width': '80%', 'margin': '0 auto'}
+                    ),
+                    dcc.Graph(id='bar-chart-casual')
+                ], style={'width': '30%', 'display': 'inline-block'}),
+                html.Div([
+                    html.H3("Text-based vs. Voice-based Difference"),
+                    dcc.Dropdown(
+                        id='project-dropdown-text-voice',
+                        options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                        value=most_recent_project,
+                        style={'width': '80%', 'margin': '0 auto'}
+                    ),
+                    dcc.Graph(id='bar-chart-text-voice')
+                ], style={'width': '30%', 'display': 'inline-block'})
+            ], style={'text-align': 'center', 'margin-bottom': '20px', 'display': 'flex', 'justify-content': 'space-between'})
         ])
     )
 
@@ -217,5 +240,57 @@ def initialize_summary_app(dash_app_instance, dataset_instance):
         fig.update_layout(title=f'Interaction Difference Between Online and Offline for Project {selected_project}',
                           xaxis_title='Speaker Number',
                           yaxis_title='Interaction Difference (Offline - Online)',
+                          xaxis={'categoryorder':'total descending'})  # Ensure bars are sorted by y-values
+        return fig
+
+    @dash_app.callback(
+        Output('bar-chart-casual', 'figure'),
+        [Input('project-dropdown-casual', 'value')]
+    )
+    def update_casual_bar_chart(selected_project):
+        if selected_project is None:
+            selected_project = most_recent_project
+        casual_not_used_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+        casual_used_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+        casual_not_used_interactions = casual_not_used_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+        casual_used_interactions = casual_used_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+        casual_diff = pd.merge(casual_not_used_interactions, casual_used_interactions, on='speaker_number', suffixes=('_not_used', '_used'))
+        casual_diff['diff'] = casual_diff['normalized_interaction_frequency_used'] - casual_diff['normalized_interaction_frequency_not_used']
+        casual_diff = casual_diff.sort_values(by='diff', ascending=False)
+        color_map = get_color_map(len(casual_diff))
+        fig = go.Figure(data=[go.Bar(
+            x=casual_diff['speaker_number'].astype(str),
+            y=casual_diff['diff'],
+            marker=dict(color=[color_map[int(speaker)] for speaker in casual_diff['speaker_number']])
+        )])
+        fig.update_layout(title=f'Casual Language Usage Difference for Project {selected_project}',
+                          xaxis_title='Speaker Number',
+                          yaxis_title='Interaction Difference (Used - Not Used)',
+                          xaxis={'categoryorder':'total descending'})  # Ensure bars are sorted by y-values
+        return fig
+
+    @dash_app.callback(
+        Output('bar-chart-text-voice', 'figure'),
+        [Input('project-dropdown-text-voice', 'value')]
+    )
+    def update_text_voice_bar_chart(selected_project):
+        if selected_project is None:
+            selected_project = most_recent_project
+        text_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+        voice_meetings = dataset[(dataset['project'] == selected_project) & (dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset['speaker_id'] != dataset['next_speaker_id'])]
+        text_interactions = text_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+        voice_interactions = voice_meetings.groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+        text_voice_diff = pd.merge(text_interactions, voice_interactions, on='speaker_number', suffixes=('_text', '_voice'))
+        text_voice_diff['diff'] = text_voice_diff['normalized_interaction_frequency_voice'] - text_voice_diff['normalized_interaction_frequency_text']
+        text_voice_diff = text_voice_diff.sort_values(by='diff', ascending=False)
+        color_map = get_color_map(len(text_voice_diff))
+        fig = go.Figure(data=[go.Bar(
+            x=text_voice_diff['speaker_number'].astype(str),
+            y=text_voice_diff['diff'],
+            marker=dict(color=[color_map[int(speaker)] for speaker in text_voice_diff['speaker_number']])
+        )])
+        fig.update_layout(title=f'Text-based vs. Voice-based Difference for Project {selected_project}',
+                          xaxis_title='Speaker Number',
+                          yaxis_title='Interaction Difference (Voice - Text)',
                           xaxis={'categoryorder':'total descending'})  # Ensure bars are sorted by y-values
         return fig

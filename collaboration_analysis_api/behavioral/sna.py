@@ -328,7 +328,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     # Define the layout for SNA-specific elements
     sna_layout = html.Div([
         html.Div(id='sna', children=[
-            html.H1("Participants Network Graph")
+            html.H1("Interaction Network Graph")
         ]),
         html.Div([
             dcc.Dropdown(

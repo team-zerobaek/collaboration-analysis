@@ -13,7 +13,7 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
     dataset = dataset_instance
 
     dash_app.layout.children.append(html.Div(id ='degree', children=[
-        html.H1("How much contributed? (Degree Centrality)"),
+        html.H1("How Much Contributed?"),
         html.Div([
             dcc.Dropdown(
                 id='degree-centrality-project-dropdown',

@@ -7,7 +7,7 @@ from dash import dcc, html
 
 def initialize_overall_app(dash_app, dataset):
     overall_layout = html.Div(id = 'overall', children=[
-        html.H1("Overall Collaboration Score", style={'text-align': 'left'}),
+        html.H1("Members' Perception of Collaboration", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
                 id='meeting-dropdown',

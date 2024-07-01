@@ -33,7 +33,7 @@ dash_app.layout = html.Div([
             'Effective Channels', style={'margin-right': '10px'}), href='/abtest'),
         html.A(html.Button('Predict', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
-    html.H2("A/B Test", style={'text-align': 'center'}),
+    html.H2("Effective Channels Analysis", style={'text-align': 'center'}),
     html.Div([
         html.A("Online vs. Offline", href='#onoff', style={
                'margin-right': '20px'}, className='scroll-link'),

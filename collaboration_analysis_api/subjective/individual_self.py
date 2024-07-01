@@ -7,7 +7,7 @@ from dash import dcc, html
 
 def initialize_self_score_app(dash_app, dataset):
     self_score_layout = html.Div(id='individual-self', children=[
-        html.H1("Individual Collaboration Score (Self)", style={'text-align': 'left'}),
+        html.H1("Self Evaluation Scores for Collaboration", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
                 id='self-meeting-dropdown',

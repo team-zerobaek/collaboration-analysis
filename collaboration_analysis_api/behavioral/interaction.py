@@ -22,7 +22,7 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
     interaction_summary['normalized_interaction_count'] = interaction_summary['count'] / interaction_summary['duration']
 
     dash_app.layout.children.append(html.Div(id ='turn', children=[
-        html.H1("How much interacted? (turn-switch based)"),
+        html.H1("How Much Interacted?"),
         html.Div([
             dcc.Dropdown(
                 id='interaction-project-dropdown',

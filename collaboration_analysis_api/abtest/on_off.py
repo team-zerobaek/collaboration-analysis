@@ -268,11 +268,11 @@ def initialize_abtest_app(dash_app, dataset):
             html.Details([
                 html.Summary('Text-based vs. Voice-based - Speech Frequency',style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
-                    **Speech Frequency - Total**
-                    By observing the changes in the Speech Frequency values in the Total graph, we can determine how conducting a meeting based on text or voice affects the overall speech frequency in the meeting.
+                    #### Speech Frequency - Total
+                    - By observing the changes in the Speech Frequency values in the Total graph, we can determine how conducting a meeting based on text or voice affects the overall speech frequency in the meeting.
 
-                    **Speech Frequency - by Speaker**
-                    The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine in which meeting format a specific speaker is more actively speaking.
+                    #### Speech Frequency - by Speaker
+                    - The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine in which meeting format a specific speaker is more actively speaking.
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
             ], style={'margin-top': '5px', 'margin-bottom': '40px'})
         ], style={'width': '48%', 'display': 'inline-block'}),
@@ -282,11 +282,11 @@ def initialize_abtest_app(dash_app, dataset):
             html.Details([
                 html.Summary('Text-based vs. Voice-based - Speech Frequency',style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
-                    **Speech Frequency - Total**
-                    By observing the changes in the Speech Frequency values in the Total graph, we can determine how conducting a meeting based on text or voice affects the overall speech frequency in the meeting.
+                    #### Speech Frequency - Total
+                    - By observing the changes in the Speech Frequency values in the Total graph, we can determine how conducting a meeting based on text or voice affects the overall speech frequency in the meeting.
 
-                    **Speech Frequency - by Speaker**
-                    The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine in which meeting format a specific speaker is more actively speaking.
+                    #### Speech Frequency - by Speaker
+                    - The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine in which meeting format a specific speaker is more actively speaking.
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
             ], style={'margin-top': '5px', 'margin-bottom': '40px'})
         ], style={'width': '48%', 'display': 'inline-block'})

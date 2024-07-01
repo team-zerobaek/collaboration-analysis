@@ -35,7 +35,7 @@ def initialize_overall_ml_app(dash_app_instance, dataset_instance):
 
     # Create necessary columns
     dataset['num_speakers'] = dataset.groupby(['project', 'meeting_number'])[
-        'speaker_number'].transform('nunique')
+        'speaker_id'].transform('nunique')
 
     # Ensure interaction_count column exists
     dataset['interaction_count'] = dataset['count']
@@ -46,14 +46,7 @@ def initialize_overall_ml_app(dash_app_instance, dataset_instance):
         dataset['duration']
 
     # Group by meeting_number and speaker, summing up normalized_interaction_frequency
-    grouped_dataset = dataset.groupby(['project', 'meeting_number', 'speaker_number']).agg({
-        'normalized_speech_frequency': 'sum',
-        'gini_coefficient': 'mean',
-        'degree_centrality': 'mean',
-        'num_speakers': 'first',
-        'normalized_interaction_frequency': 'sum',
-        'overall_collaboration_score': 'mean'
-    }).reset_index()
+    
 
     dash_app.layout.children.append(html.Div(id='overall', children=[
         html.H1("ML Models for Overall Collaboration Score"),
@@ -102,6 +95,15 @@ def build_actual_model():
     # Use the grouped dataset for model building
     dataset_filtered = dataset[(dataset['project'] == 4) & (
         dataset['overall_collaboration_score'].between(1, 10))]
+    
+    dataset_filtered = dataset_filtered.groupby(['project', 'meeting_number', 'speaker_id']).agg({
+        'normalized_speech_frequency': 'first',
+        'gini_coefficient': 'first',
+        'degree_centrality': 'first',
+        'num_speakers': 'first',
+        'normalized_interaction_frequency': 'sum',
+        'overall_collaboration_score': 'first'
+    }).reset_index()
 
     # Cleaning the dataset
     dataset_filtered = dataset_filtered.replace([np.inf, -np.inf], np.nan)
@@ -109,14 +111,14 @@ def build_actual_model():
 
     # Features and target
     features = dataset_filtered[['meeting_number', 'normalized_speech_frequency', 'gini_coefficient',
-                                 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_number']]
+                                 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id']]
     target = dataset_filtered['overall_collaboration_score']
 
     column_transformer = ColumnTransformer(
         transformers=[
             ('scaler', StandardScaler(), ['meeting_number', 'normalized_speech_frequency',
              'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency']),
-            ('onehot', OneHotEncoder(), ['speaker_number'])
+            ('onehot', OneHotEncoder(), ['speaker_id'])
         ]
     )
 
@@ -451,7 +453,7 @@ def build_dummy_model():
 
     # Generate dummy importance plot
     importance_df_reg = pd.DataFrame({
-        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_number'],
+        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id'],
         'Importance': [0.15, 0.25, 0.10, 0.20, 0.18, 0.12, 0.13]
     }).sort_values(by='Importance', ascending=False)
 
@@ -473,7 +475,7 @@ def build_dummy_model():
 
     # Dummy VIF data
     vif_data = pd.DataFrame({
-        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_number'],
+        'Feature': ['meeting_number', 'normalized_speech_frequency', 'gini_coefficient', 'degree_centrality', 'num_speakers', 'normalized_interaction_frequency', 'speaker_id'],
         'VIF': [1.5, 2.0, 1.2, 1.8, 1.4, 1.6, 1.7]
     })
 
@@ -514,7 +516,7 @@ def build_dummy_model():
                             cells=dict(values=[
                                 'meeting_number, normalized_speech_frequency, gini_coefficient, degree_centrality, num_speakers, normalized_interaction_frequency, speaker_number',
                                 'overall_collaboration_score',
-                                'StandardScaler for all features, OneHotEncoder for speaker_number',
+                                'StandardScaler for all features, OneHotEncoder for  er',
                                 'Linear Regression, Decision Tree, Random Forest Regressor, XGBRegressor, Gradient Boosting Regressor, K-Nearest Neighbors Regressor, LightGBM Regressor, CatBoost Regressor, SVM Regressor'
                             ],
                                 height=30,

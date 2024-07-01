@@ -56,9 +56,16 @@ def initialize_overall_ml_app(dash_app_instance, dataset_instance):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Predict Members' Perception of Collaboration in the Project
+                This part aims to develop a machine learning model to predict the perceived collaboration score among members in a project. The model utilizes various features extracted from project meetings to provide insights into how team members perceive their collaboration efforts.
+                
+                - **Feature** : `meeting_number`, `normalized_speech_frequency`, `gini_coefficient`, `degree_centrality`, `num_speakers`, `normalized_interaction_frequency`, `speaker_id`
+                         
+                - **Target** : `overall_collaboration_score`
+                         
+                - **Best Performance Model**: Gradient Boosting Regressor
+                         
+                - **Feature Importance(in order)**: `meeting number`, `speech_frequency`, `gini_coefficient`, `speaker_id`, `degree_centrality`, `interaction_frequency`, `num_speakers`
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px', 'margin-bottom': '20px'})
     ]))

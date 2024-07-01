@@ -119,7 +119,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
 
             html.Div([
                 html.H2("Behavioral Data Analysis", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
-                html.A(html.Button("monitoring"), href="/dash", style={'display': 'inline-block'}),
+                html.A(html.Button("Behavioral"), href="/dash", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
                         html.H3("Who Spoke the Most"),
@@ -157,7 +157,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
             # New pie charts for Individual Collaboration Score (Others) and (Self)
             html.Div([
                 html.H2("Subjective Data Analysis", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
-                html.A(html.Button("subjective scoring"), href="/subjective", style={'display': 'inline-block'}),
+                html.A(html.Button("subjective"), href="/subjective", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
                         html.H3("How Evaluated by Others?"),
@@ -185,7 +185,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
             # New bar charts for interaction differences
             html.Div([
                 html.H2("Effective Channels Analysis", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
-                html.A(html.Button("A/B Test"), href="/abtest", style={'display': 'inline-block'}),
+                html.A(html.Button("Effective Channels"), href="/abtest", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
                         html.H3("The Effect of Offline over Online"),
@@ -223,7 +223,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
             # New tables for Behavioral Data
             html.Div([
                 html.H2("ML Examples", style={'text-align': 'center', 'display': 'inline-block', 'margin-right': '10px'}),
-                html.A(html.Button("ML"), href="/ml", style={'display': 'inline-block'}),
+                html.A(html.Button("Predict"), href="/ml", style={'display': 'inline-block'}),
                 html.Div([
                     html.Div([
                         html.H3("Predict Members' Perception of Collaboration in the Project"),

@@ -25,13 +25,13 @@ dash_app.layout = html.Div([
     html.Div([
         html.A(html.Button('Upload', style={
                'margin-right': '10px'}), href='/upload'),
-        html.A(html.Button('Monitoring', style={
+        html.A(html.Button('Behavioral', style={
                'margin-right': '10px'}), href='/dash'),
-        html.A(html.Button('Subjective Scoring', style={
+        html.A(html.Button('Subjective', style={
                'margin-right': '10px'}), href='/subjective'),
         html.A(html.Button(
-            'A/B Test', style={'margin-right': '10px'}), href='/abtest'),
-        html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml')
+            'Effective Channels', style={'margin-right': '10px'}), href='/abtest'),
+        html.A(html.Button('Predict', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.H2("A/B Test", style={'text-align': 'center'}),
     html.Div([

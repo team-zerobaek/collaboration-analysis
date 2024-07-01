@@ -25,10 +25,10 @@ main_layout = html.Div([
     html.H1("How We Collaborate", style={'text-align': 'center'}),
     html.Div([
         html.A(html.Button('Upload', style={'margin-right': '10px'}), href='/upload'),
-        html.A(html.Button('Monitoring', style={'margin-right': '10px'}), href='/dash'),
-        html.A(html.Button('Subjective Scoring', style={'margin-right': '10px'}), href='/subjective'),
-        html.A(html.Button('A/B Test', style={'margin-right': '10px'}), href='/abtest'),
-        html.A(html.Button('ML', style={'margin-right': '10px'}), href='/ml')
+        html.A(html.Button('Behavioral', style={'margin-right': '10px'}), href='/dash'),
+        html.A(html.Button('Subjective', style={'margin-right': '10px'}), href='/subjective'),
+        html.A(html.Button('Effective Channels', style={'margin-right': '10px'}), href='/abtest'),
+        html.A(html.Button('Predict', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
 
     html.H2("Monitoring", style={'text-align': 'center'}),

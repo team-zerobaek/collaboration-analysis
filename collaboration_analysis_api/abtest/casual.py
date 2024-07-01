@@ -266,11 +266,11 @@ def initialize_casual_app(dash_app, dataset):
             html.Details([
                 html.Summary('Casual Language Used - Normalized Speech Frequency', style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
-                    **Normalized Speech Frequency - Total**
-                    By observing the changes in the Normalized Speech Frequency values in the Total graph, we can determine how the use of casual language between participants affected the overall speech frequency in the meeting.
-
-                    **Normalized Speech Frequency - by Speaker**
-                    The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine if using casual language had a significant effect on speech frequency changes for specific individuals.
+                    #### Normalized Speech Frequency - Total
+                    - By observing the changes in the Normalized Speech Frequency values in the Total graph, we can determine how the use of casual language between participants affected the overall speech frequency in the meeting.
+                    
+                    #### Normalized Speech Frequency - by Speaker
+                    - The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine if using casual language had a significant effect on speech frequency changes for specific individuals.
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
             ], style={'margin-top': '5px', 'margin-bottom': '20px'})
         ], style={'width': '48%', 'display': 'inline-block'}),
@@ -280,11 +280,11 @@ def initialize_casual_app(dash_app, dataset):
             html.Details([
                 html.Summary('Casual Language Used - Normalized Interaction Frequency', style={'margin-top': '20px','margin-bottom': '10px'}),
                 dcc.Markdown("""
-                    **Normalized Interaction Frequency - Total**
-                    By observing the changes in the Normalized Interaction Frequency values in the Total graph, we can determine how the use of casual language between participants affected the overall interaction frequency in the meeting.
+                    #### Normalized Interaction Frequency - Total
+                    - By observing the changes in the Normalized Interaction Frequency values in the Total graph, we can determine how the use of casual language between participants affected the overall interaction frequency in the meeting.
 
-                    **Normalized Interaction Frequency - by Speaker**
-                    The by Speaker graph allows us to see the differences in interaction frequency for each speaker. This helps determine if using casual language had a significant effect on interaction frequency changes for specific individuals.
+                    #### Normalized Interaction Frequency - by Speaker
+                    - The by Speaker graph allows us to see the differences in interaction frequency for each speaker. This helps determine if using casual language had a significant effect on interaction frequency changes for specific individuals.
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
             ], style={'margin-top': '5px', 'margin-bottom': '20px'})
         ], style={'width': '48%', 'display': 'inline-block'})

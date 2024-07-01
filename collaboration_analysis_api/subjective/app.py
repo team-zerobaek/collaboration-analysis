@@ -25,11 +25,12 @@ dash_app.layout = html.Div([
         html.A(html.Button('Effective Channels', style={'margin-right': '10px'}), href='/abtest'),
         html.A(html.Button('Predict', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+    html.H2("Subjective Data Analysis", style={'text-align': 'center'}),
     html.Div([
-        html.A("Overall Collaboration Score", href='#overall', style={'margin-right': '20px'}, className='scroll-link'),
-        html.A("Gap between Individual Collaboration Score (Others - Self)", href='#gap', style={'margin-right': '20px'}, className='scroll-link'),
-        html.A("Individual Collaboration Score (Others)", href='#individual-others', style={'margin-right': '20px'}, className='scroll-link'),
-        html.A("Individual Collaboration Score (Self)", href='#individual-self', className='scroll-link')
+        html.A("Members' Perception of Collaboration", href='#overall', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Gap of Peer Evaluation Score", href='#gap', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Peer Evaluation Scores for Collaboration", href='#individual-others', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Self Evaluation Scores for Collaboration", href='#individual-self', className='scroll-link')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
 
     html.Script('''

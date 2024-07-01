@@ -31,13 +31,13 @@ main_layout = html.Div([
         html.A(html.Button('Predict', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
 
-    html.H2("Monitoring", style={'text-align': 'center'}),
+    html.H2("Behavioral Data Analysis", style={'text-align': 'center'}),
     html.Div([
-        html.A("Participants Network Graph", href='#sna', style={'margin-right': '20px'}, className='scroll-link'),
-        html.A("How evenly interacted? (Gini Coefficient)", href='#gini', style={'margin-right': '20px'}, className='scroll-link'),
-        html.A("How much contributed? (Degree Centrality)", href='#degree', style={'margin-right': '20px'}, className='scroll-link'),
-        html.A("How much interacted? (turn-switch based)", href='#turn', style={'margin-right': '20px'}, className='scroll-link'),
-        html.A("How many words were spoken? (by word-unit))", href='#word', className='scroll-link')
+        html.A("Interaction Network Graph", href='#sna', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("How Evenly Interacted?", href='#gini', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("How Much Contributed?", href='#degree', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("How Much Interacted?", href='#turn', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("How Many Words Were Spoken?", href='#word', className='scroll-link')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.Div(id='graphs-container'),
     html.Script('''

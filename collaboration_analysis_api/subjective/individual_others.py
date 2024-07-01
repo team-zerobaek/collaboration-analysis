@@ -8,7 +8,7 @@ def initialize_individual_app(dash_app, dataset):
     dataset = dataset[dataset['project'] == 4]
 
     individual_others_layout = html.Div(id='individual-others', children=[
-        html.H1("Individual Collaboration Score (Others)", style={'text-align': 'left'}),
+        html.H1("Peer Evaluation Scores for Collaboration", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
                 id='individual-meeting-dropdown',

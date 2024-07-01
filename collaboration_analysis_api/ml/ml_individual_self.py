@@ -63,10 +63,10 @@ def initialize_individual_self_ml_app(dash_app_instance, dataset_instance):
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
                 ### Prediction of Self-Evaluation Scores
-                - **Best Performance Model**: CatBoost
+                - **Best Performance Model**: Gradient Boosting
                 - **Feature Importance (in order)**: Meeting number, Gini coefficient, Degree centrality, Normalized speech frequency
                 
-                The CatBoost model was identified as the best performing model for predicting how individuals evaluate their own performance.
+                The Gradient Boosting model was identified as the best performing model for predicting how individuals evaluate their own performance.
                          
                 This thorough approach to model selection and performance evaluation helps in building a robust predictive model for self-evaluation scores.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})

@@ -7,7 +7,7 @@ from dash import dcc, html
 
 def initialize_gap_app(dash_app, dataset):
     gap_layout = html.Div(id ='gap', children=[
-        html.H1("Gap between Individual Collaboration Score (Others - Self)", style={'text-align': 'left'}),
+        html.H1("Gap of Peer Evaluation Score", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
                 id='gap-meeting-dropdown',

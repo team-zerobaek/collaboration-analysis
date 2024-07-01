@@ -247,7 +247,7 @@ def initialize_casual_app(dash_app, dataset):
 
         return fig_speech, fig_interaction, speech_table, interaction_table
 
-    dash_app.layout.children.append(html.Div(id ='casual', children=[html.H3("A/B Test: Casual Language Used", style={'text-align': 'center'})]))
+    dash_app.layout.children.append(html.Div(id ='casual', children=[html.H2("A/B Test: Casual Language Used", style={'text-align': 'center'})]))
     dash_app.layout.children.append(html.Div([
         dcc.RadioItems(
             id='casual-view-type',

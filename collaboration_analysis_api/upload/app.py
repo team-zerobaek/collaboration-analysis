@@ -196,7 +196,37 @@ def update_output(contents, filenames, last_modified):
                 html.H6(datetime.datetime.fromtimestamp(last_modified[0])),
                 html.Div(f"Error processing data: {e}")
             ])
+dash_app.layout.children.append(
+    html.Button('Top', id='top-button', style={
+        'position': 'fixed',
+        'bottom': '20px',
+        'right': '20px',
+        'padding': '10px 20px',
+        'font-size': '16px',
+        'z-index': '1000',
+        'background-color': '#007bff',
+        'color': 'white',
+        'border': 'none',
+        'border-radius': '5px',
+        'cursor': 'pointer'
+    })
+)
 
+dash_app.clientside_callback(
+    """
+    function(n_clicks) {
+        if (n_clicks > 0) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        return '';
+    }
+    """,
+    Output('top-button', 'n_clicks'),
+    [Input('top-button', 'n_clicks')]
+)
 
 # Callback to handle the use of default data and show the preview section
 @dash_app.callback(

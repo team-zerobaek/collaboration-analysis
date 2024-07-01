@@ -201,8 +201,8 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
                         html.H3("The Effect of Casual Language Usage"),
                         dcc.Dropdown(
                             id='project-dropdown-casual',
-                            options=[{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()],
-                            value=most_recent_project,
+                            options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
+                            value=most_recent_project if most_recent_project in valid_projects_for_all_meetings else None,
                             style={'width': '80%', 'margin': '0 auto'}
                         ),
                         dcc.Graph(id='bar-chart-casual')
@@ -211,8 +211,8 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
                         html.H3("The Effect of Voice-based over Text-based"),
                         dcc.Dropdown(
                             id='project-dropdown-text-voice',
-                            options=[{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()],
-                            value=most_recent_project,
+                            options=[{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings],
+                            value=most_recent_project if most_recent_project in valid_projects_for_all_meetings else None,
                             style={'width': '80%', 'margin': '0 auto'}
                         ),
                         dcc.Graph(id='bar-chart-text-voice')

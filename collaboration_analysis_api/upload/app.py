@@ -2,18 +2,14 @@ from fastapi import FastAPI
 from dash import Dash, dcc, html
 from fastapi.middleware.wsgi import WSGIMiddleware
 from dash.dependencies import Input, Output, State
-import networkx as nx
-import datetime
 import pandas as pd
 import os
 import logging
+import dash
+from dash.exceptions import PreventUpdate
 
 # Import processing functions
-from upload.preprocessing_behavioral import (
-    process_transcripts, extract_speaker_turns, create_dataset, process_files_in_directory,
-    process_and_save, compute_interaction_frequency, generate_all_pairs, compute_centralities,
-    compute_density, weighted_density, compute_gini, compute_equality_index, save_dataframe_to_csv
-)
+from upload.preprocessing_behavioral import process_uploaded_files
 from upload.preview import initialize_summary_app
 
 # Initialize the FastAPI app
@@ -22,12 +18,22 @@ upload_app = FastAPI()
 # Initialize the Dash app
 dash_app = Dash(__name__, requests_pathname_prefix='/upload/')
 
+# Data Load and Configuration
+data_directory = '/app/data'
+os.makedirs(data_directory, exist_ok=True)
+
 # Load default datasets
-default_dataset_voice = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
-default_dataset_text = pd.read_csv('/app/data/kakao_data.csv')
+default_dataset_voice = pd.read_csv(os.path.join(data_directory, 'dataset_collaboration_with_survey_scores.csv'))
+default_dataset_text = pd.read_csv(os.path.join(data_directory, 'kakao_data.csv'))
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
+
+def check_uploaded_data_exists():
+    return os.path.exists(os.path.join(data_directory, 'dataset_collaboration_manual.csv'))
+
+# Check if the uploaded dataset exists initially
+uploaded_data_exists = check_uploaded_data_exists()
 
 # Define the layout for the upload page
 dash_app.layout = html.Div([
@@ -57,208 +63,139 @@ dash_app.layout = html.Div([
             },
             multiple=True
         ),
-        html.Div(style={'text-align': 'center'}, children=[
-            html.Button('Use Default Data', id='use-default-data', n_clicks=0, style={
-                'font-size': '20px',
-                'padding': '10px 20px',
-                'margin-top': '10px'
-            })
+        html.Div(style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap', 'justifyContent': 'center'}, children=[
+            dcc.RadioItems(
+                id='dataset-selection-radio',
+                options=[
+                    {'label': 'Default Data', 'value': 'default'},
+                    {'label': 'Uploaded Data', 'value': 'uploaded', 'disabled': not uploaded_data_exists}
+                ],
+                value='default',
+                style={'text-align': 'center'}
+            ),
         ]),
-        html.Div(id='output-data-upload'),
+        dcc.Store(id='upload-info-store'),
+        html.Div(id='output-data-upload', style={'font-size': '20px', 'text-align': 'center', 'margin-top': '20px'}),
     ]),
 
     # Preview section
     html.Div(id='preview-section', children=[
         html.H1("Preview", style={'text-align': 'center'}),
-        html.Div(id='preview-content', style={'display': 'none'})  # Placeholder for preview content
+        html.Div(id='preview-content')  # Placeholder for preview content
     ])
 ])
 
-# Initialize the summary charts
-initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
+# Initialize the summary charts with default data
+initial_preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
 
-# Ensure 'data' directory exists
-data_directory = '/app/data'
-os.makedirs(data_directory, exist_ok=True)
+# Set the initial preview content
+dash_app.layout.children[2].children[1].children.append(initial_preview_content)
 
 # Callback to handle file uploads and process the transcripts
 @dash_app.callback(
-    Output('output-data-upload', 'children'),
-    Input('upload-data', 'contents'),
-    State('upload-data', 'filename'),
-    State('upload-data', 'last_modified')
+    [Output('upload-info-store', 'data'),
+     Output('preview-content', 'children'),
+     Output('dataset-selection-radio', 'options'),
+     Output('dataset-selection-radio', 'value')],
+    [Input('upload-data', 'contents'),
+     Input('dataset-selection-radio', 'value')],
+    [State('upload-data', 'filename'),
+     State('upload-data', 'last_modified')]
 )
-def update_output(contents, filenames, last_modified):
-    if contents is not None:
-        logging.info("Contents received for processing.")
+def update_output(contents, dataset_selection, filenames, last_modified):
+    global default_dataset_voice, default_dataset_text, uploaded_data_exists
+
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        raise PreventUpdate
+
+    trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    logging.info(f"Triggered by: {trigger_id}")
+
+    preview_content = initial_preview_content
+    upload_info = {'status': 'default', 'filenames': []}
+
+    if trigger_id == 'dataset-selection-radio' and dataset_selection == 'default':
+        default_dataset_voice = pd.read_csv(os.path.join(data_directory, 'dataset_collaboration_with_survey_scores.csv'))
+        preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
+        return upload_info, preview_content, dash.no_update, 'default'
+
+    if trigger_id == 'dataset-selection-radio' and dataset_selection == 'uploaded':
         try:
-            transcriptions = process_transcripts(contents, filenames)
-            logging.info(f"Processed {len(transcriptions)} transcriptions.")
+            default_dataset_voice = pd.read_csv(os.path.join(data_directory, 'dataset_collaboration_manual.csv'))
+        except FileNotFoundError as e:
+            logging.error(f"Error loading uploaded data: {e}")
+            upload_info = {'status': 'error', 'filenames': [], 'error': "Uploaded data not found."}
+            return upload_info, html.Div(""), dash.no_update, 'default'
 
-            dfs = []
-            for i, data in enumerate(transcriptions):
-                df = extract_speaker_turns(data)
-                dfs.append(df)
-                df.to_csv(f'data/extracted_speaker_turns_{i+1}.csv', index=False)
+        preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
+        return upload_info, preview_content, dash.no_update, 'uploaded'
 
-            logging.info(f"Extracted speaker turns for {len(dfs)} datasets.")
+    if trigger_id == 'upload-data' and contents:
+        try:
+            logging.info("Contents received for processing.")
+            if filenames is None:
+                filenames = []
 
-            durations = process_files_in_directory(transcriptions)
-            if None in durations:
-                raise ValueError("One or more durations could not be calculated properly.")
-            logging.info(f"Computed durations: {durations}")
+            logging.info(f"Filenames: {filenames}")
 
-            new_dataset_voice = create_dataset(dfs, project_number=0)  # Set default project number
-            new_dataset_voice.to_csv('data/created_dataset_voice.csv', index=False)
+            # Process the uploaded files
+            process_uploaded_files(contents, filenames)
 
-            duration_mapping = []
-            for i, duration in enumerate(durations):
-                num_rows = len(new_dataset_voice[new_dataset_voice['meeting_number'] == i + 1])
-                duration_mapping.extend([duration / 60] * num_rows)  # Convert to hours and replicate
+            # Load the newly created dataset
+            default_dataset_voice = pd.read_csv(os.path.join(data_directory, 'dataset_collaboration_manual.csv'))
 
-            if len(duration_mapping) != len(new_dataset_voice):
-                raise ValueError("Duration mapping length does not match the new_dataset_voice length.")
+            # Initialize summary charts with the new dataset
+            preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
 
-            new_dataset_voice['duration'] = duration_mapping
-            new_dataset_voice['normalized_speech_frequency'] = new_dataset_voice['speech_frequency'] / new_dataset_voice['duration']
+            # Check if the uploaded data now exists
+            uploaded_data_exists = check_uploaded_data_exists()
 
-            logging.info("New dataset created and durations computed.")
+            # Update the dataset-selection-radio options
+            updated_options = [
+                {'label': 'Default Data', 'value': 'default'},
+                {'label': 'Uploaded Data', 'value': 'uploaded', 'disabled': not uploaded_data_exists}
+            ]
 
-            # Compute interaction frequencies
-            interaction_records = pd.concat([compute_interaction_frequency(df, 0) for df in dfs], ignore_index=True)
-            all_pairs = generate_all_pairs(interaction_records, new_dataset_voice)
-            interaction_records = pd.concat([interaction_records, all_pairs], ignore_index=True)
-            interaction_records = interaction_records.sort_values(by=['project', 'meeting_number', 'speaker_id', 'next_speaker_id']).reset_index(drop=True)
+            upload_info = {'status': 'uploaded', 'filenames': filenames}
 
-            logging.info("Interaction frequencies computed.")
-            # Debugging: Save interaction records to CSV for verification
-            interaction_records.to_csv('data/interaction_records_debug.csv', index=False)
-
-            # Save intermediate dataset to CSV for debugging
-            intermediate_filename = os.path.join(data_directory, 'intermediate_combined_dataset.csv')
-            process_and_save(interaction_records, intermediate_filename)
-            logging.info(f"Intermediate dataset saved to {intermediate_filename}")
-
-            # Merge created_dataset_voice and interaction_records
-            final_dataset = pd.merge(new_dataset_voice, interaction_records, how='left', left_on=['project', 'meeting_number', 'speaker_number'], right_on=['project', 'meeting_number', 'speaker_id'])
-
-            # Remove id_y and rename id_x to id
-            final_dataset = final_dataset.rename(columns={'id_x': 'id'}).drop(columns=['id_y'])
-
-            # Compute centralities and densities
-            for df in dfs:
-                centralities = compute_centralities(df, interaction_records)
-                G = nx.DiGraph()
-                for i in range(len(df)):
-                    prev_speaker = df.iloc[i]['Speaker']
-                    if i < len(df) - 1:
-                        next_speaker = df.iloc[i+1]['Speaker']
-                    else:
-                        next_speaker = df.iloc[i]['Speaker']  # Self-interaction if last speaker
-                    if prev_speaker != next_speaker and df.iloc[i]['Text'].strip() != '':
-                        try:
-                            combined_row = final_dataset[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]) & (final_dataset['speaker_id'] == int(prev_speaker.split('_')[1])) & (final_dataset['next_speaker_id'] == int(next_speaker.split('_')[1]))]
-                            if not combined_row.empty:
-                                weight = combined_row['count'].values[0]
-                                if G.has_edge(prev_speaker, next_speaker):
-                                    G[prev_speaker][next_speaker]['weight'] += weight
-                                else:
-                                    G.add_edge(prev_speaker, next_speaker, weight=weight)
-                        except IndexError as e:
-                            logging.error(f"IndexError: {e}. Problem with speaker: {prev_speaker}, next_speaker: {next_speaker}, meeting_number: {df['meeting_number'].iloc[0]}")
-                            continue
-                for centrality_measure, centrality_values in centralities.items():
-                    for node, value in centrality_values.items():
-                        final_dataset.loc[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]) & (final_dataset['speaker_id'] == int(node.split('_')[1])), centrality_measure] = value
-                final_dataset.loc[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]), 'network_density'] = compute_density(G)
-                final_dataset.loc[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]), 'weighted_network_density'] = weighted_density(G)
-
-            logging.info("Centralities and densities computed.")
-
-            # Compute Gini coefficient and Interaction Equality Index
-            final_dataset['gini_coefficient'] = 0
-            final_dataset['interaction_equality_index'] = 0
-            for project in final_dataset['project'].unique():
-                project_data = final_dataset[final_dataset['project'] == project]
-                gini_values = compute_gini(project_data)
-                equality_index_values = compute_equality_index(project_data)
-                for i, meeting_number in enumerate(project_data['meeting_number'].unique()):
-                    final_dataset.loc[(final_dataset['project'] == project) & (final_dataset['meeting_number'] == meeting_number), 'gini_coefficient'] = gini_values[i]
-                    final_dataset.loc[(final_dataset['project'] == project) & (final_dataset['meeting_number'] == meeting_number), 'interaction_equality_index'] = equality_index_values[i]
-
-            # Set the specified columns to zero
-            final_dataset['overall_collaboration_score'] = -1
-            final_dataset['individual_collaboration_score'] = -1
-
-            # Reorder columns as specified
-            final_dataset = final_dataset[['id', 'project', 'meeting_number', 'speaker_number', 'speech_frequency', 'total_words', 'duration', 'normalized_speech_frequency', 'speaker_id', 'next_speaker_id', 'count', 'network_density', 'weighted_network_density', 'gini_coefficient', 'interaction_equality_index', 'degree_centrality', 'indegree_centrality', 'outdegree_centrality', 'betweenness_centrality', 'closeness_centrality', 'eigenvector_centrality', 'pagerank', 'overall_collaboration_score', 'individual_collaboration_score']]
-
-            # Save final dataset to CSV
-            final_filename = os.path.join(data_directory, 'dataset_collaboration_manual.csv')
-            process_and_save(final_dataset, final_filename)
-            logging.info(f"Final dataset saved to {final_filename}")
-
-            return html.Div([
-                html.H5(', '.join(filenames)),
-                html.H6(datetime.datetime.fromtimestamp(last_modified[0])),
-                html.Div('Data uploaded and processed successfully!'),
-                dcc.Location(pathname='/upload', id='redirect')
-            ])
+            return upload_info, preview_content, updated_options, 'uploaded'
         except Exception as e:
             logging.error(f"Error processing data: {e}")
-            return html.Div([
-                html.H5(', '.join(filenames)),
-                html.H6(datetime.datetime.fromtimestamp(last_modified[0])),
-                html.Div(f"Error processing data: {e}")
-            ])
+            upload_info = {'status': 'error', 'filenames': filenames, 'error': str(e)}
+            return upload_info, html.Div(""), dash.no_update, 'default'
 
-dash_app.layout.children.append(
-    html.Button('Top', id='top-button', style={
-        'position': 'fixed',
-        'bottom': '20px',
-        'right': '20px',
-        'padding': '10px 20px',
-        'font-size': '16px',
-        'z-index': '1000',
-        'background-color': '#007bff',
-        'color': 'white',
-        'border': 'none',
-        'border-radius': '5px',
-        'cursor': 'pointer'
-    })
-)
+    return upload_info, preview_content, dash.no_update, dash.no_update
 
-dash_app.clientside_callback(
-    """
-    function(n_clicks) {
-        if (n_clicks > 0) {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-        return '';
-    }
-    """,
-    Output('top-button', 'n_clicks'),
-    [Input('top-button', 'n_clicks')]
-)
-
-# Callback to handle the use of default data and show the preview section
+# Callback to update the output-data-upload based on the stored upload info
 @dash_app.callback(
-    Output('preview-content', 'style'),
-    Input('use-default-data', 'n_clicks')
+    Output('output-data-upload', 'children'),
+    Input('upload-info-store', 'data')
 )
-def use_default_data(n_clicks):
-    if n_clicks:
-        global default_dataset_voice, default_dataset_text
-        default_dataset_voice = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
-        default_dataset_text = pd.read_csv('/app/data/kakao_data.csv')
-        return {'display': 'block'}
-    return {'display': 'none'}
+def display_upload_info(upload_info):
+    if upload_info['status'] == 'default':
+        return html.Div([
+            html.H5("Used data: Default data"),
+            html.H6("No upload attempted")
+        ])
+    elif upload_info['status'] == 'uploaded':
+        filenames = upload_info['filenames'] if isinstance(upload_info['filenames'], list) else []
+        return html.Div([
+            html.H5(f"Used data: {', '.join(filenames)}"),
+            html.H6("Upload successful")
+        ])
+    elif upload_info['status'] == 'error':
+        filenames = upload_info['filenames'] if isinstance(upload_info['filenames'], list) else []
+        return html.Div([
+            html.H5(f"Used data: {', '.join(filenames)}"),
+            html.H6(f"Upload failed: {upload_info['error']}")
+        ])
 
 # Log initialization
 print("Initialized upload page")
 
 # Mount the Dash app to FastAPI using WSGIMiddleware
 upload_app.mount("/", WSGIMiddleware(dash_app.server))
+
+# Log initialization
+logging.info("Initialized upload page")

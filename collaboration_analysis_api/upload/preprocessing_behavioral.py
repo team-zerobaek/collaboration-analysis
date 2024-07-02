@@ -6,6 +6,7 @@ import math
 from collections import defaultdict
 import networkx as nx
 import numpy as np
+import logging
 
 def process_transcripts(contents, filenames):
     transcriptions = []
@@ -266,3 +267,110 @@ def process_and_save(dataset, filename):
 # Additional functions for saving intermediate data
 def save_dataframe_to_csv(df, filename):
     df.to_csv(filename, index=False)
+
+def process_uploaded_files(contents, filenames):
+    transcriptions = process_transcripts(contents, filenames)
+    logging.info(f"Processed {len(transcriptions)} transcriptions.")
+
+    dfs = []
+    for i, data in enumerate(transcriptions):
+        df = extract_speaker_turns(data)
+        dfs.append(df)
+        df.to_csv(f'data/extracted_speaker_turns_{i+1}.csv', index=False)
+
+    logging.info(f"Extracted speaker turns for {len(dfs)} datasets.")
+
+    durations = process_files_in_directory(transcriptions)
+    if None in durations:
+        raise ValueError("One or more durations could not be calculated properly.")
+    logging.info(f"Computed durations: {durations}")
+
+    new_dataset_voice = create_dataset(dfs, project_number=0)  # Set default project number
+    new_dataset_voice.to_csv('data/created_dataset_voice.csv', index=False)
+
+    duration_mapping = []
+    for i, duration in enumerate(durations):
+        num_rows = len(new_dataset_voice[new_dataset_voice['meeting_number'] == i + 1])
+        duration_mapping.extend([duration / 60] * num_rows)  # Convert to hours and replicate
+
+    if len(duration_mapping) != len(new_dataset_voice):
+        raise ValueError("Duration mapping length does not match the new_dataset_voice length.")
+
+    new_dataset_voice['duration'] = duration_mapping
+    new_dataset_voice['normalized_speech_frequency'] = new_dataset_voice['speech_frequency'] / new_dataset_voice['duration']
+
+    logging.info("New dataset created and durations computed.")
+
+    # Compute interaction frequencies
+    interaction_records = pd.concat([compute_interaction_frequency(df, 0) for df in dfs], ignore_index=True)
+    all_pairs = generate_all_pairs(interaction_records, new_dataset_voice)
+    interaction_records = pd.concat([interaction_records, all_pairs], ignore_index=True)
+    interaction_records = interaction_records.sort_values(by=['project', 'meeting_number', 'speaker_id', 'next_speaker_id']).reset_index(drop=True)
+
+    logging.info("Interaction frequencies computed.")
+    # Debugging: Save interaction records to CSV for verification
+    interaction_records.to_csv('data/interaction_records_debug.csv', index=False)
+
+    # Save intermediate dataset to CSV for debugging
+    intermediate_filename = os.path.join('/app/data', 'intermediate_combined_dataset.csv')
+    process_and_save(interaction_records, intermediate_filename)
+    logging.info(f"Intermediate dataset saved to {intermediate_filename}")
+
+    # Merge created_dataset_voice and interaction_records
+    final_dataset = pd.merge(new_dataset_voice, interaction_records, how='left', left_on=['project', 'meeting_number', 'speaker_number'], right_on=['project', 'meeting_number', 'speaker_id'])
+
+    # Remove id_y and rename id_x to id
+    final_dataset = final_dataset.rename(columns={'id_x': 'id'}).drop(columns=['id_y'])
+
+    # Compute centralities and densities
+    for df in dfs:
+        centralities = compute_centralities(df, interaction_records)
+        G = nx.DiGraph()
+        for i in range(len(df)):
+            prev_speaker = df.iloc[i]['Speaker']
+            if i < len(df) - 1:
+                next_speaker = df.iloc[i+1]['Speaker']
+            else:
+                next_speaker = df.iloc[i]['Speaker']  # Self-interaction if last speaker
+            if prev_speaker != next_speaker and df.iloc[i]['Text'].strip() != '':
+                try:
+                    combined_row = final_dataset[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]) & (final_dataset['speaker_id'] == int(prev_speaker.split('_')[1])) & (final_dataset['next_speaker_id'] == int(next_speaker.split('_')[1]))]
+                    if not combined_row.empty:
+                        weight = combined_row['count'].values[0]
+                        if G.has_edge(prev_speaker, next_speaker):
+                            G[prev_speaker][next_speaker]['weight'] += weight
+                        else:
+                            G.add_edge(prev_speaker, next_speaker, weight=weight)
+                except IndexError as e:
+                    logging.error(f"IndexError: {e}. Problem with speaker: {prev_speaker}, next_speaker: {next_speaker}, meeting_number: {df['meeting_number'].iloc[0]}")
+                    continue
+        for centrality_measure, centrality_values in centralities.items():
+            for node, value in centrality_values.items():
+                final_dataset.loc[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]) & (final_dataset['speaker_id'] == int(node.split('_')[1])), centrality_measure] = value
+        final_dataset.loc[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]), 'network_density'] = compute_density(G)
+        final_dataset.loc[(final_dataset['project'] == df['project'].iloc[0]) & (final_dataset['meeting_number'] == df['meeting_number'].iloc[0]), 'weighted_network_density'] = weighted_density(G)
+
+    logging.info("Centralities and densities computed.")
+
+    # Compute Gini coefficient and Interaction Equality Index
+    final_dataset['gini_coefficient'] = 0
+    final_dataset['interaction_equality_index'] = 0
+    for project in final_dataset['project'].unique():
+        project_data = final_dataset[final_dataset['project'] == project]
+        gini_values = compute_gini(project_data)
+        equality_index_values = compute_equality_index(project_data)
+        for i, meeting_number in enumerate(project_data['meeting_number'].unique()):
+            final_dataset.loc[(final_dataset['project'] == project) & (final_dataset['meeting_number'] == meeting_number), 'gini_coefficient'] = gini_values[i]
+            final_dataset.loc[(final_dataset['project'] == project) & (final_dataset['meeting_number'] == meeting_number), 'interaction_equality_index'] = equality_index_values[i]
+
+    # Set the specified columns to zero
+    final_dataset['overall_collaboration_score'] = -1
+    final_dataset['individual_collaboration_score'] = -1
+
+    # Reorder columns as specified
+    final_dataset = final_dataset[['id', 'project', 'meeting_number', 'speaker_number', 'speech_frequency', 'total_words', 'duration', 'normalized_speech_frequency', 'speaker_id', 'next_speaker_id', 'count', 'network_density', 'weighted_network_density', 'gini_coefficient', 'interaction_equality_index', 'degree_centrality', 'indegree_centrality', 'outdegree_centrality', 'betweenness_centrality', 'closeness_centrality', 'eigenvector_centrality', 'pagerank', 'overall_collaboration_score', 'individual_collaboration_score']]
+
+    # Save final dataset to CSV
+    final_filename = os.path.join('/app/data', 'dataset_collaboration_manual.csv')
+    process_and_save(final_dataset, final_filename)
+    logging.info(f"Final dataset saved to {final_filename}")

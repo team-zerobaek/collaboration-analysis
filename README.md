@@ -1,6 +1,6 @@
 # 📍프로그래머스 4차 프로젝트 
 
-행동 데이터 기반 팀의 협업 모니터링 및 예측 종합 서비스
+[행동 데이터 기반 협업 모니터링 및 예측 종합 서비스](http://collaboration-analysis-api-env.eba-usqw6syp.ap-northeast-2.elasticbeanstalk.com/upload/)
 
 # 📍목차
 
@@ -10,7 +10,7 @@
   
 - [데이터 설명](#📈데이터-설명)
 
-- [데이터 설명](#📈A/B-테스트)
+- [A/B 테스트](#📈A/B-테스트)
 
 - [모델링](#📈모델링)
 

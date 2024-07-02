@@ -59,10 +59,10 @@ def generate_recommendation_text(speaker_number):
     offline_interactions = dataset_voice[(dataset_voice['meeting_number'].isin(offline_meetings)) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
 
     casual_not_used_meetings = dataset_voice[(dataset_voice['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
-    casual_used_meetings = dataset_voice[(dataset_voice['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    casual_used_meetings = dataset_voice[(dataset_voice['meeting_number'].isin([9, 10, 11, 12, 13, 14, 15, 16, 17])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
 
-    text_interactions = dataset_text[(dataset_text['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])) & (dataset_text['speaker_id'] != dataset_text['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
-    voice_interactions = dataset_voice[(dataset_voice['meeting_number'].isin([9, 10, 11, 12, 13, 14])) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    text_interactions = dataset_text[(dataset_text['speaker_id'] != dataset_text['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
+    voice_interactions = dataset_voice[(dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])].groupby('speaker_number')['normalized_interaction_frequency'].mean().reset_index()
 
     interaction_diff_online_offline = offline_interactions[offline_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean() - online_interactions[online_interactions['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean()
     interaction_diff_casual_formal = casual_used_meetings[casual_used_meetings['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean() - casual_not_used_meetings[casual_not_used_meetings['speaker_number'] == speaker_number]['normalized_interaction_frequency'].mean()

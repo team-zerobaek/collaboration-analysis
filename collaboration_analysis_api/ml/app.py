@@ -32,11 +32,11 @@ dash_app.layout = html.Div([
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.H2("Prediction by Machine Learning", style={'text-align': 'center'}),
     html.Div([
-        html.A("Overall Collaboration Score", href='#overall', style={
+        html.A("Predict Members' Perception of Collaboration", href='#overall', style={
                'margin-right': '20px'}, className='scroll-link'),
-        html.A("Individual Collaboration Score", href='#other', style={
+        html.A("Predict Peer Evaluation Scores", href='#other', style={
                'margin-right': '20px'}, className='scroll-link'),
-        html.A("Self-Interaction Individual Collaboration Score", href='#self',
+        html.A("Predict Self-Evaluation Scores", href='#self',
                style={'margin-right': '20px'}, className='scroll-link'),
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.Details([

@@ -51,7 +51,7 @@ def initialize_individual_others_ml_app(dash_app_instance, dataset_instance):
         dataset['duration']
 
     dash_app.layout.children.append(html.Div(id='other', children=[
-        html.H1("ML Models for Individual Collaboration Score"),
+        html.H1("Predict Peer Evaluation Scores for Collaboration"),
         html.Div(id='ml-output-individual'),
         html.Button('Run Dummy Model', id='run-dummy-individual', n_clicks=0),
         html.Button('Run Actual Model',

@@ -49,7 +49,7 @@ def initialize_overall_ml_app(dash_app_instance, dataset_instance):
     
 
     dash_app.layout.children.append(html.Div(id='overall', children=[
-        html.H1("ML Models for Overall Collaboration Score"),
+        html.H1("Predict Members' Perception of Collaboration in the Project"),
         html.Div(id='ml-output'),
         html.Button('Run Dummy Model', id='run-dummy', n_clicks=0),
         html.Button('Run Actual Model', id='run-actual', n_clicks=0),

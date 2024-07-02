@@ -51,7 +51,7 @@ def initialize_individual_self_ml_app(dash_app_instance, dataset_instance):
         dataset['duration']
 
     dash_app.layout.children.append(html.Div(id='self', children=[
-        html.H1("ML Models for Self-Interaction Individual Collaboration Score"),
+        html.H1("Predict Self-Evaluation Scores for Collaboration"),
         html.Div(id='ml-output-individual-self'),
         html.Button('Run Dummy Model',
                     id='run-dummy-individual-self', n_clicks=0),

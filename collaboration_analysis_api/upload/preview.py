@@ -89,8 +89,6 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
         if 'normalized_interaction_frequency' not in dataset.columns:
             dataset['normalized_interaction_frequency'] = dataset['count'] / dataset['duration']
 
-    most_recent_project = max(dataset_voice['project'].max(), dataset_text['project'].max())
-
     def get_valid_projects_for_all_meetings():
         valid_projects = []
         for dataset in [dataset_voice, dataset_text]:
@@ -102,6 +100,10 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
         return valid_projects
 
     valid_projects_for_all_meetings = get_valid_projects_for_all_meetings()
+
+    most_recent_project_voice = dataset_voice['project'].max()
+    most_recent_project_text = dataset_text['project'].max()
+    most_recent_project = max(most_recent_project_voice, most_recent_project_text)
 
     dash_app.layout.children.append(
         html.Div(id='preview-section-content', children=[
@@ -336,7 +338,7 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
     )
     def update_bar_chart_difference(selected_project):
         if selected_project is None:
-            selected_project is most_recent_project
+            selected_project = most_recent_project
         online_meetings, offline_meetings = get_meetings_by_condition(dataset_voice)
         online_meetings = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['meeting_number'].isin(online_meetings)) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
         offline_meetings = dataset_voice[(dataset_voice['project'] == selected_project) & (dataset_voice['meeting_number'].isin(offline_meetings)) & (dataset_voice['speaker_id'] != dataset_voice['next_speaker_id'])]
@@ -468,3 +470,38 @@ def initialize_summary_app(dash_app_instance, dataset_instance_voice, dataset_in
         self_table.update_layout(paper_bgcolor='#f8f8f8')
 
         return overall_table, others_table, self_table
+
+    # New callback to update dropdown options based on selected dataset
+    @dash_app.callback(
+        [Output('project-dropdown-speech', 'options'),
+         Output('project-dropdown-interaction', 'options'),
+         Output('project-dropdown-degree-centrality', 'options'),
+         Output('project-dropdown-individual-others', 'options'),
+         Output('project-dropdown-individual-self', 'options'),
+         Output('project-dropdown-interaction-diff', 'options'),
+         Output('project-dropdown-casual', 'options'),
+         Output('project-dropdown-text-voice', 'options'),
+         Output('project-dropdown-speech', 'value'),
+         Output('project-dropdown-interaction', 'value'),
+         Output('project-dropdown-degree-centrality', 'value'),
+         Output('project-dropdown-individual-others', 'value'),
+         Output('project-dropdown-individual-self', 'value'),
+         Output('project-dropdown-interaction-diff', 'value'),
+         Output('project-dropdown-casual', 'value'),
+         Output('project-dropdown-text-voice', 'value')],
+        [Input('dataset-selection-radio', 'value')]
+    )
+    def update_dropdown_options(dataset_selection):
+        if dataset_selection == 'default':
+            projects = [{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()]
+            most_recent_project = dataset_voice['project'].max()
+        else:
+            projects = [{'label': f'Project {i}', 'value': i} for i in dataset_voice['project'].unique()]
+            most_recent_project = dataset_voice['project'].max()
+
+        valid_projects_for_all_meetings = [i for i in dataset_voice['project'].unique() if i in dataset_text['project'].unique()]
+        valid_projects_options = [{'label': f'Project {i}', 'value': i} for i in valid_projects_for_all_meetings]
+
+        most_recent_valid_project = max(valid_projects_for_all_meetings) if valid_projects_for_all_meetings else None
+
+        return projects, projects, projects, valid_projects_options, valid_projects_options, valid_projects_options, valid_projects_options, valid_projects_options, most_recent_project, most_recent_project, most_recent_project, most_recent_valid_project, most_recent_valid_project, most_recent_valid_project, most_recent_valid_project, most_recent_valid_project

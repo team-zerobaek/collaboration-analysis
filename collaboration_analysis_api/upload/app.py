@@ -118,6 +118,7 @@ def update_output(contents, dataset_selection, filenames, last_modified):
     if trigger_id == 'dataset-selection-radio' and dataset_selection == 'default':
         default_dataset_voice = pd.read_csv(os.path.join(data_directory, 'dataset_collaboration_with_survey_scores.csv'))
         preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
+        logging.info("Using default dataset for preview.")
         return upload_info, preview_content, dash.no_update, 'default'
 
     if trigger_id == 'dataset-selection-radio' and dataset_selection == 'uploaded':
@@ -129,6 +130,7 @@ def update_output(contents, dataset_selection, filenames, last_modified):
             return upload_info, html.Div(""), dash.no_update, 'default'
 
         preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
+        logging.info("Using uploaded dataset for preview.")
         return upload_info, preview_content, dash.no_update, 'uploaded'
 
     if trigger_id == 'upload-data' and contents:
@@ -147,6 +149,7 @@ def update_output(contents, dataset_selection, filenames, last_modified):
 
             # Initialize summary charts with the new dataset
             preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
+            logging.info("Preview content updated with uploaded dataset.")
 
             # Check if the uploaded data now exists
             uploaded_data_exists = check_uploaded_data_exists()

@@ -142,7 +142,7 @@ def initialize_casual_app(dash_app, dataset):
     )
     def update_casual_graph_table(view_type):
         not_used_meetings = dataset[dataset['meeting_number'].isin([1, 2, 3, 4, 5, 6, 7, 8])]
-        used_meetings = dataset[dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14])]
+        used_meetings = dataset[dataset['meeting_number'].isin([9, 10, 11, 12, 13, 14, 15, 16, 17])]
 
         if view_type == 'total':
             not_used_metrics = calculate_team_meeting_metrics(not_used_meetings)
@@ -215,7 +215,7 @@ def initialize_casual_app(dash_app, dataset):
                 showlegend=True
             )
 
-            fig_interaction.update_layout(              
+            fig_interaction.update_layout(
                 xaxis_title='Condition',
                 yaxis_title='Normalized Interaction Frequency',
                 showlegend=True
@@ -268,7 +268,7 @@ def initialize_casual_app(dash_app, dataset):
                 dcc.Markdown("""
                     #### Normalized Speech Frequency - Total
                     - By observing the changes in the Normalized Speech Frequency values in the Total graph, we can determine how the use of casual language between participants affected the overall speech frequency in the meeting.
-                    
+
                     #### Normalized Speech Frequency - by Speaker
                     - The by Speaker graph allows us to see the differences in speech frequency for each speaker. This helps determine if using casual language had a significant effect on speech frequency changes for specific individuals.
                 """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})

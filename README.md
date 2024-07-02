@@ -105,7 +105,7 @@
    
    4. 변환된 텍스트 데이터를 바탕으로 1차 지표를 추출하여 RDB 형태로 저장하여 체계적으로 관리하고 분석할 수 있도록 함
    
-      ![alt text](.\images\image.png)
+      ![alt text](./images/image.png)
       
   #### ELT
   1. 클로바 노트를 통해 추출된 텍스트 데이터를 바탕으로 SNA 관련 지표를 계산하여 기존 RDB에 추가
@@ -114,29 +114,29 @@
    
  #### SNA
  - Interaction Network 그래프
-   ![alt text](.\images\image2.png)
+   ![alt text](./images/image2.png)
    - 회의 중 기록된 의사소통 상호작용을 시각화한 Interaction Network 그래프
 
    - 각 구성원 간의 상호작용 빈도와 회의 동향을 분석하는 데 유용한 도구
   
   - Gini Coefficient 그래프(얼마나 균등하게 소통하는가?)
-   ![alt text](.\images\image3.png)
+   ![alt text](./images/image3.png)
     - 회의 중 기록된 의사소통 상호작용과 상호작용의 평등성을 시각화
 
   - Degree Centrality 그래프(회의에 얼마나 기여하는가?)
-     ![alt text](.\images\image4.png)
+     ![alt text](./images/image4.png)
      - 회의 구성원 각자가 다른 구성원과 얼마나 많은 연결을 가졌는지를 시각화
 
      - 구성원의 중심성을 나타내며 높은 값일수록 더 많은 상호작용을 의미
 
   - Normalized Interaction Frequency 그래프(얼마나 사람들과 소통을 하는가?)
-      ![alt text](.\images\image5.png)
+      ![alt text](./images/image5.png)
       - 각 회의에서 상호작용 강도를 상대적으로 이해하는 데 도움을 주는 그래프
 
       - 상호작용은 발화자 다음으로 발언하는 사람을 기준으로 1회로 측정
 
   - Normalized Speech Frequency 그래프(얼마나 많은 단어 수를 말하는가?)
-      ![alt text](.\images\image6.png)
+      ![alt text](./images/image6.png)
       - 각 회의에서 정규화된 발언 빈도를 비교하여 얼마나 많은 단어가 쓰였는지 시각화
 
       - 회의에서 발언량을 상대적으로 이해하는데 도움을 줌
@@ -185,7 +185,7 @@
 
    - 결과
      
-     ![alt text](.\images\image7.png)
+     ![alt text](./images/image7.png)
 
      Online, Offline 평균 발화량 차이
      - 통계적으로 유의미한 차이로 볼 수는 없었지만, 오프라인 회의가 온라인 회의보다 발화량이 더 많은 경향을 보였다. 
@@ -193,7 +193,7 @@
        이는 오프라인 환경이 참여자들 간의 소통을 더 원활하게 하고, 집중도를 높이는 효과가 있을 수 있음을 시사한다.
 
 
-     ![alt text](.\images\image8.png)
+     ![alt text](./images/image8.png)
 
      Online, Offline 평균 상호작용 차이
 
@@ -213,14 +213,14 @@
 
    - 결과
      
-     ![alt text](.\images\image9.png)
+     ![alt text](./images/image9.png)
 
      비격식어 사용 여부에 따른 평균 발화량 차이
      - 통계적으로 유의미한 차이를 보였다. 
        
        이는 비격식어 사용이 회의에서의 발화량을 증가시키는 데 기여했음을 시사한다.
 
-     ![alt text](.\images\image10.png)
+     ![alt text](./images/image10.png)
 
      비격식어 사용 여부에 따른 평균 상호작용 차이
 
@@ -243,14 +243,14 @@
 
    - 결과
      
-     ![alt text](.\images\image11.png)
+     ![alt text](./images/image11.png)
 
      Voice, Text 평균 발화량 차이
      - 통계적으로 유의미한 차이를 보였다. 
        
        이는 Voice 기반 회의에서 참여자들이 더 많은 발화를 했음을 시사한다.
 
-     ![alt text](.\images\image12.png)
+     ![alt text](./images/image12.png)
 
      Voice, Text 평균 상호작용 차이
 
@@ -299,14 +299,14 @@
    ### 테스트 결과
 
    - Predict Members'Perception of Collaboration 
-      ![alt text](.\images\image13.png)
+      ![alt text](./images/image13.png)
 
    - Predict Peer Evaluation of Collaboration 
-      ![alt text](.\images\image14.png)
+      ![alt text](./images/image14.png)
 
 
    - Predict Self Evaluation of Collaboration 
-      ![alt text](.\images\image15.png)
+      ![alt text](./images/image15.png)
    
 
 # 📈결론
@@ -324,7 +324,7 @@
 이러한 노력은 팀원 각자의 잠재력을 최대한 발휘하고, 지속적으로 변화하는 작업 환경에 효과적으로 대응하는 데 결정적인 역할을 할 것이다.
 
 # 📲서비스화
-![alt text](.\images\image16.png)
+![alt text](./images/image16.png)
 
 ### 서비스 구조
 

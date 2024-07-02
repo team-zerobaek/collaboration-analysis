@@ -47,7 +47,6 @@ def extract_speaker_turns(data):
     df = pd.DataFrame({'Speaker': speakers, 'Text': texts, 'Word_Count': word_counts})
     return df
 
-
 def create_dataset(dfs, project_number):
     dataset = []
     for i, df in enumerate(dfs):
@@ -56,13 +55,22 @@ def create_dataset(dfs, project_number):
         speaker_word_counts = df.groupby('Speaker')['Word_Count'].sum().to_dict()
         total_words = df['Word_Count'].sum()
         for speaker, word_count in speaker_word_counts.items():
+            speaker_number = int(speaker.split('_')[1])
+            duration = extract_last_time_in_minutes(df['Text'].iloc[-1])
+            if duration is None:
+                duration = 0
+            else:
+                duration /= 60  # Convert to hours
+            normalized_speech_frequency = word_count / duration if duration > 0 else 0
             dataset.append({
-                'id': f'{project_number}_{i + 1}_{speaker}',
+                'id': f'{project_number}_{i+1}_SPEAKER_{str(speaker_number).zfill(2)}',
                 'project': project_number,
                 'meeting_number': i + 1,
-                'speaker_number': int(speaker.split('_')[1]),  # Ensure speaker_number is correctly parsed
+                'speaker_number': speaker_number,
                 'speech_frequency': word_count,
                 'total_words': total_words,
+                'duration': duration,
+                'normalized_speech_frequency': normalized_speech_frequency,
                 'overall_collaboration_score': -1,  # Default value
                 'individual_collaboration_score': -1  # Default value
             })
@@ -95,8 +103,7 @@ def process_files_in_directory(transcriptions):
     durations = []
     for text in transcriptions:
         minutes = extract_last_time_in_minutes(text)
-        if minutes is not None:
-            durations.append(minutes)
+        durations.append(minutes)
     return durations
 
 def compute_interaction_frequency(df, project_number):
@@ -112,6 +119,7 @@ def compute_interaction_frequency(df, project_number):
     for prev_speaker, next_speakers in interaction_counts.items():
         for next_speaker, count in next_speakers.items():
             interaction_records.append({
+                'id': f'{project_number}_{df["meeting_number"].iloc[0]}_SPEAKER_{str(prev_speaker.split("_")[1]).zfill(2)}',
                 'project': project_number,
                 'meeting_number': df['meeting_number'].iloc[0],
                 'speaker_id': int(prev_speaker.split('_')[1]),
@@ -134,6 +142,7 @@ def generate_all_pairs(interaction_records, dataset):
                 ].empty:
                     continue
                 all_pairs.append({
+                    'id': f'{project}_{meeting}_SPEAKER_{str(speaker1).zfill(2)}',
                     'project': project,
                     'meeting_number': meeting,
                     'speaker_id': speaker1,
@@ -175,7 +184,7 @@ def compute_centralities(df, combined_dataset):
                 (combined_dataset['next_speaker_id'] == int(next_speaker.split('_')[1]))
             ]
             if not combined_row.empty:
-                weight = combined_row['normalized_weight'].values[0]
+                weight = combined_row['count'].values[0]
                 if G.has_edge(prev_speaker, next_speaker):
                     G[prev_speaker][next_speaker]['weight'] += weight
                 else:

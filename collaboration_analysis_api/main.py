@@ -19,7 +19,7 @@ main_app.mount("/ml", ml_app)
 
 @main_app.get("/")
 async def root():
-    return RedirectResponse(url="/dash")
+    return RedirectResponse(url="/upload")
 
 if __name__ == "__main__":
     uvicorn.run(main_app, host="0.0.0.0", port=8080)

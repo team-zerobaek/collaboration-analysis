@@ -59,18 +59,18 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
                 ### Normalized Interaction Frequencies Explanation
-                - This line plot compares the normalized interaction frequencies across meetings for two different projects. 
-                         
+                - This line plot compares the normalized interaction frequencies across meetings for two different projects.
+
                     - X-axis: Represents the sequential number of meetings analyzed. Each point on the x-axis corresponds to a specific meeting.
 
                     - Y-axis: Indicates the average frequency of interactions normalized. This metric helps in understanding the relative intensity of interactions per meeting.
-                
+
                     - Lines and Markers:
 
                         - Blue Line: Represents the normalized interaction frequency for Project 3 across meetings.
-                         
+
                         - Orange Line: Represents the normalized interaction frequency for Project 4 across meetings.
-                        
+
                 - This visualization helps in comparing how interaction frequencies evolve over meetings. It highlights trends such as changes in interaction dynamics or potential differences in communication patterns over time.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px'})

@@ -1,3 +1,4 @@
+# upload/app.py
 from fastapi import FastAPI
 from dash import Dash, dcc, html
 from fastapi.middleware.wsgi import WSGIMiddleware
@@ -74,6 +75,7 @@ dash_app.layout = html.Div([
                 style={'text-align': 'center'}
             ),
         ]),
+        dcc.Store(id='dataset-selection-store'),  # Store to hold dataset selection
         dcc.Store(id='upload-info-store'),
         html.Div(id='output-data-upload', style={'font-size': '20px', 'text-align': 'center', 'margin-top': '20px'}),
     ]),
@@ -96,7 +98,8 @@ dash_app.layout.children[2].children[1].children.append(initial_preview_content)
     [Output('upload-info-store', 'data'),
      Output('preview-content', 'children'),
      Output('dataset-selection-radio', 'options'),
-     Output('dataset-selection-radio', 'value')],
+     Output('dataset-selection-radio', 'value'),
+     Output('dataset-selection-store', 'data')],
     [Input('upload-data', 'contents'),
      Input('dataset-selection-radio', 'value')],
     [State('upload-data', 'filename'),
@@ -119,7 +122,7 @@ def update_output(contents, dataset_selection, filenames, last_modified):
         default_dataset_voice = pd.read_csv(os.path.join(data_directory, 'dataset_collaboration_with_survey_scores.csv'))
         preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
         logging.info("Using default dataset for preview.")
-        return upload_info, preview_content, dash.no_update, 'default'
+        return upload_info, preview_content, dash.no_update, 'default', 'default'
 
     if trigger_id == 'dataset-selection-radio' and dataset_selection == 'uploaded':
         try:
@@ -127,11 +130,11 @@ def update_output(contents, dataset_selection, filenames, last_modified):
         except FileNotFoundError as e:
             logging.error(f"Error loading uploaded data: {e}")
             upload_info = {'status': 'error', 'filenames': [], 'error': "Uploaded data not found."}
-            return upload_info, html.Div(""), dash.no_update, 'default'
+            return upload_info, html.Div(""), dash.no_update, 'default', 'default'
 
         preview_content = initialize_summary_app(dash_app, default_dataset_voice, default_dataset_text)
         logging.info("Using uploaded dataset for preview.")
-        return upload_info, preview_content, dash.no_update, 'uploaded'
+        return upload_info, preview_content, dash.no_update, 'uploaded', 'uploaded'
 
     if trigger_id == 'upload-data' and contents:
         try:
@@ -162,13 +165,13 @@ def update_output(contents, dataset_selection, filenames, last_modified):
 
             upload_info = {'status': 'uploaded', 'filenames': filenames}
 
-            return upload_info, preview_content, updated_options, 'uploaded'
+            return upload_info, preview_content, updated_options, 'uploaded', 'uploaded'
         except Exception as e:
             logging.error(f"Error processing data: {e}")
             upload_info = {'status': 'error', 'filenames': filenames, 'error': str(e)}
-            return upload_info, html.Div(""), dash.no_update, 'default'
+            return upload_info, html.Div(""), dash.no_update, 'default', 'default'
 
-    return upload_info, preview_content, dash.no_update, dash.no_update
+    return upload_info, preview_content, dash.no_update, dash.no_update, dash.no_update
 
 # Callback to update the output-data-upload based on the stored upload info
 @dash_app.callback(

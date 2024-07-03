@@ -1,4 +1,3 @@
-# behavioral/app.py
 from fastapi import FastAPI
 from dash import Dash, dcc, html
 from fastapi.middleware.wsgi import WSGIMiddleware
@@ -29,6 +28,18 @@ main_layout = html.Div([
         html.A(html.Button('Subjective', style={'margin-right': '10px'}), href='/subjective'),
         html.A(html.Button('Effective Channels', style={'margin-right': '10px'}), href='/abtest'),
         html.A(html.Button('Predict', style={'margin-right': '10px'}), href='/ml')
+    ], style={'text-align': 'center', 'margin-bottom': '20px'}),
+
+    html.Div([
+        dcc.RadioItems(
+            id='dataset-selection-radio',
+            options=[
+                {'label': 'Default Data', 'value': 'default'},
+                {'label': 'Uploaded Data', 'value': 'uploaded'}
+            ],
+            value='default',
+            style={'text-align': 'center'}
+        )
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
 
     html.H2("Behavioral Data Analysis", style={'text-align': 'center'}),

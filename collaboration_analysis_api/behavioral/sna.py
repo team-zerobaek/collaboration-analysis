@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import networkx as nx
 import matplotlib.colors as mcolors
 from dash import dcc, html
+import pandas as pd
 
 # Initialize Dash app and dataset within the SNA context
 dash_app = None
@@ -262,9 +263,9 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     @dash_app.callback(
         Output('network-graph', 'figure'),
         [Input('project-dropdown', 'value'),
-        Input('meeting-dropdown', 'value'),
-        Input('speaker-dropdown', 'value'),
-        Input('reset-button', 'n_clicks')]
+         Input('meeting-dropdown', 'value'),
+         Input('speaker-dropdown', 'value'),
+         Input('reset-button', 'n_clicks')]
     )
     def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks):
         if not selected_project:
@@ -285,7 +286,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         if selected_speakers:
             selected_speakers = [f"SPEAKER_{speaker:02d}" for speaker in selected_speakers]
             df_filtered = df_filtered[df_filtered['speaker_number'].isin([int(s.split('_')[1]) for s in selected_speakers]) |
-                                    df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
+                                      df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
             G = create_interaction_graph(df_filtered, selected_speakers)
         else:
             G = create_interaction_graph(df_filtered)
@@ -317,13 +318,28 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
     @dash_app.callback(
-        [Output('project-dropdown', 'value'),
-         Output('meeting-dropdown', 'value'),
-         Output('speaker-dropdown', 'value')],
-        [Input('reset-button', 'n_clicks')]
+        [Output('project-dropdown', 'options'),
+         Output('project-dropdown', 'value')],
+        [Input('dataset-selection-radio', 'value')]
     )
-    def reset_filters(n_clicks):
-        return None, None, None
+    def update_project_dropdown_options(dataset_selection):
+        if dataset_selection == 'default':
+            projects = [{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()]
+            most_recent_project = dataset['project'].max()
+        else:
+            projects = [{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()]
+            most_recent_project = dataset['project'].max()
+
+        return projects, most_recent_project
+
+    @dash_app.callback(
+        Output('dataset-selection-radio', 'value'),
+        [Input('upload-info-store', 'data')]
+    )
+    def update_radio_value(upload_info):
+        if upload_info and 'status' in upload_info and upload_info['status'] == 'uploaded':
+            return 'uploaded'
+        return 'default'
 
     # Define the layout for SNA-specific elements
     sna_layout = html.Div([
@@ -336,7 +352,8 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                 options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
                 placeholder="Select a project",
                 multi=False,
-                style={'width': '200px'}
+                style={'width': '200px'},
+                value=dataset['project'].max()  # Set the initial value to the most recent project
             ),
             dcc.Dropdown(
                 id='meeting-dropdown',
@@ -357,23 +374,22 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
                 ### Network Interaction Graph Explanation
-                This graph represents a directed network of communication interactions recorded during a meeting. 
-                
+                This graph represents a directed network of communication interactions recorded during a meeting.
+
                 #### Components
                 - **Nodes**: Each node represents a meeting participant.
                 - **Edges**: Each edge signifies the number of interactions between participants. The thickness and color of the edges denote the frequency of interactions, ranging from blue (fewer interactions) to red (more interactions).
                 - **Self-Interactions**: Numbers in parentheses above the nodes indicate self-interactions, which occur when a participant speaks at length or explains something extensively.
-                
+
                 #### Insights
                 - **Interaction Frequency**: The edge thickness and color give a clear visual representation of how frequently participants interact with each other.
                 - **Meeting Dynamics**: The dashboard provides detailed information about participant interactions in a specific meeting.
                 - **Cumulative Data**: By selecting multiple meetings, you can view the cumulative number of interactions across those meetings.
                 - **Focused Analysis**: The dashboard allows for selecting specific participants to analyze their interactions and relationships within the group.
-                
+
                 This tool is useful for analyzing communication patterns, understanding meeting dynamics, and identifying key contributors in discussions.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px'})
     ])
-    
-    dash_app.layout.children.append(sna_layout)
 
+    dash_app.layout.children.append(sna_layout)

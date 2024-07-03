@@ -46,14 +46,14 @@ def initialize_overall_ml_app(dash_app_instance, dataset_instance):
         dataset['duration']
 
     # Group by meeting_number and speaker, summing up normalized_interaction_frequency
-    
+
 
     dash_app.layout.children.append(html.Div(id='overall', children=[
         html.H1("Predict Members' Perception of Collaboration in the Project"),
         html.Div(id='ml-output'),
         html.Button('Run Dummy Model', id='run-dummy', n_clicks=0),
         html.Button('Run Actual Model', id='run-actual', n_clicks=0),
-        dcc.Loading(id="loading", type="default",
+        dcc.Loading(id="loading-overall", type="default",
                     children=html.Div(id="loading-output")),
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
@@ -95,7 +95,7 @@ def build_actual_model():
     # Use the grouped dataset for model building
     dataset_filtered = dataset[(dataset['project'] == 4) & (
         dataset['overall_collaboration_score'].between(1, 10))]
-    
+
     dataset_filtered = dataset_filtered.groupby(['project', 'meeting_number', 'speaker_id']).agg({
         'normalized_speech_frequency': 'first',
         'gini_coefficient': 'first',

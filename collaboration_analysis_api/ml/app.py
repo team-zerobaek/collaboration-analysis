@@ -20,28 +20,20 @@ dataset = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
 dash_app.layout = html.Div([
     html.H1("How We Collaborate", style={'text-align': 'center'}),
     html.Div([
-        html.A(html.Button('Upload', style={
-               'margin-right': '10px'}), href='/upload'),
-        html.A(html.Button('Behavioral', style={
-               'margin-right': '10px'}), href='/dash'),
-        html.A(html.Button('Subjective', style={
-               'margin-right': '10px'}), href='/subjective'),
-        html.A(html.Button(
-            'Effective Channels', style={'margin-right': '10px'}), href='/abtest'),
+        html.A(html.Button('Upload', style={'margin-right': '10px'}), href='/upload'),
+        html.A(html.Button('Behavioral', style={'margin-right': '10px'}), href='/dash'),
+        html.A(html.Button('Subjective', style={'margin-right': '10px'}), href='/subjective'),
+        html.A(html.Button('Effective Channels', style={'margin-right': '10px'}), href='/abtest'),
         html.A(html.Button('Predict', style={'margin-right': '10px'}), href='/ml')
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.H2("Prediction by Machine Learning", style={'text-align': 'center'}),
     html.Div([
-        html.A("Predict Members' Perception of Collaboration", href='#overall', style={
-               'margin-right': '20px'}, className='scroll-link'),
-        html.A("Predict Peer Evaluation Scores", href='#other', style={
-               'margin-right': '20px'}, className='scroll-link'),
-        html.A("Predict Self-Evaluation Scores", href='#self',
-               style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Predict Members' Perception of Collaboration", href='#overall', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Predict Peer Evaluation Scores", href='#other', style={'margin-right': '20px'}, className='scroll-link'),
+        html.A("Predict Self-Evaluation Scores", href='#self', style={'margin-right': '20px'}, className='scroll-link'),
     ], style={'text-align': 'center', 'margin-bottom': '20px'}),
     html.Details([
-        html.Summary('Machine Learning Main Description',
-                     style={'margin-bottom': '11px','text-align': 'center'}),
+        html.Summary('Machine Learning Main Description', style={'margin-bottom': '11px','text-align': 'center'}),
         html.Div([
             dcc.Markdown('''
         ### Machine Learning (ML)
@@ -68,8 +60,6 @@ dash_app.layout = html.Div([
         ], style={'backgroundColor': '#f0f0f0', 'borderRadius': '5px', 'width': '100%', 'padding': '20px'})
     ], style={'margin-top': '10px', 'margin-bottom': '10px'}),
 
-
-
     html.Script('''
         document.addEventListener('DOMContentLoaded', function() {
             var links = document.querySelectorAll('.scroll-link');
@@ -87,21 +77,25 @@ dash_app.layout = html.Div([
         });
     ''')
 ])
-dash_app.layout.children.append(
-    html.Button('Top', id='top-button', style={
-        'position': 'fixed',
-        'bottom': '20px',
-        'right': '20px',
-        'padding': '10px 20px',
-        'font-size': '16px',
-        'z-index': '1000',
-        'background-color': '#007bff',
-        'color': 'white',
-        'border': 'none',
-        'border-radius': '5px',
-        'cursor': 'pointer'
-    })
-)
+
+# Ensure unique ID for the 'Top' button
+top_button_id = 'top-button-ml'
+if not any(hasattr(comp, 'id') and comp.id == top_button_id for comp in dash_app.layout.children):
+    dash_app.layout.children.append(
+        html.Button('Top', id=top_button_id, style={
+            'position': 'fixed',
+            'bottom': '20px',
+            'right': '20px',
+            'padding': '10px 20px',
+            'font-size': '16px',
+            'z-index': '1000',
+            'background-color': '#007bff',
+            'color': 'white',
+            'border': 'none',
+            'border-radius': '5px',
+            'cursor': 'pointer'
+        })
+    )
 
 dash_app.clientside_callback(
     """
@@ -115,11 +109,11 @@ dash_app.clientside_callback(
         return '';
     }
     """,
-    Output('top-button', 'n_clicks'),
-    [Input('top-button', 'n_clicks')]
+    Output(top_button_id, 'n_clicks'),
+    [Input(top_button_id, 'n_clicks')]
 )
 
-# Initialize the individual ML apps
+# Initialize the individual ML apps with unique IDs to avoid duplication
 initialize_overall_ml_app(dash_app, dataset)
 initialize_individual_others_ml_app(dash_app, dataset)
 initialize_individual_self_ml_app(dash_app, dataset)

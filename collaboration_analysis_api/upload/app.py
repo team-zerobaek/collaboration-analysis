@@ -170,7 +170,14 @@ def update_output(contents, dataset_selection, filenames, last_modified):
             upload_info = {'status': 'error', 'filenames': filenames, 'error': str(e)}
             return upload_info, html.Div(""), dash.no_update, 'default', 'default'
 
-    return upload_info, preview_content, dash.no_update, dash.no_update, dash.no_update
+    # Update the dataset-selection-radio options if nothing triggered it
+    uploaded_data_exists = check_uploaded_data_exists()
+    updated_options = [
+        {'label': 'Default Data', 'value': 'default'},
+        {'label': 'Uploaded Data', 'value': 'uploaded', 'disabled': not uploaded_data_exists}
+    ]
+
+    return upload_info, preview_content, updated_options, dash.no_update, dash.no_update
 
 # Callback to update the output-data-upload based on the stored upload info
 @dash_app.callback(

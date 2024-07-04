@@ -7,7 +7,9 @@ from behavioral.interaction import initialize_interaction_app
 from behavioral.gini import initialize_gini_app
 from behavioral.sna import initialize_sna_app
 import pandas as pd
+import os
 from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
 
 # Initialize the FastAPI app
 fastapi_app = FastAPI()
@@ -15,9 +17,19 @@ fastapi_app = FastAPI()
 # Initialize the Dash app
 dash_app = Dash(__name__, requests_pathname_prefix='/dash/')
 
+# Data Load and Configuration
+data_directory = '/app/data'
+os.makedirs(data_directory, exist_ok=True)
+
 # Load default dataset
-default_dataset = pd.read_csv('/app/data/dataset_collaboration_with_survey_scores.csv')
+default_dataset = pd.read_csv(os.path.join(data_directory, 'dataset_collaboration_with_survey_scores.csv'))
 dataset = default_dataset.copy()
+
+def check_uploaded_data_exists():
+    return os.path.exists(os.path.join(data_directory, 'dataset_collaboration_manual.csv'))
+
+# Check if the uploaded dataset exists initially
+uploaded_data_exists = check_uploaded_data_exists()
 
 # Define the layout for the main page
 main_layout = html.Div([
@@ -35,7 +47,7 @@ main_layout = html.Div([
             id='dataset-selection-radio',
             options=[
                 {'label': 'Default Data', 'value': 'default'},
-                {'label': 'Uploaded Data', 'value': 'uploaded'}
+                {'label': 'Uploaded Data', 'value': 'uploaded', 'disabled': not uploaded_data_exists}
             ],
             value='default',
             style={'text-align': 'center'}
@@ -102,6 +114,19 @@ dash_app.clientside_callback(
     Output('top-button', 'n_clicks'),
     [Input('top-button', 'n_clicks')]
 )
+
+# Callback to update the radio button options based on file existence
+@dash_app.callback(
+    [Output('dataset-selection-radio', 'options')],
+    [Input('dataset-selection-radio', 'value')]
+)
+def update_radio_options(dataset_selection):
+    uploaded_data_exists = check_uploaded_data_exists()
+    options = [
+        {'label': 'Default Data', 'value': 'default'},
+        {'label': 'Uploaded Data', 'value': 'uploaded', 'disabled': not uploaded_data_exists}
+    ]
+    return [options]
 
 # Initialize the individual apps
 initialize_sna_app(dash_app, dataset)

@@ -92,6 +92,40 @@ initial_preview_content = initialize_summary_app(dash_app, default_dataset_voice
 # Set the initial preview content
 dash_app.layout.children[2].children[1].children.append(initial_preview_content)
 
+# Add the "Top" button
+dash_app.layout.children.append(
+    html.Button('Top', id='top-button-upload', style={
+        'position': 'fixed',
+        'bottom': '20px',
+        'right': '20px',
+        'padding': '10px 20px',
+        'font-size': '16px',
+        'z-index': '1000',
+        'background-color': '#007bff',
+        'color': 'white',
+        'border': 'none',
+        'border-radius': '5px',
+        'cursor': 'pointer'
+    })
+)
+
+# Client-side callback for the "Top" button
+dash_app.clientside_callback(
+    """
+    function(n_clicks) {
+        if (n_clicks > 0) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        return '';
+    }
+    """,
+    Output('top-button-upload', 'n_clicks'),
+    [Input('top-button-upload', 'n_clicks')]
+)
+
 # Callback to handle file uploads and process the transcripts
 @dash_app.callback(
     [Output('upload-info-store', 'data'),

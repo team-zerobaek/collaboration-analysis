@@ -6,7 +6,6 @@ from dash.dependencies import Input, Output, State
 import pandas as pd
 import os
 import logging
-import dash
 from dash.exceptions import PreventUpdate
 
 # Import processing functions

@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
 from dash import dcc, html
+import dash
 
 dash_app = None
 dataset = None
@@ -52,7 +53,8 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                 value='total',
                 labelStyle={'display': 'inline-block'}
             ),
-            html.Button('Reset', id='reset-interaction-button', n_clicks=0)
+            html.Button('Reset', id='reset-interaction-button', n_clicks=0),
+            html.Button('Clear', id='clear-interaction-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
         dcc.Graph(id='interaction-frequency-graph'),
         html.Details([
@@ -102,12 +104,24 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
 
     @dash_app.callback(
         [Output('interaction-project-dropdown', 'value'),
-         Output('interaction-meeting-dropdown', 'value'),
-         Output('interaction-speaker-dropdown', 'value')],
+        Output('interaction-meeting-dropdown', 'value'),
+        Output('interaction-speaker-dropdown', 'value'),
+        Output('interaction-type-radio', 'value')],
         [Input('reset-interaction-button', 'n_clicks')]
     )
     def reset_interaction_filters(n_clicks):
-        return None, None, None
+        if n_clicks > 0:
+            return None, None, None, 'total'
+        return dash.no_update, dash.no_update, dash.no_update, dash.no_update
+    
+    # @dash_app.callback(
+    #     Output('interaction-frequency-graph', 'figure'),
+    #     [Input('clear-interaction-button', 'n_clicks')]
+    # )
+    # def clear_interaction_graph(n_clicks):
+    #     if n_clicks > 0:
+    #         return go.Figure()  
+    #     return dash.no_update
 
     @dash_app.callback(
         Output('interaction-frequency-graph', 'figure'),
@@ -158,6 +172,18 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                                          name=f'Speaker {speaker}'))
 
             meeting_numbers_with_data = speaker_interactions['meeting_number'].unique()
+
+            avg_interaction_frequency = filtered_df.groupby('meeting_number').apply(
+                lambda df: df['normalized_interaction_count'].sum() / df['speaker_number'].nunique()
+            ).reset_index(name='avg_interaction_frequency')
+
+            fig.add_trace(go.Scatter(
+                x=avg_interaction_frequency['meeting_number'],
+                y=avg_interaction_frequency['avg_interaction_frequency'],
+                mode='lines',
+                name='Average Interaction Frequency',
+                line=dict(color='black', dash='dash')
+            ))
 
             fig.update_layout(
                 xaxis_title='Meeting Number',

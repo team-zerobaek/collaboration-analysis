@@ -268,15 +268,10 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
          Input('reset-button', 'n_clicks')]
     )
     def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks):
+        most_recent_project = dataset['project'].max()
+
         if not selected_project:
-            fig = go.Figure()
-            fig.update_layout(
-                paper_bgcolor='#f7f7f7',
-                plot_bgcolor='#f7f7f7',
-                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
-            )
-            return fig
+            selected_project = most_recent_project  # Use the most recent project if none is selected
 
         df_filtered = dataset[dataset['project'] == selected_project]
 
@@ -286,12 +281,37 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         if selected_speakers:
             selected_speakers = [f"SPEAKER_{speaker:02d}" for speaker in selected_speakers]
             df_filtered = df_filtered[df_filtered['speaker_number'].isin([int(s.split('_')[1]) for s in selected_speakers]) |
-                                      df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
+                                    df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
             G = create_interaction_graph(df_filtered, selected_speakers)
         else:
             G = create_interaction_graph(df_filtered)
 
         return plot_interaction_network(G)
+
+        # if not selected_project:
+        #     fig = go.Figure()
+        #     fig.update_layout(
+        #         paper_bgcolor='#f7f7f7',
+        #         plot_bgcolor='#f7f7f7',
+        #         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        #         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
+        #     )
+        #     return fig
+
+        # df_filtered = dataset[dataset['project'] == selected_project]
+
+        # if selected_meeting:
+        #     df_filtered = df_filtered[df_filtered['meeting_number'].isin(selected_meeting)]
+
+        # if selected_speakers:
+        #     selected_speakers = [f"SPEAKER_{speaker:02d}" for speaker in selected_speakers]
+        #     df_filtered = df_filtered[df_filtered['speaker_number'].isin([int(s.split('_')[1]) for s in selected_speakers]) |
+        #                               df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
+        #     G = create_interaction_graph(df_filtered, selected_speakers)
+        # else:
+        #     G = create_interaction_graph(df_filtered)
+
+        # return plot_interaction_network(G)
 
     @dash_app.callback(
         Output('meeting-dropdown', 'options'),
@@ -319,7 +339,8 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
 
     @dash_app.callback(
         [Output('project-dropdown', 'options'),
-         Output('project-dropdown', 'value')],
+        #  Output('project-dropdown', 'value')
+         ],
         [Input('dataset-selection-radio', 'value')]
     )
     def update_project_dropdown_options(dataset_selection):
@@ -329,8 +350,9 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         else:
             projects = [{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()]
             most_recent_project = dataset['project'].max()
-
-        return projects, most_recent_project
+        
+        return projects
+        # return projects, most_recent_project
 
     @dash_app.callback(
         Output('dataset-selection-radio', 'value'),

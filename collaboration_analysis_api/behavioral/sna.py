@@ -294,28 +294,37 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         return plot_interaction_network(G)
 
     @dash_app.callback(
-        Output('meeting-dropdown', 'options'),
+        [Output('meeting-dropdown', 'options'),
+        Output('meeting-dropdown', 'value')],
         [Input('project-dropdown', 'value')]
     )
     def set_meeting_options(selected_project):
         if not selected_project:
-            return []
+            return [], []
         meetings = dataset[dataset['project'] == selected_project]['meeting_number'].unique()
-        return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
+        if len(meetings) > 0:
+            first_meeting = meetings[0]
+            return [{'label': f'Meeting {i}', 'value': i} for i in meetings], [first_meeting]
+        else:
+            return [], []
 
     @dash_app.callback(
-        Output('speaker-dropdown', 'options'),
+        [Output('speaker-dropdown', 'options'),
+        Output('speaker-dropdown', 'value')],
         [Input('project-dropdown', 'value'),
-         Input('meeting-dropdown', 'value')]
+        Input('meeting-dropdown', 'value')]
     )
     def set_speaker_options(selected_project, selected_meeting):
         if not selected_project:
-            return []
+            return [], []
         filtered_df = dataset[dataset['project'] == selected_project]
         if selected_meeting:
             filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
         speakers = filtered_df['speaker_number'].unique()
-        return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
+        if len(speakers) > 0:
+            return [{'label': f'Speaker {i}', 'value': i} for i in speakers], [speakers[0]]
+        else:
+            return [], []
 
     @dash_app.callback(
         [Output('project-dropdown', 'options'),
@@ -341,11 +350,21 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             return 'uploaded'
         return 'default'
 
+    @dash_app.callback(
+        Output('project-dropdown', 'value'),
+        Input('initial-load', 'data')
+    )
+    def set_initial_project_value(initial_load):
+        if initial_load:
+            return dataset['project'].max()
+        return dash.no_update
+
     # Define the layout for SNA-specific elements
     sna_layout = html.Div([
         html.Div(id='sna', children=[
             html.H1("Interaction Network Graph")
         ]),
+        dcc.Store(id='initial-load', data=True),
         html.Div([
             dcc.Dropdown(
                 id='project-dropdown',

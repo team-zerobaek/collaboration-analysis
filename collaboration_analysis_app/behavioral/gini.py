@@ -11,16 +11,20 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
+    default_projects = dataset['project'].unique().tolist()
+
     dash_app.layout.children.append(html.Div(id ='gini', children=[
         html.H1("How Evenly Interacted?"),
         html.Div([
             dcc.Dropdown(
                 id='gini-project-dropdown',
                 options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                value=default_projects,
                 placeholder="Select projects",
                 multi=True,
                 style={'width': '200px'}
-            )
+            ),
+            html.Button('Reset', id='reset-gini-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
         dcc.Graph(id='gini-graph'), 
         html.Details([
@@ -38,6 +42,13 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
         ], style={'margin-top': '10px'})
     ]))
 
+    # @dash_app.callback(
+    #     [Output('gini-project-dropdown', 'value')],
+    #     [Input('reset-gini-button', 'n_clicks')]
+    # )
+    # def reset_gini_filters(n_clicks):
+    #     return default_projects
+    
     @dash_app.callback(
         Output('gini-graph', 'figure'),
         [Input('gini-project-dropdown', 'value')]

@@ -21,12 +21,15 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                                    on=['project', 'meeting_number'])
     interaction_summary['normalized_interaction_count'] = interaction_summary['count'] / interaction_summary['duration']
 
+    default_projects = dataset['project'].unique().tolist()
+    
     dash_app.layout.children.append(html.Div(id ='turn', children=[
         html.H1("How Much Interacted?"),
         html.Div([
             dcc.Dropdown(
                 id='interaction-project-dropdown',
                 options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                value=default_projects,
                 placeholder="Select projects",
                 multi=True,
                 style={'width': '200px'}
@@ -107,7 +110,7 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
         [Input('reset-interaction-button', 'n_clicks')]
     )
     def reset_interaction_filters(n_clicks):
-        return None, None, None
+        return default_projects, None, None
 
     @dash_app.callback(
         Output('interaction-frequency-graph', 'figure'),

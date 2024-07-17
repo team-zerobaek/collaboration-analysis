@@ -24,12 +24,15 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
     speech_summary = pd.merge(speech_summary, meeting_durations, on=['project', 'meeting_number'])
     speech_summary['normalized_speech_frequency'] = speech_summary['adjusted_speech_frequency'] / speech_summary['duration']
 
+    default_projects = dataset['project'].unique().tolist()
+
     dash_app.layout.children.append(html.Div(id ='word', children=[
         html.H1("How Many Words Were Spoken?"),
         html.Div([
             dcc.Dropdown(
                 id='speech-project-dropdown',
                 options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                value=default_projects,
                 placeholder="Select projects",
                 multi=True,
                 style={'width': '200px'}
@@ -61,9 +64,20 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Normalized Speech Frequencies Explanation
+                - This line plot explains the normalized speech frequencies.
+
+                    - X-axis: Represents the sequential number of meetings analyzed. Each point on the x-axis corresponds to a specific meeting.
+
+                    - Y-axis: Indicates the normalized speech frequency, which is calculated by dividing the total speech amount by the meeting duration.
+
+                    - Lines and Markers:
+
+                        - Blue Line: Represents the normalized interaction frequency for Project 3 across meetings.
+
+                        - Orange Line: Represents the normalized interaction frequency for Project 4 across meetings.
+
+                - This visualization helps in comparing how speech frequencies change over time during meetings. It highlights trends such as variations in speech activity or potential differences in communication patterns between the projects.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px'})
     ]))
@@ -99,7 +113,7 @@ def initialize_frequency_app(dash_app_instance, dataset_instance):
         [Input('reset-speech-button', 'n_clicks')]
     )
     def reset_speech_filters(n_clicks):
-        return None, None, None
+        return default_projects, None, None
 
     @dash_app.callback(
         Output('speech-frequency-graph', 'figure'),

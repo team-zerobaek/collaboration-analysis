@@ -12,12 +12,15 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
+    default_projects = dataset['project'].max()
+
     dash_app.layout.children.append(html.Div(id ='degree', children=[
         html.H1("How Much Contributed?"),
         html.Div([
             dcc.Dropdown(
                 id='degree-centrality-project-dropdown',
                 options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                value=default_projects,
                 placeholder="Select a project",
                 multi=False,  # Allow only one option to be selected
                 style={'width': '200px'}
@@ -61,7 +64,7 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
         [Input('reset-degree-centrality-button', 'n_clicks')]
     )
     def reset_degree_centrality_filters(n_clicks):
-        return None, [], []
+        return default_projects, [], []
 
     @dash_app.callback(
         Output('degree-centrality-meeting-dropdown', 'options'),

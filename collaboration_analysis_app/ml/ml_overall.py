@@ -155,6 +155,7 @@ def build_actual_model():
         model_performance = []
 
         for model_name, model in regression_models.items():
+
             start_time = time.time()
             pipeline = Pipeline([
                 ('preprocessor', column_transformer),

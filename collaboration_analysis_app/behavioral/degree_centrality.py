@@ -45,7 +45,7 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
                 This graph shows the degree centrality of each participant in the meeting, highlighting how many connections each participant has with others.
                 - **Degree Centrality = 0**: Participants on that line did not interact with other participants in the meeting
                 - **Degree Centrality = 1**: Participants on that line interacted with all other participants in the meeting.
-                
+
                 ### Axis Labels
                 - **X-axis**: Indicates the session number of the meeting.
                 - **Y-axis**: Indicates the Degree Centrality, with higher values representing greater interaction with other participants.

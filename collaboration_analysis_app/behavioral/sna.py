@@ -294,52 +294,40 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         return plot_interaction_network(G)
 
     @dash_app.callback(
-        [Output('meeting-dropdown', 'options'),
-        Output('meeting-dropdown', 'value')],
+        Output('meeting-dropdown', 'options'),
         [Input('project-dropdown', 'value')]
     )
     def set_meeting_options(selected_project):
         if not selected_project:
-            return [], []
+            return []
         meetings = dataset[dataset['project'] == selected_project]['meeting_number'].unique()
-        if len(meetings) > 0:
-            first_meeting = meetings[0]
-            return [{'label': f'Meeting {i}', 'value': i} for i in meetings], [first_meeting]
-        else:
-            return [], []
+        return [{'label': f'Meeting {i}', 'value': i} for i in meetings]
 
     @dash_app.callback(
-        [Output('speaker-dropdown', 'options'),
-        Output('speaker-dropdown', 'value')],
+        Output('speaker-dropdown', 'options'),
         [Input('project-dropdown', 'value'),
-        Input('meeting-dropdown', 'value')]
+         Input('meeting-dropdown', 'value')]
     )
     def set_speaker_options(selected_project, selected_meeting):
         if not selected_project:
-            return [], []
+            return []
         filtered_df = dataset[dataset['project'] == selected_project]
         if selected_meeting:
             filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
         speakers = filtered_df['speaker_number'].unique()
-        if len(speakers) > 0:
-            return [{'label': f'Speaker {i}', 'value': i} for i in speakers], [speakers[0]]
-        else:
-            return [], []
+        return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
     @dash_app.callback(
-        [Output('project-dropdown', 'options'),
-         Output('project-dropdown', 'value')],
+        [Output('project-dropdown', 'options')],
         [Input('dataset-selection-radio', 'value')]
     )
     def update_project_dropdown_options(dataset_selection):
         if dataset_selection == 'default':
             projects = [{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()]
-            most_recent_project = dataset['project'].max()
         else:
             projects = [{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()]
-            most_recent_project = dataset['project'].max()
-
-        return projects, most_recent_project
+        
+        return projects
 
     @dash_app.callback(
         Output('dataset-selection-radio', 'value'),
@@ -351,20 +339,20 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         return 'default'
 
     @dash_app.callback(
-        Output('project-dropdown', 'value'),
-        Input('initial-load', 'data')
+        [Output('project-dropdown', 'value'),
+         Output('meeting-dropdown', 'value'),
+         Output('speaker-dropdown', 'value')],
+        [Input('reset-button', 'n_clicks')]
     )
-    def set_initial_project_value(initial_load):
-        if initial_load:
-            return dataset['project'].max()
-        return dash.no_update
-
+    def reset_filters(n_clicks):
+        return default_projects, None, None
+    
     # Define the layout for SNA-specific elements
+    default_projects = dataset['project'].max()
     sna_layout = html.Div([
         html.Div(id='sna', children=[
             html.H1("Interaction Network Graph")
         ]),
-        dcc.Store(id='initial-load', data=True),
         html.Div([
             dcc.Dropdown(
                 id='project-dropdown',
@@ -372,7 +360,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                 placeholder="Select a project",
                 multi=False,
                 style={'width': '200px'},
-                value=dataset['project'].max()  # Set the initial value to the most recent project
+                value=default_projects,
             ),
             dcc.Dropdown(
                 id='meeting-dropdown',

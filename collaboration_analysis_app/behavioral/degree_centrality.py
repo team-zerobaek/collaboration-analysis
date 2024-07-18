@@ -99,8 +99,13 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
     )
     def update_degree_centrality_graph(selected_project, selected_meetings, selected_speakers):
         if not selected_project:
-            # Default to the most recent project if nothing is selected
-            selected_project = dataset['project'].max()
+            fig = go.Figure()
+            fig.update_layout(
+                xaxis_title='Meeting Number',
+                yaxis_title='Degree Centrality',
+                showlegend=True
+            )
+            return fig
 
         filtered_df = dataset[dataset['project'] == selected_project]
 

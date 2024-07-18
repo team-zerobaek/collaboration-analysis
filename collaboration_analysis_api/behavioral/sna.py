@@ -337,6 +337,7 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             ),
             dcc.Dropdown(
                 id='meeting-dropdown',
+                options=[{'label': f'Meeting {i}', 'value': i} for i in dataset[dataset['project']==dataset['project'].max()]['meeting_number'].unique()],
                 placeholder="Select a meeting",
                 multi=True,
                 style={'width': '200px'}

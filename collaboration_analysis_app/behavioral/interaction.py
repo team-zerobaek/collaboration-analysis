@@ -1,4 +1,4 @@
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
@@ -7,6 +7,16 @@ from dash import dcc, html
 dash_app = None
 dataset = None
 interaction_summary = None
+
+# Define a color map for the projects
+color_map = {
+    1: '#2ca02c',  # Project 1: green
+    2: '#ff7f0e',  # Project 2: orange
+    3: '#1f77b4',  # Project 3: blue
+    4: '#d62728',  # Project 4: red
+    # Add more colors for more projects if needed
+}
+
 
 def initialize_interaction_app(dash_app_instance, dataset_instance):
     global dash_app, dataset, interaction_summary
@@ -52,7 +62,9 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                 value='total',
                 labelStyle={'display': 'inline-block'}
             ),
-            html.Button('Reset', id='reset-interaction-button', n_clicks=0)
+            html.Button('Reset', id='reset-interaction-button', n_clicks=0),
+            html.Button('Select All Meetings', id='select-all-meetings-button', n_clicks=0),
+            html.Button('Select All Speakers', id='select-all-speakers-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
         dcc.Graph(id='interaction-frequency-graph'),
         html.Details([
@@ -109,6 +121,16 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
     def reset_interaction_filters(n_clicks):
         return None, None, None
 
+    # @dash_app.callback(
+    #     Output('interaction-meeting-dropdown', 'value'),
+    #     [Input('select-all-meetings-button', 'n_clicks')],
+    #     [State('interaction-meeting-dropdown', 'options')]
+    # )
+    # def select_all_meetings(n_clicks, meeting_options):
+    #     if n_clicks:
+    #         return [option['value'] for option in meeting_options]
+    #     return []
+    
     @dash_app.callback(
         Output('interaction-frequency-graph', 'figure'),
         [Input('interaction-project-dropdown', 'value'),
@@ -139,7 +161,9 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                 fig.add_trace(go.Scatter(x=interaction_comparison_df_pivot['meeting_number'],
                                          y=interaction_comparison_df_pivot[column],
                                          mode='lines+markers',
-                                         name=column))
+                                         name=column,
+                                         line=dict(color=color_map.get(int(column.split('Project')[-1]), '#000000'))  # Use color map or default to black
+))
 
             fig.update_layout(
                 xaxis_title='Meeting Number',

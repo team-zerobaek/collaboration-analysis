@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
 from dash import dcc, html
+import dash
 
 dash_app = None
 dataset = None
@@ -21,12 +22,24 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                                    on=['project', 'meeting_number'])
     interaction_summary['normalized_interaction_count'] = interaction_summary['count'] / interaction_summary['duration']
 
-    dash_app.layout.children.append(html.Div(id ='turn', children=[
+    # Define a consistent color map for the projects
+    color_map = {
+        0: 'grey',
+        1: 'purple',
+        2: 'green',
+        3: 'blue',
+        4: 'red',
+        5: 'orange'
+        # Add more colors as needed
+    }
+
+    dash_app.layout.children.append(html.Div(id='turn', children=[
         html.H1("How Much Interacted?"),
         html.Div([
             dcc.Dropdown(
                 id='interaction-project-dropdown',
                 options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
+                value=[i for i in dataset['project'].unique()],  # Initially select all projects
                 placeholder="Select projects",
                 multi=True,
                 style={'width': '200px'}
@@ -49,7 +62,7 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                     {'label': 'Total', 'value': 'total'},
                     {'label': 'By Speakers', 'value': 'by_speakers'}
                 ],
-                value='total',
+                value='total',  # Initially select the 'total' option
                 labelStyle={'display': 'inline-block'}
             ),
             html.Button('Reset', id='reset-interaction-button', n_clicks=0)
@@ -100,31 +113,8 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
         speakers = filtered_df['speaker_number'].unique()
         return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
-    @dash_app.callback(
-        [Output('interaction-project-dropdown', 'value'),
-         Output('interaction-meeting-dropdown', 'value'),
-         Output('interaction-speaker-dropdown', 'value')],
-        [Input('reset-interaction-button', 'n_clicks')]
-    )
-    def reset_interaction_filters(n_clicks):
-        return None, None, None
-
-    @dash_app.callback(
-        Output('interaction-frequency-graph', 'figure'),
-        [Input('interaction-project-dropdown', 'value'),
-         Input('interaction-meeting-dropdown', 'value'),
-         Input('interaction-speaker-dropdown', 'value'),
-         Input('interaction-type-radio', 'value')]
-    )
-    def update_interaction_graph(selected_project, selected_meeting, selected_speakers, interaction_type):
-        filtered_df = interaction_summary
-
-        if selected_project:
-            filtered_df = filtered_df[filtered_df['project'].isin(selected_project)]
-        if selected_meeting:
-            filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
-        if selected_speakers:
-            filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
+    def create_interaction_figure(filtered_df, interaction_type, color_map):
+        fig = go.Figure()
 
         if interaction_type == 'total':
             interaction_comparison_df = filtered_df.groupby(['project', 'meeting_number'])['normalized_interaction_count'].sum().reset_index()
@@ -134,12 +124,15 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
 
             meeting_numbers_with_data = interaction_comparison_df_pivot[(interaction_comparison_df_pivot > 0).any(axis=1)]['meeting_number']
 
-            fig = go.Figure()
             for column in interaction_comparison_df_pivot.columns[1:]:
+                project_number = int(column.split('Project')[-1])
                 fig.add_trace(go.Scatter(x=interaction_comparison_df_pivot['meeting_number'],
                                          y=interaction_comparison_df_pivot[column],
                                          mode='lines+markers',
-                                         name=column))
+                                         name=column,
+                                         marker=dict(symbol='circle'),
+                                         line=dict(color=color_map.get(project_number, 'black'))  # Use predefined color or default to black
+                                         ))
 
             fig.update_layout(
                 xaxis_title='Meeting Number',
@@ -148,7 +141,6 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                 showlegend=True
             )
         else:
-            fig = go.Figure()
             speaker_interactions = filtered_df.groupby(['meeting_number', 'speaker_number'])['normalized_interaction_count'].sum().reset_index()
             for speaker in speaker_interactions['speaker_number'].unique():
                 speaker_df = speaker_interactions[speaker_interactions['speaker_number'] == speaker]
@@ -165,6 +157,49 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
                 xaxis=dict(tickmode='array', tickvals=meeting_numbers_with_data),
                 showlegend=True
             )
+
+        return fig
+
+    def display_empty_interaction_graph():
+        fig = go.Figure()
+        fig.update_layout(
+            xaxis_title='Meeting Number',
+            yaxis_title='Normalized Interaction Frequency',
+            xaxis=dict(showticklabels=False),
+            yaxis=dict(showticklabels=False),
+            showlegend=False
+        )
+        return fig
+
+    @dash_app.callback(
+        [Output('interaction-frequency-graph', 'figure'),
+         Output('interaction-project-dropdown', 'value'),
+         Output('interaction-meeting-dropdown', 'value'),
+         Output('interaction-speaker-dropdown', 'value')],
+        [Input('interaction-project-dropdown', 'value'),
+         Input('interaction-meeting-dropdown', 'value'),
+         Input('interaction-speaker-dropdown', 'value'),
+         Input('interaction-type-radio', 'value'),
+         Input('reset-interaction-button', 'n_clicks')]
+    )
+    def update_interaction_graph(selected_project, selected_meeting, selected_speakers, interaction_type, reset_clicks):
+        ctx = dash.callback_context
+        if ctx.triggered and ctx.triggered[0]['prop_id'].split('.')[0] == 'reset-interaction-button':
+            return display_empty_interaction_graph(), None, None, None
+
+        if not selected_project:
+            return display_empty_interaction_graph(), selected_project, selected_meeting, selected_speakers
+
+        filtered_df = interaction_summary
+
+        if selected_project:
+            filtered_df = filtered_df[filtered_df['project'].isin(selected_project)]
+        if selected_meeting:
+            filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)]
+        if selected_speakers:
+            filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
+
+        fig = create_interaction_figure(filtered_df, interaction_type, color_map)
 
         if selected_meeting:
             bar_data = filtered_df[filtered_df['meeting_number'].isin(selected_meeting)].groupby(['speaker_number'])['normalized_interaction_count'].sum().reset_index()
@@ -199,4 +234,4 @@ def initialize_interaction_app(dash_app_instance, dataset_instance):
             )
             fig.add_trace(color_bar)
 
-        return fig
+        return fig, selected_project, selected_meeting, selected_speakers

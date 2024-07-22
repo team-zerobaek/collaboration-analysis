@@ -102,7 +102,7 @@ dash_app.layout.children.append(
 dash_app.clientside_callback(
     """
     function(n_clicks) {
-        if (n_clicks > 0) {
+        if (n_clicks > 0, n_clicks === 0) {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'

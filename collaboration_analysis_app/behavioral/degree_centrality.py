@@ -1,8 +1,9 @@
 from dash import dcc, html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.colors as mcolors
+import dash
 
 dash_app = None
 dataset = None
@@ -14,6 +15,19 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
 
     default_projects = dataset['project'].max()
 
+    color_map = {
+        0: 'grey',
+        1: 'purple',
+        2: 'green',
+        3: 'blue',
+        4: 'red',
+        5: 'orange'
+    }
+
+    dropdown_style = {
+        'width': '200px',
+    }
+
     dash_app.layout.children.append(html.Div(id ='degree', children=[
         html.H1("How Much Contributed?"),
         html.Div([
@@ -23,20 +37,22 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
                 value=default_projects,
                 placeholder="Select a project",
                 multi=False,  # Allow only one option to be selected
-                style={'width': '200px'}
+                style=dropdown_style
             ),
             dcc.Dropdown(
                 id='degree-centrality-meeting-dropdown',
                 placeholder="Select meetings",
                 multi=True,
-                style={'width': '200px'}
+                style=dropdown_style
             ),
             dcc.Dropdown(
                 id='degree-centrality-speaker-dropdown',
                 placeholder="Select speakers",
                 multi=True,
-                style={'width': '200px'}
+                style=dropdown_style
             ),
+            html.Button('Select All Meetings', id='degree-centrality-select-all-meetings-button', n_clicks=0),
+            html.Button('Select All Speakers', id='degree-centrality-select-all-speakers-button', n_clicks=0),
             html.Button('Reset', id='reset-degree-centrality-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
         dcc.Graph(id='degree-centrality-graph'),
@@ -54,17 +70,18 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
                 - **Y-axis**: Indicates the Degree Centrality, with higher values representing greater interaction with other participants.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '80px'})
-
     ]))
 
-    @dash_app.callback(
-        [Output('degree-centrality-project-dropdown', 'value'),
-         Output('degree-centrality-meeting-dropdown', 'value'),
-         Output('degree-centrality-speaker-dropdown', 'value')],
-        [Input('reset-degree-centrality-button', 'n_clicks')]
-    )
-    def reset_degree_centrality_filters(n_clicks):
-        return default_projects, [], []
+    def display_empty_degree_centrality_graph():
+        fig = go.Figure()
+        fig.update_layout(
+            xaxis_title='Meeting Number',
+            yaxis_title='Degree Centrality',
+            xaxis=dict(showticklabels=False),
+            yaxis=dict(showticklabels=False),
+            showlegend=False
+        )
+        return fig
 
     @dash_app.callback(
         Output('degree-centrality-meeting-dropdown', 'options'),
@@ -91,38 +108,77 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
         speakers = filtered_df['speaker_number'].unique()
         return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
+    def create_degree_centrality_figure(filtered_df, color_map):
+        fig = go.Figure()
+        for speaker in filtered_df['speaker_number'].unique():
+            speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
+            fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
+                                     y=speaker_df['degree_centrality'],
+                                     mode='lines+markers',
+                                     name=f'Speaker {speaker}',
+                                     line=dict(color=color_map[speaker])))
+
+        # Calculate the average degree centrality for all speakers
+        avg_degree_centrality = dataset[dataset['project'] == filtered_df['project'].iloc[0]].groupby('meeting_number')['degree_centrality'].mean().reset_index()
+
+        fig.add_trace(go.Scatter(
+            x=avg_degree_centrality['meeting_number'],
+            y=avg_degree_centrality['degree_centrality'],
+            mode='lines',
+            name='Average Degree Centrality',
+            line=dict(color='black', dash='dash')
+        ))
+
+        xticks = filtered_df['meeting_number'].unique()
+
+        fig.update_layout(
+            xaxis_title='Meeting Number',
+            yaxis_title='Degree Centrality',
+            xaxis=dict(tickmode='array', tickvals=xticks),
+            showlegend=True
+        )
+        return fig
+    
     @dash_app.callback(
-        Output('degree-centrality-graph', 'figure'),
+        [Output('degree-centrality-graph', 'figure'),
+         Output('degree-centrality-project-dropdown', 'value'),
+         Output('degree-centrality-meeting-dropdown', 'value'),
+         Output('degree-centrality-speaker-dropdown', 'value')],
         [Input('degree-centrality-project-dropdown', 'value'),
          Input('degree-centrality-meeting-dropdown', 'value'),
-         Input('degree-centrality-speaker-dropdown', 'value')]
+         Input('degree-centrality-speaker-dropdown', 'value'),
+         Input('reset-degree-centrality-button', 'n_clicks'),
+         Input('degree-centrality-select-all-meetings-button', 'n_clicks'),
+         Input('degree-centrality-select-all-speakers-button', 'n_clicks')],
+        [State('degree-centrality-project-dropdown', 'value')]
     )
-    def update_degree_centrality_graph(selected_project, selected_meetings, selected_speakers):
+    def update_degree_centrality_graph(selected_project, selected_meetings, selected_speakers, reset_clicks, select_all_meetings_clicks, select_all_speakers_clicks, state_project):
+        ctx = dash.callback_context
+        if ctx.triggered:
+            button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+            if button_id == 'reset-degree-centrality-button':
+                return display_empty_degree_centrality_graph(), None, [], []
+            if button_id == 'degree-centrality-select-all-meetings-button':
+                meetings = dataset[dataset['project'] == selected_project]['meeting_number'].unique()
+                return dash.no_update, selected_project, list(meetings), dash.no_update
+            if button_id == 'degree-centrality-select-all-speakers-button':
+                speakers = dataset[dataset['project'] == selected_project]['speaker_number'].unique()
+                return dash.no_update, selected_project, dash.no_update, list(speakers)
+
         if not selected_project:
-            fig = go.Figure()
-            fig.update_layout(
-                xaxis_title='Meeting Number',
-                yaxis_title='Degree Centrality',
-                showlegend=True
-            )
-            return fig
+            selected_project = dataset['project'].max()
 
         filtered_df = dataset[dataset['project'] == selected_project]
 
         if selected_meetings:
             filtered_df = filtered_df[filtered_df['meeting_number'].isin(selected_meetings)]
-
         if selected_speakers:
             filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
 
         if filtered_df.empty:
-            fig = go.Figure()
-            fig.update_layout(
-                xaxis_title='Meeting Number',
-                yaxis_title='Degree Centrality',
-                showlegend=True
-            )
-            return fig
+            return display_empty_degree_centrality_graph(), selected_project, selected_meetings, selected_speakers
+
+        fig = create_degree_centrality_figure(filtered_df, color_map)
 
         if selected_meetings:
             bar_data = filtered_df.groupby(['meeting_number', 'speaker_number'])['degree_centrality'].sum().reset_index()
@@ -156,33 +212,5 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
                 hoverinfo='none'
             )
             fig.add_trace(color_bar)
-            return fig
-        else:
-            fig = go.Figure()
-            for speaker in filtered_df['speaker_number'].unique():
-                speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
-                fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
-                                         y=speaker_df['degree_centrality'],
-                                         mode='lines+markers',
-                                         name=f'Speaker {speaker}'))
 
-            # Calculate the average degree centrality for all speakers
-            avg_degree_centrality = dataset[dataset['project'] == selected_project].groupby('meeting_number')['degree_centrality'].mean().reset_index()
-
-            fig.add_trace(go.Scatter(
-                x=avg_degree_centrality['meeting_number'],
-                y=avg_degree_centrality['degree_centrality'],
-                mode='lines',
-                name='Average Degree Centrality',
-                line=dict(color='black', dash='dash')
-            ))
-
-            xticks = filtered_df['meeting_number'].unique()
-
-            fig.update_layout(
-                xaxis_title='Meeting Number',
-                yaxis_title='Degree Centrality',
-                xaxis=dict(tickmode='array', tickvals=xticks),
-                showlegend=True
-            )
-            return fig
+        return fig, selected_project, selected_meetings, selected_speakers

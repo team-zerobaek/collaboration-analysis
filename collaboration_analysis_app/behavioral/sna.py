@@ -1,9 +1,9 @@
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import plotly.graph_objects as go
 import networkx as nx
 import matplotlib.colors as mcolors
 from dash import dcc, html
-import pandas as pd
+import dash
 
 # Initialize Dash app and dataset within the SNA context
 dash_app = None
@@ -13,6 +13,10 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
     global dash_app, dataset
     dash_app = dash_app_instance
     dataset = dataset_instance
+
+    dropdown_style = {
+        'width': '200px',
+    }
 
     def create_interaction_graph(df, selected_speakers=None):
         G = nx.DiGraph()
@@ -260,23 +264,49 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
 
         return fig
 
+    def display_empty_graph():
+        fig = go.Figure()
+        fig.update_layout(
+            paper_bgcolor='#f7f7f7',
+            plot_bgcolor='#f7f7f7',
+            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
+        )
+        return fig
+
     @dash_app.callback(
-        Output('network-graph', 'figure'),
+        [Output('network-graph', 'figure'),
+         Output('project-dropdown', 'value'),
+         Output('meeting-dropdown', 'value'),
+         Output('speaker-dropdown', 'value')],
         [Input('project-dropdown', 'value'),
          Input('meeting-dropdown', 'value'),
          Input('speaker-dropdown', 'value'),
-         Input('reset-button', 'n_clicks')]
+         Input('reset-button', 'n_clicks'),
+         Input('select-all-meetings-button', 'n_clicks'),
+         Input('select-all-speakers-button', 'n_clicks')],
+        [State('project-dropdown', 'value')]
     )
-    def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks):
-        if not selected_project:
-            fig = go.Figure()
-            fig.update_layout(
-                paper_bgcolor='#f7f7f7',
-                plot_bgcolor='#f7f7f7',
-                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
-            )
-            return fig
+    def update_graph(selected_project, selected_meeting, selected_speakers, reset_clicks, select_all_meetings_clicks, select_all_speakers_clicks, state_project):
+        ctx = dash.callback_context
+        if not ctx.triggered:
+            if state_project:
+                selected_project = state_project
+            else:
+                return display_empty_graph(), dash.no_update, dash.no_update, dash.no_update
+
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+
+        if button_id == 'reset-button' or not selected_project:
+            return display_empty_graph(), [], [], []
+
+        if button_id == 'select-all-meetings-button':
+            meetings = dataset[dataset['project'] == selected_project]['meeting_number'].unique()
+            return dash.no_update, dash.no_update, list(meetings), dash.no_update
+
+        if button_id == 'select-all-speakers-button':
+            speakers = dataset[dataset['project'] == selected_project]['speaker_number'].unique()
+            return dash.no_update, dash.no_update, dash.no_update, list(speakers)
 
         df_filtered = dataset[dataset['project'] == selected_project]
 
@@ -286,12 +316,12 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         if selected_speakers:
             selected_speakers = [f"SPEAKER_{speaker:02d}" for speaker in selected_speakers]
             df_filtered = df_filtered[df_filtered['speaker_number'].isin([int(s.split('_')[1]) for s in selected_speakers]) |
-                                      df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
+                                    df_filtered['next_speaker_id'].isin([int(s.split('_')[1]) for s in selected_speakers])]
             G = create_interaction_graph(df_filtered, selected_speakers)
         else:
             G = create_interaction_graph(df_filtered)
 
-        return plot_interaction_network(G)
+        return plot_interaction_network(G), dash.no_update, dash.no_update, dash.no_update
 
     @dash_app.callback(
         Output('meeting-dropdown', 'options'),
@@ -318,18 +348,6 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
         return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
     @dash_app.callback(
-        [Output('project-dropdown', 'options')],
-        [Input('dataset-selection-radio', 'value')]
-    )
-    def update_project_dropdown_options(dataset_selection):
-        if dataset_selection == 'default':
-            projects = [{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()]
-        else:
-            projects = [{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()]
-        
-        return projects
-
-    @dash_app.callback(
         Output('dataset-selection-radio', 'value'),
         [Input('upload-info-store', 'data')]
     )
@@ -338,17 +356,11 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
             return 'uploaded'
         return 'default'
 
-    @dash_app.callback(
-        [Output('project-dropdown', 'value'),
-         Output('meeting-dropdown', 'value'),
-         Output('speaker-dropdown', 'value')],
-        [Input('reset-button', 'n_clicks')]
-    )
-    def reset_filters(n_clicks):
-        return default_projects, None, None
-    
     # Define the layout for SNA-specific elements
-    default_projects = dataset['project'].max()
+    initial_project = dataset['project'].max()
+    initial_meetings = dataset[dataset['project'] == initial_project]['meeting_number'].unique()
+    initial_speakers = dataset[dataset['project'] == initial_project]['speaker_number'].unique()
+
     sna_layout = html.Div([
         html.Div(id='sna', children=[
             html.H1("Interaction Network Graph")
@@ -359,21 +371,25 @@ def initialize_sna_app(dash_app_instance, dataset_instance):
                 options=[{'label': f'Project {i}', 'value': i} for i in dataset['project'].unique()],
                 placeholder="Select a project",
                 multi=False,
-                style={'width': '200px'},
-                value=default_projects,
+                style=dropdown_style,
+                value=initial_project  # Set the initial value to the most recent project
             ),
             dcc.Dropdown(
                 id='meeting-dropdown',
+                options=[{'label': f'Meeting {i}', 'value': i} for i in initial_meetings],
                 placeholder="Select a meeting",
                 multi=True,
-                style={'width': '200px'}
+                style=dropdown_style
             ),
             dcc.Dropdown(
                 id='speaker-dropdown',
+                options=[{'label': f'Speaker {i}', 'value': i} for i in initial_speakers],
                 placeholder="Select speakers",
                 multi=True,
-                style={'width': '200px'}
+                style=dropdown_style
             ),
+            html.Button('Select All Meetings', id='select-all-meetings-button', n_clicks=0),
+            html.Button('Select All Speakers', id='select-all-speakers-button', n_clicks=0),
             html.Button('Reset', id='reset-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
         dcc.Graph(id='network-graph'),

@@ -4,9 +4,11 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.colors as mcolors
 from dash import dcc, html
+import dash
+import plotly.colors as pcolors
 
 def initialize_gap_app(dash_app, dataset):
-    gap_layout = html.Div(id ='gap', children=[
+    gap_layout = html.Div(id='gap', children=[
         html.H1("Gap of Peer Evaluation Score", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
@@ -45,7 +47,7 @@ def initialize_gap_app(dash_app, dataset):
 
                 The graph can be dynamically updated based on the selected meetings and speakers.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
-        ], style={'margin-top': '10px','margin-bottom': '20px'})
+        ], style={'margin-top': '10px', 'margin-bottom': '20px'})
     ])
     dash_app.layout.children.append(gap_layout)
 
@@ -76,7 +78,9 @@ def initialize_gap_app(dash_app, dataset):
         Input('gap-reset-button', 'n_clicks')
     )
     def reset_gap_filters(n_clicks):
-        return None, None
+        if n_clicks > 0:
+            return None, None
+        return dash.no_update, dash.no_update
 
     @dash_app.callback(
         Output('gap-meeting-dropdown', 'disabled'),
@@ -89,9 +93,10 @@ def initialize_gap_app(dash_app, dataset):
         Output('gap-score-graph', 'figure'),
         [Input('gap-meeting-dropdown', 'value'),
          Input('gap-speaker-dropdown', 'value'),
-         Input('gap-view-type-radio', 'value')]
+         Input('gap-view-type-radio', 'value'),
+         Input('gap-reset-button', 'n_clicks')]
     )
-    def update_gap_score_graph(selected_meeting, selected_speakers, view_type):
+    def update_gap_score_graph(selected_meeting, selected_speakers, view_type, n_clicks):
         filtered_df = dataset[(dataset['individual_collaboration_score'] != -1) &
                               (dataset['overall_collaboration_score'] != -1)]
 
@@ -109,13 +114,21 @@ def initialize_gap_app(dash_app, dataset):
 
         fig = go.Figure()
 
-        color_map = {
-            0: 'blue',
-            1: 'red',
-            2: 'green',
-            3: 'purple',
-            4: 'orange'
-        }
+        # D3 color palette for speakers
+        d3_colors = pcolors.qualitative.D3
+        color_map = {i: d3_colors[i % len(d3_colors)] for i in range(len(d3_colors))}
+
+        # Reset button clicked
+        if n_clicks > 0 and (selected_meeting is None and selected_speakers is None):
+            fig = go.Figure()
+
+            fig.update_layout(
+                xaxis_title='Speaker Number',
+                yaxis_title='Gap (Others - Self)',
+                showlegend=True
+            )
+            
+            return fig
 
         if view_type == 'total':
             if selected_meeting:

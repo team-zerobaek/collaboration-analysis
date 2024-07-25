@@ -1,5 +1,6 @@
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import plotly.colors as pcolors
 import pandas as pd
 import seaborn as sns
 import matplotlib.colors as mcolors
@@ -74,7 +75,9 @@ def initialize_self_score_app(dash_app, dataset):
         Input('self-reset-button', 'n_clicks')
     )
     def reset_self_filters(n_clicks):
-        return None, None
+        if n_clicks > 0:
+            return None, None
+        return dash.no_update, dash.no_update
 
     @dash_app.callback(
         Output('self-meeting-dropdown', 'disabled'),
@@ -87,9 +90,10 @@ def initialize_self_score_app(dash_app, dataset):
         Output('self-score-graph', 'figure'),
         [Input('self-meeting-dropdown', 'value'),
          Input('self-speaker-dropdown', 'value'),
-         Input('self-view-type-radio', 'value')]
+         Input('self-view-type-radio', 'value'),
+         Input('self-reset-button', 'n_clicks')]
     )
-    def update_self_score_graph(selected_meeting, selected_speakers, view_type):
+    def update_self_score_graph(selected_meeting, selected_speakers, view_type, n_clicks):
         filtered_df = dataset[dataset['individual_collaboration_score'] != -1]
         filtered_df = filtered_df[filtered_df['overall_collaboration_score'] != -1]
 
@@ -100,13 +104,21 @@ def initialize_self_score_app(dash_app, dataset):
 
         fig = go.Figure()
 
-        color_map = {
-            0: 'blue',
-            1: 'red',
-            2: 'green',
-            3: 'purple',
-            4: 'orange'
-        }
+        # Define the color palette
+        d3_colors = pcolors.qualitative.D3
+        color_map = {i: d3_colors[i % len(d3_colors)] for i in range(len(d3_colors))}
+
+        # Reset button clicked
+        if n_clicks > 0 and (selected_meeting is None and selected_speakers is None):
+            fig = go.Figure()
+
+            fig.update_layout(
+                xaxis_title='Meeting Number',
+                yaxis_title='Mean Individual Collaboration Score (Self)',
+                showlegend=True
+            )
+            
+            return fig
 
         if view_type == 'total':
             self_scores = filtered_df[filtered_df['speaker_id'] == filtered_df['next_speaker_id']].groupby('meeting_number')['individual_collaboration_score'].agg(['mean', 'sem']).reset_index()

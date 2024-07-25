@@ -1,6 +1,7 @@
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import plotly.colors as pcolors
 import pandas as pd
 import dash
 
@@ -12,16 +13,9 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
     dash_app = dash_app_instance
     dataset = dataset_instance
 
-    # Define a consistent color map for the projects
-    color_map = {
-        0: 'grey',
-        1: 'purple',
-        2: 'green',
-        3: 'blue',
-        4: 'red',
-        5: 'orange'
-        # Add more colors as needed
-    }
+    # Define a consistent color map using D3 palette
+    color_palette = pcolors.qualitative.D3
+    color_map = {i: color_palette[i % len(color_palette)] for i in range(len(color_palette))}
 
     dash_app.layout.children.append(html.Div(id='gini', children=[
         html.H1("How Evenly Interacted?"),
@@ -64,13 +58,14 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
         ctx = dash.callback_context
         if ctx.triggered and ctx.triggered[0]['prop_id'].split('.')[0] == 'gini-reset-button':
             selected_projects = []  # Reset to empty selection
-            return fig.update_layout(
+            fig.update_layout(
                 xaxis_title='Meeting',
                 yaxis_title='Gini Coefficient',
                 xaxis=dict(showticklabels=False),
                 yaxis=dict(showticklabels=False),
                 showlegend=False
-            ), None
+            )
+            return fig, None
 
         if selected_projects:
             for project in selected_projects:
@@ -83,7 +78,7 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
                     mode='lines+markers',
                     name=f'Gini Coefficient Project {project}',
                     marker=dict(symbol='circle'),
-                    line=dict(color=color_map.get(project, 'black'))  # Use predefined color or default to black
+                    line=dict(color=color_map.get(project % len(color_map), 'black'))  # Use dynamic colormap
                 ))
 
             # Determine x-ticks only if there's at least one data point
@@ -105,4 +100,3 @@ def initialize_gini_app(dash_app_instance, dataset_instance):
             )
 
         return fig, selected_projects
-

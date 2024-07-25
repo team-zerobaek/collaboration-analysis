@@ -1,6 +1,7 @@
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import plotly.colors as pcolors
 import pandas as pd
 import matplotlib.colors as mcolors
 import dash
@@ -15,16 +16,9 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
 
     most_recent_project = dataset['project'].max()
 
-    # Define a consistent color map for the projects
-    color_map = {
-        0: 'grey',
-        1: 'purple',
-        2: 'green',
-        3: 'blue',
-        4: 'red',
-        5: 'orange'
-        # Add more colors as needed
-    }
+    # Define a consistent color map using D3 palette
+    color_palette = pcolors.qualitative.D3
+    color_map = {i: color_palette[i % len(color_palette)] for i in range(len(color_palette))}
 
     dash_app.layout.children.append(html.Div(id='degree', children=[
         html.H1("How Much Contributed?"),
@@ -108,10 +102,13 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
         fig = go.Figure()
         for speaker in filtered_df['speaker_number'].unique():
             speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
+            color = color_map.get(speaker % len(color_map), 'black')  # Use dynamic colormap
             fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
                                      y=speaker_df['degree_centrality'],
                                      mode='lines+markers',
-                                     name=f'Speaker {speaker}'))
+                                     name=f'Speaker {speaker}',
+                                     line=dict(color=color),
+                                     marker=dict(color=color)))
 
         # Calculate the average degree centrality for all speakers
         avg_degree_centrality = dataset[dataset['project'] == filtered_df['project'].iloc[0]].groupby('meeting_number')['degree_centrality'].mean().reset_index()

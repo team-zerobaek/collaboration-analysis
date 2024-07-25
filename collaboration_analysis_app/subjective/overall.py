@@ -1,12 +1,16 @@
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import plotly.colors as pcolors
 import pandas as pd
-import seaborn as sns
-import matplotlib.colors as mcolors
 from dash import dcc, html
+import dash
 
 def initialize_overall_app(dash_app, dataset):
-    overall_layout = html.Div(id = 'overall', children=[
+    # Define a consistent color map using D3 palette
+    color_palette = pcolors.qualitative.D3
+    color_map = {i: color_palette[i % len(color_palette)] for i in range(len(color_palette))}
+
+    overall_layout = html.Div(id='overall', children=[
         html.H1("Members' Perception of Collaboration", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
@@ -36,9 +40,13 @@ def initialize_overall_app(dash_app, dataset):
         html.Details([
             html.Summary('Description', style={'margin-bottom': '10px'}),
             dcc.Markdown("""
-                ### Middle Title
-                - Content 1
-                - Content 2
+                ### Members' Perception of Collaboration
+                - This graph shows the overall collaboration scores as perceived by the members in each meeting.
+
+                    - **X-axis**: Indicates the session number of the meeting.
+                    - **Y-axis**: Indicates the overall collaboration score.
+
+                - The "total" view shows the mean collaboration score across all members, while the "by speakers" view shows the scores for individual speakers.
             """, style={'backgroundColor': '#f0f0f0', 'padding': '10px', 'borderRadius': '5px'})
         ], style={'margin-top': '10px','margin-bottom': '20px'})
     ])
@@ -60,28 +68,43 @@ def initialize_overall_app(dash_app, dataset):
         speakers = dataset['speaker_number'].unique()
         return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
-    @dash_app.callback(
-        [Output('meeting-dropdown', 'value'),
-         Output('speaker-dropdown', 'value')],
-        Input('reset-button', 'n_clicks')
-    )
-    def reset_filters(n_clicks):
-        return None, None
+    def display_empty_graph():
+        fig = go.Figure()
+        fig.update_layout(
+            xaxis_title='Meeting Number',
+            yaxis_title='Mean Overall Collaboration Score',
+            xaxis=dict(showticklabels=False),
+            yaxis=dict(showticklabels=False),
+            showlegend=False
+        )
+        return fig
 
     @dash_app.callback(
-        Output('meeting-dropdown', 'disabled'),
+        [Output('meeting-dropdown', 'disabled'),
+         Output('speaker-dropdown', 'disabled')],
         Input('view-type-radio', 'value')
     )
-    def disable_meeting_dropdown(view_type):
-        return view_type != 'by_speakers'
+    def disable_dropdowns(view_type):
+        if view_type == 'total':
+            return True, True
+        else:
+            return False, False
 
     @dash_app.callback(
-        Output('collaboration-score-graph', 'figure'),
+        [Output('collaboration-score-graph', 'figure'),
+         Output('meeting-dropdown', 'value'),
+         Output('speaker-dropdown', 'value')],
         [Input('meeting-dropdown', 'value'),
          Input('speaker-dropdown', 'value'),
-         Input('view-type-radio', 'value')]
+         Input('view-type-radio', 'value'),
+         Input('reset-button', 'n_clicks')]
     )
-    def update_collaboration_score_graph(selected_meeting, selected_speakers, view_type):
+    def update_collaboration_score_graph(selected_meeting, selected_speakers, view_type, reset_clicks):
+        ctx = dash.callback_context
+
+        if ctx.triggered and ctx.triggered[0]['prop_id'].split('.')[0] == 'reset-button':
+            return display_empty_graph(), None, None
+
         filtered_df = dataset
 
         if selected_meeting:
@@ -90,14 +113,6 @@ def initialize_overall_app(dash_app, dataset):
             filtered_df = filtered_df[filtered_df['speaker_number'].isin(selected_speakers)]
 
         fig = go.Figure()
-
-        color_map = {
-            0: 'blue',
-            1: 'red',
-            2: 'green',
-            3: 'purple',
-            4: 'orange'
-        }
 
         if view_type == 'total':
             overall_score_by_meeting = filtered_df.groupby('meeting_number')['overall_collaboration_score'].agg(['mean', 'std']).reset_index()
@@ -127,7 +142,7 @@ def initialize_overall_app(dash_app, dataset):
 
             for speaker in overall_score_by_meeting_speaker['speaker_number'].unique():
                 speaker_data = overall_score_by_meeting_speaker[overall_score_by_meeting_speaker['speaker_number'] == speaker]
-                color = color_map[speaker]
+                color = color_map[speaker % len(color_map)]
                 fig.add_trace(go.Scatter(
                     x=speaker_data['meeting_number'],
                     y=speaker_data['mean'],
@@ -152,7 +167,7 @@ def initialize_overall_app(dash_app, dataset):
                 fig = go.Figure(data=[go.Bar(
                     x=bar_data_agg['speaker_number'],
                     y=bar_data_agg['overall_collaboration_score'],
-                    marker_color=[color_map[speaker] for speaker in bar_data_agg['speaker_number']]
+                    marker_color=[color_map[speaker % len(color_map)] for speaker in bar_data_agg['speaker_number']]
                 )])
                 fig.update_layout(
                     xaxis_title='Speaker Number',
@@ -160,4 +175,4 @@ def initialize_overall_app(dash_app, dataset):
                     showlegend=False
                 )
 
-        return fig
+        return fig, dash.no_update, dash.no_update

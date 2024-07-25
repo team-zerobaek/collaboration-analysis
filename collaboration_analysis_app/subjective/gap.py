@@ -1,12 +1,16 @@
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import plotly.colors as pcolors
 import pandas as pd
-import seaborn as sns
-import matplotlib.colors as mcolors
 from dash import dcc, html
+import dash
 
 def initialize_gap_app(dash_app, dataset):
-    gap_layout = html.Div(id ='gap', children=[
+    # Define a consistent color map using D3 palette
+    color_palette = pcolors.qualitative.D3
+    color_map = {i: color_palette[i % len(color_palette)] for i in range(len(color_palette))}
+
+    gap_layout = html.Div(id='gap', children=[
         html.H1("Gap of Peer Evaluation Score", style={'text-align': 'left'}),
         html.Div([
             dcc.Dropdown(
@@ -71,14 +75,6 @@ def initialize_gap_app(dash_app, dataset):
         return [{'label': f'Speaker {i}', 'value': i} for i in speakers]
 
     @dash_app.callback(
-        [Output('gap-meeting-dropdown', 'value'),
-         Output('gap-speaker-dropdown', 'value')],
-        Input('gap-reset-button', 'n_clicks')
-    )
-    def reset_gap_filters(n_clicks):
-        return None, None
-
-    @dash_app.callback(
         Output('gap-meeting-dropdown', 'disabled'),
         Input('gap-view-type-radio', 'value')
     )
@@ -86,12 +82,38 @@ def initialize_gap_app(dash_app, dataset):
         return view_type == 'by_meeting'
 
     @dash_app.callback(
-        Output('gap-score-graph', 'figure'),
+        Output('gap-speaker-dropdown', 'disabled'),
+        Input('gap-view-type-radio', 'value')
+    )
+    def disable_speaker_dropdown(view_type):
+        return view_type == 'total'
+
+    def display_empty_graph():
+        fig = go.Figure()
+        fig.update_layout(
+            xaxis_title='Meeting Number',
+            yaxis_title='Gap (Others - Self)',
+            xaxis=dict(showticklabels=False),
+            yaxis=dict(showticklabels=False),
+            showlegend=False
+        )
+        return fig
+
+    @dash_app.callback(
+        [Output('gap-score-graph', 'figure'),
+         Output('gap-meeting-dropdown', 'value'),
+         Output('gap-speaker-dropdown', 'value')],
         [Input('gap-meeting-dropdown', 'value'),
          Input('gap-speaker-dropdown', 'value'),
-         Input('gap-view-type-radio', 'value')]
+         Input('gap-view-type-radio', 'value'),
+         Input('gap-reset-button', 'n_clicks')]
     )
-    def update_gap_score_graph(selected_meeting, selected_speakers, view_type):
+    def update_gap_score_graph(selected_meeting, selected_speakers, view_type, reset_clicks):
+        ctx = dash.callback_context
+
+        if ctx.triggered and ctx.triggered[0]['prop_id'].split('.')[0] == 'gap-reset-button':
+            return display_empty_graph(), None, None
+
         filtered_df = dataset[(dataset['individual_collaboration_score'] != -1) &
                               (dataset['overall_collaboration_score'] != -1)]
 
@@ -109,14 +131,6 @@ def initialize_gap_app(dash_app, dataset):
 
         fig = go.Figure()
 
-        color_map = {
-            0: 'blue',
-            1: 'red',
-            2: 'green',
-            3: 'purple',
-            4: 'orange'
-        }
-
         if view_type == 'total':
             if selected_meeting:
                 combined_scores = combined_scores[combined_scores['meeting_number'].isin(selected_meeting)]
@@ -129,7 +143,7 @@ def initialize_gap_app(dash_app, dataset):
                     array=gap_scores_total['sem'],
                     visible=True
                 ),
-                marker_color=[color_map[speaker] for speaker in gap_scores_total['next_speaker_id']]
+                marker_color=[color_map[speaker % len(color_map)] for speaker in gap_scores_total['next_speaker_id']]
             ))
             fig.update_layout(
                 xaxis_title='Speaker Number',
@@ -140,7 +154,7 @@ def initialize_gap_app(dash_app, dataset):
             if selected_speakers:
                 for speaker in selected_speakers:
                     speaker_data = combined_scores[combined_scores['next_speaker_id'] == speaker]
-                    color = color_map[speaker]
+                    color = color_map[speaker % len(color_map)]
                     fig.add_trace(go.Scatter(
                         x=speaker_data['meeting_number'],
                         y=speaker_data['gap'],
@@ -157,8 +171,8 @@ def initialize_gap_app(dash_app, dataset):
                         y=speaker_data['gap'],
                         mode='lines+markers',
                         name=f'Speaker {speaker}',
-                        line=dict(color=color_map[speaker]),
-                        marker=dict(color=color_map[speaker])
+                        line=dict(color=color_map[speaker % len(color_map)]),
+                        marker=dict(color=color_map[speaker % len(color_map)])
                     ))
 
             fig.add_shape(
@@ -180,4 +194,4 @@ def initialize_gap_app(dash_app, dataset):
                 showlegend=True
             )
 
-        return fig
+        return fig, None, None

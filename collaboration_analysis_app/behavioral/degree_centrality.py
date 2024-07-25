@@ -1,6 +1,7 @@
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import plotly.colors as pcolors
 import pandas as pd
 import matplotlib.colors as mcolors
 import dash
@@ -15,16 +16,9 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
 
     most_recent_project = dataset['project'].max()
 
-    # Define a consistent color map for the projects
-    color_map = {
-        0: 'grey',
-        1: 'purple',
-        2: 'green',
-        3: 'blue',
-        4: 'red',
-        5: 'orange'
-        # Add more colors as needed
-    }
+    # Define a consistent color map using D3 palette
+    color_palette = pcolors.qualitative.D3
+    color_map = {i: color_palette[i % len(color_palette)] for i in range(len(color_palette))}
 
     dash_app.layout.children.append(html.Div(id='degree', children=[
         html.H1("How Much Contributed?"),
@@ -49,6 +43,8 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
                 multi=True,
                 style={'width': '200px'}
             ),
+            html.Button('Select All Meetings', id='select-all-meetings-degree', n_clicks=0),
+            html.Button('Select All Speakers', id='select-all-speakers-degree', n_clicks=0),
             html.Button('Reset', id='reset-degree-centrality-button', n_clicks=0)
         ], style={'display': 'flex', 'gap': '10px', 'flexWrap': 'wrap'}),
         dcc.Graph(id='degree-centrality-graph'),
@@ -106,12 +102,19 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
 
     def create_degree_centrality_figure(filtered_df, color_map):
         fig = go.Figure()
+
+        if filtered_df.empty:
+            return display_empty_degree_centrality_graph()
+
         for speaker in filtered_df['speaker_number'].unique():
             speaker_df = filtered_df[filtered_df['speaker_number'] == speaker]
+            color = color_map.get(speaker % len(color_map), 'black')  # Use predefined color or default to black
             fig.add_trace(go.Scatter(x=speaker_df['meeting_number'],
                                      y=speaker_df['degree_centrality'],
                                      mode='lines+markers',
-                                     name=f'Speaker {speaker}'))
+                                     name=f'Speaker {speaker}',
+                                     line=dict(color=color),
+                                     marker=dict(color=color)))
 
         # Calculate the average degree centrality for all speakers
         avg_degree_centrality = dataset[dataset['project'] == filtered_df['project'].iloc[0]].groupby('meeting_number')['degree_centrality'].mean().reset_index()
@@ -143,12 +146,21 @@ def initialize_degree_centrality_app(dash_app_instance, dataset_instance):
         [Input('degree-centrality-project-dropdown', 'value'),
          Input('degree-centrality-meeting-dropdown', 'value'),
          Input('degree-centrality-speaker-dropdown', 'value'),
-         Input('reset-degree-centrality-button', 'n_clicks')]
+         Input('reset-degree-centrality-button', 'n_clicks'),
+         Input('select-all-meetings-degree', 'n_clicks'),
+         Input('select-all-speakers-degree', 'n_clicks')]
     )
-    def update_degree_centrality_graph(selected_project, selected_meetings, selected_speakers, reset_clicks):
+    def update_degree_centrality_graph(selected_project, selected_meetings, selected_speakers, reset_clicks, select_all_meetings_clicks, select_all_speakers_clicks):
         ctx = dash.callback_context
+
         if ctx.triggered and ctx.triggered[0]['prop_id'].split('.')[0] == 'reset-degree-centrality-button':
             return display_empty_degree_centrality_graph(), None, [], []
+
+        if ctx.triggered and ctx.triggered[0]['prop_id'].split('.')[0] == 'select-all-meetings-degree':
+            selected_meetings = dataset['meeting_number'].unique().tolist()
+
+        if ctx.triggered and ctx.triggered[0]['prop_id'].split('.')[0] == 'select-all-speakers-degree':
+            selected_speakers = dataset['speaker_number'].unique().tolist()
 
         if not selected_project:
             selected_project = dataset['project'].max()

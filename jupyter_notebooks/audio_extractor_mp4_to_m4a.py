@@ -40,8 +40,8 @@ def get_audio_info(audio_file):
         print(f"Error retrieving audio info: {e.stderr}")
 
 # Ensure paths are correctly formatted for Windows
-input_video_file = os.path.normpath("records\\meetingrecord_5th_teamzerobaek_proejct4.mp4")
-output_audio_file = os.path.normpath("audio\\meetingrecord_5th_teamzerobaek_proejct4.m4a")
+input_video_file = os.path.normpath("records\\meetingrecord_23th_teamzerobaek_proejct4.mp4")
+output_audio_file = os.path.normpath("audio\\meetingrecord_23th_teamzerobaek_proejct4.m4a")
 
 # Convert entire video to M4A
 convert_mp4_to_m4a(input_video_file, output_audio_file)
